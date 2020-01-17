@@ -12,7 +12,13 @@ namespace HelloWorld.ProtectedPages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //HttpCookie cookies = HttpCookieCollection.KeysCollection.
+            if (Request.Cookies["UserID"] != null) // && Request.Cookies["Password"] != null
+            {
+                //String[] cookies = Request.Cookies.AllKeys;
+                String userid = Request.Cookies.Get("UserID").Value;
+                String password = Request.Cookies.Get("Password").Value;
+                Debug.WriteLine("User Loggedin with UserID: " + userid + " and Pwd: " + password);
+            }
             //if()
             //try
             //{

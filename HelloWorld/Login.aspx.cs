@@ -17,18 +17,24 @@ namespace HelloWorld
             Debug.WriteLine("Remember Me Check Status: " + rememberCheck);
             if (rememberCheck == true)
             {
-                //string userid = dropUserId.Text.ToString();
-                //string password = txtPassword.Text.ToString();
-                //HttpCookie userCookie = new HttpCookie();
-                //HttpCookie passCookie = new HttpCookie();
-                //userCookie.Name = "UserID";
-                //passCookie.Name = "Password";
-                //userCookie.Value = userid;
-                //passCookie.Value = password;
-                //userCookie.HttpOnly = true;
-                //passCookie.HttpOnly = true;
-                //userCookie.Expires.AddDays(3);
-                //passCookie.Expires.AddDays(3);
+                string userid = dropUserId.Text.ToString();
+                string password = txtPassword.Text.ToString();
+                if (!userid.Equals("Select UserID")) //|| password != null
+                {
+                    HttpCookie userCookie = new HttpCookie("UserID");
+                    HttpCookie passCookie = new HttpCookie("Password");
+                    //userCookie.Name = "UserID";
+                    //passCookie.Name = "Password";
+                    userCookie.Value = userid.ToString();
+                    passCookie.Value = password.ToString();
+                    //userCookie.HttpOnly = true;
+                    //passCookie.HttpOnly = true;
+                    userCookie.Expires.AddDays(3);
+                    passCookie.Expires.AddDays(3);
+                    Response.Cookies.Add(userCookie);
+                    Response.Cookies.Add(passCookie);
+                    Debug.WriteLine("Cookie Saved With ID: "+ userCookie.Value.ToString() + " and Passcode: "+ passCookie.Value.ToString());
+                }
             }
             //try
             //{
