@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\Saad.Ahmed\Desktop\SHMABuild" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="UAT.aspx" publishTime="12/26/2019 16:15:43" />
+    <file relUrl="Site.Master" publishTime="01/06/2020 11:26:31" />
+    <file relUrl="SiteLogout.Master" publishTime="01/08/2020 14:59:41" />
+    <file relUrl="Account/Web.config" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="Account/Register.aspx" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="Live.aspx" publishTime="12/26/2019 16:16:18" />
+    <file relUrl="bin/HelloWorld.dll" publishTime="01/08/2020 17:47:41" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="ProtectedPages/EditEnvironemtInfo.aspx" publishTime="01/08/2020 14:48:59" />
+    <file relUrl="Test.aspx" publishTime="12/26/2019 16:14:09" />
+    <file relUrl="Account/Login.aspx" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="Styles/Site.css" publishTime="12/26/2019 15:43:33" />
+    <file relUrl="Logout.aspx" publishTime="12/26/2019 15:21:13" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="Web.config" publishTime="01/08/2020 17:39:32" />
+    <file relUrl="Global.asax" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="References.aspx" publishTime="01/08/2020 17:47:33" />
+    <file relUrl="EnvironmentInfo.aspx" publishTime="01/08/2020 17:31:04" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="About.aspx" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="12/24/2019 16:41:31" />
+    <file relUrl="Default.aspx" publishTime="01/08/2020 17:24:43" />
+    <file relUrl="Login.aspx" publishTime="01/06/2020 12:33:06" />
+    <file relUrl="bin/HelloWorld.pdb" publishTime="01/08/2020 17:47:41" />
+  </publishProfile>
+</publishData>
