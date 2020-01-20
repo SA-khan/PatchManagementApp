@@ -241,5 +241,30 @@ namespace HelloWorld.App_Code
         }
 
         //Environment Settings End
+
+        // Inserting Data into Client Table
+
+        public int insertClient(string ClientName, string ClientType, string ClientDescription, string POCName, string POCEmail, string POCPhone) {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spInsertClient]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                oCmd.Parameters.AddWithValue("@ClientName", ClientName);
+                oCmd.Parameters.AddWithValue("@ClientType", ClientType);
+                oCmd.Parameters.AddWithValue("@ClientDesc", ClientDescription);
+                oCmd.Parameters.AddWithValue("@POCName", POCName);
+                oCmd.Parameters.AddWithValue("@POCEmail", POCEmail);
+                oCmd.Parameters.AddWithValue("@POCPhone", POCPhone);
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // End Inserting Data into Client Table
     }
 }
