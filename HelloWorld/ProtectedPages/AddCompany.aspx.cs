@@ -34,16 +34,32 @@ namespace HelloWorld.ProtectedPages
             string POCName = txtPOCName.Text.ToString();
             string POCEmail = txtPOCEmail.Text.ToString();
             string POCPhone = txtPOCPhone.Text.ToString();
-            Debug.WriteLine("");
-            Debug.WriteLine("Client Name: "+ ClientName);
-            Debug.WriteLine("Client Type: " + ClientType);
-            Debug.WriteLine("Client Description: " + ClientDescription);
-            Debug.WriteLine("Client POCName: " + POCName);
-            Debug.WriteLine("Client POCEmail: " + POCEmail);
-            Debug.WriteLine("Client POCPhone: " + POCPhone);
-            DatabaseConnectivity dbcon = new DatabaseConnectivity();
-            int res = dbcon.insertClient(ClientName, ClientType, ClientDescription, POCName, POCEmail, POCPhone);
-            Debug.WriteLine("Query Status: " + res);
+            if (ClientName != null)
+            {
+                Debug.WriteLine("");
+                Debug.WriteLine("Client Name: " + ClientName);
+                Debug.WriteLine("Client Type: " + ClientType);
+                Debug.WriteLine("Client Description: " + ClientDescription);
+                Debug.WriteLine("Client POCName: " + POCName);
+                Debug.WriteLine("Client POCEmail: " + POCEmail);
+                Debug.WriteLine("Client POCPhone: " + POCPhone);
+                DatabaseConnectivity dbcon = new DatabaseConnectivity();
+                int res = dbcon.insertClient(ClientName, ClientType, ClientDescription, POCName, POCEmail, POCPhone);
+                Debug.WriteLine("Query Status: " + res);
+                if (res == 1) {
+                    lblSubmission.Visible = true;
+                    rowCLientName.Visible = false;
+                    rowCLientType.Visible = false;
+                    rowCLientDesc.Visible = false;
+                    rowPOCName.Visible = false;
+                    rowPOCEmail.Visible = false;
+                    rowPOCPhone.Visible = false;
+                    rowSubmit.Visible = false;
+                }
+            }
+            else {
+                Debug.WriteLine("alert(Please Enter Client Name.)");
+            }
         }
     }
 }

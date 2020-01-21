@@ -60,7 +60,9 @@
     <Content Include="Live.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="ProtectedPages\AddClientEnvironment.aspx" />
     <Content Include="ProtectedPages\AddCompany.aspx" />
+    <Content Include="ProtectedPages\AddPatch.aspx" />
     <Content Include="ProtectedPages\Dashboard.aspx" />
     <Content Include="ProtectedPages\EditCompanyInfo.aspx" />
     <Content Include="ProtectedPages\EditEnvironemtInfo.aspx" />
@@ -162,12 +164,26 @@
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtectedPages\AddClientEnvironment.aspx.cs">
+      <DependentUpon>AddClientEnvironment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\AddClientEnvironment.aspx.designer.cs">
+      <DependentUpon>AddClientEnvironment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\AddCompany.aspx.cs">
       <DependentUpon>AddCompany.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProtectedPages\AddCompany.aspx.designer.cs">
       <DependentUpon>AddCompany.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\AddPatch.aspx.cs">
+      <DependentUpon>AddPatch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\AddPatch.aspx.designer.cs">
+      <DependentUpon>AddPatch.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

@@ -266,5 +266,38 @@ namespace HelloWorld.App_Code
         }
 
         // End Inserting Data into Client Table
+
+
+        // Inserting Data into Patch Table
+
+        public int insertPatch(string PatchTitle, string PatchDesc, string PatchHotNumber, string PatchDeployedBy, DateTime PatchCreatedDate, DateTime PatchDeployedDate, int IsQAPassed, string Dependency, int ClientID, int ProductID, int EnvironmentType)
+        {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spInsertPatch]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                oCmd.Parameters.AddWithValue("@PatchTitle", PatchTitle);
+                oCmd.Parameters.AddWithValue("@PatchDesc", PatchDesc);
+                oCmd.Parameters.AddWithValue("@PatchHotNumber", PatchHotNumber);
+                oCmd.Parameters.AddWithValue("@PatchDeployedBy", PatchDeployedBy);
+                oCmd.Parameters.AddWithValue("@PatchCreatedDate", PatchCreatedDate);
+                oCmd.Parameters.AddWithValue("@PatchDeployedDate", PatchDeployedDate);
+                oCmd.Parameters.AddWithValue("@IsQAPassed", IsQAPassed);
+                oCmd.Parameters.AddWithValue("@Dependency", Dependency);
+                oCmd.Parameters.AddWithValue("@ClientID", ClientID);
+                oCmd.Parameters.AddWithValue("@ProductID", ProductID);
+                oCmd.Parameters.AddWithValue("@EnvironmentType", EnvironmentType);
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // End Inserting Data into Patch Table
+
     }
 }
