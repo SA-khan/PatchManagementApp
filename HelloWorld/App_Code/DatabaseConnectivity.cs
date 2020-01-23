@@ -19,7 +19,7 @@ namespace HelloWorld.App_Code
             List<Patch> matchingPatch = new List<Patch>();
             using (SqlConnection myConnection = new SqlConnection(con))
             {
-                string oString = "[dbo].[spGetUpdatedPatchListClientWise]";
+                string oString = "[dbo].[GetUpdatedPatchListClientWise]";
                 SqlCommand oCmd = new SqlCommand(oString, myConnection);
 
                 oCmd.CommandType = CommandType.StoredProcedure;
@@ -299,5 +299,58 @@ namespace HelloWorld.App_Code
 
         // End Inserting Data into Patch Table
 
+        // Inserting Data into Environment Table
+
+        public int insertEnvironment(int ClientID, int ProductID, int AppEnvType, int DBEnvType, string AppServerName, string AppServerOS, double AppServerOSBuild, int AppServerIsX86Version, int AppServerIsVirtual, string AppServerProcessor, double AppServerMemory, string AppServerWebBrowser, string AppServerWebBrowserVersion, string AppServerWorkingDirectoryLocation, string AppHyperLink, string AppServerIP, double AppServerPort, string AppServerDependency, string DBServerName, string DBServerOS, double DBerverOSBuild, int DBServerIsX86Version, int DBServerIsVirtual, string DBServerProcessor, double DBServerMemory, string DBServerWorkingDirectoryLocation, string DBMDFFileLocation, double DBMDFFileSize, string DBLDFFileLocation, double DBLDFFileSize, string DBServerIP, double DBServerPort, string DBServerDependency)
+        {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spInsertEnvironment]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                oCmd.Parameters.AddWithValue("@ClientID", ClientID);
+                oCmd.Parameters.AddWithValue("@ProductID", ProductID);
+                oCmd.Parameters.AddWithValue("@AppServerEnvType", AppEnvType);
+                oCmd.Parameters.AddWithValue("@DBServerEnvType", DBEnvType);
+                oCmd.Parameters.AddWithValue("@AppServerName", AppServerName);
+                oCmd.Parameters.AddWithValue("@AppServerOS", AppServerOS);
+                oCmd.Parameters.AddWithValue("@AppServerOSBuild", AppServerOSBuild);
+                oCmd.Parameters.AddWithValue("@AppServerIsX86Version", AppServerIsX86Version);
+                oCmd.Parameters.AddWithValue("@AppServerIsVirtual", AppServerIsVirtual);
+                oCmd.Parameters.AddWithValue("@AppServerProcessor", AppServerProcessor);
+                oCmd.Parameters.AddWithValue("@AppServerMemory", AppServerMemory);
+                oCmd.Parameters.AddWithValue("@AppServerWebBrowser", AppServerWebBrowser);
+                oCmd.Parameters.AddWithValue("@AppServerWebBrowserVersion", AppServerWebBrowserVersion);
+                oCmd.Parameters.AddWithValue("@AppServerWorkingDirectoryLocation", AppServerWorkingDirectoryLocation);
+                oCmd.Parameters.AddWithValue("@AppHyperLink", AppHyperLink);
+                oCmd.Parameters.AddWithValue("@AppServerIP", AppServerIP);
+                oCmd.Parameters.AddWithValue("@AppServerPort", AppServerPort);
+                oCmd.Parameters.AddWithValue("@AppServerDependency", AppServerDependency);
+                oCmd.Parameters.AddWithValue("@DBServerName", DBServerName);
+                oCmd.Parameters.AddWithValue("@DBServerOS", DBServerOS);
+                oCmd.Parameters.AddWithValue("@DBerverOSBuild", DBerverOSBuild);
+                oCmd.Parameters.AddWithValue("@DBServerIsX86Version", DBServerIsX86Version);
+                oCmd.Parameters.AddWithValue("@DBServerIsVirtual", DBServerIsVirtual);
+                oCmd.Parameters.AddWithValue("@DBServerProcessor", DBServerProcessor);
+                oCmd.Parameters.AddWithValue("@DBServerMemory", DBServerMemory);
+                oCmd.Parameters.AddWithValue("@DBServerWorkingDirectoryLocation", DBServerWorkingDirectoryLocation);
+                oCmd.Parameters.AddWithValue("@DBMDFFileLocation", DBMDFFileLocation);
+                oCmd.Parameters.AddWithValue("@DBMDFFileSize", DBMDFFileSize);
+                oCmd.Parameters.AddWithValue("@DBLDFFileLocation", DBLDFFileLocation);
+                oCmd.Parameters.AddWithValue("@DBLDFFileSize", DBLDFFileSize);
+                oCmd.Parameters.AddWithValue("@DBServerIP", DBServerIP);
+                oCmd.Parameters.AddWithValue("@DBServerPort", DBServerPort);
+                oCmd.Parameters.AddWithValue("@DBServerDependency", DBServerDependency);
+
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // End Inserting Data into Environment Table
     }
 }

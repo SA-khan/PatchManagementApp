@@ -34,45 +34,64 @@ namespace HelloWorld
                 TableRow row = new TableRow();
 
                 //Passed By Time Duration Calculation Logic
-                //Debug.WriteLine("=>" + item.patchNumberOfDaysPassed);
-                int numberOfDaysPassed = Convert.ToInt32(item.patchNumberOfDaysPassed);
-                switch (numberOfDaysPassed)
+                Debug.WriteLine(item.patchNumberOfDaysPassed.GetType() + " - " + item.patchNumberOfDaysPassed.Length);
+                Debug.WriteLine("=>" + item.patchNumberOfDaysPassed);
+                int numberOfDaysPassed = 0;
+                if (item.patchNumberOfDaysPassed == null)
                 {
-                    case 0:
-                        row.BackColor = ColorTranslator.FromHtml("#f68787");
-                        break;
-                    case 1:
-                        row.BackColor = ColorTranslator.FromHtml("#f8a978");
-                        break;
-                    case 2:
-                        row.BackColor = ColorTranslator.FromHtml("#f1eb9a");
-                        break;
-                    case 3:
-                        row.BackColor = ColorTranslator.FromHtml("#a4f6a5");
-                        break;
-                    case 4:
-                        row.BackColor = ColorTranslator.FromHtml("#fff");
-                        break;
-                    case 5:
-                        row.BackColor = ColorTranslator.FromHtml("#fff");
-                        break;
-                    case 6:
-                        row.BackColor = ColorTranslator.FromHtml("#ffffff");
-                        break;
-                    case 7:
-                        row.BackColor = ColorTranslator.FromHtml("#ffb6b9");
-                        break;
-                    case 8:
-                        row.BackColor = ColorTranslator.FromHtml("#fff");
-                        break;
-                    case 9:
-                        row.BackColor = ColorTranslator.FromHtml("#fff");
-                        break;
-                    case 10:
-                        row.BackColor = ColorTranslator.FromHtml("#087");
-                        break;
-
+                    item.patchNumberOfDaysPassed = "0";
+                    numberOfDaysPassed = 0;
                 }
+                else 
+                {
+                    try
+                    {
+                        numberOfDaysPassed = Convert.ToInt32(item.patchNumberOfDaysPassed);
+                    }
+                    catch (Exception) { 
+                    
+                    }
+                }
+                try
+                {
+                    switch (numberOfDaysPassed)
+                    {
+                        case 0:
+                            row.BackColor = ColorTranslator.FromHtml("#f68787");
+                            break;
+                        case 1:
+                            row.BackColor = ColorTranslator.FromHtml("#f8a978");
+                            break;
+                        case 2:
+                            row.BackColor = ColorTranslator.FromHtml("#f1eb9a");
+                            break;
+                        case 3:
+                            row.BackColor = ColorTranslator.FromHtml("#a4f6a5");
+                            break;
+                        case 4:
+                            row.BackColor = ColorTranslator.FromHtml("#fff");
+                            break;
+                        case 5:
+                            row.BackColor = ColorTranslator.FromHtml("#fff");
+                            break;
+                        case 6:
+                            row.BackColor = ColorTranslator.FromHtml("#ffffff");
+                            break;
+                        case 7:
+                            row.BackColor = ColorTranslator.FromHtml("#ffb6b9");
+                            break;
+                        case 8:
+                            row.BackColor = ColorTranslator.FromHtml("#fff");
+                            break;
+                        case 9:
+                            row.BackColor = ColorTranslator.FromHtml("#fff");
+                            break;
+                        case 10:
+                            row.BackColor = ColorTranslator.FromHtml("#087");
+                            break;
+
+                    }
+                
 
                 TableCell cellClientName = new TableCell();
                 cellClientName.ForeColor = Color.Black;
@@ -117,7 +136,8 @@ namespace HelloWorld
                 TableCell cellPatchDeployedDate = new TableCell();
                 cellPatchDeployedDate.ForeColor = Color.Black;
                 int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                cellPatchDeployedDate.Text = item.patchDeployedDate.Substring(0, spaceInDate);
+                //cellPatchDeployedDate.Text = item.patchDeployedDate.Substring(0, spaceInDate);
+                cellPatchDeployedDate.Text = item.patchDeployedDate;
                 cellPatchDeployedDate.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchDeployedDate);
 
@@ -156,6 +176,11 @@ namespace HelloWorld
 
                 //
                 tblInfo.Rows.Add(row);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Exception: " + ex.Message);
+                }
 
             }
         }

@@ -160,9 +160,7 @@
         AppendDataBoundItems="True">
         <asp:ListItem>Select..</asp:ListItem>
         </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
-        SelectCommand="SELECT Env_ID, CONCAT('APPSERVER: ',[ENV_AppServerName],' - DBSERVER: ',ENV_DBServerName) As [ENV_TITLE] FROM Environment"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT E.ENV_ID,CONCAT('Client: ',C.ClientName,', Product: ',P.ProductName,', Environment: ',ET.EnvTitle, '') As Env_Title from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType)"></asp:SqlDataSource>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:RequiredFieldValidator ID="ReqEnvironmentType" runat="server" ControlToValidate="dropEnvironmentType" ErrorMessage="Please Select Environment Type" InitialValue="Select.." Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
