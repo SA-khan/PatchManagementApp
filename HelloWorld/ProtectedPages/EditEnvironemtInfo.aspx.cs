@@ -60,7 +60,7 @@ namespace HelloWorld.ProtectedPages
         private void _BindService()
         {
             DatabaseConnectivity dbcon = new DatabaseConnectivity();
-            List<Patch> service = dbcon.getAllUpdatedClientPatches(1, 1);
+            List<Patch> service = dbcon.getAllUpdatedClientPatches(Convert.ToInt32(dropProduct.SelectedValue), Convert.ToInt32(dropEnvironment.SelectedValue));
             if (service.Count > 0 && service != null)
             {
                 GridView1.DataSource = service;
@@ -74,7 +74,7 @@ namespace HelloWorld.ProtectedPages
             //{
                 DatabaseConnectivity dbcon = new DatabaseConnectivity();
                 String ClientName = GridView1.DataKeys[e.RowIndex].Value.ToString();
-                int queryResult = dbcon.updateClientPatches(ClientName, "ONLINE_PORTAL");
+                int queryResult = dbcon.updateClientPatches2(dbcon.getClientId(ClientName), Convert.ToInt32(dropProduct.SelectedValue), Convert.ToInt32(dropEnvironment.SelectedValue));
                 //int userid = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
                 //GridViewRow row = (GridViewRow)GridView1.Rows[e.RowIndex];
                 //Label lblID = (Label)row.FindControl("lblClientName");

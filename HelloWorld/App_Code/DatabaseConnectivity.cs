@@ -127,7 +127,7 @@ namespace HelloWorld.App_Code
             using (SqlConnection conn = new SqlConnection(con))
             {
                 conn.Open();
-                SqlCommand com = new SqlCommand("SELECT MAX([PatchHotNumber]) As [PatchHotNumber] FROM [PatchDetail] WHERE ClientID = '" + getClientId(clientName) + "'");
+                SqlCommand com = new SqlCommand("SELECT MAX([PatchHotNumber]) As [PatchHotNumber] FROM [PATCH] WHERE ClientID = '" + getClientId(clientName) + "'");
                 com.CommandType = CommandType.Text;
                 com.Connection = conn;
                 using (SqlDataAdapter da = new SqlDataAdapter(com))
@@ -170,6 +170,77 @@ namespace HelloWorld.App_Code
             }
             return result;
         }
+
+        ///
+        ///<param name="ClientName">String</param>
+        ///<summary>Update Patch Method</summary>
+        ///<returns>Bool</returns>
+        ///
+
+        public int updateClientPatches2(int clientID, int productID,int EnvType)
+        {
+            int result = 0;
+            string latestPatchNumber = String.Empty;
+            using (SqlConnection conn = new SqlConnection(con))
+            {
+                conn.Open();
+                SqlCommand com = new SqlCommand("SELECT MAX([PAT_HotNumber]) As [PatchHotNumber] FROM [PATCH] WHERE PAT_ClientID = " + clientID + " AND PAT_ProductID = " + productID + " AND PAT_EnvType = (SELECT ENV_ID FROM Environment WHERE ENV_AppServerEnvironmentType = " + EnvType + " AND ENV_Client_ID = " + clientID + " AND ENV_Product_ID = " + productID + ")");
+                com.CommandType = CommandType.Text;
+                com.Connection = conn;
+                using (SqlDataAdapter da = new SqlDataAdapter(com))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    latestPatchNumber = dt.Rows[0]["PatchHotNumber"].ToString();
+                }
+                conn.Close();
+            }
+            //int StartIndex = latestPatchNumber.LastIndexOf('_');
+            //string data = latestPatchNumber.Substring(StartIndex + 1);
+            //Debug.WriteLine(data);
+            //int patchNumber = Convert.ToInt32(data) + 1;
+            Debug.WriteLine("\n Latest Patch Number: " + latestPatchNumber);
+            int patchNumber = 0;
+            if (latestPatchNumber != "")
+            {
+                patchNumber = Convert.ToInt32(latestPatchNumber) + 1;
+            }
+            else { }
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                //string oString = "UPDATE PatchDetail SET [PatchHotNumber] = '" + "Patch_Hot_Number_" + patchNumber + "', [PatchDeployedDate] = getdate() where ClientID = " + getClientId(clientName);
+                //string oString = String.Format("EXECUTE AddPatchDetail @PatchTitle = {0}, @PatchDesc = {1}, @PatchHotNumber = {2}, @PatchDeployedBy = {3}, @PatchCreatedDate = {4}, @PatchDeployedDate = {5}, @IsQAPassed = {6}, @Remarks_Dependencies = {7}, @ClientID = {8}, @ProductID = {9}", "Demo Title Auto Generator", "Demo Desc Auto Generator", patchNumber, "MSA", DateTime.Now, DateTime.Now, 1, "Auto Updater Remarks / Dependencies", getClientId(clientName),1);
+                string oString = String.Format("[dbo].[AddPatchDetail]");
+                SqlDataAdapter adp = new SqlDataAdapter();
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                oCmd.Parameters.AddWithValue("@PatchTitle", "Demo Title Auto Generator");
+                oCmd.Parameters.AddWithValue("@PatchDesc", "Demo Desc Auto Generator");
+                oCmd.Parameters.AddWithValue("@PatchHotNumber", patchNumber);
+                oCmd.Parameters.AddWithValue("@PatchDeployedBy", "MSA");
+                oCmd.Parameters.AddWithValue("@PatchCreatedDate", DateTime.Now);
+                oCmd.Parameters.AddWithValue("@PatchDeployedDate", DateTime.Now);
+                oCmd.Parameters.AddWithValue("@IsQAPassed", 1);
+                oCmd.Parameters.AddWithValue("@Remarks_Dependencies", "Auto Updater Remarks / Dependencies");
+                oCmd.Parameters.AddWithValue("@ClientID", clientID);
+                oCmd.Parameters.AddWithValue("@ProductID", productID);
+                oCmd.Parameters.AddWithValue("@EnvType", EnvType);
+                myConnection.Open();
+                //adp.UpdateCommand = new SqlCommand(oString, myConnection);
+                //result = adp.UpdateCommand.ExecuteNonQuery();
+                try
+                {
+                    result = oCmd.ExecuteNonQuery();
+                }
+                catch (Exception ex) {
+                    Debug.WriteLine("\nException Occured With Details: " + ex.Message);
+                }
+                oCmd.Dispose();
+                myConnection.Close();
+            }
+            return result;
+        }
+
         // User Auth Start
         public List<User> getAuthUsers()
         {

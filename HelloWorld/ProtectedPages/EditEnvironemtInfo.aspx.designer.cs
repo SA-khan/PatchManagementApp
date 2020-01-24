@@ -31,13 +31,40 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
         
         /// <summary>
-        /// SqlDataSource2 control.
+        /// dropProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        protected global::System.Web.UI.WebControls.DropDownList dropProduct;
+        
+        /// <summary>
+        /// SqlDataSourceProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceProduct;
+        
+        /// <summary>
+        /// dropEnvironment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropEnvironment;
+        
+        /// <summary>
+        /// SqlDataSourceEnvironment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEnvironment;
         
         /// <summary>
         /// GridView1 control.

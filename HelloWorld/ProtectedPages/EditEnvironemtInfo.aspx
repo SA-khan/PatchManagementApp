@@ -110,10 +110,31 @@
 
     <br/>
 
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+    
+    <asp:DropDownList ID="dropProduct" runat="server" AutoPostBack="True" 
+        DataSourceID="SqlDataSourceProduct" DataTextField="ProductName" 
+        DataValueField="ProductID">
+        <asp:ListItem Value="0">Select..</asp:ListItem>
+    </asp:DropDownList>
+      
+    <asp:SqlDataSource ID="SqlDataSourceProduct" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
-        SelectCommand="SELECT [PatchTitle], [PatchDesc], [PatchHotNumber], [PatchDeployedBy], [PatchCreatedDate], [PatchDeployedDate], [IsQAPassed], [Remarks_Dependencies], [ClientID] FROM [PatchDetail]">
+        SelectCommand="SELECT [ProductID], [ProductName] FROM [Products]">
     </asp:SqlDataSource>
+      
+    <asp:DropDownList ID="dropEnvironment" runat="server" AutoPostBack="True" 
+        DataSourceID="SqlDataSourceEnvironment" DataTextField="EnvTitle" 
+        DataValueField="EnvID">
+        <asp:ListItem Value="0">Select..</asp:ListItem>
+    </asp:DropDownList>
+
+    <asp:SqlDataSource ID="SqlDataSourceEnvironment" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+        SelectCommand="SELECT [EnvID], [EnvTitle] FROM [EnvironmentType]">
+    </asp:SqlDataSource>
+
+        
+        
     <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="ClientName"
         AutoGenerateColumns="false" AllowSorting="true"
         AlternatingRowStyle-BackColor="LightGray" BorderColor="ControlDark" 
@@ -183,7 +204,5 @@
         <%--<asp:AsyncPostBackTrigger ControlID="DetailsView1" EventName="btnCancel_Click" EventName="RowCommand" />--%>
     </Triggers>
         </asp:UpdatePanel>
-      
-       
 
 </asp:Content>
