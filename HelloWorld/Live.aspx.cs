@@ -36,22 +36,7 @@ namespace HelloWorld
                 //Passed By Time Duration Calculation Logic
                 Debug.WriteLine(item.patchNumberOfDaysPassed.GetType() + " - " + item.patchNumberOfDaysPassed.Length);
                 Debug.WriteLine("=>" + item.patchNumberOfDaysPassed);
-                int numberOfDaysPassed = 0;
-                if (item.patchNumberOfDaysPassed == null)
-                {
-                    item.patchNumberOfDaysPassed = "0";
-                    numberOfDaysPassed = 0;
-                }
-                else 
-                {
-                    try
-                    {
-                        numberOfDaysPassed = Convert.ToInt32(item.patchNumberOfDaysPassed);
-                    }
-                    catch (Exception) { 
-                    
-                    }
-                }
+                int numberOfDaysPassed = Convert.ToInt32(item.patchNumberOfDaysPassed == "" ? -1 : Convert.ToInt32(item.patchNumberOfDaysPassed));
                 try
                 {
                     switch (numberOfDaysPassed)

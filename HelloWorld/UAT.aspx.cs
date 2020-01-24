@@ -35,7 +35,8 @@ namespace HelloWorld
 
                 //Passed By Time Duration Calculation Logic
                 //Debug.WriteLine("=>" + item.patchNumberOfDaysPassed);
-                int numberOfDaysPassed = Convert.ToInt32(item.patchNumberOfDaysPassed);
+
+                int numberOfDaysPassed = Convert.ToInt32(item.patchNumberOfDaysPassed == "" ? -1 : Convert.ToInt32(item.patchNumberOfDaysPassed));
                 switch (numberOfDaysPassed)
                 {
                     case 0:
@@ -125,8 +126,9 @@ namespace HelloWorld
                 TableCell cellPatchDeployedDate = new TableCell();
                 cellPatchDeployedDate.Font.Size = FontUnit.Smaller;
                 cellPatchDeployedDate.ForeColor = Color.Black;
-                int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                cellPatchDeployedDate.Text = item.patchDeployedDate.Substring(0, spaceInDate);
+                //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
+                //cellPatchDeployedDate.Text = item.patchDeployedDate.Substring(0, spaceInDate);
+                cellPatchDeployedDate.Text = item.patchDeployedDate.ToString();
                 cellPatchDeployedDate.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchDeployedDate);
 

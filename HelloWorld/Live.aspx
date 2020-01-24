@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Live.aspx.cs" Inherits="HelloWorld.Live" %>
+﻿<%@ Page Title="Portal - Live Environment" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Live.aspx.cs" Inherits="HelloWorld.Live" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
