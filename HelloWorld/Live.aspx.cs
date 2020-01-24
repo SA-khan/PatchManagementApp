@@ -36,7 +36,18 @@ namespace HelloWorld
                 //Passed By Time Duration Calculation Logic
                 Debug.WriteLine(item.patchNumberOfDaysPassed.GetType() + " - " + item.patchNumberOfDaysPassed.Length);
                 Debug.WriteLine("=>" + item.patchNumberOfDaysPassed);
-                int numberOfDaysPassed = Convert.ToInt32(item.patchNumberOfDaysPassed == "" ? -1 : Convert.ToInt32(item.patchNumberOfDaysPassed));
+                int numberOfDaysPassed = 0;
+                if (item.patchNumberOfDaysPassed == "") { 
+                    numberOfDaysPassed =  -1 ;
+                    item.numberOfPatches = "";
+                    item.patchDeployedDate = "";
+
+                }
+                else {
+                    numberOfDaysPassed = Convert.ToInt32(item.patchNumberOfDaysPassed);
+                }
+                
+
                 try
                 {
                     switch (numberOfDaysPassed)
@@ -81,30 +92,40 @@ namespace HelloWorld
                 TableCell cellClientName = new TableCell();
                 cellClientName.ForeColor = Color.Black;
                 cellClientName.Text = item.clientName;
-                cellClientName.HorizontalAlign = HorizontalAlign.Right;
+                cellClientName.HorizontalAlign = HorizontalAlign.Left;
+                cellClientName.BackColor = ColorTranslator.FromHtml("#5C6BC0");
+                cellClientName.ForeColor = ColorTranslator.FromHtml("#fff");
+                cellClientName.Style.Add("padding", "5px");
+                cellClientName.BorderColor = ColorTranslator.FromHtml("#fff");
+                cellClientName.Font.Bold = true;
                 row.Cells.Add(cellClientName);
                 TableCell cellClientType = new TableCell();
                 cellClientType.ForeColor = Color.Black;
+                cellClientType.Style.Add("padding", "5px");
                 cellClientType.Text = item.clientType;
                 cellClientType.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellClientType);
                 TableCell cellClientEnvType = new TableCell();
                 cellClientEnvType.ForeColor = Color.Black;
+                cellClientEnvType.Style.Add("padding", "5px");
                 cellClientEnvType.Text = item.clientEnvType;
                 cellClientEnvType.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellClientEnvType);
                 TableCell cellClientPOC = new TableCell();
                 cellClientPOC.ForeColor = Color.Black;
+                cellClientPOC.Style.Add("padding", "5px");
                 cellClientPOC.Text = item.clientPOCName;
                 cellClientPOC.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellClientPOC);
                 TableCell cellClientPOCName = new TableCell();
                 cellClientPOCName.ForeColor = Color.Black;
+                cellClientPOCName.Style.Add("padding", "5px");
                 cellClientPOCName.Text = item.numberOfPatches;
                 cellClientPOCName.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellClientPOCName);
                 TableCell cellPatchHotNumber = new TableCell();
                 cellPatchHotNumber.ForeColor = Color.Black;
+                cellPatchHotNumber.Style.Add("padding", "5px");
                 cellPatchHotNumber.Text = item.patchHotNumber;
                 cellPatchHotNumber.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchHotNumber);
@@ -115,13 +136,16 @@ namespace HelloWorld
                 row.Cells.Add(cellAppLink);
                 TableCell cellPatchQATested = new TableCell();
                 cellPatchQATested.ForeColor = Color.Black;
+                cellPatchQATested.Style.Add("padding", "5px");
                 cellPatchQATested.Text = item.patchQATested;
                 cellPatchQATested.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchQATested);
                 TableCell cellPatchDeployedDate = new TableCell();
                 cellPatchDeployedDate.ForeColor = Color.Black;
-                int spaceInDate = item.patchDeployedDate.IndexOf(' ');
+                cellPatchDeployedDate.Style.Add("padding", "5px");
+                //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
                 //cellPatchDeployedDate.Text = item.patchDeployedDate.Substring(0, spaceInDate);
+                //Debug.WriteLine("Deployed Date: " + item.patchDeployedDate);
                 cellPatchDeployedDate.Text = item.patchDeployedDate;
                 cellPatchDeployedDate.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchDeployedDate);
@@ -129,11 +153,13 @@ namespace HelloWorld
                 //
                 TableCell cellPatchPassedByTime = new TableCell();
                 cellPatchPassedByTime.ForeColor = Color.Black;
-                cellPatchPassedByTime.Text = numberOfDaysPassed + " Days Ago.";
+                cellPatchPassedByTime.Style.Add("padding", "5px");
+                cellPatchPassedByTime.Text = numberOfDaysPassed.ToString() == "-1" ? "" : numberOfDaysPassed.ToString() + " days ago.";
                 cellPatchPassedByTime.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchPassedByTime);
                 TableCell cellPatchStatus = new TableCell();
                 cellPatchStatus.ForeColor = Color.Black;
+                cellPatchStatus.Style.Add("padding", "5px");
                 cellPatchStatus.Text = item.patchStatus;
                 cellPatchStatus.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchStatus);

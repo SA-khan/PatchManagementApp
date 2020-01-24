@@ -19,12 +19,12 @@
             Live Application Details
         </asp:TableCell> 
     </asp:TableHeaderRow>
-    <asp:TableRow BackColor="LightGray" HorizontalAlign="Center" VerticalAlign="Middle">
-    <asp:TableCell ColumnSpan="11" Font-Size="Medium" Font-Italic="true" ForeColor="Black">
+    <asp:TableRow BackColor="navy" ForeColor="White" Font-Bold="true" HorizontalAlign="Center" VerticalAlign="Middle">
+    <asp:TableCell ColumnSpan="11" Font-Size="Medium" Font-Italic="true" style="padding:10px;">
     
-    SELECT PRODUCT:   <asp:DropDownList ID="DropDownList1" runat="server" BackColor="Gray"
-        Width="200px" Height="28px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="White"
-        DataSourceID="SqlDataSource1" DataTextField="ProductName" style="text-align=center"
+    SELECT PRODUCT   <asp:DropDownList ID="DropDownList1" runat="server" BackColor="ButtonFace"
+        Width="150px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black"
+        DataSourceID="SqlDataSource1" DataTextField="ProductName" style="text-align:center"
         DataValueField="ProductID" AutoPostBack="true" ViewStateMode="Enabled" 
         AppendDataBoundItems="False">
         <asp:ListItem Value="0">Select..</asp:ListItem>
