@@ -3,7 +3,7 @@
     <siteMapNode url="~/Default.aspx" title="main"  description="main">
         <siteMapNode url="~/ProtectedPages/Dashboard.aspx" title="Home"  description="Home" />
         <siteMapNode url="~/ProtectedPages/AddCompany.aspx" title="Add Company Page"  description="Goto Add Company Information Page" />
-        <siteMapNode url="~/ProtectedPages/EditCompanyInfo.aspx" title="Edit Company Page"  description="Goto Edit Company Information Page" />
+        <siteMapNode url="~/ProtectedPages/EditCompany.aspx" title="Edit Company Page"  description="Goto Edit Company Information Page" />
         <siteMapNode url="~/ProtectedPages/AddPatch.aspx" title="Add Patch Page"  description="Goto Add Patch Information Page" />
         <siteMapNode url="~/ProtectedPages/EditEnvironemtInfo.aspx" title="Edit Patch Updates Page"  description="Goto Edit Client Latest Patch Page" />
         <siteMapNode url="~/ProtectedPages/AddClientEnvironment.aspx" title="Add Client Environment Page"  description="Goto Add Client's Environment Page" />

@@ -155,8 +155,8 @@
                     <%--<asp:TextBox ID="txtEnvironmentType" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" TextMode="Phone" placeholder="Enter Environment Type Here"></asp:TextBox>--%>
                     <asp:DropDownList ID="dropEnvironmentType" runat="server" BackColor="ButtonFace"
         Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black"
-        DataSourceID="SqlDataSource3" DataTextField="ENV_TITLE" style="text-align=center"
-        DataValueField="ENV_ID" AutoPostBack="true" ViewStateMode="Enabled" 
+        DataSourceID="SqlDataSource3" DataTextField="ENV_TITLE" style="text-align=center" ondatabinding="DropDownList1_DataBinding"
+        DataValueField="ENV_ID" AutoPostBack="true" ViewStateMode="Enabled" ondatabound="DropDownList1_DataBound"
         AppendDataBoundItems="True">
         <asp:ListItem>Select..</asp:ListItem>
         </asp:DropDownList>
@@ -182,5 +182,5 @@
         <br />
         <br />
     </asp:Panel>
-    
+
 </asp:Content>

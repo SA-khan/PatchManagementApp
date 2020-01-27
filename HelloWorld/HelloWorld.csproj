@@ -64,7 +64,7 @@
     <Content Include="ProtectedPages\AddCompany.aspx" />
     <Content Include="ProtectedPages\AddPatch.aspx" />
     <Content Include="ProtectedPages\Dashboard.aspx" />
-    <Content Include="ProtectedPages\EditCompanyInfo.aspx" />
+    <Content Include="ProtectedPages\EditCompany.aspx" />
     <Content Include="ProtectedPages\EditEnvironemtInfo.aspx" />
     <Content Include="References.aspx" />
     <Content Include="Styles\Site.css" />
@@ -121,6 +121,7 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\Client.cs" />
     <Compile Include="App_Code\DatabaseConnectivity.cs" />
     <Compile Include="App_Code\ClientEnvironment.cs" />
     <Compile Include="App_Code\Patch.cs" />
@@ -192,12 +193,12 @@
     <Compile Include="ProtectedPages\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProtectedPages\EditCompanyInfo.aspx.cs">
-      <DependentUpon>EditCompanyInfo.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\EditCompany.aspx.cs">
+      <DependentUpon>EditCompany.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProtectedPages\EditCompanyInfo.aspx.designer.cs">
-      <DependentUpon>EditCompanyInfo.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\EditCompany.aspx.designer.cs">
+      <DependentUpon>EditCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\EditEnvironemtInfo.aspx.cs">
       <DependentUpon>EditEnvironemtInfo.aspx</DependentUpon>

@@ -14,6 +14,69 @@ namespace HelloWorld.App_Code
     {
         String con = System.Configuration.ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString;
 
+        //Getting Client List
+
+        public List<Client> getClientList()
+        {
+            List<Client> _clientList = new List<Client>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spGetAllClient]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        Client item = new Client();
+                        item._clientID = oReader["ClientID"].ToString();
+                        item._clientName = oReader["ClientName"].ToString();
+                        item._clientType = oReader["ClientType"].ToString();
+                        item._clientDesc = oReader["ClientDesc"].ToString();
+                        item._clientStill = oReader["ClientStill"].ToString();
+                        item._clientPOCName = oReader["ClientPOCName"].ToString();
+                        item._clientPOCEmail = oReader["ClientPOCEmail"].ToString();
+                        item._clientPOCPhone = oReader["ClientPOCContact"].ToString();
+                        _clientList.Add(item);
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            return _clientList;
+        }
+
+        //Getting Client List End
+
+        //Setting A Client 
+
+        public int setAClient(int ClientID, string ClientName, string ClientType, string ClientDesc, bool ClientStill, string POCName, string POCEmail, string POCPhone)
+        {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spUpdateClient]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@ClientID", ClientID);
+                oCmd.Parameters.AddWithValue("@ClientName", ClientName);
+                oCmd.Parameters.AddWithValue("@ClientType", ClientType);
+                oCmd.Parameters.AddWithValue("@ClientDesc", ClientDesc);
+                oCmd.Parameters.AddWithValue("@ClientStill", ClientStill);
+                oCmd.Parameters.AddWithValue("@POCName", POCName);
+                oCmd.Parameters.AddWithValue("@POCEmail", POCEmail);
+                oCmd.Parameters.AddWithValue("@POCContact", POCPhone);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        //Setting A Client End
+
         public List<Patch> getAllUpdatedClientPatches(int ProductID, int EnvType)
         {
             List<Patch> matchingPatch = new List<Patch>();
@@ -247,7 +310,7 @@ namespace HelloWorld.App_Code
             List<User> matchingUser = new List<User>();
             using (SqlConnection myConnection = new SqlConnection(con))
             {
-                string oString = "Select * from [SHMAPortal].[dbo].[UsersAuth]";
+                string oString = "Select * from [UsersAuth]";
                 SqlCommand oCmd = new SqlCommand(oString, myConnection);
                 //oCmd.Parameters.AddWithValue("@Fname", fName);
                 myConnection.Open();
