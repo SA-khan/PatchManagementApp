@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Edit Company" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditCompany.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditCompanyInfo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditClientEnvironemt.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditClientEnvironemt" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <style>
     .accordionView 
@@ -21,14 +21,6 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
-             <asp:GridView ID="GridView1" runat="server">
-
-             </asp:GridView>
-        </ContentTemplate>
-    </asp:UpdatePanel>--%>
-    <asp:Panel ID="Panel1" runat="server" GroupingText="Edit Company">
     
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
     <ContentTemplate>
@@ -155,7 +147,7 @@
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False" ItemStyle-HorizontalAlign="Right">
                 <ItemTemplate>
-                   <asp:Button ID="btnSave" runat="server" CausesValidation="false" 
+                       <asp:Button ID="btnSave" runat="server" CausesValidation="false" 
                         Text="Save" onclick="btnSave_Click" />
                     <asp:Button ID="btnCancel" runat="server" CssClass="accordionButton" CausesValidation="false" 
                         Text="Cancel" onclick="btnCancel_Click" />
@@ -257,6 +249,6 @@
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 
-    </asp:Panel>
+
 
 </asp:Content>

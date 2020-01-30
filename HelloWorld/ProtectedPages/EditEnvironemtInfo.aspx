@@ -21,6 +21,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Panel ID="Panel1" runat="server" GroupingText="Edit Patch / Release ">
+
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
     <ContentTemplate>
    <asp:DetailsView ID="DetailsView1" CssClass="accordionView" runat="server" 
@@ -95,8 +97,7 @@
                     <asp:Button ID="btnSave" runat="server" CausesValidation="false" 
                         Text="Save" onclick="btnSave_Click" />
                     <asp:Button ID="btnCancel" runat="server" CssClass="accordionButton" CausesValidation="false" 
-                        CommandName="Cancel" Text="Cancel" 
-        onclick="btnCancel_Click" />
+                        Text="Cancel" onclick="btnCancel_Click" />
                 </ItemTemplate>
 
 <ItemStyle HorizontalAlign="Right"></ItemStyle>
@@ -113,7 +114,7 @@
     
     <asp:DropDownList ID="dropProduct" runat="server" AutoPostBack="True" 
         DataSourceID="SqlDataSourceProduct" DataTextField="ProductName" 
-        DataValueField="ProductID">
+        DataValueField="ProductID" AppendDataBoundItems="true">
         <asp:ListItem Value="0">Select..</asp:ListItem>
     </asp:DropDownList>
       
@@ -124,7 +125,7 @@
       
     <asp:DropDownList ID="dropEnvironment" runat="server" AutoPostBack="True" 
         DataSourceID="SqlDataSourceEnvironment" DataTextField="EnvTitle" 
-        DataValueField="EnvID">
+        DataValueField="EnvID" AppendDataBoundItems="true">
         <asp:ListItem Value="0">Select..</asp:ListItem>
     </asp:DropDownList>
 
@@ -152,7 +153,8 @@
         onrowupdating="GridView1_RowUpdating" 
         onpageindexchanging="GridView1_PageIndexChanging" 
         onrowcancelingedit="GridView1_RowCancelingEdit" 
-        onselectedindexchanged="GridView1_SelectedIndexChanged">
+        onselectedindexchanged="GridView1_SelectedIndexChanged" 
+            ondatabound="GridView1_DataBound" onrowdatabound="GridView1_RowDataBound">
          <Columns>                       
     <asp:TemplateField HeaderText="Client Name">
          <ItemTemplate>
@@ -204,5 +206,7 @@
         <%--<asp:AsyncPostBackTrigger ControlID="DetailsView1" EventName="btnCancel_Click" EventName="RowCommand" />--%>
     </Triggers>
         </asp:UpdatePanel>
+
+    </asp:Panel>
 
 </asp:Content>

@@ -5,19 +5,33 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Diagnostics;
+using HelloWorld.App_Code;
 
 namespace HelloWorld.ProtectedPages
 {
     public partial class Dashboard : System.Web.UI.Page
     {
+
+        protected string[] clientList = new[] { "Alfalah", "HBL", "HBL AMC", "PMRC", "ABL", "OGDCL" };
+
+        protected System.Web.Script.Serialization.JavaScriptSerializer serializer;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+
             if (Request.Cookies["UserID"] != null) // && Request.Cookies["Password"] != null
             {
                 //String[] cookies = Request.Cookies.AllKeys;
                 String userid = Request.Cookies.Get("UserID").Value;
                 String password = Request.Cookies.Get("Password").Value;
                 Debug.WriteLine("User Loggedin with UserID: " + userid + " and Pwd: " + password);
+
+                DatabaseConnectivity dbcon = new DatabaseConnectivity();
+                //string[] clientList = dbcon.getClientList();
+                //clientList = new[] {"Alfalah", "HBL", "HBL AMC", "PMRC", "ABL", "OGDCL"};
+                
+
             }
             //if()
             //try

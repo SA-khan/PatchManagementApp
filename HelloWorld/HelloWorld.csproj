@@ -55,6 +55,8 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Content\Chart.css" />
+    <Content Include="Content\Chart.min.css" />
     <Content Include="EnvironmentInfo.aspx" />
     <Content Include="Images\loginBG.jpg" />
     <Content Include="Live.aspx" />
@@ -62,11 +64,82 @@
     <Content Include="Logout.aspx" />
     <Content Include="ProtectedPages\AddClientEnvironment.aspx" />
     <Content Include="ProtectedPages\AddCompany.aspx" />
+    <Content Include="ProtectedPages\AddEnvironmentType.aspx" />
     <Content Include="ProtectedPages\AddPatch.aspx" />
+    <Content Include="ProtectedPages\AddProduct.aspx" />
+    <Content Include="ProtectedPages\AddUser.aspx" />
     <Content Include="ProtectedPages\Dashboard.aspx" />
+    <Content Include="ProtectedPages\EditClientEnvironemt.aspx" />
     <Content Include="ProtectedPages\EditCompany.aspx" />
     <Content Include="ProtectedPages\EditEnvironemtInfo.aspx" />
+    <Content Include="ProtectedPages\EditEnvironemtType.aspx" />
+    <Content Include="ProtectedPages\EditProduct.aspx" />
+    <Content Include="ProtectedPages\EditUser.aspx" />
     <Content Include="References.aspx" />
+    <Content Include="Scripts\angular-chart.js" />
+    <Content Include="Scripts\angular-chart.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\jqplot.barRenderer.js" />
+    <Content Include="Scripts\jqplot.barRenderer.min.js" />
+    <Content Include="Scripts\jqplot.BezierCurveRenderer.js" />
+    <Content Include="Scripts\jqplot.BezierCurveRenderer.min.js" />
+    <Content Include="Scripts\jqplot.blockRenderer.js" />
+    <Content Include="Scripts\jqplot.blockRenderer.min.js" />
+    <Content Include="Scripts\jqplot.bubbleRenderer.js" />
+    <Content Include="Scripts\jqplot.bubbleRenderer.min.js" />
+    <Content Include="Scripts\jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="Scripts\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Scripts\jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="Scripts\jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="Scripts\jqplot.canvasOverlay.js" />
+    <Content Include="Scripts\jqplot.canvasOverlay.min.js" />
+    <Content Include="Scripts\jqplot.canvasTextRenderer.js" />
+    <Content Include="Scripts\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Scripts\jqplot.categoryAxisRenderer.js" />
+    <Content Include="Scripts\jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot.ciParser.js" />
+    <Content Include="Scripts\jqplot.ciParser.min.js" />
+    <Content Include="Scripts\jqplot.cursor.js" />
+    <Content Include="Scripts\jqplot.cursor.min.js" />
+    <Content Include="Scripts\jqplot.dateAxisRenderer.js" />
+    <Content Include="Scripts\jqplot.dateAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot.donutRenderer.js" />
+    <Content Include="Scripts\jqplot.donutRenderer.min.js" />
+    <Content Include="Scripts\jqplot.dragable.js" />
+    <Content Include="Scripts\jqplot.dragable.min.js" />
+    <Content Include="Scripts\jqplot.enhancedLegendRenderer.js" />
+    <Content Include="Scripts\jqplot.enhancedLegendRenderer.min.js" />
+    <Content Include="Scripts\jqplot.funnelRenderer.js" />
+    <Content Include="Scripts\jqplot.funnelRenderer.min.js" />
+    <Content Include="Scripts\jqplot.highlighter.js" />
+    <Content Include="Scripts\jqplot.highlighter.min.js" />
+    <Content Include="Scripts\jqplot.json2.js" />
+    <Content Include="Scripts\jqplot.json2.min.js" />
+    <Content Include="Scripts\jqplot.logAxisRenderer.js" />
+    <Content Include="Scripts\jqplot.logAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot.mekkoAxisRenderer.js" />
+    <Content Include="Scripts\jqplot.mekkoAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot.mekkoRenderer.js" />
+    <Content Include="Scripts\jqplot.mekkoRenderer.min.js" />
+    <Content Include="Scripts\jqplot.meterGaugeRenderer.js" />
+    <Content Include="Scripts\jqplot.meterGaugeRenderer.min.js" />
+    <Content Include="Scripts\jqplot.mobile.js" />
+    <Content Include="Scripts\jqplot.mobile.min.js" />
+    <Content Include="Scripts\jqplot.ohlcRenderer.js" />
+    <Content Include="Scripts\jqplot.ohlcRenderer.min.js" />
+    <Content Include="Scripts\jqplot.pieRenderer.js" />
+    <Content Include="Scripts\jqplot.pieRenderer.min.js" />
+    <Content Include="Scripts\jqplot.pointLabels.js" />
+    <Content Include="Scripts\jqplot.pointLabels.min.js" />
+    <Content Include="Scripts\jqplot.pyramidAxisRenderer.js" />
+    <Content Include="Scripts\jqplot.pyramidAxisRenderer.min.js" />
+    <Content Include="Scripts\jqplot.pyramidGridRenderer.js" />
+    <Content Include="Scripts\jqplot.pyramidGridRenderer.min.js" />
+    <Content Include="Scripts\jqplot.pyramidRenderer.js" />
+    <Content Include="Scripts\jqplot.pyramidRenderer.min.js" />
+    <Content Include="Scripts\jqplot.trendline.js" />
+    <Content Include="Scripts\jqplot.trendline.min.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -179,6 +252,13 @@
     <Compile Include="ProtectedPages\AddCompany.aspx.designer.cs">
       <DependentUpon>AddCompany.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProtectedPages\AddEnvironmentType.aspx.cs">
+      <DependentUpon>AddEnvironmentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\AddEnvironmentType.aspx.designer.cs">
+      <DependentUpon>AddEnvironmentType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\AddPatch.aspx.cs">
       <DependentUpon>AddPatch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -186,12 +266,33 @@
     <Compile Include="ProtectedPages\AddPatch.aspx.designer.cs">
       <DependentUpon>AddPatch.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProtectedPages\AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\AddUser.aspx.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\AddUser.aspx.designer.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProtectedPages\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\EditClientEnvironemt.aspx.cs">
+      <DependentUpon>EditClientEnvironemt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\EditClientEnvironemt.aspx.designer.cs">
+      <DependentUpon>EditClientEnvironemt.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\EditCompany.aspx.cs">
       <DependentUpon>EditCompany.aspx</DependentUpon>
@@ -206,6 +307,27 @@
     </Compile>
     <Compile Include="ProtectedPages\EditEnvironemtInfo.aspx.designer.cs">
       <DependentUpon>EditEnvironemtInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\EditEnvironemtType.aspx.cs">
+      <DependentUpon>EditEnvironemtType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\EditEnvironemtType.aspx.designer.cs">
+      <DependentUpon>EditEnvironemtType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\EditProduct.aspx.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\EditProduct.aspx.designer.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\EditUser.aspx.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\EditUser.aspx.designer.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="References.aspx.cs">
       <DependentUpon>References.aspx</DependentUpon>
@@ -256,6 +378,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

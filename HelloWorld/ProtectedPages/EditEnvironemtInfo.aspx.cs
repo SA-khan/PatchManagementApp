@@ -45,15 +45,22 @@ namespace HelloWorld.ProtectedPages
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            try
+            if (dropProduct.SelectedIndex != 0 && dropEnvironment.SelectedIndex != 0)
             {
-                GridView1.EditIndex = e.NewEditIndex;
-                _BindService();
-                Debug.WriteLine(e.NewEditIndex);
+                DetailsView1.Visible = true;
+                try
+                {
+                    GridView1.EditIndex = e.NewEditIndex;
+                    _BindService();
+                    Debug.WriteLine(e.NewEditIndex);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
-            catch (Exception)
-            {
-                throw;
+            else {
+                Panel1.GroupingText = "Select Product / Environment.";
             }
         }
 
@@ -99,6 +106,7 @@ namespace HelloWorld.ProtectedPages
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            DetailsView1.Visible = true;
             GridView1.PageIndex = e.NewPageIndex;
             _BindService();
         }
@@ -112,26 +120,34 @@ namespace HelloWorld.ProtectedPages
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string clientName = (GridView1.SelectedRow.FindControl("lblClientName") as Label).Text;
-            string clientType = (GridView1.SelectedRow.FindControl("lblClientType") as Label).Text;
-            string totalPatches = (GridView1.SelectedRow.FindControl("lblTotalPatches") as Label).Text;
-            string latestPatch = (GridView1.SelectedRow.FindControl("lblLatestPatch") as Label).Text;
-            string patchDeployedDate = (GridView1.SelectedRow.FindControl("lblPatchDeployed") as Label).Text;
-            Debug.WriteLine(GridView1.SelectedRow.Cells[0].Text);
-            Debug.WriteLine(GridView1.SelectedRow.Cells[1].Text);
-            Debug.WriteLine(GridView1.SelectedRow.Cells[2].Text);
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("ClientName", typeof(string)),
+            //string nullDataChecker = (GridView1.SelectedRow.FindControl("lblPatchDeployed") as Label).Text;
+            if (dropProduct.SelectedIndex != 0 && dropEnvironment.SelectedIndex != 0)
+            {
+                DetailsView1.Visible = true;
+                string clientName = (GridView1.SelectedRow.FindControl("lblClientName") as Label).Text;
+                string clientType = (GridView1.SelectedRow.FindControl("lblClientType") as Label).Text;
+                string totalPatches = (GridView1.SelectedRow.FindControl("lblTotalPatches") as Label).Text;
+                string latestPatch = (GridView1.SelectedRow.FindControl("lblLatestPatch") as Label).Text;
+                string patchDeployedDate = (GridView1.SelectedRow.FindControl("lblPatchDeployed") as Label).Text;
+                Debug.WriteLine(GridView1.SelectedRow.Cells[0].Text);
+                Debug.WriteLine(GridView1.SelectedRow.Cells[1].Text);
+                Debug.WriteLine(GridView1.SelectedRow.Cells[2].Text);
+                DataTable dt = new DataTable();
+                dt.Columns.AddRange(new DataColumn[5] { new DataColumn("ClientName", typeof(string)),
                     new DataColumn("ClientType", typeof(string)),
                     new DataColumn("TotalPatches",typeof(string)), 
                     new DataColumn("LatestHotPatch",typeof(string)),
                     new DataColumn("PatchDeployedDate",typeof(string)) });
-            dt.Rows.Add(clientName, clientType, totalPatches, latestPatch, patchDeployedDate);
-            //DetailsView1.m
-            DetailsView1.DataSource = dt;
-            DetailsView1.DataBind();
-            //.Attributes["accordionView"] = "hidden";
-            //DetailsView1.Attributes.Add("style", "display:block");
+                dt.Rows.Add(clientName, clientType, totalPatches, latestPatch, patchDeployedDate);
+                //DetailsView1.m
+                DetailsView1.DataSource = dt;
+                DetailsView1.DataBind();
+                //.Attributes["accordionView"] = "hidden";
+                //DetailsView1.Attributes.Add("style", "display:block");
+            }
+            else {
+                Panel1.GroupingText = "Please select Product / Environment.";
+            }
         }
 
         protected void DetailsView1_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
@@ -142,6 +158,7 @@ namespace HelloWorld.ProtectedPages
         protected void btnSave_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Index");
+            DetailsView1.Visible = false;
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -149,11 +166,7 @@ namespace HelloWorld.ProtectedPages
             //DetailsView1.Attributes.Add("style", "display:none");
             //DetailsView1.Attributes.Add("style", "visible:false");
             Debug.WriteLine("NotIndex");
-            DetailsView1.Rows[0].Visible = false;
-            DetailsView1.Rows[1].Visible = false;
             DetailsView1.Visible = false;
-            DetailsView1.Width = 0;
-            DetailsView1.Height = 0;
             //DetailsView1.Style.Add("Display", "none");
             //DetailsView1.FindControl("lblClientName").Visible = false;
             //UpdatePanel1.Update();
@@ -163,6 +176,34 @@ namespace HelloWorld.ProtectedPages
         {
             //Button lb = e.Equals("btnCancel") as Button;
             //ScriptManager.GetCurrent(this).RegisterAsyncPostBackControl(lb);
+        }
+
+        protected void GridView1_DataBound(object sender, EventArgs e)
+        {
+            //Label nullValueWatcher = GridView1.FindControl("lblPatchDeployed") as Label;
+            //string nullValue = nullValueWatcher.Text;
+            //if (nullValue == "") {
+            //    Debug.WriteLine("Bee");
+            //}
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                Label nullValueWatcher = e.Row.FindControl("lblPatchDeployed") as Label;
+                Label nonnullValueWatcher = e.Row.FindControl("lblTotalPatches") as Label;
+                string nullValue = nullValueWatcher.Text;
+                Debug.WriteLine("lblPatchDeployed: " + nullValue);
+                if (nullValue == "")
+                {
+                    //Debug.WriteLine("Bee");
+                    nonnullValueWatcher.Text = "";
+                }
+            }
+            catch (Exception ex) {
+                Debug.WriteLine("Exception: " + ex.Message);
+            }
         }
 
 
