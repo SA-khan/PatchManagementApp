@@ -14,6 +14,75 @@ namespace HelloWorld.App_Code
     {
         String con = System.Configuration.ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString;
 
+        //Getting Client in String List
+
+        public string[] getClientListString()
+        {
+            List<string> _clientList = new List<string>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spNumberOfPatchesForGraph]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        //string item = new string();
+                        //item._clientID = oReader["ClientID"].ToString();
+                        string item = oReader["ClientName"].ToString();
+                        _clientList.Add(item);
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            string[] res = new string[_clientList.Count];
+            for (int i = 0; i < _clientList.Count; i++) {
+                res[i] = _clientList[i];
+            }
+                return res;
+        }
+
+        //Getting Client List in String End
+
+        //Getting Client in Int List
+
+        public int[] getClientListInt()
+        {
+            List<int> _clientList = new List<int>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spNumberOfPatchesForGraph]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        //string item = new string();
+                        //item._clientID = oReader["ClientID"].ToString();
+                        int item = Convert.ToInt32(oReader["NumberOfPatches"]);
+                        _clientList.Add(item);
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            int[] res = new int[_clientList.Count];
+            for (int i = 0; i < _clientList.Count; i++)
+            {
+                res[i] = _clientList[i];
+            }
+            return res;
+        }
+
+        //Getting Client List in Int End
+
         //Getting Client List
 
         public List<Client> getClientList()
@@ -76,6 +145,168 @@ namespace HelloWorld.App_Code
         }
 
         //Setting A Client End
+
+        // Add Environment Type
+
+        public int insertEnvironmentType(string EnvTitle, string EnvDesc) {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spInsertEnvironmentType]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@EnvTitle", EnvTitle);
+                oCmd.Parameters.AddWithValue("@EnvDesc", EnvDesc);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // Add Environment Type End
+
+        //Update An Environment Type 
+
+        public int setEnvType(int ClientID, string ClientName, string ClientDesc)
+        {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spUpdateEnvType]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@EnvTypeID", ClientID);
+                oCmd.Parameters.AddWithValue("@EnvTypeTitle", ClientName);
+                oCmd.Parameters.AddWithValue("@EnvTypeDesc", ClientDesc);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        //Update An Environment Type End
+
+        //Getting Environment Type List
+
+        public List<EnvironmentType> getEnvTypeList()
+        {
+            List<EnvironmentType> _envList = new List<EnvironmentType>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spGetEnvTypeList]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        EnvironmentType item = new EnvironmentType();
+                        item.Environment_ID = oReader["EnvID"].ToString();
+                        item.Environment_Title = oReader["EnvTitle"].ToString();
+                        item.Environment_Desc = oReader["EnvDesc"].ToString();
+                        _envList.Add(item);
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            return _envList;
+        }
+
+        //Getting Environment Type List End
+
+        // Add Product
+
+        public int insertProduct(string productName, string productDesc, string productVersion, string productType, string productCategory, string productRating, string productDemoUserID, string productDemoPassword, string productPOC, string productSupportEmail, string productComments) {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spInsertProduct]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@ProductName", productName);
+                oCmd.Parameters.AddWithValue("@ProductDesc", productDesc);
+                oCmd.Parameters.AddWithValue("@ProductVersion", productVersion);
+                oCmd.Parameters.AddWithValue("@ProductType", productType);
+                oCmd.Parameters.AddWithValue("@ProductCategory", productCategory);
+                oCmd.Parameters.AddWithValue("@ProductRating", productRating);
+                oCmd.Parameters.AddWithValue("@ProductUserID", productDemoUserID);
+                oCmd.Parameters.AddWithValue("@ProductPassword", productDemoPassword);
+                oCmd.Parameters.AddWithValue("@ProductPOC", productPOC);
+                oCmd.Parameters.AddWithValue("@ProductSupportEmail", productSupportEmail);
+                oCmd.Parameters.AddWithValue("@ProductComments", productComments);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // Add Product End
+
+        //Getting Product List
+
+        public List<Product> getProductList()
+        {
+            List<Product> _productList = new List<Product>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spGetProductList]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        Product item = new Product();
+                        item.ProductID = oReader["ProductID"].ToString();
+                        item.ProductName = oReader["ProductName"].ToString();
+                        item.ProductDesc = oReader["ProductDesc"].ToString();
+                        item.ProductVersion = oReader["ProductVersion"].ToString();
+                        item.ProductCategory = oReader["ProductCategory"].ToString();
+                        item.ProductRating = oReader["ProductRating"].ToString();
+                        item.ProductDemoUserId = oReader["ProductDemoUserId"].ToString();
+                        item.ProductDemoPasscode = oReader["ProductDemoPasscode"].ToString();
+                        item.ProductPOC = oReader["ProductPOC"].ToString();
+                        item.ProductSupportEmail = oReader["ProductSupportEmail"].ToString();
+                        item.ProductComments = oReader["ProductComments"].ToString();
+                        _productList.Add(item);
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            return _productList;
+        }
+
+        //Getting Product List End
+
+        // Add User
+
+        public int insertUser(string Username, string Userrole, string Passcode) {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spInsertUser]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@Username", Username);
+                oCmd.Parameters.AddWithValue("@Role", Userrole);
+                oCmd.Parameters.AddWithValue("@Passcode", Passcode);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // Add User End
 
         public List<Patch> getAllUpdatedClientPatches(int ProductID, int EnvType)
         {

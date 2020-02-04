@@ -197,7 +197,9 @@
     <Compile Include="App_Code\Client.cs" />
     <Compile Include="App_Code\DatabaseConnectivity.cs" />
     <Compile Include="App_Code\ClientEnvironment.cs" />
+    <Compile Include="App_Code\EnvironmentType.cs" />
     <Compile Include="App_Code\Patch.cs" />
+    <Compile Include="App_Code\Product.cs" />
     <Compile Include="App_Code\User.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

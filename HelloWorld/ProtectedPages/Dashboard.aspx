@@ -8,26 +8,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:Panel ID="Panel1" runat="server" GroupingText="Dashboard" BorderWidth="1" BorderColor="Black" ForeColor="Black" HorizontalAlign="Center" Font-Names="Arial" Font-Size="Large" BackColor="LightGray" style="padding:2px;">
+    <asp:Panel ID="Panel1" runat="server" Height="455px" ScrollBars="Auto" GroupingText="Dashboard" BorderWidth="1" BorderColor="gray" ForeColor="Black" HorizontalAlign="Center" Font-Names="Arial" Font-Size="Medium" BackColor="LightGray" style="padding:2px;">
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
-            <asp:Panel ID="Panel2" Width="100%" runat="server" style="width:100%;margin:auto;padding:auto;">
-                <asp:Panel ID="Panel3" Width="45%" runat="server" style="float:left;margin:15px;">
-                    <canvas id="myChart" width="10" height="7"></canvas>
+            <asp:Panel ID="Panel2" Width="100%" runat="server" style="height:385px;;margin:auto;padding:auto;background-color:White;">
+                <asp:Panel ID="Panel3" Width="45%" runat="server" style="float:left;margin:15px;border-color:gray;">
+                    <canvas id="myChart" width="7" height="4"></canvas>
                 </asp:Panel>
                 <asp:Panel ID="Panel4" Width="45%" runat="server" style="float:left;margin:15px;">
-                    <canvas id="myChart2" width="10" height="7"></canvas>
+                    <canvas id="myChart2" width="7" height="4"></canvas>
                 </asp:Panel>
 
-                <br />
+
+                <p></p>
+                <%--<br />--%>
 
                 <asp:Panel ID="Panel5" Width="45%" runat="server" style="float:left;margin:15px;">
-                    <canvas id="myChart3" width="10" height="7"></canvas>
+                    <canvas id="myChart3" width="8" height="4"></canvas>
                 </asp:Panel>
                 <asp:Panel ID="Panel6" Width="45%" runat="server" style="float:left;margin:15px;">
-                    <canvas id="myChart4" width="10" height="7"></canvas>
+                    <canvas id="myChart4" width="8" height="4"></canvas>
                 </asp:Panel>
 
         </asp:Panel>
@@ -36,6 +38,8 @@
         <script type="text/javascript">
              var jsVariable = <%= serializer.Serialize(clientList) %>;
              console.log(jsVariable);
+             var numberOfBuil = <%= serializer.Serialize(numberOfBuild) %>;
+             console.log(numberOfBuil);
         </script>
         <script type="text/javascript">
             var ctx = document.getElementById('myChart');
@@ -44,15 +48,15 @@
                 type: 'line',
                 // The data for our dataset
                 data: {
-                    labels: [jsVariable[0], jsVariable[1], jsVariable[2], jsVariable[3], jsVariable[4], jsVariable[5]],
+                    labels: [jsVariable[0], jsVariable[1], jsVariable[2], jsVariable[3], jsVariable[4], jsVariable[5], jsVariable[6], jsVariable[7], jsVariable[8], jsVariable[9], jsVariable[10]],
                     title: {display: true,
-                    text: 'Number of Releases Deployed',
+                    text: 'Number of Releases',
                     position: 'bottom'},
                     datasets: [{
-                        label: 'Number of Releases Deployed ClientWise',
+                        label: 'Number of Releases ClientWise',
                         backgroundColor: 'rgb(75,108,158)',
                         borderColor: 'rgb(0,0,128)',
-                        data: [0, 10, 5, 2, 20, 30, 45]
+                        data: [numberOfBuil[0], numberOfBuil[1], numberOfBuil[2], numberOfBuil[3], numberOfBuil[4], numberOfBuil[5]]
                     }]
                 },
                 options: {
@@ -61,7 +65,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Number Of Releases Deployed Clientwise',
+                        text: 'TOP 5 PRODUCTS',
                         ForeColor: 'rgb(255, 255, 255)'
                     },
                     scales: {
@@ -116,12 +120,26 @@
             var ctx = document.getElementById('myChart3');
             var myDoughnutChart = new Chart(ctx, {
                 type: 'doughnut',
-                data: { labels: ["Alfalah", "HBL", "UBL", "Alfalah", "HBL", "UBL"],
+                data: { labels: [jsVariable[0], jsVariable[1], jsVariable[2], jsVariable[3], jsVariable[4], jsVariable[5]],
                     datasets: [{
                         label: 'My First dataset',
-                        backgroundColor: 'rgb(75,108,158)',
-                        borderColor: 'rgb(0, 0, 128)',
-                        data: [0, 10, 5, 2, 20, 30, 45]
+                        backgroundColor: [
+                'rgba(255, 99, 132)',
+                'rgba(54, 162, 235)',
+                'rgba(255, 206, 86)',
+                'rgba(75, 192, 192)',
+                'rgba(153, 102, 255)',
+                'rgba(255, 159, 64)'
+            ],
+                        borderColor: [
+                'rgba(255, 99, 132)',
+                'rgba(54, 162, 235)',
+                'rgba(255, 206, 86)',
+                'rgba(75, 192, 192)',
+                'rgba(153, 102, 255)',
+                'rgba(255, 159, 64)'
+            ],
+                        data: [10, 20, 30, 15, 20, 5]
                     }]
                 },
                 options: {
@@ -181,6 +199,6 @@
             <%--<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/ProtectedPages/EditEnvironemtInfo.aspx">Update Patch Link</asp:HyperLink>--%>
     </asp:Panel>
 
-    <br/>
+    <%--<br/>--%>
 
 </asp:Content>

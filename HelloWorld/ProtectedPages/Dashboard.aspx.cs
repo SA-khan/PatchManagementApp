@@ -11,8 +11,11 @@ namespace HelloWorld.ProtectedPages
 {
     public partial class Dashboard : System.Web.UI.Page
     {
-
-        protected string[] clientList = new[] { "Alfalah", "HBL", "HBL AMC", "PMRC", "ABL", "OGDCL" };
+        //protected string[] clientList;
+        static DatabaseConnectivity dbgraph = new DatabaseConnectivity();
+        //public string[] clientList = { "BAFL", "HBL", "HBL AMC", "PMRC", "ABL" };
+        public string[] clientList = dbgraph.getClientListString();
+        public int[] numberOfBuild = dbgraph.getClientListInt();
 
         protected System.Web.Script.Serialization.JavaScriptSerializer serializer;
 
@@ -29,7 +32,7 @@ namespace HelloWorld.ProtectedPages
 
                 DatabaseConnectivity dbcon = new DatabaseConnectivity();
                 //string[] clientList = dbcon.getClientList();
-                //clientList = new[] {"Alfalah", "HBL", "HBL AMC", "PMRC", "ABL", "OGDCL"};
+                //clientList = new[] {"BAFL", "HBL", "HBL AMC", "PMRC", "ABL"};
                 
 
             }
