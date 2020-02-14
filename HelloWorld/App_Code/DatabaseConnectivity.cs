@@ -566,7 +566,7 @@ namespace HelloWorld.App_Code
 
         // Environment Settings Start
 
-        public List<ClientEnvironment> getClientEnvironmentInfo(int ProductID)
+        public List<ClientEnvironment> getClientEnvironmentInfo(int ProductID, int EnvType, int ClientID)
         {
             List<ClientEnvironment> matchingPatch = new List<ClientEnvironment>();
             using (SqlConnection myConnection = new SqlConnection(con))
@@ -576,6 +576,8 @@ namespace HelloWorld.App_Code
 
                 oCmd.CommandType = CommandType.StoredProcedure;
                 oCmd.Parameters.AddWithValue("@ProductID", ProductID);
+                oCmd.Parameters.AddWithValue("@EnvType", EnvType);
+                oCmd.Parameters.AddWithValue("@ClientID", ClientID);
                 myConnection.Open();
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
                 {
@@ -583,17 +585,38 @@ namespace HelloWorld.App_Code
                     {
                         ClientEnvironment item = new ClientEnvironment();
                         item.ClientName = oReader["ClientName"].ToString();
-                        item.EnvironmentTitle= oReader["EnvTitle"].ToString();
-                        item.EnvironmentAppServerEnvType = oReader["EnvAppServerEnvironmentType"].ToString();
-                        item.EnvironmentAppServerIsX86Version = oReader["EnvAppServerIsX86Version"].ToString();
-                        item.EnvironmentAppServerIsVirtual = oReader["EnvAppServerIsVirtual"].ToString();
-                        item.EnvironmentAppServerMemory = oReader["EnvAppServerMemory"].ToString();
-                        item.EnvironmentAppServerProcessor = oReader["EnvAppServerProcessor"].ToString();
-                        item.EnvironmentAppServerOSBuild = oReader["EnvAppServerOSBuild"].ToString();
-                        item.EnvironmentAppServerOS = oReader["EnvAppServerOS"].ToString();
-                        item.EnvironmentAppServerWebBrowser = oReader["EnvAppServerWebBrowser"].ToString();
-                        item.EnvironmentAppServerWebBrowserVersion = oReader["EnvAppServerWebBrowserVersion"].ToString();
-                        item.EnvironmentAppServerWorkingDirectoryLocation = oReader["EnvAppServerWorkingDirectoryLocation"].ToString();
+                        item.ProductName = oReader["ENV_Product_ID"].ToString();
+                        item.EnvironmentAppServerEnvType = oReader["ENV_AppServerEnvironmentType"].ToString();
+                        item.EnvironmentAppServerIsX86Version = oReader["ENV_AppServerIsX86Version"].ToString();
+                        item.EnvironmentAppServerIsVirtual = oReader["ENV_AppServerIsVirtual"].ToString();
+                        item.EnvironmentAppServerMemory = oReader["ENV_AppServerMemory"].ToString();
+                        item.EnvironmentAppServerProcessor = oReader["ENV_AppServerProcessor"].ToString();
+                        item.EnvironmentAppServerOSBuild = oReader["ENV_AppServerOSBuild"].ToString();
+                        item.EnvironmentAppServerOS = oReader["ENV_AppServerOS"].ToString();
+                        item.EnvironmentAppServerWebBrowser = oReader["ENV_AppServerWebBrowser"].ToString();
+                        item.EnvironmentAppServerWebBrowserVersion = oReader["ENV_AppServerWebBrowserVersion"].ToString();
+                        item.EnvironmentAppServerIsX86Version = oReader["ENV_AppServerIsX86Version"].ToString();
+                        item.EnvironmentAppServerWorkingDirectoryLocation = oReader["ENV_AppServerWorkingDirectoryLocation"].ToString();
+                        item.EnvironmentAppServerIP = oReader["ENV_AppServerIP"].ToString();
+                        item.EnvironmentAppServerPort = oReader["ENV_AppServerPort"].ToString();
+                        item.EnvironmentEnvDBServerIP = oReader["ENV_DBServerIP"].ToString();
+                        item.EnvironmentDBServerPort = oReader["ENV_DBServerPort"].ToString();
+                        item.EnvironmentAppServerName = oReader["ENV_AppServerName"].ToString();
+                        item.EnvironmentDBServerName = oReader["ENV_DBServerName"].ToString();
+                        item.EnvironmentAppServerDependency = oReader["ENV_AppServerDependency"].ToString();
+                        item.EnvironmentDBServerEnvType = oReader["ENV_DBServerEnvironmentType"].ToString();
+                        item.EnvironmentDBServerIsX86Version = oReader["ENV_DBServerIsX86Version"].ToString();
+                        item.EnvironmentDBServerIsVirtual = oReader["ENV_DBServerIsVirtual"].ToString();
+                        item.EnvironmentDBServerMemory = oReader["ENV_DBServerMemory"].ToString();
+                        item.EnvironmentDBServerProcessor = oReader["ENV_DBServerProcessor"].ToString();
+                        item.EnvironmentDBServerOSBuild = oReader["ENV_DBServerOSBuild"].ToString();
+                        item.EnvironmentDBServerOS = oReader["ENV_DBServerOS"].ToString();
+                        item.EnvironmentDBServerDirectoryLocation = oReader["ENV_DBServerDirectoryLocation"].ToString();
+                        item.EnvironmentDBMDFFileLocation = oReader["ENV_DBMDFFileLocation"].ToString();
+                        item.EnvironmentDBMDFFileSize = oReader["ENV_DBMDFFileSize"].ToString();
+                        item.EnvironmentDBLDFFileLocation = oReader["ENV_DBLDFFileLocation"].ToString();
+                        item.EnvironmentDBLDFFileSize = oReader["ENV_DBLDFFileSize"].ToString();
+                        item.EnvironmentDBServerDependency = oReader["ENV_DBServerDependency"].ToString();
                         matchingPatch.Add(item);
                         //matchingPatch.clientName = oReader["ClientName"].ToString();
                         //matchingPatch.patchHotNumber = oReader["PatchHotNumber"].ToString();

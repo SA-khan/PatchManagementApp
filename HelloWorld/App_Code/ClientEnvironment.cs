@@ -9,6 +9,7 @@ namespace HelloWorld.App_Code
     {
         public string EnvironmentName { get; set; }
         public string ClientName { get; set; }
+        public string ProductName { get; set; }
         public string EnvironmentTitle { get; set; }
         public string EnvironmentAppServerName { get; set; }
         public string EnvironmentAppServerEnvType { get; set; }
@@ -20,6 +21,7 @@ namespace HelloWorld.App_Code
         public string EnvironmentAppServerOS { get; set; }
         public string EnvironmentAppServerWebBrowser { get; set; }
         public string EnvironmentAppServerWebBrowserVersion { get; set; }
+        public string EnvironmentAppHyperLink { get; set; }
         public string EnvironmentAppServerWorkingDirectoryLocation { get; set; }
         public string EnvironmentAppServerIP { get; set; }
         public string EnvironmentAppServerPort { get; set; }
