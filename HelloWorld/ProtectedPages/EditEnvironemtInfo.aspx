@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditEnvironemtInfo.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditEnvironemtInfo" %>
+﻿<%@ Page Title="Portal - Edit Release" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditEnvironemtInfo.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditEnvironemtInfo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <style>
     .accordionView 
@@ -46,7 +46,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Client Type" SortExpression="PatchDesc">
                 <ItemTemplate>
-                    <asp:TextBox ID="lblClientType" runat="server" Text='<%# Bind("ClientType") %>'></asp:TextBox>
+                    <asp:TextBox ID="lblClientType" runat="server" Text='<%# Bind("ClientType") %>' disabled></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="lblClientType" runat="server" Text='<%# Bind("ClientType") %>'></asp:TextBox>
@@ -57,7 +57,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="TotalPatches" SortExpression="TotalPatches">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtTotalPatches" runat="server" Text='<%# Bind("TotalPatches") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtTotalPatches" runat="server" Text='<%# Bind("TotalPatches") %>' disabled></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtTotalPatches" runat="server" Text='<%# Bind("TotalPatches") %>'></asp:TextBox>
@@ -77,6 +77,32 @@
                     <asp:TextBox ID="txtPatchHotNumber" runat="server" Text='<%# Bind("LatestHotPatch") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="PatchDeployedBy" SortExpression="PatchDeployedBy">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtPatchDeployedBy" runat="server" Text='<%# Bind("PatchDeployedBy") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtPatchDeployedBy" runat="server" Text='<%# Bind("PatchDeployedBy") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtPatchDeployedBy" runat="server" Text='<%# Bind("PatchDeployedBy") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="PatchCreatedDate" 
+                SortExpression="PatchCreatedDate">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtPatchCreatedDate" runat="server" 
+                        Text='<%# Bind("PatchCreatedDate") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtPatchCreatedDate" runat="server" 
+                        Text='<%# Bind("PatchCreatedDate") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtPatchCreatedDate" runat="server" 
+                        Text='<%# Bind("PatchCreatedDate") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="PatchDeployedDate" 
                 SortExpression="PatchDeployedDate">
                 <ItemTemplate>
@@ -90,6 +116,21 @@
                 <InsertItemTemplate>
                     <asp:TextBox ID="txtPatchDeployedDate" runat="server" 
                         Text='<%# Bind("PatchDeployedDate") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="PatchStatus" 
+                SortExpression="PatchStatus">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtPatchStatus" runat="server" 
+                        Text='<%# Bind("PatchStatus") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtPatchStatus" runat="server" 
+                        Text='<%# Bind("PatchStatus") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtPatchStatus" runat="server" 
+                        Text='<%# Bind("PatchStatus") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False" ItemStyle-HorizontalAlign="Right">
@@ -137,7 +178,7 @@
         
         
     <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="ClientName"
-        AutoGenerateColumns="false" AllowSorting="true"
+        AutoGenerateColumns="false" AllowSorting="true" RowStyle-Height="40"
         AlternatingRowStyle-BackColor="LightGray" BorderColor="ControlDark" 
         BorderStyle="Solid" BorderWidth="1" EditRowStyle-Font-Names="Arial" 
         EditRowStyle-Font-Size="Small" EditRowStyle-ForeColor="Black" 
@@ -180,10 +221,28 @@
                  Text='<%# Eval("patchHotNumber") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>  
+           <asp:TemplateField HeaderText="Patch Deployed By">
+             <ItemTemplate>
+                 <asp:Label ID="lblPatchDeployedBy" runat="server" 
+                 Text='<%# Eval("patchDeployedBy") %>' />                              
+             </ItemTemplate>
+           </asp:TemplateField>
+           <asp:TemplateField HeaderText="Patch Created On">
+             <ItemTemplate>
+                 <asp:Label ID="lblPatchCreatedDate" runat="server" 
+                 Text='<%# Eval("patchCreatedDate") %>' />                              
+             </ItemTemplate>
+           </asp:TemplateField>   
            <asp:TemplateField HeaderText="Patch Deployed On">
              <ItemTemplate>
                  <asp:Label ID="lblPatchDeployed" runat="server" 
                  Text='<%# Eval("patchDeployedDate") %>' />                              
+             </ItemTemplate>
+           </asp:TemplateField> 
+           <asp:TemplateField HeaderText="Patch Dependency">
+             <ItemTemplate>
+                 <asp:Label ID="lblPatchStatus" runat="server" 
+                 Text='<%# Eval("patchStatus") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>  
            <asp:TemplateField ShowHeader="true" HeaderText="Select">

@@ -128,17 +128,23 @@ namespace HelloWorld.ProtectedPages
                 string clientType = (GridView1.SelectedRow.FindControl("lblClientType") as Label).Text;
                 string totalPatches = (GridView1.SelectedRow.FindControl("lblTotalPatches") as Label).Text;
                 string latestPatch = (GridView1.SelectedRow.FindControl("lblLatestPatch") as Label).Text;
+                string patchDeployedBy = (GridView1.SelectedRow.FindControl("lblPatchDeployedBy") as Label).Text;
+                string patchCreatedDate = (GridView1.SelectedRow.FindControl("lblPatchCreatedDate") as Label).Text;
                 string patchDeployedDate = (GridView1.SelectedRow.FindControl("lblPatchDeployed") as Label).Text;
+                string patchStatus = (GridView1.SelectedRow.FindControl("lblPatchStatus") as Label).Text;
                 Debug.WriteLine(GridView1.SelectedRow.Cells[0].Text);
                 Debug.WriteLine(GridView1.SelectedRow.Cells[1].Text);
                 Debug.WriteLine(GridView1.SelectedRow.Cells[2].Text);
                 DataTable dt = new DataTable();
-                dt.Columns.AddRange(new DataColumn[5] { new DataColumn("ClientName", typeof(string)),
+                dt.Columns.AddRange(new DataColumn[8] { new DataColumn("ClientName", typeof(string)),
                     new DataColumn("ClientType", typeof(string)),
                     new DataColumn("TotalPatches",typeof(string)), 
                     new DataColumn("LatestHotPatch",typeof(string)),
-                    new DataColumn("PatchDeployedDate",typeof(string)) });
-                dt.Rows.Add(clientName, clientType, totalPatches, latestPatch, patchDeployedDate);
+                    new DataColumn("PatchDeployedBy",typeof(string)),
+                    new DataColumn("PatchCreatedDate",typeof(string)),
+                    new DataColumn("PatchDeployedDate",typeof(string)),
+                    new DataColumn("PatchStatus",typeof(string)) });
+                dt.Rows.Add(clientName, clientType, totalPatches, latestPatch, patchDeployedBy, patchCreatedDate, patchDeployedDate, patchStatus);
                 //DetailsView1.m
                 DetailsView1.DataSource = dt;
                 DetailsView1.DataBind();
@@ -158,6 +164,16 @@ namespace HelloWorld.ProtectedPages
         protected void btnSave_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Index");
+            DatabaseConnectivity dbcon = new DatabaseConnectivity();
+            string title = "Demo Title Manual";
+            string desc = "Demo desc Manual";
+            TextBox lblpatchNumber = DetailsView1.FindControl("txtPatchHotNumber") as TextBox;
+            TextBox lblClient = DetailsView1.FindControl("lblClientName") as TextBox;
+            int clientID = dbcon.getClientId(lblClient.Text);
+            string patchNumber = lblpatchNumber.Text.ToString();
+            int productID = Convert.ToInt32(dropProduct.SelectedValue);
+            int envType = Convert.ToInt32(dropEnvironment.SelectedValue);
+            int res = dbcon.updatePatcheManually(title, desc, patchNumber, clientID, productID, envType);
             DetailsView1.Visible = false;
         }
 
@@ -193,12 +209,16 @@ namespace HelloWorld.ProtectedPages
             {
                 Label nullValueWatcher = e.Row.FindControl("lblPatchDeployed") as Label;
                 Label nonnullValueWatcher = e.Row.FindControl("lblTotalPatches") as Label;
+                LinkButton selectlink = e.Row.FindControl("LnkSelect") as LinkButton;
+                LinkButton updatelink = e.Row.FindControl("LnkEdit") as LinkButton;
                 string nullValue = nullValueWatcher.Text;
                 Debug.WriteLine("lblPatchDeployed: " + nullValue);
                 if (nullValue == "")
                 {
                     //Debug.WriteLine("Bee");
                     nonnullValueWatcher.Text = "";
+                    selectlink.Visible = false;
+                    updatelink.Visible = false;
                 }
             }
             catch (Exception ex) {

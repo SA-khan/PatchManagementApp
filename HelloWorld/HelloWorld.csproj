@@ -123,6 +123,8 @@
     <Content Include="ProtectedPages\AddProduct.aspx" />
     <Content Include="ProtectedPages\AddUser.aspx" />
     <Content Include="ProtectedPages\Dashboard.aspx" />
+    <Content Include="ProtectedPages\DeleteCompany.aspx" />
+    <Content Include="ProtectedPages\DeleteRelease.aspx" />
     <Content Include="ProtectedPages\EditClientEnvironemt.aspx" />
     <Content Include="ProtectedPages\EditCompany.aspx" />
     <Content Include="ProtectedPages\EditEnvironemtInfo.aspx" />
@@ -388,6 +390,20 @@
     <Compile Include="ProtectedPages\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProtectedPages\DeleteCompany.aspx.cs">
+      <DependentUpon>DeleteCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteCompany.aspx.designer.cs">
+      <DependentUpon>DeleteCompany.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteRelease.aspx.cs">
+      <DependentUpon>DeleteRelease.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteRelease.aspx.designer.cs">
+      <DependentUpon>DeleteRelease.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\EditClientEnvironemt.aspx.cs">
       <DependentUpon>EditClientEnvironemt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -478,7 +494,9 @@
     <Content Include="SiteLogout.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="web.sitemap" />
+    <Content Include="web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

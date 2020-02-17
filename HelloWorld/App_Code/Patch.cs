@@ -15,6 +15,8 @@ namespace HelloWorld.App_Code
         public string numberOfPatches { get; set; }
         public string patchHotNumber { get; set; }
         public string patchQATested { get; set; }
+        public string patchDeployedBy { get; set; }
+        public string patchCreatedDate { get; set; }
         public string patchDeployedDate { get; set; }
         public string patchProductID { get; set; }
         public string patchNumberOfDaysPassed { get; set; }
