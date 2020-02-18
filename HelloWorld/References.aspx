@@ -1,5 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="References.aspx.cs" Inherits="HelloWorld.References" %>
+﻿<%@ Page Title="Portal - References" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="References.aspx.cs" Inherits="HelloWorld.References" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="Images/icon.ico" rel="Shortcut Icon" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="lblHeading1" runat="server" Text="References & Help" Font-Size=X-Large></asp:Label>

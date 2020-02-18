@@ -1,5 +1,6 @@
-﻿<%@ Page Title="Portal - Live Environment" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Live.aspx.cs" Inherits="HelloWorld.Live" %>
+﻿<%@ Page Title="Portal - Live App Overview" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Live.aspx.cs" Inherits="HelloWorld.Live" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="Images/icon.ico" rel="Shortcut Icon" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="lblHeading1" runat="server" Text="Live Environment" Font-Size=X-Large></asp:Label>

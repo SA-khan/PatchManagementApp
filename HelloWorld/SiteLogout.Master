@@ -6,6 +6,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="Images/icon.ico" rel="Shortcut Icon" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -35,7 +36,7 @@
                 </asp:LoginView>
             </div>
             <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                <asp:Menu ID="NavigationMenu" runat="server" RenderingMode="List" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/EnvironmentInfo.aspx" Text="Client Environment Overview"/>
@@ -80,7 +81,7 @@
                     </asp:Panel>
                     
                     <br />
-                    <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Vertical">
+                    <asp:Menu ID="Menu1" Width="80%" runat="server" DynamicHoverStyle-BackColor="#4A148C" DynamicHoverStyle-ForeColor="#FFFFFF" DynamicMenuItemStyle-HorizontalPadding="3px" DynamicMenuItemStyle-VerticalPadding="4px" StaticHoverStyle-BackColor="#4A148C" StaticHoverStyle-ForeColor="#FFFFFF" StaticMenuItemStyle-HorizontalPadding="5px" StaticMenuItemStyle-VerticalPadding="5px" DynamicMenuItemStyle-BackColor="WindowFrame" DynamicMenuItemStyle-Width="200px" DynamicMenuItemStyle-ForeColor="#000000" DynamicHorizontalOffset="10" DynamicMenuItemStyle-BorderColor="#000000" StaticMenuItemStyle-ForeColor="#000000" StaticEnableDefaultPopOutImage="false" DynamicMenuStyle-BorderColor="#000000" DataSourceID="SiteMapDataSource1" Orientation="Vertical" style="min-height:120px;background-color:WindowFrame;color:Black;border:1px solid darkgray;padding:10px;color:#000000;">
                     </asp:Menu>
                     <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
                 </asp:Panel>

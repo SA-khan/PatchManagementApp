@@ -2,19 +2,35 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="~/Default.aspx" title="main"  description="main">
         <siteMapNode url="~/ProtectedPages/Dashboard.aspx" title="Home"  description="Home" />
-        <siteMapNode url="~/ProtectedPages/AddCompany.aspx" title="Add Client Page"  description="Goto Add Client Information Page" />
-        <siteMapNode url="~/ProtectedPages/EditCompany.aspx" title="Edit Client Page"  description="Goto Edit Client Information Page" />
-      <siteMapNode url="~/ProtectedPages/DeleteCompany.aspx" title="Delete Client Page"  description="Goto Delete Client Information Page" />
-        <siteMapNode url="~/ProtectedPages/AddPatch.aspx" title="Add Release Page"  description="Goto Add Patch Information Page" />
-        <siteMapNode url="~/ProtectedPages/EditEnvironemtInfo.aspx" title="Edit Release Page"  description="Goto Edit Client Latest Release Page" />
-      <siteMapNode url="~/ProtectedPages/DeleteRelease.aspx" title="Delete Release Page"  description="Goto Delete Client Latest Release Page" />
-        <siteMapNode url="~/ProtectedPages/AddClientEnvironment.aspx" title="Add Client Environment Page"  description="Goto Add Client's Environment Page" />
-        <siteMapNode url="~/ProtectedPages/EditClientEnvironemt.aspx" title="Edit Client Environment Page"  description="Goto Edit Client Environment Page" />
+      <siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=client" title="Client"  description="Goto Client Page">
+        <siteMapNode url="~/ProtectedPages/AddClient.aspx" title="Add Client Page"  description="Goto Add Client Page" />
+        <siteMapNode url="~/ProtectedPages/EditClient.aspx" title="Edit Client Page"  description="Goto Edit Client Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteCompany.aspx" title="Delete Client Page"  description="Goto Delete Client Page" />
+      </siteMapNode>
+      <siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=release" title="Release"  description="Goto Release Page">
+        <siteMapNode url="~/ProtectedPages/AddRelease.aspx" title="Add Release Page"  description="Goto Add Release Page" />
+        <siteMapNode url="~/ProtectedPages/EditRelease.aspx" title="Edit Release Page"  description="Goto Edit Release Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteRelease.aspx" title="Delete Release Page"  description="Goto Delete Release Page" />
+      </siteMapNode>
+      <siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=environment_and_types" title="Environment and Types"  description="Goto Environment Page">
+        <siteMapNode url="~/ProtectedPages/AddEnvironment.aspx" title="Add Environment Page"  description="Goto Add Environment Page" />
+        <siteMapNode url="~/ProtectedPages/EditEnvironemt.aspx" title="Edit Environment Page"  description="Goto Edit Environment Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteEnvironemt.aspx" title="Delete Environment Page"  description="Goto Delete Environment Page" />
+      <!--</siteMapNode>-->
+      <!--<siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=environment_type" title="Environment Type"  description="Goto Environment Type Page">-->
         <siteMapNode url="~/ProtectedPages/AddEnvironmentType.aspx" title="Add Environment Type Page"  description="Goto Add Environment Type Page" />
         <siteMapNode url="~/ProtectedPages/EditEnvironemtType.aspx" title="Edit Environment Type Page"  description="Goto Edit Environment Type Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteEnvironemtType.aspx" title="Delete Environment Type Page"  description="Goto Delete Environment Type Page" />
+      </siteMapNode>
+      <siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=user_and_role" title="User and Roles"  description="Goto User Page">
         <siteMapNode url="~/ProtectedPages/AddUser.aspx" title="Add User Page"  description="Goto Add User Page" />
         <siteMapNode url="~/ProtectedPages/EditUser.aspx" title="Edit User Page"  description="Goto Edit User Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteUser.aspx" title="Delete User Page"  description="Goto Delete User Page" />
+      </siteMapNode>
+      <siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=product" title="Product"  description="Goto Product Page">
         <siteMapNode url="~/ProtectedPages/AddProduct.aspx" title="Add Product Page"  description="Goto Add Product Page" />
         <siteMapNode url="~/ProtectedPages/EditProduct.aspx" title="Edit Product Page"  description="Goto Edit Product Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteProduct.aspx" title="Delete Product Page"  description="Goto Delete Product Page" />
+      </siteMapNode>
     </siteMapNode>
 </siteMap>

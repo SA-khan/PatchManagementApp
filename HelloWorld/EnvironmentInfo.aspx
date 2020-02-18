@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Portal - Environmnet Overview" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EnvironmentInfo.aspx.cs" Inherits="HelloWorld.EnvironmentInfo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="Images/icon.ico" rel="Shortcut Icon" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <asp:Label ID="lblHeading1" runat="server" Text="Client Environment Overview" Font-Size="X-Large"></asp:Label>

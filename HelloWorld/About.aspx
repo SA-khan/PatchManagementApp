@@ -2,6 +2,7 @@
     CodeBehind="About.aspx.cs" Inherits="HelloWorld.About" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <link href="Images/icon.ico" rel="Shortcut Icon" />
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>

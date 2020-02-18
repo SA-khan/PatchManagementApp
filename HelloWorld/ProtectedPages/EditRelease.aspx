@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Edit Release" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditEnvironemtInfo.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditEnvironemtInfo" %>
+﻿<%@ Page Title="Portal - Edit Release" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditRelease.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditEnvironemtInfo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <style>
     .accordionView 

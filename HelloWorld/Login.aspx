@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="HelloWorld.Login" %>
+﻿<%@ Page Title="Portal - Login Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="HelloWorld.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-
+    <link href="Images/icon.ico" rel="Shortcut Icon" />
 <style>
 .btn {
   background-color: DodgerBlue;

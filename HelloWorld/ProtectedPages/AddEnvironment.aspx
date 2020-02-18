@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add Environment" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddClientEnvironment.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddClientEnvironment" %>
+﻿<%@ Page Title="Portal - Add Environment" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddEnvironment.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddClientEnvironment" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

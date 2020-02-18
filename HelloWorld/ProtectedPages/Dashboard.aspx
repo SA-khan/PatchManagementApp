@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="HelloWorld.ProtectedPages.Dashboard" %>
+﻿<%@ Page Title="Portal - Dashboard" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="HelloWorld.ProtectedPages.Dashboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

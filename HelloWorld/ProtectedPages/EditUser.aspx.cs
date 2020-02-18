@@ -47,7 +47,7 @@ namespace HelloWorld.ProtectedPages
         private void _BindService()
         {
             DatabaseConnectivity dbcon = new DatabaseConnectivity();
-            List<Client> service = dbcon.getClientList();
+            List<User> service = dbcon.getUserList();
             if (service.Count > 0 && service != null)
             {
                 GridView1.DataSource = service;
@@ -64,28 +64,24 @@ namespace HelloWorld.ProtectedPages
         {
             DetailsView1.Visible = true;
             //DetailsView1.Style.Add("display", "block");
-            string clientID = (GridView1.SelectedRow.FindControl("lblClientID") as Label).Text;
-            string clientName = (GridView1.SelectedRow.FindControl("lblClientName") as Label).Text;
-            string clientType = (GridView1.SelectedRow.FindControl("lblClientType") as Label).Text;
-            string clientDesc = (GridView1.SelectedRow.FindControl("lblClientDesc") as Label).Text;
-            bool clientStill = Convert.ToBoolean((GridView1.SelectedRow.FindControl("lblClientStill") as Label).Text);
-            string clientPOCName = (GridView1.SelectedRow.FindControl("lblPOCName") as Label).Text;
-            string clientPOCEmail = (GridView1.SelectedRow.FindControl("lblPOCEmail") as Label).Text;
-            string clientPOCPhone = (GridView1.SelectedRow.FindControl("lblPOCPhone") as Label).Text;
+            string userID = (GridView1.SelectedRow.FindControl("lblUserID") as Label).Text;
+            string userName = (GridView1.SelectedRow.FindControl("lblUserName") as Label).Text;
+            string userRole = (GridView1.SelectedRow.FindControl("lblUserRole") as Label).Text;
+            string userStatus = (GridView1.SelectedRow.FindControl("lblUserStatus") as Label).Text;
+            string userLoginDate = (GridView1.SelectedRow.FindControl("lblUserLoginDate") as Label).Text;
+            string userWrongAttempts = (GridView1.SelectedRow.FindControl("lblUserWrongAttempt") as Label).Text;
             Debug.WriteLine(GridView1.SelectedRow.Cells[0].Text);
             Debug.WriteLine(GridView1.SelectedRow.Cells[1].Text);
             Debug.WriteLine(GridView1.SelectedRow.Cells[2].Text);
             DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[8] { 
-                    new DataColumn("ClientID", typeof(string)),
-                    new DataColumn("ClientName", typeof(string)),
-                    new DataColumn("ClientType", typeof(string)),
-                    new DataColumn("ClientDesc",typeof(string)), 
-                    new DataColumn("ClientStill",typeof(bool)),
-                    new DataColumn("POCName",typeof(string)),
-                    new DataColumn("POCEmail",typeof(string)),
-                    new DataColumn("POCPhone",typeof(string)) });
-            dt.Rows.Add(clientID, clientName, clientType, clientDesc, clientStill, clientPOCName, clientPOCEmail, clientPOCPhone);
+            dt.Columns.AddRange(new DataColumn[6] { 
+                    new DataColumn("UserID", typeof(string)),
+                    new DataColumn("UserName", typeof(string)),
+                    new DataColumn("UserRole", typeof(string)),
+                    new DataColumn("UserStatus",typeof(string)), 
+                    new DataColumn("UserLoginDate",typeof(string)),
+                    new DataColumn("UserWrongAttempt",typeof(string)) });
+            dt.Rows.Add(userID, userName, userRole, userStatus, userLoginDate, userWrongAttempts);
             //DetailsView1.m
             DetailsView1.DataSource = dt;
             DetailsView1.DataBind();
@@ -155,41 +151,35 @@ namespace HelloWorld.ProtectedPages
 
         protected void DetailsView1_DataBound(object sender, EventArgs e)
         {
-            HiddenField hidType = DetailsView1.FindControl("hidClientType") as HiddenField;
-            DropDownList dropType = DetailsView1.FindControl("dropClientType") as DropDownList;
-            dropType.SelectedValue = hidType.Value;
+            //HiddenField hidType = DetailsView1.FindControl("hidClientType") as HiddenField;
+            //DropDownList dropType = DetailsView1.FindControl("dropClientType") as DropDownList;
+            //dropType.SelectedValue = hidType.Value;
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            TextBox txtClientId = DetailsView1.FindControl("txtClientID") as TextBox;
-            TextBox txtClientName = DetailsView1.FindControl("txtClientName") as TextBox;
-            DropDownList txtClientType = DetailsView1.FindControl("dropClientType") as DropDownList;
-            TextBox txtClientDesc = DetailsView1.FindControl("txtClientDesc") as TextBox;
-            CheckBox chkClientStill = DetailsView1.FindControl("chkClientStill") as CheckBox;
-            TextBox txtPOCName = DetailsView1.FindControl("txtPOCName") as TextBox;
-            TextBox txtPOCEmail = DetailsView1.FindControl("txtPOCEmail") as TextBox;
-            TextBox txtPOCPhone = DetailsView1.FindControl("txtPOCPhone") as TextBox;
-            int ClientID = Convert.ToInt32(txtClientId.Text.ToString());
-            string ClientName = txtClientName.Text.ToString();
-            string ClientType = txtClientType.SelectedValue.ToString();
-            string ClientDesc = txtClientDesc.Text.ToString();
-            bool ClientStill = chkClientStill.Checked;
-            string ClientPOC = txtPOCName.Text.ToString();
-            string ClientPOCEmail = txtPOCEmail.Text.ToString();
-            string ClientPOCPhone = txtPOCPhone.Text.ToString();
+            TextBox txtUserID = DetailsView1.FindControl("txtUserID") as TextBox;
+            TextBox txtUserName = DetailsView1.FindControl("txtUserName") as TextBox;
+            TextBox txtUserRole = DetailsView1.FindControl("txtUserRole") as TextBox;
+            TextBox txtUserStatus = DetailsView1.FindControl("txtUserStatus") as TextBox;
+            TextBox txtUserLoginDate = DetailsView1.FindControl("txtUserLoginDate") as TextBox;
+            TextBox txtWrongAttempts = DetailsView1.FindControl("txtWrongAttempts") as TextBox;
+            int userID = Convert.ToInt32(txtUserID.Text.ToString());
+            string userName = txtUserName.Text.ToString();
+            string userRole = txtUserRole.Text.ToString();
+            string userStatus = txtUserStatus.Text.ToString();
+            string userLoginDate = txtUserLoginDate.Text.ToString();
+            string wrongAttempts = txtWrongAttempts.Text.ToString();
             Debug.WriteLine("");
             Debug.WriteLine("Data From Grid:");
-            Debug.WriteLine("ClientID: " + ClientID);
-            Debug.WriteLine("ClientName: " + ClientName);
-            Debug.WriteLine("ClientType: " + ClientType);
-            Debug.WriteLine("ClientDesc: " + ClientDesc);
-            Debug.WriteLine("ClientStill: " + ClientStill);
-            Debug.WriteLine("ClientPOC: " + ClientPOC);
-            Debug.WriteLine("ClientPOCEmail: " + ClientPOCEmail);
-            Debug.WriteLine("ClientPOCPhone: " + ClientPOCPhone);
+            Debug.WriteLine("ClientID: " + userID);
+            Debug.WriteLine("ClientName: " + userName);
+            Debug.WriteLine("ClientType: " + userRole);
+            Debug.WriteLine("ClientDesc: " + userStatus);
+            Debug.WriteLine("ClientStill: " + userLoginDate);
+            Debug.WriteLine("ClientPOC: " + wrongAttempts);
             DatabaseConnectivity dbcon = new DatabaseConnectivity();
-            int ResultQuery = dbcon.setAClient(ClientID, ClientName, ClientType, ClientDesc, ClientStill, ClientPOC, ClientPOCEmail, ClientPOCPhone);
+            //nt ResultQuery = dbcon.setAClient(userID, userName, userRole, userStatus, userLoginDate, wrongAttempts);
             //Console.WriteLine("<script>alert(" + ResultQuery + "record has been updated." + ")</script>");
             //ClientScript.RegisterStartupScript(this.GetType(), DateTime.Now.ToString(), "<script>alert(" + ResultQuery + "record has been updated." + ")</script>", true);
             //ScriptManager.RegisterStartupScript(this, this.GetType(), DateTime.Now.ToString(), "<script>alert(" + ResultQuery +")</script>", true);

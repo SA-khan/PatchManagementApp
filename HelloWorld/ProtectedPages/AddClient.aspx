@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddCompany.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddCompany" %>
+﻿<%@ Page Title="Portal - Add Client" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddCompany" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

@@ -67,10 +67,10 @@ namespace HelloWorld.ProtectedPages
 
         protected void DropDownList1_DataBinding(object sender, EventArgs e)
         {
-            Debug.WriteLine("");
-            Debug.WriteLine("Donot Write Here!!!");
-            string jsMethodName = "<script>alert(1)</script>";
-            ScriptManager.RegisterClientScriptBlock(this, typeof(string), "uniqueKey", jsMethodName, true);
+            //Debug.WriteLine("");
+            //Debug.WriteLine("Donot Write Here!!!");
+            //string jsMethodName = "<script>alert(1)</script>";
+            //ScriptManager.RegisterClientScriptBlock(this, typeof(string), "uniqueKey", jsMethodName, true);
         }
 
         

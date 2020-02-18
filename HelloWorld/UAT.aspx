@@ -1,5 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UAT.aspx.cs" Inherits="HelloWorld.UAT" %>
+﻿<%@ Page Title="Portal - UAT App Overview" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UAT.aspx.cs" Inherits="HelloWorld.UAT" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="Images/icon.ico" rel="Shortcut Icon" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="lblHeading1" runat="server" Text="UAT Environment" Font-Size=X-Large></asp:Label>

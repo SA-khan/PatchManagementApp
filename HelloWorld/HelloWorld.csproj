@@ -112,22 +112,27 @@
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
     <Content Include="EnvironmentInfo.aspx" />
+    <Content Include="Images\icon.ico" />
     <Content Include="Images\loginBG.jpg" />
     <Content Include="Live.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
-    <Content Include="ProtectedPages\AddClientEnvironment.aspx" />
-    <Content Include="ProtectedPages\AddCompany.aspx" />
+    <Content Include="ProtectedPages\AddEnvironment.aspx" />
+    <Content Include="ProtectedPages\AddClient.aspx" />
     <Content Include="ProtectedPages\AddEnvironmentType.aspx" />
-    <Content Include="ProtectedPages\AddPatch.aspx" />
+    <Content Include="ProtectedPages\AddRelease.aspx" />
     <Content Include="ProtectedPages\AddProduct.aspx" />
     <Content Include="ProtectedPages\AddUser.aspx" />
     <Content Include="ProtectedPages\Dashboard.aspx" />
     <Content Include="ProtectedPages\DeleteCompany.aspx" />
+    <Content Include="ProtectedPages\DeleteEnvironemt.aspx" />
+    <Content Include="ProtectedPages\DeleteEnvironemtType.aspx" />
+    <Content Include="ProtectedPages\DeleteProduct.aspx" />
     <Content Include="ProtectedPages\DeleteRelease.aspx" />
-    <Content Include="ProtectedPages\EditClientEnvironemt.aspx" />
-    <Content Include="ProtectedPages\EditCompany.aspx" />
-    <Content Include="ProtectedPages\EditEnvironemtInfo.aspx" />
+    <Content Include="ProtectedPages\DeleteUser.aspx" />
+    <Content Include="ProtectedPages\EditEnvironemt.aspx" />
+    <Content Include="ProtectedPages\EditClient.aspx" />
+    <Content Include="ProtectedPages\EditRelease.aspx" />
     <Content Include="ProtectedPages\EditEnvironemtType.aspx" />
     <Content Include="ProtectedPages\EditProduct.aspx" />
     <Content Include="ProtectedPages\EditUser.aspx" />
@@ -341,19 +346,19 @@
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProtectedPages\AddClientEnvironment.aspx.cs">
-      <DependentUpon>AddClientEnvironment.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\AddEnvironment.aspx.cs">
+      <DependentUpon>AddEnvironment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProtectedPages\AddClientEnvironment.aspx.designer.cs">
-      <DependentUpon>AddClientEnvironment.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\AddEnvironment.aspx.designer.cs">
+      <DependentUpon>AddEnvironment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProtectedPages\AddCompany.aspx.cs">
-      <DependentUpon>AddCompany.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\AddClient.aspx.cs">
+      <DependentUpon>AddClient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProtectedPages\AddCompany.aspx.designer.cs">
-      <DependentUpon>AddCompany.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\AddClient.aspx.designer.cs">
+      <DependentUpon>AddClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\AddEnvironmentType.aspx.cs">
       <DependentUpon>AddEnvironmentType.aspx</DependentUpon>
@@ -362,12 +367,12 @@
     <Compile Include="ProtectedPages\AddEnvironmentType.aspx.designer.cs">
       <DependentUpon>AddEnvironmentType.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProtectedPages\AddPatch.aspx.cs">
-      <DependentUpon>AddPatch.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\AddRelease.aspx.cs">
+      <DependentUpon>AddRelease.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProtectedPages\AddPatch.aspx.designer.cs">
-      <DependentUpon>AddPatch.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\AddRelease.aspx.designer.cs">
+      <DependentUpon>AddRelease.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\AddProduct.aspx.cs">
       <DependentUpon>AddProduct.aspx</DependentUpon>
@@ -397,6 +402,27 @@
     <Compile Include="ProtectedPages\DeleteCompany.aspx.designer.cs">
       <DependentUpon>DeleteCompany.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProtectedPages\DeleteEnvironemt.aspx.cs">
+      <DependentUpon>DeleteEnvironemt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteEnvironemt.aspx.designer.cs">
+      <DependentUpon>DeleteEnvironemt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteEnvironemtType.aspx.cs">
+      <DependentUpon>DeleteEnvironemtType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteEnvironemtType.aspx.designer.cs">
+      <DependentUpon>DeleteEnvironemtType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteProduct.aspx.cs">
+      <DependentUpon>DeleteProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteProduct.aspx.designer.cs">
+      <DependentUpon>DeleteProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\DeleteRelease.aspx.cs">
       <DependentUpon>DeleteRelease.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -404,26 +430,33 @@
     <Compile Include="ProtectedPages\DeleteRelease.aspx.designer.cs">
       <DependentUpon>DeleteRelease.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProtectedPages\EditClientEnvironemt.aspx.cs">
-      <DependentUpon>EditClientEnvironemt.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\DeleteUser.aspx.cs">
+      <DependentUpon>DeleteUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProtectedPages\EditClientEnvironemt.aspx.designer.cs">
-      <DependentUpon>EditClientEnvironemt.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\DeleteUser.aspx.designer.cs">
+      <DependentUpon>DeleteUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProtectedPages\EditCompany.aspx.cs">
-      <DependentUpon>EditCompany.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\EditEnvironemt.aspx.cs">
+      <DependentUpon>EditEnvironemt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProtectedPages\EditCompany.aspx.designer.cs">
-      <DependentUpon>EditCompany.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\EditEnvironemt.aspx.designer.cs">
+      <DependentUpon>EditEnvironemt.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProtectedPages\EditEnvironemtInfo.aspx.cs">
-      <DependentUpon>EditEnvironemtInfo.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\EditClient.aspx.cs">
+      <DependentUpon>EditClient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProtectedPages\EditEnvironemtInfo.aspx.designer.cs">
-      <DependentUpon>EditEnvironemtInfo.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\EditClient.aspx.designer.cs">
+      <DependentUpon>EditClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\EditRelease.aspx.cs">
+      <DependentUpon>EditRelease.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\EditRelease.aspx.designer.cs">
+      <DependentUpon>EditRelease.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\EditEnvironemtType.aspx.cs">
       <DependentUpon>EditEnvironemtType.aspx</DependentUpon>

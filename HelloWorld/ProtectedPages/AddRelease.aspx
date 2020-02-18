@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add Release" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddPatch.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddPatch" %>
+﻿<%@ Page Title="Portal - Add Release" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddRelease.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddPatch" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

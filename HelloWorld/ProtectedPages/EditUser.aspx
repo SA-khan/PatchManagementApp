@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditUser.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditUser" %>
+﻿<%@ Page Title="Portal - Edit User" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditUser.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditUser" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -15,15 +15,15 @@
         ondatabound="DetailsView1_DataBound">
         <EditRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
         <Fields>
-            <asp:TemplateField HeaderText="Client ID" SortExpression="ClientID">
+            <asp:TemplateField HeaderText="User ID" SortExpression="UserID">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtClientID" runat="server" disabled Text='<%# Bind("ClientID") %>' EnableViewState=true ViewStateMode="Enabled"></asp:TextBox>
+                    <asp:TextBox ID="txtUserID" runat="server" disabled Text='<%# Bind("UserID") %>' EnableViewState=true ViewStateMode="Enabled"></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtClientID" runat="server" Text='<%# Bind("ClientID") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserID" runat="server" Text='<%# Bind("UserID") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtClientID" runat="server" Text='<%# Bind("ClientID") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserID" runat="server" Text='<%# Bind("UserID") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="txtClientID" runat="server" Text='<%# Bind("ClientID") %>'></asp:TextBox>
@@ -31,101 +31,69 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Client Name" SortExpression="ClientName">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtClientName" runat="server" Text='<%# Bind("ClientName") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserName" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtClientName" runat="server" Text='<%# Bind("ClientName") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserName" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtClientName" runat="server" Text='<%# Bind("ClientName") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserName" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client Type" SortExpression="ClientName">
+            <asp:TemplateField HeaderText="User Role" SortExpression="UserRole">
                 <ItemTemplate>
-                    <asp:HiddenField ID="hidClientType" runat="server" Value='<%# Bind("ClientType") %>' />
-                    <asp:DropDownList ID="dropClientType" runat="server" AppendDataBoundItems="true" DataTextField='<%# Bind("ClientType") %>' DataTextFormatString='<%# Bind("ClientType") %>' DataValueField='<%# Bind("ClientType") %>' >
-                        <asp:ListItem Value="Insurance">Insurance</asp:ListItem>
-                        <asp:ListItem Value="Bank">Bank</asp:ListItem>
-                        <asp:ListItem Value="AMC">AMC</asp:ListItem>
-                    </asp:DropDownList>
-
-                </ItemTemplate>
-                <%--<EditItemTemplate>
-                    <asp:TextBox ID="txtClientType" runat="server" Text='<%# Bind("ClientType") %>'></asp:TextBox>
-                </EditItemTemplate>--%>
-<%--                <InsertItemTemplate>
-                    <asp:TextBox ID="txtClientType" runat="server" Text='<%# Bind("ClientType") %>'></asp:TextBox>
-                </InsertItemTemplate>--%>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="ClientDesc" SortExpression="ClientName">
-                <ItemTemplate>
-                    <asp:TextBox ID="txtClientDesc" runat="server" Text='<%# Bind("ClientDesc") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtClientDesc" runat="server" Text='<%# Bind("ClientDesc") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtClientDesc" runat="server" Text='<%# Bind("ClientDesc") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Current Client" 
+            <asp:TemplateField HeaderText="User Status" 
+                SortExpression="UserStatus">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtUserStatus" runat="server" 
+                        Text='<%# Bind("UserStatus") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtUserStatus" runat="server" 
+                        Text='<%# Bind("UserStatus") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtUserStatus" runat="server" 
+                        Text='<%# Bind("UserStatus") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="User Login Date" 
+                SortExpression="UserLoginDate">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtUserLoginDate" runat="server" 
+                        Text='<%# Bind("UserLoginDate") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtUserLoginDate" runat="server" 
+                        Text='<%# Bind("UserLoginDate") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtUserLoginDate" runat="server" 
+                        Text='<%# Bind("UserLoginDate") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="User Wrong Attempts" 
                 SortExpression="ClientName">
                 <ItemTemplate>
-                    <asp:CheckBox ID="chkClientStill" runat="server" 
-                        Checked='<%# Bind("ClientStill") %>' />
+                    <asp:TextBox ID="txtWrongAttempts" runat="server" 
+                        Text='<%# Bind("UserWrongAttempts") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:CheckBox ID="chkClientStill" runat="server" 
-                        Checked='<%# Bind("ClientStill") %>' />
+                    <asp:TextBox ID="txtWrongAttempts" runat="server" 
+                        Text='<%# Bind("UserWrongAttempts") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:CheckBox ID="chkClientStill" runat="server" 
-                        Checked='<%# Bind("ClientStill") %>' />
-                </InsertItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client Person of Contact" 
-                SortExpression="ClientName">
-                <ItemTemplate>
-                    <asp:TextBox ID="txtPOCName" runat="server" 
-                        Text='<%# Bind("POCName") %>'></asp:TextBox>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="txtPOCName" runat="server" 
-                        Text='<%# Bind("POCName") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="txtPOCName" runat="server" 
-                        Text='<%# Bind("POCName") %>'></asp:TextBox>
-                </InsertItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client POC Email" 
-                SortExpression="ClientName">
-                <ItemTemplate>
-                    <asp:TextBox ID="txtPOCEmail" runat="server" 
-                        Text='<%# Bind("POCEmail") %>'></asp:TextBox>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="txtPOCEmail" runat="server" 
-                        Text='<%# Bind("POCEmail") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="txtPOCEmail" runat="server" 
-                        Text='<%# Bind("POCEmail") %>'></asp:TextBox>
-                </InsertItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client POC Phone" 
-                SortExpression="ClientName">
-                <ItemTemplate>
-                    <asp:TextBox ID="txtPOCPhone" runat="server" 
-                        Text='<%# Bind("POCPhone") %>'></asp:TextBox>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="txtPOCPhone" runat="server" 
-                        Text='<%# Bind("POCPhone") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="txtPOCPhone" runat="server" 
-                        Text='<%# Bind("POCPhone") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtWrongAttempts" runat="server" 
+                        Text='<%# Bind("UserWrongAttempts") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False" ItemStyle-HorizontalAlign="Right">
@@ -148,7 +116,7 @@
 
     <br/>
         
-    <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="_clientName"
+    <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="UserID"
         style="min-height:300px;"
         RowStyle-Height="60px"
         AutoGenerateColumns="false" AllowSorting="true"
@@ -170,54 +138,42 @@
         onselectedindexchanged="GridView1_SelectedIndexChanged" 
             onrowdatabound="GridView1_RowDataBound">
          <Columns>     
-         <asp:TemplateField Visible="false" HeaderText="Client ID">
+         <asp:TemplateField Visible="false" HeaderText="USER ID">
          <ItemTemplate>
-                 <asp:Label ID="lblClientID" runat="server" 
-                 Text='<%# Eval("_clientID") %>' />                              
+                 <asp:Label ID="lblUserName" runat="server" 
+                 Text='<%# Eval("UserID") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>                     
-    <asp:TemplateField HeaderText="Client Name">
+    <asp:TemplateField HeaderText="User Name">
          <ItemTemplate>
-                 <asp:Label ID="lblClientName" runat="server" 
-                 Text='<%# Eval("_clientName") %>' />                              
+                 <asp:Label ID="lblUserName" runat="server" 
+                 Text='<%# Eval("UserName") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>             
-           <asp:TemplateField HeaderText="Client Type">
+           <asp:TemplateField HeaderText="User Role">
          <ItemTemplate>
-                 <asp:Label ID="lblClientType" runat="server" 
-                 Text='<%# Eval("_clientType") %>' />                              
+                 <asp:Label ID="lblUserRole" runat="server" 
+                 Text='<%# Eval("UserRole") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>
-           <asp:TemplateField HeaderText="Total Patches">
+           <asp:TemplateField HeaderText="User Status">
              <ItemTemplate>
-                 <asp:Label ID="lblClientDesc" runat="server" 
-                 Text='<%# Eval("_clientDesc") %>' />                              
+                 <asp:Label ID="lblUserStatus" runat="server" 
+                 Text='<%# Eval("UserStatus") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>
-           <asp:TemplateField HeaderText="Current Client">
+           <asp:TemplateField HeaderText="User Login Date">
              <ItemTemplate>
-                 <asp:Label ID="lblClientStill" runat="server" 
-                 Text='<%# Eval("_clientStill") %>' />                              
+                 <asp:Label ID="lblUserLoginDate" runat="server" 
+                 Text='<%# Eval("UserLoginDate") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>  
-           <asp:TemplateField HeaderText="Client POC Name">
+           <asp:TemplateField HeaderText="User Wrong Attempt">
              <ItemTemplate>
-                 <asp:Label ID="lblPOCName" runat="server" 
-                 Text='<%# Eval("_clientPOCName") %>' />                              
+                 <asp:Label ID="lblUserWrongAttempt" runat="server" 
+                 Text='<%# Eval("UserWrongAttempt") %>' />                              
              </ItemTemplate>
-           </asp:TemplateField>  
-           <asp:TemplateField HeaderText="ClientPOCEmail">
-             <ItemTemplate>
-                 <asp:Label ID="lblPOCEmail" runat="server" 
-                 Text='<%# Eval("_clientPOCEmail") %>' />                              
-             </ItemTemplate>
-           </asp:TemplateField>
-           <asp:TemplateField HeaderText="ClientPOCPhone">
-             <ItemTemplate>
-                 <asp:Label ID="lblPOCPhone" runat="server" 
-                 Text='<%# Eval("_clientPOCPhone") %>' />                              
-             </ItemTemplate>
-           </asp:TemplateField>   
+           </asp:TemplateField>    
            <asp:TemplateField ShowHeader="true" HeaderText="Select">
              <ItemTemplate>                     
                     <asp:LinkButton ID="LnkSelect" runat="server" Text="Update"                           

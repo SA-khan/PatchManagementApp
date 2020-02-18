@@ -167,13 +167,21 @@ namespace HelloWorld.ProtectedPages
             DatabaseConnectivity dbcon = new DatabaseConnectivity();
             string title = "Demo Title Manual";
             string desc = "Demo desc Manual";
-            TextBox lblpatchNumber = DetailsView1.FindControl("txtPatchHotNumber") as TextBox;
-            TextBox lblClient = DetailsView1.FindControl("lblClientName") as TextBox;
-            int clientID = dbcon.getClientId(lblClient.Text);
-            string patchNumber = lblpatchNumber.Text.ToString();
+            TextBox txtpatchNumber = DetailsView1.FindControl("txtPatchHotNumber") as TextBox;
+            TextBox txtDeployedBy = DetailsView1.FindControl("txtPatchDeployedBy") as TextBox;
+            TextBox txtCreatedDate = DetailsView1.FindControl("txtPatchCreatedDate") as TextBox;
+            TextBox txtDeployedDate = DetailsView1.FindControl("txtPatchDeployedDate") as TextBox;
+            TextBox txtStatus = DetailsView1.FindControl("txtPatchStatus") as TextBox;
+            TextBox txtClient = DetailsView1.FindControl("lblClientName") as TextBox;
+            int clientID = dbcon.getClientId(txtClient.Text);
+            string patchNumber = txtpatchNumber.Text.ToString();
+            string deployedBy = txtDeployedBy.Text.ToString();
+            string createdDate = txtCreatedDate.Text.ToString();
+            string deployedDate = txtDeployedDate.Text.ToString();
+            string status = txtStatus.Text.ToString();
             int productID = Convert.ToInt32(dropProduct.SelectedValue);
             int envType = Convert.ToInt32(dropEnvironment.SelectedValue);
-            int res = dbcon.updatePatcheManually(title, desc, patchNumber, clientID, productID, envType);
+            int res = dbcon.updatePatcheManually(title, desc, patchNumber, deployedBy, createdDate, deployedDate, status, clientID, productID, envType);
             DetailsView1.Visible = false;
         }
 

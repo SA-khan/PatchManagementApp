@@ -306,7 +306,45 @@ namespace HelloWorld.App_Code
 
         //Getting Product List End
 
-        //Dlete 
+
+        //Delete Product 
+
+        public int deleteProduct(int productID)
+        {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spDeleteProduct]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@ProductID", productID);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        //Delete Product End
+
+        //Delete User
+
+        public int deleteUser(int userID) {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spDeleteUser]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@UserID", userID);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        //Delete User End
 
         // Add User
 
@@ -560,7 +598,7 @@ namespace HelloWorld.App_Code
 
         //Update A Patch Manual
 
-        public int updatePatcheManually(string title, string desc, string patchNumber1, int clientID, int productID, int EnvType)
+        public int updatePatcheManually(string title, string desc, string patchNumber1, string deployedBy, string createdDate, string deployedDate, string status, int clientID, int productID, int EnvType)
         {
             int result = 0;
             string latestPatchNumber = String.Empty;
@@ -600,11 +638,11 @@ namespace HelloWorld.App_Code
                 oCmd.Parameters.AddWithValue("@PatchTitle", title);
                 oCmd.Parameters.AddWithValue("@PatchDesc", desc);
                 oCmd.Parameters.AddWithValue("@PatchHotNumber", patchNumber1);
-                oCmd.Parameters.AddWithValue("@PatchDeployedBy", "MSA");
-                oCmd.Parameters.AddWithValue("@PatchCreatedDate", DateTime.Now);
-                oCmd.Parameters.AddWithValue("@PatchDeployedDate", DateTime.Now);
+                oCmd.Parameters.AddWithValue("@PatchDeployedBy", deployedBy);
+                oCmd.Parameters.AddWithValue("@PatchCreatedDate", createdDate);
+                oCmd.Parameters.AddWithValue("@PatchDeployedDate", deployedDate);
                 oCmd.Parameters.AddWithValue("@IsQAPassed", 1);
-                oCmd.Parameters.AddWithValue("@Remarks_Dependencies", "Auto Updater Remarks / Dependencies");
+                oCmd.Parameters.AddWithValue("@Remarks_Dependencies", status);
                 oCmd.Parameters.AddWithValue("@ClientID", clientID);
                 oCmd.Parameters.AddWithValue("@ProductID", productID);
                 oCmd.Parameters.AddWithValue("@EnvType", EnvType);
@@ -719,6 +757,42 @@ namespace HelloWorld.App_Code
             return matchingUser;
         }
         // User Auth End
+
+        //Getting User List
+
+        public List<User> getUserList()
+        {
+            List<User> _userList = new List<User>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spGetAllUser]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        User item = new User();
+                        item.UserID = oReader["USER_ID"].ToString();
+                        item.UserName = oReader["USER_NAME"].ToString();
+                        item.UserRole = oReader["USER_ROLE"].ToString();
+                        item.UserStatus = oReader["USER_STATUS"].ToString();
+                        item.Password = oReader["USER_PASSCODE"].ToString();
+                        item.UserLoginDate = oReader["USER_LOGINDATE"].ToString();
+                        item.UserWrongAttempt = oReader["USER_WRONG_ATTEMPTS"].ToString();
+                        _userList.Add(item);
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            return _userList;
+        }
+
+        //Getting User List End
+
 
         // Environment Settings Start
 
@@ -896,5 +970,6 @@ namespace HelloWorld.App_Code
         }
 
         // End Inserting Data into Environment Table
+
     }
 }
