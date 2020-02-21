@@ -21,6 +21,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Both" height="470px">
     
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
     <ContentTemplate>
@@ -164,8 +166,8 @@
 
     <br/>
         
-    <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="_clientName"
-        style="min-height:300px;"
+    <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="EnvironmentID"
+        style="min-height:300px;padding:5px;" CellPadding="5"
         RowStyle-Height="60px"
         AutoGenerateColumns="false" AllowSorting="true"
         AlternatingRowStyle-BackColor="LightGray" BorderColor="ControlDark" 
@@ -185,54 +187,96 @@
         onrowcancelingedit="GridView1_RowCancelingEdit" 
         onselectedindexchanged="GridView1_SelectedIndexChanged">
          <Columns>     
-         <asp:TemplateField Visible="false" HeaderText="Client ID">
+         <asp:TemplateField Visible="false" HeaderText="Environment ID">
          <ItemTemplate>
                  <asp:Label ID="lblClientID" runat="server" 
-                 Text='<%# Eval("_clientID") %>' />                              
+                 Text='<%# Eval("EnvironmentID") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>                     
     <asp:TemplateField HeaderText="Client Name">
          <ItemTemplate>
                  <asp:Label ID="lblClientName" runat="server" 
-                 Text='<%# Eval("_clientName") %>' />                              
+                 Text='<%# Eval("ClientName") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>             
-           <asp:TemplateField HeaderText="Client Type">
+           <asp:TemplateField HeaderText="Product Name">
          <ItemTemplate>
                  <asp:Label ID="lblClientType" runat="server" 
-                 Text='<%# Eval("_clientType") %>' />                              
+                 Text='<%# Eval("ProductName") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>
-           <asp:TemplateField HeaderText="Total Patches">
+           <asp:TemplateField HeaderText="App Env Type">
              <ItemTemplate>
                  <asp:Label ID="lblClientDesc" runat="server" 
-                 Text='<%# Eval("_clientDesc") %>' />                              
+                 Text='<%# Eval("EnvironmentAppServerEnvType") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>
-           <asp:TemplateField HeaderText="Current Client">
+           <asp:TemplateField HeaderText="DB Env Type">
              <ItemTemplate>
                  <asp:Label ID="lblClientStill" runat="server" 
-                 Text='<%# Eval("_clientStill") %>' />                              
+                 Text='<%# Eval("EnvironmentDBServerEnvType") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>  
-           <asp:TemplateField HeaderText="Client POC Name">
+           <asp:TemplateField HeaderText="App Server Name">
              <ItemTemplate>
                  <asp:Label ID="lblPOCName" runat="server" 
-                 Text='<%# Eval("_clientPOCName") %>' />                              
+                 Text='<%# Eval("EnvironmentAppServerName") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>  
-           <asp:TemplateField HeaderText="ClientPOCEmail">
+           <asp:TemplateField HeaderText="App Server OS">
              <ItemTemplate>
                  <asp:Label ID="lblPOCEmail" runat="server" 
-                 Text='<%# Eval("_clientPOCEmail") %>' />                              
+                 Text='<%# Eval("EnvironmentAppServerOS") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>
-           <asp:TemplateField HeaderText="ClientPOCPhone">
+           <asp:TemplateField HeaderText="App Server OS Build">
              <ItemTemplate>
                  <asp:Label ID="lblPOCPhone" runat="server" 
-                 Text='<%# Eval("_clientPOCPhone") %>' />                              
+                 Text='<%# Eval("EnvironmentAppServerOSBuild") %>' />                              
              </ItemTemplate>
-           </asp:TemplateField>   
+           </asp:TemplateField>
+           <asp:TemplateField HeaderText="App Server Is 32 Bit">
+         <ItemTemplate>
+                 <asp:Label ID="lblENV_AppServerIsX86Version" runat="server" 
+                 Text='<%# Eval("EnvironmentAppServerIsX86Version") %>' />                              
+         </ItemTemplate>
+   </asp:TemplateField>             
+           <asp:TemplateField HeaderText="Product Name">
+         <ItemTemplate>
+                 <asp:Label ID="lblENV_AppServerIsVirtual" runat="server" 
+                 Text='<%# Eval("EnvironmentAppServerIsVirtual") %>' />                              
+         </ItemTemplate>
+   </asp:TemplateField>
+           <asp:TemplateField HeaderText="App Server Processor">
+             <ItemTemplate>
+                 <asp:Label ID="lblENV_AppServerProcessor" runat="server" 
+                 Text='<%# Eval("EnvironmentAppServerProcessor") %>' />                              
+             </ItemTemplate>
+           </asp:TemplateField>
+           <asp:TemplateField HeaderText="App Server Memory">
+             <ItemTemplate>
+                 <asp:Label ID="lblENV_AppServerMemory" runat="server" 
+                 Text='<%# Eval("EnvironmentAppServerMemory") %>' />                              
+             </ItemTemplate>
+           </asp:TemplateField>  
+           <asp:TemplateField HeaderText="Web Browser">
+             <ItemTemplate>
+                 <asp:Label ID="lblENV_AppServerWebBrowser" runat="server" 
+                 Text='<%# Eval("EnvironmentAppServerWebBrowser") %>' />                              
+             </ItemTemplate>
+           </asp:TemplateField>  
+           <asp:TemplateField HeaderText="Web Browser Version">
+             <ItemTemplate>
+                 <asp:Label ID="lblENV_AppServerWebBrowserVersion" runat="server" 
+                 Text='<%# Eval("EnvironmentAppServerWebBrowserVersion") %>' />                              
+             </ItemTemplate>
+           </asp:TemplateField>
+           <asp:TemplateField HeaderText="Working Directory Location">
+             <ItemTemplate>
+                 <asp:Label ID="lblENV_AppServerWorkingDirectoryLocation" runat="server" 
+                 Text='<%# Eval("EnvironmentAppServerWorkingDirectoryLocation") %>' />                              
+             </ItemTemplate>
+           </asp:TemplateField>     
            <asp:TemplateField ShowHeader="true" HeaderText="Select">
              <ItemTemplate>                     
                     <asp:LinkButton ID="LnkSelect" runat="server" Text="Update"                           
@@ -246,6 +290,8 @@
         <%--<asp:AsyncPostBackTrigger ControlID="DetailsView1" EventName="btnCancel_Click" EventName="RowCommand" />--%>
     </Triggers>
         </asp:UpdatePanel>
+
+        </asp:Panel>
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 

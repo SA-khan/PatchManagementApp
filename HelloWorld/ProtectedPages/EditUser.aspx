@@ -26,10 +26,10 @@
                     <asp:TextBox ID="txtUserID" runat="server" Text='<%# Bind("UserID") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtClientID" runat="server" Text='<%# Bind("ClientID") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserID" runat="server" Text='<%# Bind("UserID") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client Name" SortExpression="ClientName">
+            <asp:TemplateField HeaderText="User Name" SortExpression="UserName">
                 <ItemTemplate>
                     <asp:TextBox ID="txtUserName" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
                 </ItemTemplate>
@@ -42,7 +42,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="User Role" SortExpression="UserRole">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>'></asp:TextBox>
+                    <asp:HiddenField ID="hidUserRole" runat="server" Value='<%# Bind("UserRole") %>' />
+                    <asp:DropDownList ID="dropUserRole" runat="server" AppendDataBoundItems="true" DataTextField='<%# Bind("UserRole") %>' DataTextFormatString='<%# Bind("UserRole") %>' DataValueField='<%# Bind("UserRole") %>' >
+                        <asp:ListItem Value="1">1</asp:ListItem>
+                        <asp:ListItem Value="2">2</asp:ListItem>
+                        <asp:ListItem Value="3">3</asp:ListItem>
+                    </asp:DropDownList>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>'></asp:TextBox>
@@ -51,22 +56,33 @@
                     <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="User Status" 
-                SortExpression="UserStatus">
+            <asp:TemplateField HeaderText="User Status" SortExpression="txtUserStatus">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtUserStatus" runat="server" 
-                        Text='<%# Bind("UserStatus") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserStatus" runat="server" Text='<%# Bind("UserStatus") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtUserStatus" runat="server" 
-                        Text='<%# Bind("UserStatus") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserStatus" runat="server" Text='<%# Bind("UserStatus") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtUserStatus" runat="server" 
-                        Text='<%# Bind("UserStatus") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtUserStatus" runat="server" Text='<%# Bind("UserStatus") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="User Login Date" 
+<%--            <asp:TemplateField HeaderText="Current Client" 
+                SortExpression="ClientName">
+                <ItemTemplate>
+                    <asp:CheckBox ID="chkClientStill" runat="server" 
+                        Checked='<%# Bind("ClientStill") %>' />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:CheckBox ID="chkClientStill" runat="server" 
+                        Checked='<%# Bind("ClientStill") %>' />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="chkClientStill" runat="server" 
+                        Checked='<%# Bind("ClientStill") %>' />
+                </InsertItemTemplate>
+            </asp:TemplateField>--%>
+            <asp:TemplateField HeaderText="Login Date" 
                 SortExpression="UserLoginDate">
                 <ItemTemplate>
                     <asp:TextBox ID="txtUserLoginDate" runat="server" 
@@ -81,28 +97,28 @@
                         Text='<%# Bind("UserLoginDate") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="User Wrong Attempts" 
-                SortExpression="ClientName">
+            <asp:TemplateField HeaderText="Total Wrong Attempts" 
+                SortExpression="WrongAttempts">
                 <ItemTemplate>
                     <asp:TextBox ID="txtWrongAttempts" runat="server" 
-                        Text='<%# Bind("UserWrongAttempts") %>'></asp:TextBox>
+                        Text='<%# Bind("UserWrongAttempt") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtWrongAttempts" runat="server" 
-                        Text='<%# Bind("UserWrongAttempts") %>'></asp:TextBox>
+                        Text='<%# Bind("UserWrongAttempt") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="txtWrongAttempts" runat="server" 
-                        Text='<%# Bind("UserWrongAttempts") %>'></asp:TextBox>
+                        Text='<%# Bind("UserWrongAttempt") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False" ItemStyle-HorizontalAlign="Right">
                 <ItemTemplate>
-                   <asp:Button ID="btnSave" runat="server" CausesValidation="false" 
-                        Text="Save" onclick="btnSave_Click"  />
+                       <asp:Button ID="btnSave" runat="server" CausesValidation="false" 
+                        Text="Save" onclick="btnSave_Click" />
                     <asp:Button ID="btnCancel" runat="server" 
         CssClass="accordionButton" CausesValidation="false" 
-                        Text="Cancel" onclick="btnCancel_Click"  />
+                        Text="Cancel" onclick="btnCancel_Click" />
                 </ItemTemplate>
 
 <ItemStyle HorizontalAlign="Right"></ItemStyle>
@@ -135,45 +151,44 @@
         onrowupdating="GridView1_RowUpdating" 
         onpageindexchanging="GridView1_PageIndexChanging" 
         onrowcancelingedit="GridView1_RowCancelingEdit" 
-        onselectedindexchanged="GridView1_SelectedIndexChanged" 
-            onrowdatabound="GridView1_RowDataBound">
+        onselectedindexchanged="GridView1_SelectedIndexChanged">
          <Columns>     
-         <asp:TemplateField Visible="false" HeaderText="USER ID">
+         <asp:TemplateField Visible="false" HeaderText="ID">
          <ItemTemplate>
-                 <asp:Label ID="lblUserName" runat="server" 
+                 <asp:Label ID="lblUserID" runat="server" 
                  Text='<%# Eval("UserID") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>                     
-    <asp:TemplateField HeaderText="User Name">
+    <asp:TemplateField HeaderText="Name">
          <ItemTemplate>
                  <asp:Label ID="lblUserName" runat="server" 
                  Text='<%# Eval("UserName") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>             
-           <asp:TemplateField HeaderText="User Role">
+           <asp:TemplateField HeaderText="Desc">
          <ItemTemplate>
                  <asp:Label ID="lblUserRole" runat="server" 
                  Text='<%# Eval("UserRole") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>
-           <asp:TemplateField HeaderText="User Status">
+           <asp:TemplateField HeaderText="Version">
              <ItemTemplate>
                  <asp:Label ID="lblUserStatus" runat="server" 
                  Text='<%# Eval("UserStatus") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>
-           <asp:TemplateField HeaderText="User Login Date">
+           <asp:TemplateField HeaderText="Category">
              <ItemTemplate>
                  <asp:Label ID="lblUserLoginDate" runat="server" 
                  Text='<%# Eval("UserLoginDate") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>  
-           <asp:TemplateField HeaderText="User Wrong Attempt">
+           <asp:TemplateField HeaderText="Wrong Attempts">
              <ItemTemplate>
                  <asp:Label ID="lblUserWrongAttempt" runat="server" 
                  Text='<%# Eval("UserWrongAttempt") %>' />                              
              </ItemTemplate>
-           </asp:TemplateField>    
+           </asp:TemplateField>  
            <asp:TemplateField ShowHeader="true" HeaderText="Select">
              <ItemTemplate>                     
                     <asp:LinkButton ID="LnkSelect" runat="server" Text="Update"                           

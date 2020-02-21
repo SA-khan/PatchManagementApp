@@ -28,7 +28,7 @@ namespace HelloWorld
             int environment = Convert.ToInt32(DropEnvType.Text);
             int client = Convert.ToInt32(DropClientID.Text);
             //List<ClientEnvironment> latestPatchOfClient = dbcon.getClientEnvironmentInfo(product == 0 ? 1 : product);
-            List<ClientEnvironment> latestPatchOfClient = dbcon.getClientEnvironmentInfo(product, environment, client);
+            List<HelloWorld.App_Code.Environment> latestPatchOfClient = dbcon.getClientEnvironmentInfo(product, environment, client);
             //Debug.WriteLine("Records Count: " + latestPatchOfClient.Count);
             int count = 0;
             int total = latestPatchOfClient.Count;
@@ -652,7 +652,7 @@ namespace HelloWorld
             int environment = Convert.ToInt32(DropEnvType.Text);
             int client = Convert.ToInt32(DropClientID.Text);
             //List<ClientEnvironment> latestPatchOfClient = dbcon.getClientEnvironmentInfo(product == 0 ? 1 : product);
-            List<ClientEnvironment> latestPatchOfClient = dbcon.getClientEnvironmentInfo(product, environment, client);
+            List<HelloWorld.App_Code.Environment> latestPatchOfClient = dbcon.getClientEnvironmentInfo(product, environment, client);
             //Debug.WriteLine("Records Count: " + latestPatchOfClient.Count);
             int count = 0;
             int total = latestPatchOfClient.Count;

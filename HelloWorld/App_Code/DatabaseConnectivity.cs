@@ -793,12 +793,98 @@ namespace HelloWorld.App_Code
 
         //Getting User List End
 
+        //Setting User
+
+        public int setAUser(int userID, string userName, string userRole, string userStatus, string userLoginDate, string wrongAttempts) {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spUpdateUser]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@UserID", userID);
+                oCmd.Parameters.AddWithValue("@Username", userName);
+                oCmd.Parameters.AddWithValue("@UserRole", userRole);
+                oCmd.Parameters.AddWithValue("@UserStatus", userStatus);
+                oCmd.Parameters.AddWithValue("@UserLoginDate", userLoginDate);
+                oCmd.Parameters.AddWithValue("@UserWrongAttempts", wrongAttempts);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        //Setting User End
+
+        // Get All Environments
+
+        public List<Environment> getAllEnvironments()
+        {
+            List<Environment> _envList = new List<Environment>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spGetAllEnvironment]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        Environment item = new Environment();
+                        item.EnvironmentID = oReader["ENV_ID"].ToString();
+                        item.ClientName = oReader["ENV_Client_ID"].ToString();
+                        item.ProductName = oReader["ENV_Product_ID"].ToString();
+                        item.EnvironmentAppServerEnvType = oReader["ENV_AppServerEnvironmentType"].ToString();
+                        item.EnvironmentDBServerEnvType = oReader["ENV_DBServerEnvironmentType"].ToString();
+                        item.EnvironmentAppServerName = oReader["ENV_AppServerName"].ToString();
+                        item.EnvironmentAppServerOS = oReader["ENV_AppServerOS"].ToString();
+                        item.EnvironmentAppServerOSBuild = oReader["ENV_AppServerOSBuild"].ToString();
+                        item.EnvironmentAppServerIsX86Version = oReader["ENV_AppServerIsX86Version"].ToString();
+                        item.EnvironmentAppServerIsVirtual = oReader["ENV_AppServerIsVirtual"].ToString();
+                        item.EnvironmentAppServerProcessor = oReader["ENV_AppServerProcessor"].ToString();
+                        item.EnvironmentAppServerMemory = oReader["ENV_AppServerMemory"].ToString();
+                        item.EnvironmentAppServerWebBrowser = oReader["ENV_AppServerWebBrowser"].ToString();
+                        item.EnvironmentAppServerWebBrowserVersion = oReader["ENV_AppServerWebBrowserVersion"].ToString();
+
+                        item.EnvironmentAppServerWorkingDirectoryLocation = oReader["ENV_AppServerWorkingDirectoryLocation"].ToString();
+                        item.EnvironmentAppHyperLink = oReader["ENV_AppHyperLink"].ToString();
+                        item.EnvironmentAppServerIP= oReader["ENV_AppServerIP"].ToString();
+                        item.EnvironmentAppServerPort = oReader["ENV_AppServerPort"].ToString();
+                        item.EnvironmentAppServerDependency = oReader["ENV_AppServerDependency"].ToString();
+                        item.EnvironmentDBServerName = oReader["ENV_DBServerName"].ToString();
+                        item.EnvironmentDBServerOS = oReader["ENV_DBServerOS"].ToString();
+                        item.EnvironmentDBServerOSBuild = oReader["ENV_DBServerOSBuild"].ToString();
+                        item.EnvironmentDBServerIsX86Version = oReader["ENV_DBServerIsX86Version"].ToString();
+                        item.EnvironmentDBServerIsVirtual = oReader["ENV_DBServerIsVirtual"].ToString();
+                        item.EnvironmentDBServerProcessor = oReader["ENV_DBServerProcessor"].ToString();
+                        item.EnvironmentDBServerMemory = oReader["ENV_DBServerMemory"].ToString();
+                        item.EnvironmentDBServerDirectoryLocation = oReader["ENV_DBServerDirectoryLocation"].ToString();
+                        item.EnvironmentDBMDFFileLocation = oReader["ENV_DBMDFFileLocation"].ToString();
+                        item.EnvironmentDBMDFFileSize= oReader["ENV_DBMDFFileSize"].ToString();
+                        item.EnvironmentDBLDFFileLocation = oReader["ENV_DBLDFFileLocation"].ToString();
+                        item.EnvironmentDBLDFFileSize = oReader["ENV_DBLDFFileSize"].ToString();
+                        item.EnvironmentEnvDBServerIP = oReader["ENV_DBServerIP"].ToString();
+                        item.EnvironmentDBServerPort = oReader["ENV_DBServerPort"].ToString();
+                        item.EnvironmentDBServerDependency = oReader["ENV_DBServerDependency"].ToString();
+                        _envList.Add(item);
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            return _envList;
+        }
+
+        // Get All Environments End
 
         // Environment Settings Start
 
-        public List<ClientEnvironment> getClientEnvironmentInfo(int ProductID, int EnvType, int ClientID)
+        public List<Environment> getClientEnvironmentInfo(int ProductID, int EnvType, int ClientID)
         {
-            List<ClientEnvironment> matchingPatch = new List<ClientEnvironment>();
+            List<Environment> matchingPatch = new List<Environment>();
             using (SqlConnection myConnection = new SqlConnection(con))
             {
                 string oString = "[dbo].[spGetClientEnvironmentByProduct]";
@@ -813,7 +899,7 @@ namespace HelloWorld.App_Code
                 {
                     while (oReader.Read())
                     {
-                        ClientEnvironment item = new ClientEnvironment();
+                        Environment item = new Environment();
                         item.ClientName = oReader["ClientName"].ToString();
                         item.ProductName = oReader["ENV_Product_ID"].ToString();
                         item.EnvironmentAppServerEnvType = oReader["ENV_AppServerEnvironmentType"].ToString();

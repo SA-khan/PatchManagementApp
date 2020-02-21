@@ -47,7 +47,7 @@ namespace HelloWorld.ProtectedPages
         private void _BindService()
         {
             DatabaseConnectivity dbcon = new DatabaseConnectivity();
-            List<Client> service = dbcon.getClientList();
+            List<HelloWorld.App_Code.Environment> service = dbcon.getAllEnvironments();
             if (service.Count > 0 && service != null)
             {
                 GridView1.DataSource = service;

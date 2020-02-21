@@ -5,8 +5,9 @@ using System.Web;
 
 namespace HelloWorld.App_Code
 {
-    public class ClientEnvironment
+    public class Environment
     {
+        public string EnvironmentID { get; set; }
         public string EnvironmentName { get; set; }
         public string ClientName { get; set; }
         public string ProductName { get; set; }
