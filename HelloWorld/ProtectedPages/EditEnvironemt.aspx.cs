@@ -59,28 +59,82 @@ namespace HelloWorld.ProtectedPages
         {
             DetailsView1.Visible = true;
             //DetailsView1.Style.Add("display", "block");
-            string clientID = (GridView1.SelectedRow.FindControl("lblClientID") as Label).Text;
+            string envID = (GridView1.SelectedRow.FindControl("lblEnvID") as Label).Text;
             string clientName = (GridView1.SelectedRow.FindControl("lblClientName") as Label).Text;
-            string clientType = (GridView1.SelectedRow.FindControl("lblClientType") as Label).Text;
-            string clientDesc = (GridView1.SelectedRow.FindControl("lblClientDesc") as Label).Text;
-            bool clientStill = Convert.ToBoolean((GridView1.SelectedRow.FindControl("lblClientStill") as Label).Text);
-            string clientPOCName = (GridView1.SelectedRow.FindControl("lblPOCName") as Label).Text;
-            string clientPOCEmail = (GridView1.SelectedRow.FindControl("lblPOCEmail") as Label).Text;
-            string clientPOCPhone = (GridView1.SelectedRow.FindControl("lblPOCPhone") as Label).Text;
+            string productName = (GridView1.SelectedRow.FindControl("lblProductName") as Label).Text;
+            string AppServerEnvType = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerEnvType") as Label).Text;
+            string DBServerEnvType = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerEnvType") as Label).Text;
+            string AppServerName = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerName") as Label).Text;
+            string AppServerOS = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerOS") as Label).Text;
+            string AppServerOSBuild = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerOSBuild") as Label).Text;
+            string AppServerIsX86Version = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerIsX86Version") as Label).Text;
+            string AppServerIsVirtual = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerIsVirtual") as Label).Text;
+            string AppServerProcessor = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerProcessor") as Label).Text;
+            string AppServerMemory = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerMemory") as Label).Text;
+            string AppServerWebBrowser = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerWebBrowser") as Label).Text;
+            string AppServerWebBrowserVersion = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerWebBrowserVersion") as Label).Text;
+            string AppServerWorkingDirectoryLocation = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerWorkingDirectoryLocation") as Label).Text;
+            string AppHyperLink = (GridView1.SelectedRow.FindControl("lblEnvironmentAppHyperLink") as Label).Text;
+            string AppServerIP = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerIP") as Label).Text;
+            string AppServerPort = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerPort") as Label).Text;
+            string AppServerDependency = (GridView1.SelectedRow.FindControl("lblEnvironmentAppServerDependency") as Label).Text;
+            //-----------------------------------------------------------------------------------------------
+            string DBServerName = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerName") as Label).Text;
+            string DBServerIsX86Version = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerIsX86Version") as Label).Text;
+            string DBServerIsVirtual = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerIsVirtual") as Label).Text;
+            string DBServerMemory = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerMemory") as Label).Text;
+            string DBServerProcessor = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerProcessor") as Label).Text;
+            string DBServerOS = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerOS") as Label).Text;
+            string DBServerOSBuild = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerOSBuild") as Label).Text;
+            string DBServerDirectoryLocation = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerDirectoryLocation") as Label).Text;
+            string DBMDFFileLocation = (GridView1.SelectedRow.FindControl("lblEnvironmentDBMDFFileLocation") as Label).Text;
+            string DBMDFFileSize = (GridView1.SelectedRow.FindControl("lblEnvironmentDBMDFFileSize") as Label).Text;
+            string DBLDFFileLocation = (GridView1.SelectedRow.FindControl("lblEnvironmentDBLDFFileLocation") as Label).Text;
+            string DBLDFFileSize = (GridView1.SelectedRow.FindControl("lblEnvironmentDBLDFFileSize") as Label).Text;
+            string DBServerIP = (GridView1.SelectedRow.FindControl("lblEnvironmentEnvDBServerIP") as Label).Text;
+            string DBServerPort = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerPort") as Label).Text;
+            string DBServerDependency = (GridView1.SelectedRow.FindControl("lblEnvironmentDBServerDependency") as Label).Text;
+
             Debug.WriteLine(GridView1.SelectedRow.Cells[0].Text);
             Debug.WriteLine(GridView1.SelectedRow.Cells[1].Text);
             Debug.WriteLine(GridView1.SelectedRow.Cells[2].Text);
             DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[8] { 
-                    new DataColumn("ClientID", typeof(string)),
+            dt.Columns.AddRange(new DataColumn[34] { 
+                    new DataColumn("EnvironmentID", typeof(string)),
                     new DataColumn("ClientName", typeof(string)),
-                    new DataColumn("ClientType", typeof(string)),
-                    new DataColumn("ClientDesc",typeof(string)), 
-                    new DataColumn("ClientStill",typeof(bool)),
-                    new DataColumn("POCName",typeof(string)),
-                    new DataColumn("POCEmail",typeof(string)),
-                    new DataColumn("POCPhone",typeof(string)) });
-            dt.Rows.Add(clientID, clientName, clientType, clientDesc, clientStill, clientPOCName, clientPOCEmail, clientPOCPhone);
+                    new DataColumn("ProductName", typeof(string)),
+                    new DataColumn("AppServerEnvType",typeof(string)), 
+                    new DataColumn("DBServerEnvType",typeof(string)),
+                    new DataColumn("AppServerName",typeof(string)),
+                    new DataColumn("AppServerOS",typeof(string)),
+                    new DataColumn("AppServerOSBuild", typeof(string)),
+                    new DataColumn("AppServerIsX86Version", typeof(string)),
+                    new DataColumn("AppServerIsVirtual", typeof(string)),
+                    new DataColumn("AppServerProcessor",typeof(string)), 
+                    new DataColumn("AppServerMemory",typeof(string)),
+                    new DataColumn("AppServerWebBrowser",typeof(string)),
+                    new DataColumn("AppServerWebBrowserVersion",typeof(string)),
+                    new DataColumn("AppServerWorkingDirectoryLocation", typeof(string)),
+                    new DataColumn("AppHyperLink", typeof(string)),
+                    new DataColumn("AppServerIP", typeof(string)),
+                    new DataColumn("AppServerPort",typeof(string)), 
+                    new DataColumn("AppServerDependency",typeof(string)),
+                    new DataColumn("DBServerName",typeof(string)),
+                    new DataColumn("DBServerIsX86Version",typeof(string)),
+                    new DataColumn("DBServerIsVirtual", typeof(string)),
+                    new DataColumn("DBServerMemory", typeof(string)),
+                    new DataColumn("DBServerProcessor", typeof(string)),
+                    new DataColumn("DBServerOS",typeof(string)), 
+                    new DataColumn("DBServerOSBuild",typeof(string)),
+                    new DataColumn("DBServerDirectoryLocation",typeof(string)),
+                    new DataColumn("DBMDFFileLocation",typeof(string)),
+                    new DataColumn("DBMDFFileSize", typeof(string)),
+                    new DataColumn("DBLDFFileLocation",typeof(string)), 
+                    new DataColumn("DBLDFFileSize",typeof(string)),
+                    new DataColumn("DBServerIP",typeof(string)),
+                    new DataColumn("DBServerPort",typeof(string)),
+                    new DataColumn("DBServerDependency",typeof(string)) });
+            dt.Rows.Add(envID, clientName, productName, AppServerEnvType, DBServerEnvType, AppServerName, AppServerOS, AppServerOSBuild, AppServerIsX86Version, AppServerIsVirtual, AppServerProcessor, AppServerMemory, AppServerWebBrowser, AppServerWebBrowserVersion, AppServerWorkingDirectoryLocation, AppHyperLink, AppServerIP, AppServerPort, AppServerDependency, DBServerName, DBServerIsX86Version, DBServerIsVirtual, DBServerMemory, DBServerProcessor, DBServerOS, DBServerOSBuild, DBServerDirectoryLocation, DBMDFFileLocation, DBMDFFileSize, DBLDFFileLocation, DBLDFFileSize, DBServerIP, DBServerPort, DBServerDependency);
             //DetailsView1.m
             DetailsView1.DataSource = dt;
             DetailsView1.DataBind();
@@ -196,9 +250,9 @@ namespace HelloWorld.ProtectedPages
 
         protected void DetailsView1_DataBound(object sender, EventArgs e)
         {
-            HiddenField hidType = DetailsView1.FindControl("hidClientType") as HiddenField;
-            DropDownList dropType = DetailsView1.FindControl("dropClientType") as DropDownList;
-            dropType.SelectedValue = hidType.Value;
+            //HiddenField hidType = DetailsView1.FindControl("hidClientType") as HiddenField;
+            //DropDownList dropType = DetailsView1.FindControl("dropClientType") as DropDownList;
+            //dropType.SelectedValue = hidType.Value;
         }
     }
 }
