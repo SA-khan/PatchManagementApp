@@ -10,15 +10,15 @@
     <file relUrl="ProtectedPages/DeleteEnvironemt.aspx" publishTime="02/18/2020 13:59:23" />
     <file relUrl="ProtectedPages/EditProduct.aspx" publishTime="02/18/2020 14:05:06" />
     <file relUrl="Test.aspx" publishTime="02/18/2020 14:13:39" />
+    <file relUrl="Scripts/jquery-3.4.1.min.js" publishTime="02/13/2020 13:44:40" />
     <file relUrl="ProtectedPages/DeleteRelease.aspx" publishTime="02/17/2020 12:18:53" />
     <file relUrl="Account/Register.aspx" publishTime="12/24/2019 16:41:31" />
     <file relUrl="Scripts/jszip.js" publishTime="02/13/2020 13:45:06" />
     <file relUrl="ProtectedPages/DeleteEnvironemtType.aspx" publishTime="02/18/2020 14:02:44" />
     <file relUrl="Scripts/vectormap-data/eurasia.js" publishTime="02/13/2020 13:45:07" />
     <file relUrl="Content/dx.carmine.compact.css" publishTime="02/13/2020 13:45:14" />
-    <file relUrl="ProtectedPages/EditUser.aspx" publishTime="02/18/2020 18:34:46" />
-    <file relUrl="Scripts/dx.viz-web.js" publishTime="02/13/2020 13:45:09" />
     <file relUrl="Content/dx.material.teal.dark.compact.css" publishTime="02/13/2020 13:45:13" />
+    <file relUrl="Scripts/dx.viz-web.js" publishTime="02/13/2020 13:45:09" />
     <file relUrl="Scripts/devextreme-localization/dx.messages.de.js" publishTime="02/13/2020 13:45:12" />
     <file relUrl="Content/dx.darkmoon.css" publishTime="02/13/2020 13:45:14" />
     <file relUrl="ProtectedPages/AddEnvironmentType.aspx" publishTime="02/03/2020 11:15:19" />
@@ -26,28 +26,28 @@
     <file relUrl="Scripts/devextreme-localization/dx.messages.ru.js" publishTime="02/13/2020 13:45:11" />
     <file relUrl="Scripts/angular-chart.js" publishTime="01/30/2020 13:59:25" />
     <file relUrl="Content/dx.material.orange.light.css" publishTime="02/13/2020 13:45:13" />
-    <file relUrl="Content/dx.material.lime.dark.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="References.aspx" publishTime="02/18/2020 14:13:39" />
     <file relUrl="ProtectedPages/AddUser.aspx" publishTime="02/18/2020 14:04:04" />
     <file relUrl="Account/Web.config" publishTime="12/24/2019 16:41:31" />
     <file relUrl="SiteLogout.Master" publishTime="02/18/2020 17:10:29" />
-    <file relUrl="ProtectedPages/AddClient.aspx" publishTime="02/18/2020 13:42:51" />
+    <file relUrl="ProtectedPages/AddClient.aspx" publishTime="02/25/2020 16:54:49" />
     <file relUrl="Scripts/devextreme-localization/dx.messages.ja.js" publishTime="02/13/2020 13:45:11" />
     <file relUrl="Scripts/dx-diagram.js" publishTime="02/13/2020 13:45:08" />
     <file relUrl="ProtectedPages/AddEnvironment.aspx" publishTime="02/18/2020 13:59:23" />
     <file relUrl="Web.config" publishTime="02/20/2020 11:27:21" />
-    <file relUrl="ProtectedPages/EditClient.aspx" publishTime="02/18/2020 13:46:06" />
+    <file relUrl="ProtectedPages/EditClient.aspx" publishTime="02/25/2020 17:14:42" />
     <file relUrl="ProtectedPages/AddProduct.aspx" publishTime="02/03/2020 14:15:08" />
     <file relUrl="Content/dx-gantt.css" publishTime="02/13/2020 13:45:12" />
     <file relUrl="Content/dx.light.compact.css" publishTime="02/13/2020 13:45:14" />
     <file relUrl="Scripts/dx.all.js" publishTime="02/13/2020 13:45:10" />
     <file relUrl="Content/dx.material.orange.light.compact.css" publishTime="02/13/2020 13:45:13" />
+    <file relUrl="Content/dx.material.blue.light.compact.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="EnvironmentInfo.aspx" publishTime="02/18/2020 14:15:04" />
     <file relUrl="Content/dx.dark.css" publishTime="02/13/2020 13:45:14" />
-    <file relUrl="Content/dx.material.blue.light.compact.css" publishTime="02/13/2020 13:45:13" />
+    <file relUrl="ProtectedPages/EditUser.aspx" publishTime="02/21/2020 16:38:14" />
     <file relUrl="ProtectedPages/Dashboard.aspx" publishTime="02/18/2020 13:00:45" />
     <file relUrl="Styles/Site.css" publishTime="12/26/2019 15:43:33" />
-    <file relUrl="Scripts/jquery-3.4.1.min.js" publishTime="02/13/2020 13:44:40" />
+    <file relUrl="Scripts/cldr/unresolved.js" publishTime="02/13/2020 13:45:06" />
     <file relUrl="bin/DevExpress.AgMenu.v8.2.dll" publishTime="02/13/2020 13:45:42" />
     <file relUrl="Scripts/devextreme-localization/dx.messages.en.js" publishTime="02/13/2020 13:45:11" />
     <file relUrl="Scripts/vectormap-utils/dx.vectormaputils.node.js" publishTime="02/13/2020 13:45:07" />
@@ -61,7 +61,7 @@
     <file relUrl="Content/dx.contrast.css" publishTime="02/13/2020 13:45:14" />
     <file relUrl="Content/dx.material.lime.light.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="Scripts/jquery-3.4.1.slim.js" publishTime="02/13/2020 13:44:40" />
-    <file relUrl="Content/dx.light.css" publishTime="02/13/2020 13:45:13" />
+    <file relUrl="Global.asax" publishTime="12/24/2019 16:41:31" />
     <file relUrl="Scripts/vectormap-data/canada.js" publishTime="02/13/2020 13:45:07" />
     <file relUrl="Content/dx.material.orange.dark.compact.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="Content/dx.material.purple.light.compact.css" publishTime="02/13/2020 13:45:13" />
@@ -69,11 +69,11 @@
     <file relUrl="ProtectedPages/EditRelease.aspx" publishTime="02/18/2020 13:49:42" />
     <file relUrl="packages.config" publishTime="02/13/2020 13:45:45" />
     <file relUrl="Scripts/vectormap-utils/dx.vectormaputils.js" publishTime="02/13/2020 13:45:07" />
-    <file relUrl="Global.asax" publishTime="12/24/2019 16:41:31" />
     <file relUrl="ProtectedPages/DeleteProduct.aspx" publishTime="02/18/2020 13:38:59" />
     <file relUrl="Content/dx.material.teal.light.css" publishTime="02/13/2020 13:45:12" />
     <file relUrl="Content/dx.darkmoon.compact.css" publishTime="02/13/2020 13:45:14" />
     <file relUrl="Logout.aspx" publishTime="12/26/2019 15:21:13" />
+    <file relUrl="Content/dx.light.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="Scripts/jszip.min.js" publishTime="02/13/2020 13:45:06" />
     <file relUrl="Scripts/globalize.js" publishTime="02/13/2020 13:45:06" />
     <file relUrl="Images/loginBG.jpg" publishTime="01/17/2020 15:24:02" />
@@ -85,7 +85,7 @@
     <file relUrl="Live.aspx" publishTime="02/18/2020 14:13:39" />
     <file relUrl="Scripts/dx.all.debug.js" publishTime="02/13/2020 13:45:11" />
     <file relUrl="Content/dx.greenmist.css" publishTime="02/13/2020 13:45:14" />
-    <file relUrl="ProtectedPages/EditEnvironemt.aspx" publishTime="02/18/2020 14:00:46" />
+    <file relUrl="ProtectedPages/EditEnvironemt.aspx" publishTime="02/25/2020 16:35:08" />
     <file relUrl="Content/dx.material.purple.dark.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="Content/dx-gantt.min.css" publishTime="02/13/2020 13:45:12" />
     <file relUrl="Content/dx.material.blue.dark.css" publishTime="02/13/2020 13:45:13" />
@@ -93,8 +93,8 @@
     <file relUrl="Scripts/dx-diagram.min.js" publishTime="02/13/2020 13:45:08" />
     <file relUrl="Content/dx.darkviolet.compact.css" publishTime="02/13/2020 13:45:14" />
     <file relUrl="Scripts/jquery-3.4.1.js" publishTime="02/13/2020 13:44:40" />
-    <file relUrl="bin/HelloWorld.pdb" publishTime="02/20/2020 11:28:50" />
-    <file relUrl="ProtectedPages/AddRelease.aspx" publishTime="02/18/2020 13:48:56" />
+    <file relUrl="bin/HelloWorld.pdb" publishTime="02/25/2020 17:36:41" />
+    <file relUrl="ProtectedPages/AddRelease.aspx" publishTime="02/25/2020 16:42:25" />
     <file relUrl="web.sitemap" publishTime="02/18/2020 15:19:59" />
     <file relUrl="Content/dx.material.teal.light.compact.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="Scripts/dx.web.js" publishTime="02/13/2020 13:45:08" />
@@ -123,23 +123,23 @@
     <file relUrl="Scripts/vectormap-data/world.js" publishTime="02/13/2020 13:45:07" />
     <file relUrl="Scripts/dx.viz.js" publishTime="02/13/2020 13:45:10" />
     <file relUrl="Content/Chart.min.css" publishTime="01/30/2020 13:58:58" />
-    <file relUrl="Scripts/globalize/unit.js" publishTime="02/13/2020 13:45:06" />
+    <file relUrl="Content/dx.material.lime.dark.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="Scripts/dx.viz-web.debug.js" publishTime="02/13/2020 13:45:09" />
     <file relUrl="Content/dx.greenmist.compact.css" publishTime="02/13/2020 13:45:14" />
     <file relUrl="Scripts/vectormap-data/usa.js" publishTime="02/13/2020 13:45:07" />
     <file relUrl="Scripts/globalize/relative-time.js" publishTime="02/13/2020 13:45:06" />
     <file relUrl="Images/icon.ico" publishTime="02/18/2020 14:10:10" />
-    <file relUrl="Scripts/cldr/unresolved.js" publishTime="02/13/2020 13:45:06" />
     <file relUrl="Login.aspx" publishTime="02/18/2020 14:13:39" />
     <file relUrl="Content/dx.darkviolet.css" publishTime="02/13/2020 13:45:14" />
     <file relUrl="Scripts/globalize/plural.js" publishTime="02/13/2020 13:45:06" />
     <file relUrl="Content/dx.ios7.default.css" publishTime="02/13/2020 13:45:14" />
     <file relUrl="Content/dx.material.orange.dark.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="Scripts/dx.web.debug.js" publishTime="02/13/2020 13:45:08" />
+    <file relUrl="Scripts/globalize/unit.js" publishTime="02/13/2020 13:45:06" />
     <file relUrl="Content/dx.material.lime.dark.compact.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="Scripts/vectormap-data/europe.js" publishTime="02/13/2020 13:45:07" />
     <file relUrl="bin/System.Web.Silverlight.dll" publishTime="02/13/2020 13:45:42" />
-    <file relUrl="bin/HelloWorld.dll" publishTime="02/20/2020 11:28:50" />
+    <file relUrl="bin/HelloWorld.dll" publishTime="02/25/2020 17:36:42" />
     <file relUrl="Content/dx.material.purple.light.css" publishTime="02/13/2020 13:45:13" />
     <file relUrl="Content/dx-diagram.css" publishTime="02/13/2020 13:45:12" />
     <file relUrl="ProtectedPages/EditEnvironemtType.aspx" publishTime="02/18/2020 14:02:28" />
