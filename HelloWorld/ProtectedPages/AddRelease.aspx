@@ -112,10 +112,12 @@
                 <asp:TableCell>
                     <%--<asp:TextBox ID="txtPatchClientName" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" placeholder="Enter Patch Client Name Here"></asp:TextBox>--%>
                     <asp:DropDownList ID="dropPatchClientName" runat="server" BackColor="ButtonFace"
-        Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black"
+        Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" 
+            Font-Names="Arial" ForeColor="black"
         DataSourceID="SqlDataSource2" DataTextField="ClientName" style="text-align=center"
         DataValueField="ClientID" AutoPostBack="true" ViewStateMode="Enabled" 
-        AppendDataBoundItems="True">
+        AppendDataBoundItems="True" 
+            onselectedindexchanged="dropPatchClientName_SelectedIndexChanged">
         <asp:ListItem>Select..</asp:ListItem>
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
@@ -126,17 +128,19 @@
                     <asp:RequiredFieldValidator ID="ReqPatchClientName" runat="server" InitialValue="Select.." ControlToValidate="dropPatchClientName"  ErrorMessage="Please Select Client Name" Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow ID="rowProductName" runat="server">
+            <asp:TableRow ID="rowProductName" runat="server" Visible="false">
                 <asp:TableCell>
                     <asp:Label ID="lblProductName" runat="server" Text="Product Name" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <%--<asp:TextBox ID="txtProductName" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" TextMode="Email" placeholder="Enter Product Name Here"></asp:TextBox>--%>
                     <asp:DropDownList ID="dropProductName" runat="server" BackColor="ButtonFace"
-        Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black"
+        Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" 
+            Font-Names="Arial" ForeColor="black"
         DataSourceID="SqlDataSource1" DataTextField="ProductName" style="text-align=center"
         DataValueField="ProductID" AutoPostBack="true" ViewStateMode="Enabled" 
-        AppendDataBoundItems="True">
+        AppendDataBoundItems="True" 
+            onselectedindexchanged="dropProductName_SelectedIndexChanged">
         <asp:ListItem>Select..</asp:ListItem>
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
@@ -147,7 +151,7 @@
                     <asp:RequiredFieldValidator ID="ReqProductName" runat="server" InitialValue="Select.." ControlToValidate="dropProductName" Display="Dynamic" EnableClientScript="true" Text="(Required)" ForeColor="Red" Font-Bold="true" ErrorMessage="Please Select Product Name"></asp:RequiredFieldValidator>
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow ID="rowEnvironmentType" runat="server">
+            <asp:TableRow ID="rowEnvironmentType" runat="server" Visible="false">
                 <asp:TableCell>
                     <asp:Label ID="lblEnvironmentType" runat="server" Text="Environment Type" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
@@ -160,7 +164,8 @@
         AppendDataBoundItems="True">
         <asp:ListItem>Select..</asp:ListItem>
         </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT E.ENV_ID,CONCAT('Client: ',C.ClientName,', Product: ',P.ProductName,', Environment: ',ET.EnvTitle, '') As Env_Title from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType)"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"></asp:SqlDataSource>
+        <%--SelectCommand="SELECT E.ENV_ID,CONCAT('Client: ',C.ClientName,', Product: ',P.ProductName,', Environment: ',ET.EnvTitle, '') As Env_Title from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType)"--%>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:RequiredFieldValidator ID="ReqEnvironmentType" runat="server" ControlToValidate="dropEnvironmentType" ErrorMessage="Please Select Environment Type" InitialValue="Select.." Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
@@ -182,5 +187,7 @@
         <br />
         <br />
     </asp:Panel>
+
+    
 
 </asp:Content>

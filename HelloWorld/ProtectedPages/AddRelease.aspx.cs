@@ -14,6 +14,8 @@ namespace HelloWorld.ProtectedPages
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            //if(dropPatchClientName.SelectedIndex != 0)
+            
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
@@ -71,6 +73,44 @@ namespace HelloWorld.ProtectedPages
             //Debug.WriteLine("Donot Write Here!!!");
             //string jsMethodName = "<script>alert(1)</script>";
             //ScriptManager.RegisterClientScriptBlock(this, typeof(string), "uniqueKey", jsMethodName, true);
+        }
+
+        protected void dropPatchClientName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dropPatchClientName.SelectedIndex != 0)
+                {
+                    rowProductName.Visible = true;
+                    //dropProductName.Items.Clear();
+                    SqlDataSource1.SelectCommand = "SELECT P.ProductID,P.ProductName from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType) WHERE C.ClientID = " + dropPatchClientName.SelectedValue.ToString();
+                    if (dropProductName.SelectedIndex != 0)
+                    {
+                        //dropEnvironmentType.Items.Clear();
+                        SqlDataSource3.SelectCommand = "SELECT E.ENV_ID As [ENV_ID],ET.EnvTitle As [Env_Title] from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType) WHERE C.ClientID = " + dropPatchClientName.SelectedValue.ToString() + " AND P.ProductID = " + dropProductName.SelectedValue.ToString() + ";";
+                    }
+                }
+
+            }
+            catch (Exception) { }
+        }
+
+        protected void dropProductName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try {
+                if (dropProductName.SelectedIndex != 0 && dropPatchClientName.SelectedIndex != 0)
+                {
+                    rowEnvironmentType.Visible = true;
+                    //dropProductName.Items.Clear();
+                    //SqlDataSource1.SelectCommand = "SELECT P.ProductID,P.ProductName from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType) WHERE C.ClientID = " + dropPatchClientName.SelectedValue.ToString();
+                    //dropEnvironmentType.Items.Clear();
+                    SqlDataSource3.SelectCommand = "SELECT E.ENV_ID As [ENV_ID],ET.EnvTitle As [Env_Title] from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType) WHERE C.ClientID = " + dropPatchClientName.SelectedValue.ToString() + " AND P.ProductID = " + dropProductName.SelectedValue.ToString() + ";";
+                }
+                else {
+                    dropEnvironmentType.Items.Clear();
+                }
+            }
+            catch (Exception) { }
         }
 
         
