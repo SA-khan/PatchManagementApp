@@ -15,7 +15,7 @@
             </asp:TableHeaderRow>
             <asp:TableRow ID="rowPatchTitle" runat="server">
                 <asp:TableCell Width="30%">
-                    <asp:Label ID="Label2" runat="server" Text="Patch Description" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="Release Title" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtPatchTitle" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" Font-Names="Arial" placeholder="Enter Patch Title Here"></asp:TextBox>
@@ -26,7 +26,7 @@
             </asp:TableRow>
             <asp:TableRow ID="rowPatchDesc" runat="server">
                 <asp:TableCell VerticalAlign="Top">
-                    <asp:Label ID="lblPatchDesc" runat="server" Text="Patch Description" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    <asp:Label ID="lblPatchDesc" runat="server" Text="Release Description" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtPatchDesc" CausesValidation="true" runat="server" Width="250px" Height="50px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" TextMode="MultiLine" placeholder="Enter Patch Description Here" Font-Names="Arial"></asp:TextBox>
@@ -37,7 +37,7 @@
             </asp:TableRow>
             <asp:TableRow ID="rowPatchNumber" runat="server">
                 <asp:TableCell Width="30%">
-                    <asp:Label ID="lblPatchNumber" runat="server" Text="Patch Number" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    <asp:Label ID="lblPatchNumber" runat="server" Text="Release Number" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtPatchNumber" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" Font-Names="Arial" placeholder="Enter Patch Number Here"></asp:TextBox>
@@ -48,7 +48,7 @@
             </asp:TableRow>
             <asp:TableRow ID="rowPatchDeployedBy" runat="server">
                 <asp:TableCell Width="30%">
-                    <asp:Label ID="lblPatchDeployedBy" runat="server" Text="Patch Deployed By" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    <asp:Label ID="lblPatchDeployedBy" runat="server" Text="Deployed By" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtPatchDeployedBy" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" Font-Names="Arial" placeholder="Enter Patch Deployed By Here"></asp:TextBox>
@@ -59,7 +59,7 @@
             </asp:TableRow>
             <asp:TableRow ID="rowPatchCreatedDate" runat="server">
                 <asp:TableCell Width="30%">
-                    <asp:Label ID="lblPatchCreatedDate" runat="server" Text="Patch Created Date" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    <asp:Label ID="lblPatchCreatedDate" runat="server" Text="Created Date" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtPatchCreatedDate" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" Font-Names="Arial" placeholder="Enter Patch Created Date Here"></asp:TextBox>
@@ -70,7 +70,7 @@
             </asp:TableRow>
             <asp:TableRow ID="rowPatchDeployedDate" runat="server">
                 <asp:TableCell Width="30%">
-                    <asp:Label ID="lblPatchDeployedDate" runat="server" Text="Patch Deployed Date" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    <asp:Label ID="lblPatchDeployedDate" runat="server" Text="Deployed Date" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtPatchDeployedDate" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" Font-Names="Arial" placeholder="Enter Patch Deployed Date Here"></asp:TextBox>
@@ -96,7 +96,7 @@
             </asp:TableRow>
             <asp:TableRow ID="rowPatchDependency" runat="server">
                 <asp:TableCell Width="30%">
-                    <asp:Label ID="lblPatchDependency" runat="server" Text="Patch Dependency" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    <asp:Label ID="lblPatchDependency" runat="server" Text="Release Dependency" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtPatchDependency" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" Font-Names="Arial" placeholder="Enter Enter Patch Dependency Here"></asp:TextBox>
@@ -107,7 +107,7 @@
             </asp:TableRow>
             <asp:TableRow ID="rowPatchClientName" runat="server">
                 <asp:TableCell>
-                    <asp:Label ID="lblPatchClientName" runat="server" Text="Patch Client Name" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    <asp:Label ID="lblPatchClientName" runat="server" Text="Client Name" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <%--<asp:TextBox ID="txtPatchClientName" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" placeholder="Enter Patch Client Name Here"></asp:TextBox>--%>

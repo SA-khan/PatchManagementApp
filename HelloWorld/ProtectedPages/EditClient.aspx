@@ -68,11 +68,11 @@
             <asp:TemplateField HeaderText="Client Type" SortExpression="ClientName">
                 <ItemTemplate>
                     <asp:HiddenField ID="hidClientType" runat="server" Value='<%# Bind("ClientType") %>' />
-                    <asp:DropDownList ID="dropClientType" runat="server" AppendDataBoundItems="true" DataTextField='<%# Bind("ClientType") %>' DataTextFormatString='<%# Bind("ClientType") %>' DataValueField='<%# Bind("ClientType") %>' >
-                        <asp:ListItem Value="Insurance">Insurance</asp:ListItem>
-                        <asp:ListItem Value="Bank">Bank</asp:ListItem>
-                        <asp:ListItem Value="AMC">AMC</asp:ListItem>
+                    <asp:DropDownList ID="dropClientType" runat="server" AppendDataBoundItems="true"  DataSourceID="SqlDataSourceCType" DataTextField="CTYPE_TITLE" DataValueField="CTYPE_ID" >
+                        <asp:ListItem>Select..</asp:ListItem>
                     </asp:DropDownList>
+                    <%--DataValueField='<%# Bind("ClientType")DataTextField='<%# Bind("ClientType") %>' %>' DataTextFormatString='<%# Bind("ClientType") %>'--%>
+                    <asp:SqlDataSource ID="SqlDataSourceCType" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [CTYPE_ID], [CTYPE_TITLE] FROM [CLIENT_TYPE]"> </asp:SqlDataSource>
 
                 </ItemTemplate>
                 <%--<EditItemTemplate>

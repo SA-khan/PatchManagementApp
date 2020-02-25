@@ -29,12 +29,18 @@
                     <asp:Label ID="Label3" runat="server" Text="Client Type" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:DropDownList ID="dropClientType" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;">
-                          <asp:ListItem>Select Client Type..</asp:ListItem>
-                          <asp:ListItem>AMC</asp:ListItem>
-                          <asp:ListItem>Insurance</asp:ListItem>
-                          <asp:ListItem>Bank</asp:ListItem>
+                    <asp:DropDownList ID="dropClientType" runat="server" Width="250px" 
+        Height="27px" BorderStyle="None" 
+        style="border-bottom: 2px solid navy;background-color:white;" 
+        DataSourceID="SqlDataSourceCType" DataTextField="CTYPE_TITLE" AppendDataBoundItems="true"
+        DataValueField="CTYPE_ID">
+                          <asp:ListItem>Select..</asp:ListItem>
                     </asp:DropDownList>
+
+    <asp:SqlDataSource ID="SqlDataSourceCType" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+        SelectCommand="SELECT [CTYPE_ID], [CTYPE_TITLE] FROM [CLIENT_TYPE]">
+    </asp:SqlDataSource>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:RequiredFieldValidator ID="ReqClientType" runat="server" ControlToValidate="dropClientType" ErrorMessage="Enter Client Type." InitialValue="Select Client Type.." Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
@@ -78,7 +84,7 @@
                     <asp:Label ID="Label7" runat="server" Text="Client Person of Contact Phone" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtPOCPhone" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" TextMode="Phone" placeholder="Enter Client POC Phone"></asp:TextBox>
+                    <asp:TextBox ID="txtPOCPhone" runat="server" TextMode="Number" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" placeholder="Enter Client POC Phone"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" InitialValue="*" ControlToValidate="txtPOCPhone" Display="Dynamic" EnableClientScript="true" Text="Please Enter Client POC Phone Number"></asp:RequiredFieldValidator>

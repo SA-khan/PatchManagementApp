@@ -147,15 +147,15 @@
             <asp:TemplateField HeaderText="App Server Is 32-Bit Version" 
                 SortExpression="AppServerIsX86Version">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtAppServerOSBuild" runat="server" 
+                    <asp:TextBox ID="txtAppServerIsX86Version" runat="server" 
                         Text='<%# Bind("AppServerIsX86Version") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtAppServerOSBuild" runat="server" 
+                    <asp:TextBox ID="txtAppServerIsX86Version" runat="server" 
                         Text='<%# Bind("AppServerIsX86Version") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtAppServerOSBuild" runat="server" 
+                    <asp:TextBox ID="txtAppServerIsX86Version" runat="server" 
                         Text='<%# Bind("AppServerIsX86Version") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
@@ -181,11 +181,11 @@
                         Text='<%# Bind("AppServerProcessor") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtAppServerOSBuild" runat="server" 
+                    <asp:TextBox ID="txtAppServerProcessor" runat="server" 
                         Text='<%# Bind("AppServerProcessor") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtAppServerOSBuild" runat="server" 
+                    <asp:TextBox ID="txtAppServerProcessor" runat="server" 
                         Text='<%# Bind("AppServerProcessor") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
@@ -536,9 +536,9 @@
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False" ItemStyle-HorizontalAlign="Right">
                 <ItemTemplate>
-                       <asp:Button ID="btnSave" runat="server" CausesValidation="false" 
+                       <asp:Button ID="btnSave" runat="server" CausesValidation="false"
                         Text="Save" onclick="btnSave_Click" />
-                    <asp:Button ID="btnCancel" runat="server" CssClass="accordionButton" CausesValidation="false" 
+                    <asp:Button ID="btnCancel" runat="server" CausesValidation="false"
                         Text="Cancel" onclick="btnCancel_Click" />
                 </ItemTemplate>
 
@@ -668,7 +668,7 @@
                <asp:TemplateField HeaderText="Hyper Link">
              <ItemTemplate>
                  <asp:Label ID="lblEnvironmentAppHyperLink" runat="server" 
-                 Text='<%# Eval("EnvironmentAppHyperLink") %>' Width="150" />                              
+                 Text='<%# Eval("EnvironmentAppHyperLink") %>' Width="350" />                              
              </ItemTemplate>
            </asp:TemplateField>  
            <asp:TemplateField HeaderText="App Server IP">
@@ -740,13 +740,13 @@
             <asp:TemplateField HeaderText="DB Server Directory Location">
              <ItemTemplate>
                  <asp:Label ID="lblEnvironmentDBServerDirectoryLocation" runat="server" 
-                 Text='<%# Eval("EnvironmentDBServerDirectoryLocation") %>' Width="150" />                              
+                 Text='<%# Eval("EnvironmentDBServerDirectoryLocation") %>' Width="350" />                              
              </ItemTemplate>
            </asp:TemplateField> 
            <asp:TemplateField HeaderText="DB MDF File Location">
              <ItemTemplate>
                  <asp:Label ID="lblEnvironmentDBMDFFileLocation" runat="server" 
-                 Text='<%# Eval("EnvironmentDBMDFFileLocation") %>' Width="150" />                              
+                 Text='<%# Eval("EnvironmentDBMDFFileLocation") %>' Width="350" />                              
              </ItemTemplate>
            </asp:TemplateField> 
            <asp:TemplateField HeaderText="DB MDF File Size">
@@ -758,7 +758,7 @@
            <asp:TemplateField HeaderText="DB LDF File Location">
              <ItemTemplate>
                  <asp:Label ID="lblEnvironmentDBLDFFileLocation" runat="server" 
-                 Text='<%# Eval("EnvironmentDBLDFFileLocation") %>' Width="150" />                              
+                 Text='<%# Eval("EnvironmentDBLDFFileLocation") %>' Width="350" />                              
              </ItemTemplate>
            </asp:TemplateField>
            <asp:TemplateField HeaderText="DB LDF File Size">
@@ -806,6 +806,6 @@
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 
-
+    
 
 </asp:Content>
