@@ -26,6 +26,9 @@
         <siteMapNode url="~/ProtectedPages/AddUser.aspx" title="Add User Page"  description="Goto Add User Page" />
         <siteMapNode url="~/ProtectedPages/EditUser.aspx" title="Edit User Page"  description="Goto Edit User Page" />
         <siteMapNode url="~/ProtectedPages/DeleteUser.aspx" title="Delete User Page"  description="Goto Delete User Page" />
+        <siteMapNode url="~/ProtectedPages/AddUserRole.aspx" title="Add User Role Page"  description="Goto Add User Role Page" />
+        <siteMapNode url="~/ProtectedPages/EditUserRole.aspx" title="Edit User Role Page"  description="Goto Edit User Role Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteUserRole.aspx" title="Delete User Role Page"  description="Goto Delete User Role Page" />
       </siteMapNode>
       <siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=product" title="Product"  description="Goto Product Page">
         <siteMapNode url="~/ProtectedPages/AddProduct.aspx" title="Add Product Page"  description="Goto Add Product Page" />

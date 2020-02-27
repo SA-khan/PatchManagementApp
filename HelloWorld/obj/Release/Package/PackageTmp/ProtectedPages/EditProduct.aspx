@@ -15,117 +15,171 @@
         ondatabound="DetailsView1_DataBound">
         <EditRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
         <Fields>
-            <asp:TemplateField HeaderText="Client ID" SortExpression="ClientID">
+            <asp:TemplateField HeaderText="Product ID" SortExpression="ProductID">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtClientID" runat="server" disabled Text='<%# Bind("ClientID") %>' EnableViewState=true ViewStateMode="Enabled"></asp:TextBox>
+                    <asp:TextBox ID="txtProductID" runat="server" disabled Text='<%# Bind("ProductID") %>' EnableViewState=true ViewStateMode="Enabled"></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtClientID" runat="server" Text='<%# Bind("ClientID") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductID" runat="server" Text='<%# Bind("ProductID") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtClientID" runat="server" Text='<%# Bind("ClientID") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductID" runat="server" Text='<%# Bind("ProductID") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtClientID" runat="server" Text='<%# Bind("ClientID") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductID" runat="server" Text='<%# Bind("ProductID") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client Name" SortExpression="ClientName">
+            <asp:TemplateField HeaderText="Product Name" SortExpression="ProductName">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtClientName" runat="server" Text='<%# Bind("ClientName") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductName" runat="server" Text='<%# Bind("ProductName") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtClientName" runat="server" Text='<%# Bind("ClientName") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductName" runat="server" Text='<%# Bind("ProductName") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtClientName" runat="server" Text='<%# Bind("ClientName") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductName" runat="server" Text='<%# Bind("ProductName") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client Type" SortExpression="ClientName">
+            <asp:TemplateField HeaderText="Product Description" SortExpression="ProductDesc">
                 <ItemTemplate>
-                    <asp:HiddenField ID="hidClientType" runat="server" Value='<%# Bind("ClientType") %>' />
-                    <asp:DropDownList ID="dropClientType" runat="server" AppendDataBoundItems="true" DataTextField='<%# Bind("ClientType") %>' DataTextFormatString='<%# Bind("ClientType") %>' DataValueField='<%# Bind("ClientType") %>' >
-                        <asp:ListItem Value="Insurance">Insurance</asp:ListItem>
-                        <asp:ListItem Value="Bank">Bank</asp:ListItem>
-                        <asp:ListItem Value="AMC">AMC</asp:ListItem>
-                    </asp:DropDownList>
-
-                </ItemTemplate>
-                <%--<EditItemTemplate>
-                    <asp:TextBox ID="txtClientType" runat="server" Text='<%# Bind("ClientType") %>'></asp:TextBox>
-                </EditItemTemplate>--%>
-<%--                <InsertItemTemplate>
-                    <asp:TextBox ID="txtClientType" runat="server" Text='<%# Bind("ClientType") %>'></asp:TextBox>
-                </InsertItemTemplate>--%>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="ClientDesc" SortExpression="ClientName">
-                <ItemTemplate>
-                    <asp:TextBox ID="txtClientDesc" runat="server" Text='<%# Bind("ClientDesc") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductDesc" runat="server" Text='<%# Bind("ProductDesc") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtClientDesc" runat="server" Text='<%# Bind("ClientDesc") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductDesc" runat="server" Text='<%# Bind("ProductDesc") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtClientDesc" runat="server" Text='<%# Bind("ClientDesc") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductDesc" runat="server" Text='<%# Bind("ProductDesc") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-<%--            <asp:TemplateField HeaderText="Current Client" 
-                SortExpression="ClientName">
+            <asp:TemplateField HeaderText="Product Version" SortExpression="ProductVersion">
                 <ItemTemplate>
-                    <asp:CheckBox ID="chkClientStill" runat="server" 
-                        Checked='<%# Bind("ClientStill") %>' />
+                    <asp:TextBox ID="txtProductVersion" runat="server" Text='<%# Bind("ProductVersion") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:CheckBox ID="chkClientStill" runat="server" 
-                        Checked='<%# Bind("ClientStill") %>' />
+                    <asp:TextBox ID="txtProductVersion" runat="server" Text='<%# Bind("ProductVersion") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:CheckBox ID="chkClientStill" runat="server" 
-                        Checked='<%# Bind("ClientStill") %>' />
-                </InsertItemTemplate>
-            </asp:TemplateField>--%>
-            <asp:TemplateField HeaderText="Client Person of Contact" 
-                SortExpression="ClientName">
-                <ItemTemplate>
-                    <asp:TextBox ID="txtPOCName" runat="server" 
-                        Text='<%# Bind("POCName") %>'></asp:TextBox>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="txtPOCName" runat="server" 
-                        Text='<%# Bind("POCName") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="txtPOCName" runat="server" 
-                        Text='<%# Bind("POCName") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductVersion" runat="server" Text='<%# Bind("ProductVersion") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client POC Email" 
-                SortExpression="ClientName">
+            <asp:TemplateField HeaderText="Product Type" 
+                SortExpression="ProductType">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtPOCEmail" runat="server" 
-                        Text='<%# Bind("POCEmail") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductType" runat="server" 
+                        Text='<%# Bind("ProductType") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtPOCEmail" runat="server" 
-                        Text='<%# Bind("POCEmail") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductType" runat="server" 
+                        Text='<%# Bind("ProductType") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtPOCEmail" runat="server" 
-                        Text='<%# Bind("POCEmail") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductType" runat="server" 
+                        Text='<%# Bind("ProductType") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client POC Phone" 
-                SortExpression="ClientName">
+            <asp:TemplateField HeaderText="Product Category" 
+                SortExpression="ProductCategory">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtPOCPhone" runat="server" 
-                        Text='<%# Bind("POCPhone") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductCategory" runat="server" 
+                        Text='<%# Bind("ProductCategory") %>'></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtPOCPhone" runat="server" 
-                        Text='<%# Bind("POCPhone") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductCategory" runat="server" 
+                        Text='<%# Bind("ProductCategory") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtPOCPhone" runat="server" 
-                        Text='<%# Bind("POCPhone") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtProductCategory" runat="server" 
+                        Text='<%# Bind("ProductCategory") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Product Rating" 
+                SortExpression="ProductRating">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtProductRating" runat="server" 
+                        Text='<%# Bind("ProductRating") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtProductRating" runat="server" 
+                        Text='<%# Bind("ProductRating") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtProductRating" runat="server" 
+                        Text='<%# Bind("ProductRating") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Product User ID" 
+                SortExpression="ProductUserID">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtProductUserID" runat="server" 
+                        Text='<%# Bind("ProductDemoUserID") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtProductUserID" runat="server" 
+                        Text='<%# Bind("ProductDemoUserID") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtProductUserID" runat="server" 
+                        Text='<%# Bind("ProductDemoUserID") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Product Password" 
+                SortExpression="ProductPassword">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtProductPassword" runat="server" 
+                        Text='<%# Bind("ProductDemoPasscode") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtProductPassword" runat="server" 
+                        Text='<%# Bind("ProductDemoPasscode") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtProductPassword" runat="server" 
+                        Text='<%# Bind("ProductDemoPasscode") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Product POC" 
+                SortExpression="ProductPOC">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtProductPOC" runat="server" 
+                        Text='<%# Bind("ProductPOC") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtProductPOC" runat="server" 
+                        Text='<%# Bind("ProductPOC") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtProductPOC" runat="server" 
+                        Text='<%# Bind("ProductPOC") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Product Email" 
+                SortExpression="ProductEmail">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtProductEmail" runat="server" 
+                        Text='<%# Bind("ProductPOCEmail") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtProductEmail" runat="server" 
+                        Text='<%# Bind("ProductPOCEmail") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtProductEmail" runat="server" 
+                        Text='<%# Bind("ProductPOCEmail") %>'></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Product Dependency" 
+                SortExpression="ProductComment">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtProductComment" runat="server" 
+                        Text='<%# Bind("ProductDependency") %>'></asp:TextBox>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtProductRating" runat="server" 
+                        Text='<%# Bind("ProductDependency") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="txtProductRating" runat="server" 
+                        Text='<%# Bind("ProductDependency") %>'></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False" ItemStyle-HorizontalAlign="Right">
@@ -171,67 +225,73 @@
          <Columns>     
          <asp:TemplateField Visible="false" HeaderText="ID">
          <ItemTemplate>
-                 <asp:Label ID="lblClientID" runat="server" 
+                 <asp:Label ID="lblProductID" runat="server" 
                  Text='<%# Eval("ProductID") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>                     
     <asp:TemplateField HeaderText="Name">
          <ItemTemplate>
-                 <asp:Label ID="lblClientName" runat="server" 
+                 <asp:Label ID="lblProductName" runat="server" 
                  Text='<%# Eval("ProductName") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>             
-           <asp:TemplateField HeaderText="Desc">
+           <asp:TemplateField HeaderText="Description">
          <ItemTemplate>
-                 <asp:Label ID="lblClientType" runat="server" 
+                 <asp:Label ID="lblProductDesc" runat="server" 
                  Text='<%# Eval("ProductDesc") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>
            <asp:TemplateField HeaderText="Version">
              <ItemTemplate>
-                 <asp:Label ID="lblClientDesc" runat="server" 
+                 <asp:Label ID="lblProductVersion" runat="server" 
                  Text='<%# Eval("ProductVersion") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>
+           <asp:TemplateField HeaderText="Type">
+             <ItemTemplate>
+                 <asp:Label ID="lblProductType" runat="server" 
+                 Text='<%# Eval("ProductType") %>' />                              
+             </ItemTemplate>
+           </asp:TemplateField>  
            <asp:TemplateField HeaderText="Category">
              <ItemTemplate>
-                 <asp:Label ID="lblClientStill" runat="server" 
+                 <asp:Label ID="lblProductCategory" runat="server" 
                  Text='<%# Eval("ProductCategory") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>  
            <asp:TemplateField HeaderText="Rating">
              <ItemTemplate>
-                 <asp:Label ID="lblPOCName" runat="server" 
+                 <asp:Label ID="lblProductRating" runat="server" 
                  Text='<%# Eval("ProductRating") %>' />                              
              </ItemTemplate>
-           </asp:TemplateField>  
-           <asp:TemplateField HeaderText="UserID">
+           </asp:TemplateField>
+           <asp:TemplateField HeaderText="Demo User ID">
              <ItemTemplate>
-                 <asp:Label ID="lblPOCEmail" runat="server" 
+                 <asp:Label ID="lblProductUserID" runat="server" 
                  Text='<%# Eval("ProductDemoUserId") %>' />                              
              </ItemTemplate>
-           </asp:TemplateField>
-           <asp:TemplateField HeaderText="Password">
+           </asp:TemplateField>   
+           <asp:TemplateField HeaderText="Demo Password">
              <ItemTemplate>
-                 <asp:Label ID="lblPOCPhone" runat="server" 
+                 <asp:Label ID="lblProductPassword" runat="server" 
                  Text='<%# Eval("ProductDemoPasscode") %>' />                              
              </ItemTemplate>
-           </asp:TemplateField>   
-           <asp:TemplateField HeaderText="POC">
+           </asp:TemplateField> 
+           <asp:TemplateField HeaderText="Person of Contact(POC)">
              <ItemTemplate>
                  <asp:Label ID="lblProductPOC" runat="server" 
                  Text='<%# Eval("ProductPOC") %>' />                              
              </ItemTemplate>
            </asp:TemplateField> 
-           <asp:TemplateField HeaderText="Email">
+           <asp:TemplateField HeaderText="POC Email">
              <ItemTemplate>
-                 <asp:Label ID="lblProductSupportEmail" runat="server" 
+                 <asp:Label ID="lblPOCEmail" runat="server" 
                  Text='<%# Eval("ProductSupportEmail") %>' />                              
              </ItemTemplate>
            </asp:TemplateField> 
-           <asp:TemplateField HeaderText="Comments">
+           <asp:TemplateField HeaderText="Product Dependency">
              <ItemTemplate>
-                 <asp:Label ID="lblProductComments" runat="server" 
+                 <asp:Label ID="lblProductDependency" runat="server" 
                  Text='<%# Eval("ProductComments") %>' />                              
              </ItemTemplate>
            </asp:TemplateField> 

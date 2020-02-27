@@ -32,7 +32,7 @@
         SelectCommand="SELECT [EnvID],[EnvTitle] FROM [EnvironmentType]"></asp:SqlDataSource>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:RequiredFieldValidator ID="ReqPatchClientName" runat="server" InitialValue="Select.." ControlToValidate="dropEnvType"  ErrorMessage="Please Select Environment Type" Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="ReqEnvType" runat="server" InitialValue="Select.." ControlToValidate="dropEnvType"  ErrorMessage="Please Select Environment Type" Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
                 </asp:TableCell>
             </asp:TableRow>
             

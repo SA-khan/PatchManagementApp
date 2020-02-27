@@ -164,6 +164,111 @@ namespace HelloWorld.App_Code
 
         //Delete A Client End
 
+        // GET User Role
+
+        public List<UserRole> getUserRole()
+        {
+            List<UserRole> _userRoleList = new List<UserRole>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spGetUserRole]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        UserRole item = new UserRole();
+                        item.Role_ID = Convert.ToInt32(oReader["ROLE_ID"]);
+                        item.Role_Title= oReader["ROLE_TITLE"].ToString();
+                        item.Role_Desc = oReader["ROLE_DESC"].ToString();
+                        _userRoleList.Add(item);
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            return _userRoleList;
+        }
+
+        // GET User Role End
+
+        // ADD User Role
+
+        public int insertUserRole(string Role_Title, string Role_Desc)
+        {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spInsertUserRole]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@ROLE_TITLE", Role_Title);
+                oCmd.Parameters.AddWithValue("@ROLE_DESC", Role_Desc);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // ADD User Role End
+
+        // SET User Role
+
+        public int setUserRole(int Role_ID, string Role_Title, string Role_Desc) {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spUpdateUserRole]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@Role_ID", Role_ID);
+                oCmd.Parameters.AddWithValue("@Role_Title", Role_Title);
+                oCmd.Parameters.AddWithValue("@Role_Desc", Role_Desc);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // SET User Role End
+
+        // Delete A User Role
+
+        public int deleteUserRole(int UserRoleID) {
+            int result = 0;
+            SqlConnection myConnection;
+            try
+            {
+                using (myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spDeleteUserRole]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@UserRoleID", UserRoleID);
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    myConnection.Open();
+                    result = oCmd.ExecuteNonQuery();
+                    myConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error occured in Method: \'deleteUserRole\'\t Class: \'DatabaseConnectivity\' while deleting a user role, Error Code: \'" + ex.Message + "\' ");
+                result = -1;
+            }
+            finally
+            {
+
+            }
+
+            return result;
+        }
+
+        // Delete A User Role End
 
         // Add Environment Type
 
@@ -238,6 +343,38 @@ namespace HelloWorld.App_Code
 
         //Getting Environment Type List End
 
+        //Delete Environment Type TxSnQcGMh0/s1nKD7vvrlQ==
+
+        public int deleteEnvironmentType(int EnvTypeID) {
+            int result = 0;
+            SqlConnection myConnection;
+            try
+            {
+                using (myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spDeleteEnvironmentType]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@EnvTypeID", EnvTypeID);
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    myConnection.Open();
+                    result = oCmd.ExecuteNonQuery();
+                    myConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error occured in Method: \'deleteEnvironmentType\'\t Class: \'DatabaseConnectivity\' while deleting an environment type. Error Code: \'" + ex.Message + "\' ");
+                result = -1;
+            }
+            finally {
+
+            }
+
+            return result;
+        }
+
+        //Delete Environment Type End
+
         // Add Product
 
         public int insertProduct(string productName, string productDesc, string productVersion, string productType, string productCategory, string productRating, string productDemoUserID, string productDemoPassword, string productPOC, string productSupportEmail, string productComments) {
@@ -288,6 +425,7 @@ namespace HelloWorld.App_Code
                         item.ProductName = oReader["ProductName"].ToString();
                         item.ProductDesc = oReader["ProductDesc"].ToString();
                         item.ProductVersion = oReader["ProductVersion"].ToString();
+                        item.ProductType = oReader["ProductType"].ToString();
                         item.ProductCategory = oReader["ProductCategory"].ToString();
                         item.ProductRating = oReader["ProductRating"].ToString();
                         item.ProductDemoUserId = oReader["ProductDemoUserId"].ToString();
@@ -468,6 +606,37 @@ namespace HelloWorld.App_Code
             }
             return result;
         }
+
+        // Set Product
+
+        public int setAProduct(int ProductID, string ProductName, string ProductDesc, string ProductVersion, string ProductType, string ProductCategory, string ProductRating, string ProductUserID, string ProductPassword, string ProductPOC, string ProductEmail, string ProductComment)
+        {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spUpdateProduct]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@ProductID", ProductID);
+                oCmd.Parameters.AddWithValue("@ProductName", ProductName);
+                oCmd.Parameters.AddWithValue("@ProductDesc", ProductDesc);
+                oCmd.Parameters.AddWithValue("@ProductVersion", ProductVersion);
+                oCmd.Parameters.AddWithValue("@ProductType", ProductType);
+                oCmd.Parameters.AddWithValue("@ProductCategory", ProductCategory);
+                oCmd.Parameters.AddWithValue("@ProductRating", ProductRating);
+                oCmd.Parameters.AddWithValue("@ProductUserID", ProductUserID);
+                oCmd.Parameters.AddWithValue("@ProductPassword", ProductPassword);
+                oCmd.Parameters.AddWithValue("@ProductPOC", ProductPOC);
+                oCmd.Parameters.AddWithValue("@ProductEmail", ProductEmail);
+                oCmd.Parameters.AddWithValue("@ProductComment", ProductComment);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // Set Product End
 
         ///
         ///<param name="ClientName">String</param>

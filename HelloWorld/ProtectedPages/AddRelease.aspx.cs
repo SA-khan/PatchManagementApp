@@ -90,6 +90,10 @@ namespace HelloWorld.ProtectedPages
                         SqlDataSource3.SelectCommand = "SELECT E.ENV_ID As [ENV_ID],ET.EnvTitle As [Env_Title] from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType) WHERE C.ClientID = " + dropPatchClientName.SelectedValue.ToString() + " AND P.ProductID = " + dropProductName.SelectedValue.ToString() + ";";
                     }
                 }
+                else {
+                    dropProductName.Items.Clear();
+                    dropProductName.Items.Add("Select..");
+                }
 
             }
             catch (Exception) { }
@@ -108,6 +112,7 @@ namespace HelloWorld.ProtectedPages
                 }
                 else {
                     dropEnvironmentType.Items.Clear();
+                    dropEnvironmentType.Items.Add("Select..");
                 }
             }
             catch (Exception) { }

@@ -60,6 +60,9 @@ namespace HelloWorld.ProtectedPages
             Debug.WriteLine(GridView1.SelectedRow.Cells[0].Text);
             Debug.WriteLine(GridView1.SelectedRow.Cells[1].Text);
             Debug.WriteLine(GridView1.SelectedRow.Cells[2].Text);
+            Debug.WriteLine(GridView1.SelectedRow.Cells[3].Text);
+            Debug.WriteLine(GridView1.SelectedRow.Cells[4].Text);
+            Debug.WriteLine(GridView1.SelectedRow.Cells[5].Text);
             DataTable dt = new DataTable();
             dt.Columns.AddRange(new DataColumn[6] { 
                     new DataColumn("UserID", typeof(string)),
@@ -174,6 +177,7 @@ namespace HelloWorld.ProtectedPages
             //ScriptManager.RegisterStartupScript(this, this.GetType(), DateTime.Now.ToString(), "<script>alert(" + ResultQuery +")</script>", true);
             DetailsView1.Visible = false;
             //DetailsView1.Style.Add("display", "none");
+            _BindService();
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)

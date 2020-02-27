@@ -3,6 +3,9 @@
     <link href="Images/icon.ico" rel="Shortcut Icon" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Both" Height="470px">
+
     <asp:Label ID="lblHeading1" runat="server" Text="UAT Environment" Font-Size=X-Large></asp:Label>
     <br/>
 <%--    <ul>
@@ -266,4 +269,7 @@
 --%>
 
     </asp:Table>
+
+    </asp:Panel>
+
 </asp:Content>

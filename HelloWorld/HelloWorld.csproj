@@ -123,6 +123,7 @@
     <Content Include="ProtectedPages\AddRelease.aspx" />
     <Content Include="ProtectedPages\AddProduct.aspx" />
     <Content Include="ProtectedPages\AddUser.aspx" />
+    <Content Include="ProtectedPages\AddUserRole.aspx" />
     <Content Include="ProtectedPages\Dashboard.aspx" />
     <Content Include="ProtectedPages\DeleteCompany.aspx" />
     <Content Include="ProtectedPages\DeleteEnvironemt.aspx" />
@@ -130,12 +131,14 @@
     <Content Include="ProtectedPages\DeleteProduct.aspx" />
     <Content Include="ProtectedPages\DeleteRelease.aspx" />
     <Content Include="ProtectedPages\DeleteUser.aspx" />
+    <Content Include="ProtectedPages\DeleteUserRole.aspx" />
     <Content Include="ProtectedPages\EditEnvironemt.aspx" />
     <Content Include="ProtectedPages\EditClient.aspx" />
     <Content Include="ProtectedPages\EditRelease.aspx" />
     <Content Include="ProtectedPages\EditEnvironemtType.aspx" />
     <Content Include="ProtectedPages\EditProduct.aspx" />
     <Content Include="ProtectedPages\EditUser.aspx" />
+    <Content Include="ProtectedPages\EditUserRole.aspx" />
     <Content Include="References.aspx" />
     <Content Include="Scripts\angular-chart.js" />
     <Content Include="Scripts\angular-chart.min.js" />
@@ -247,6 +250,7 @@
     <Compile Include="App_Code\Patch.cs" />
     <Compile Include="App_Code\Product.cs" />
     <Compile Include="App_Code\User.cs" />
+    <Compile Include="App_Code\UserRole.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -328,6 +332,13 @@
     <Compile Include="ProtectedPages\AddUser.aspx.designer.cs">
       <DependentUpon>AddUser.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProtectedPages\AddUserRole.aspx.cs">
+      <DependentUpon>AddUserRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\AddUserRole.aspx.designer.cs">
+      <DependentUpon>AddUserRole.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -377,6 +388,13 @@
     <Compile Include="ProtectedPages\DeleteUser.aspx.designer.cs">
       <DependentUpon>DeleteUser.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProtectedPages\DeleteUserRole.aspx.cs">
+      <DependentUpon>DeleteUserRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteUserRole.aspx.designer.cs">
+      <DependentUpon>DeleteUserRole.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\EditEnvironemt.aspx.cs">
       <DependentUpon>EditEnvironemt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -418,6 +436,13 @@
     </Compile>
     <Compile Include="ProtectedPages\EditUser.aspx.designer.cs">
       <DependentUpon>EditUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\EditUserRole.aspx.cs">
+      <DependentUpon>EditUserRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\EditUserRole.aspx.designer.cs">
+      <DependentUpon>EditUserRole.aspx</DependentUpon>
     </Compile>
     <Compile Include="References.aspx.cs">
       <DependentUpon>References.aspx</DependentUpon>

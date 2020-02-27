@@ -199,6 +199,6 @@
             <%--<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/ProtectedPages/EditEnvironemtInfo.aspx">Update Patch Link</asp:HyperLink>--%>
     </asp:Panel>
 
-    <%--<br/>--%>
+    <br/>
 
 </asp:Content>

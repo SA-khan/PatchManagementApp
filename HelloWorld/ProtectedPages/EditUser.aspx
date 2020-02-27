@@ -43,11 +43,26 @@
             <asp:TemplateField HeaderText="User Role" SortExpression="UserRole">
                 <ItemTemplate>
                     <asp:HiddenField ID="hidUserRole" runat="server" Value='<%# Bind("UserRole") %>' />
-                    <asp:DropDownList ID="dropUserRole" runat="server" AppendDataBoundItems="true" DataTextField='<%# Bind("UserRole") %>' DataTextFormatString='<%# Bind("UserRole") %>' DataValueField='<%# Bind("UserRole") %>' >
-                        <asp:ListItem Value="1">1</asp:ListItem>
-                        <asp:ListItem Value="2">2</asp:ListItem>
-                        <asp:ListItem Value="3">3</asp:ListItem>
-                    </asp:DropDownList>
+                    <asp:DropDownList ID="DropUserRole" runat="server" 
+        DataSourceID="SqlDataSourceRole" DataTextField='ROLE_TITLE' SelectedValue='<%# Bind("UserRole") %>'
+        DataValueField="ROLE_TITLE">
+    </asp:DropDownList>
+
+    <asp:SqlDataSource ID="SqlDataSourceRole" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+        SelectCommand="SELECT [ROLE_ID], [ROLE_TITLE] FROM [ROLES]">
+    </asp:SqlDataSource>
+                    <%--<asp:DropDownList ID="dropUserRole" runat="server" 
+        DataTextField='<%# Bind("UserRole") %>' 
+        DataTextFormatString='<%# Bind("UserRole") %>'
+        DataValueField='<%# Bind("UserRole") %>' 
+         DataSourceID="SqlDataSourceRole" >
+                    </asp:DropDownList>--%>
+                    <%----%>
+                    <%--<asp:SqlDataSource ID="SqlDataSourceRole" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+                        SelectCommand="SELECT [ROLE_ID], [ROLE_TITLE] FROM [ROLES]">
+                    </asp:SqlDataSource>--%>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>'></asp:TextBox>
@@ -159,31 +174,31 @@
                  Text='<%# Eval("UserID") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>                     
-    <asp:TemplateField HeaderText="Name">
+    <asp:TemplateField HeaderText="User Name">
          <ItemTemplate>
                  <asp:Label ID="lblUserName" runat="server" 
                  Text='<%# Eval("UserName") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>             
-           <asp:TemplateField HeaderText="Desc">
+           <asp:TemplateField HeaderText="User Role">
          <ItemTemplate>
                  <asp:Label ID="lblUserRole" runat="server" 
                  Text='<%# Eval("UserRole") %>' />                              
          </ItemTemplate>
    </asp:TemplateField>
-           <asp:TemplateField HeaderText="Version">
+           <asp:TemplateField HeaderText="User Status">
              <ItemTemplate>
                  <asp:Label ID="lblUserStatus" runat="server" 
                  Text='<%# Eval("UserStatus") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>
-           <asp:TemplateField HeaderText="Category">
+           <asp:TemplateField HeaderText="Login Date">
              <ItemTemplate>
                  <asp:Label ID="lblUserLoginDate" runat="server" 
                  Text='<%# Eval("UserLoginDate") %>' />                              
              </ItemTemplate>
            </asp:TemplateField>  
-           <asp:TemplateField HeaderText="Wrong Attempts">
+           <asp:TemplateField HeaderText="Password Wrong Attempt">
              <ItemTemplate>
                  <asp:Label ID="lblUserWrongAttempt" runat="server" 
                  Text='<%# Eval("UserWrongAttempt") %>' />                              
@@ -202,9 +217,6 @@
         <%--<asp:AsyncPostBackTrigger ControlID="DetailsView1" EventName="btnCancel_Click" EventName="RowCommand" />--%>
     </Triggers>
         </asp:UpdatePanel>
-
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
-
 
     </asp:Panel>
 

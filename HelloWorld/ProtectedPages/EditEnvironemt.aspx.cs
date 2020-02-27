@@ -243,6 +243,7 @@ namespace HelloWorld.ProtectedPages
             //ScriptManager.RegisterStartupScript(this, this.GetType(), DateTime.Now.ToString(), "<script>alert(" + ResultQuery +")</script>", true);
             DetailsView1.Visible = false;
             //DetailsView1.Style.Add("display", "none");
+            _BindService();
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
