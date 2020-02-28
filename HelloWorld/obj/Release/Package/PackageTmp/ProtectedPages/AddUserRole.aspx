@@ -43,7 +43,8 @@
                     
                 </asp:TableCell>
                 <asp:TableCell>
-                    
+                    <asp:Button ID="btnSave" runat="server" Text="SAVE" Width="70px" Height="30px" style="margin:5px;padding:5px;" onclick="btnSave_Click" />
+                    <asp:Button ID="btnClear" runat="server" Text="CLEAR" Width="70px" Height="30px" style="margin:5px;padding:5px;" onclick="btnClear_Click" />
                 </asp:TableCell>
                 <asp:TableCell>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" InitialValue="*" ControlToValidate="txtClientName" Display="Dynamic" EnableClientScript="true" Text="Please Enter Client Name"></asp:RequiredFieldValidator>--%>
@@ -54,5 +55,7 @@
         <br />
 
     </asp:Panel>
+
+    
 
 </asp:Content>

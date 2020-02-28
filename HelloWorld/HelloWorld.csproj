@@ -117,6 +117,7 @@
     <Content Include="Live.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="ProtectedPages\AddClientType.aspx" />
     <Content Include="ProtectedPages\AddEnvironment.aspx" />
     <Content Include="ProtectedPages\AddClient.aspx" />
     <Content Include="ProtectedPages\AddEnvironmentType.aspx" />
@@ -125,13 +126,15 @@
     <Content Include="ProtectedPages\AddUser.aspx" />
     <Content Include="ProtectedPages\AddUserRole.aspx" />
     <Content Include="ProtectedPages\Dashboard.aspx" />
-    <Content Include="ProtectedPages\DeleteCompany.aspx" />
+    <Content Include="ProtectedPages\DeleteClient.aspx" />
+    <Content Include="ProtectedPages\DeleteClientType.aspx" />
     <Content Include="ProtectedPages\DeleteEnvironemt.aspx" />
     <Content Include="ProtectedPages\DeleteEnvironemtType.aspx" />
     <Content Include="ProtectedPages\DeleteProduct.aspx" />
     <Content Include="ProtectedPages\DeleteRelease.aspx" />
     <Content Include="ProtectedPages\DeleteUser.aspx" />
     <Content Include="ProtectedPages\DeleteUserRole.aspx" />
+    <Content Include="ProtectedPages\EditClientType.aspx" />
     <Content Include="ProtectedPages\EditEnvironemt.aspx" />
     <Content Include="ProtectedPages\EditClient.aspx" />
     <Content Include="ProtectedPages\EditRelease.aspx" />
@@ -244,6 +247,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\Client.cs" />
+    <Compile Include="App_Code\ClientType.cs" />
     <Compile Include="App_Code\DatabaseConnectivity.cs" />
     <Compile Include="App_Code\Environment.cs" />
     <Compile Include="App_Code\EnvironmentType.cs" />
@@ -290,6 +294,13 @@
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtectedPages\AddClientType.aspx.cs">
+      <DependentUpon>AddClientType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\AddClientType.aspx.designer.cs">
+      <DependentUpon>AddClientType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\AddEnvironment.aspx.cs">
       <DependentUpon>AddEnvironment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -346,12 +357,19 @@
     <Compile Include="ProtectedPages\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProtectedPages\DeleteCompany.aspx.cs">
-      <DependentUpon>DeleteCompany.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\DeleteClient.aspx.cs">
+      <DependentUpon>DeleteClient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProtectedPages\DeleteCompany.aspx.designer.cs">
-      <DependentUpon>DeleteCompany.aspx</DependentUpon>
+    <Compile Include="ProtectedPages\DeleteClient.aspx.designer.cs">
+      <DependentUpon>DeleteClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteClientType.aspx.cs">
+      <DependentUpon>DeleteClientType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\DeleteClientType.aspx.designer.cs">
+      <DependentUpon>DeleteClientType.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\DeleteEnvironemt.aspx.cs">
       <DependentUpon>DeleteEnvironemt.aspx</DependentUpon>
@@ -394,6 +412,13 @@
     </Compile>
     <Compile Include="ProtectedPages\DeleteUserRole.aspx.designer.cs">
       <DependentUpon>DeleteUserRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\EditClientType.aspx.cs">
+      <DependentUpon>EditClientType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\EditClientType.aspx.designer.cs">
+      <DependentUpon>EditClientType.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\EditEnvironemt.aspx.cs">
       <DependentUpon>EditEnvironemt.aspx</DependentUpon>

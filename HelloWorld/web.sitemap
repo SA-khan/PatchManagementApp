@@ -5,7 +5,10 @@
       <siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=client" title="Client"  description="Goto Client Page">
         <siteMapNode url="~/ProtectedPages/AddClient.aspx" title="Add Client Page"  description="Goto Add Client Page" />
         <siteMapNode url="~/ProtectedPages/EditClient.aspx" title="Edit Client Page"  description="Goto Edit Client Page" />
-        <siteMapNode url="~/ProtectedPages/DeleteCompany.aspx" title="Delete Client Page"  description="Goto Delete Client Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteClient.aspx" title="Delete Client Page"  description="Goto Delete Client Page" />
+        <siteMapNode url="~/ProtectedPages/AddClientType.aspx" title="Add Client Type Page"  description="Goto Add Client Type Page" />
+        <siteMapNode url="~/ProtectedPages/EditClientType.aspx" title="Edit Client Type Page"  description="Goto Edit Client Type Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteClientType.aspx" title="Delete Client Type Page"  description="Goto Delete Client Type Page" />
       </siteMapNode>
       <siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=release" title="Release"  description="Goto Release Page">
         <siteMapNode url="~/ProtectedPages/AddRelease.aspx" title="Add Release Page"  description="Goto Add Release Page" />

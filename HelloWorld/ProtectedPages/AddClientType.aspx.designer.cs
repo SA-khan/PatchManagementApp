@@ -10,7 +10,7 @@
 namespace HelloWorld.ProtectedPages {
     
     
-    public partial class AddUserRole {
+    public partial class AddClientType {
         
         /// <summary>
         /// Panel1 control.
@@ -58,76 +58,76 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.Label lblSubmission;
         
         /// <summary>
-        /// rowRoleTitle control.
+        /// rowCTypeTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowRoleTitle;
+        protected global::System.Web.UI.WebControls.TableRow rowCTypeTitle;
         
         /// <summary>
-        /// Label2 control.
+        /// lblCTypeTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblCTypeTitle;
         
         /// <summary>
-        /// txtRoleTitle control.
+        /// txtCTypeTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoleTitle;
+        protected global::System.Web.UI.WebControls.TextBox txtCTypeTitle;
         
         /// <summary>
-        /// ReqRoleTitle control.
+        /// ReqCTypeTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqRoleTitle;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCTypeTitle;
         
         /// <summary>
-        /// rowRoleDesc control.
+        /// rowCTypeDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowRoleDesc;
+        protected global::System.Web.UI.WebControls.TableRow rowCTypeDesc;
         
         /// <summary>
-        /// lblRoleDesc control.
+        /// lblCTypeDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRoleDesc;
+        protected global::System.Web.UI.WebControls.Label lblCTypeDesc;
         
         /// <summary>
-        /// txtRoleDesc control.
+        /// txtCTypeDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoleDesc;
+        protected global::System.Web.UI.WebControls.TextBox txtCTypeDesc;
         
         /// <summary>
-        /// ReqRoleDesc control.
+        /// ReqCTypeDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqRoleDesc;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCTypeDesc;
         
         /// <summary>
         /// rowSubmit control.

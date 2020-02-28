@@ -4,269 +4,115 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:Panel ID="Panel1" runat="server" ScrollBars="Both" Height="470px">
+    <asp:Table ID="Table1" runat="server" Width="100%" style="border: 1px solid lightgray;padding:2px;background-color:lightgray;">
+            <asp:TableRow BackColor="LightGray" >
+                    <asp:TableCell ColumnSpan="2" Font-Size="Medium" Font-Italic="false" ForeColor="Black" style="padding-left:10px;padding-right:10px;border-color:Lightgray;">
     
-    <asp:Label ID="lblHeading1" runat="server" Text="Live Environment" Font-Size=X-Large></asp:Label>
-    <br/>
-<%--    <ul>
-    <asp:Label ID="lblClient1" runat="server" Text="FAYSAL AMC" Font-Size=Large></asp:Label>
-    <p>
-        <asp:HyperLink ID="HyperLink1" Font-Underline=false runat="server" NavigateUrl="http://AAK183:81" Target="_blank" CssClass="mylink"> Faysal AMC pams 3G Link</asp:HyperLink>
-        <br/>
-        <asp:HyperLink ID="HyperLink2" Font-Underline=false runat="server" NavigateUrl="http://AAK183:82" Target="_blank" CssClass="mylink"> Faysal AMC pams 4G Link</asp:HyperLink>
-    </p>
-    </ul>--%>
-    <br/>
-    <asp:Table ID="tblInfo" runat="server" Width="100%" GridLines="Both">
-    <asp:TableHeaderRow HorizontalAlign="Center" VerticalAlign="Middle">
-        <asp:TableCell ColumnSpan="11" HorizontalAlign="Center" ForeColor="Black" VerticalAlign="Middle" Font-Size="Large">
-            Live Application Details
-        </asp:TableCell> 
-    </asp:TableHeaderRow>
-    <asp:TableRow BackColor="navy" ForeColor="White" Font-Bold="true" HorizontalAlign="Center" VerticalAlign="Middle">
-    <asp:TableCell ColumnSpan="11" Font-Size="Medium" Font-Italic="true" style="padding:10px;">
-    
-    SELECT PRODUCT   <asp:DropDownList ID="DropDownList1" runat="server" BackColor="ButtonFace"
-        Width="150px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black"
-        DataSourceID="SqlDataSource1" DataTextField="ProductName" style="text-align:center"
-        DataValueField="ProductID" AutoPostBack="true" ViewStateMode="Enabled" 
-        AppendDataBoundItems="False">
+    PRODUCT:   <asp:DropDownList ID="DropProduct" runat="server" BackColor="Gray"
+        Width="150px" Height="28px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="White"
+        DataSourceID="SqlDataSourceProduct" DataTextField="ProductName" style="text-align=center"
+        DataValueField="ProductID" AutoPostBack="false" ViewStateMode="Enabled" 
+        AppendDataBoundItems="True">
         <asp:ListItem Value="0">Select..</asp:ListItem>
         </asp:DropDownList>   
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+    <asp:SqlDataSource ID="SqlDataSourceProduct" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
         SelectCommand="SELECT [ProductID],[ProductName] FROM [Products]">
-
     </asp:SqlDataSource>
 
     </asp:TableCell>
-    </asp:TableRow>
 
+    <asp:TableCell ColumnSpan="2" Font-Size="Medium" Font-Italic="false" ForeColor="Black" style="padding-left:10px;padding-right:10px;">
 
-    <asp:TableRow>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Italic="true" Font-Bold="true">
-            Client Name
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Client Type
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Environment
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            POC
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Total Patches
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Latest Patch #
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Link
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            QA Tested
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Deployed Date
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Duration
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Status
-        </asp:TableCell>
-    </asp:TableRow>
+     ENVIRONMENT:   <asp:DropDownList ID="DropEnvType" runat="server" BackColor="Gray"
+        Width="150px" Height="28px" Font-Italic="True" Font-Size="Medium" 
+        Font-Names="Arial" ForeColor="White" style="text-align=center" ViewStateMode="Enabled" 
+        AppendDataBoundItems="True" DataSourceID="SqlDataSourceEnv" 
+        DataTextField="EnvTitle" DataValueField="EnvID">
+        <asp:ListItem Value=0>Select..</asp:ListItem>
+        </asp:DropDownList> 
+    
 
+    <asp:SqlDataSource ID="SqlDataSourceEnv" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+        SelectCommand="SELECT [EnvID],[EnvTitle] FROM [EnvironmentType]">
+    </asp:SqlDataSource>
 
-<%--
-    <asp:TableRow>
-        <asp:TableCell>
-            FAYSAL AMC
-        </asp:TableCell>
-        <asp:TableCell>
+    </asp:TableCell>
 
-        </asp:TableCell>
-        <asp:TableCell>
+    <asp:TableCell ColumnSpan="2" Font-Size="Medium" Font-Italic="false" ForeColor="Black" style="padding-left:2px;padding-right:1px;">
 
-        </asp:TableCell>
-        <asp:TableCell>
+        <span style="font-family:Arial;">CLIENT:</span> <asp:DropDownList ID="DropClientID" runat="server" BackColor="Gray"
+        Width="150px" Height="28px" Font-Italic="True" Font-Size="Medium" 
+        Font-Names="Arial" ForeColor="White"
+         style="text-align=center"
+          ViewStateMode="Enabled" 
+        AppendDataBoundItems="True" DataSourceID="SqlDataSourceClient" 
+        DataTextField="ClientName" DataValueField="ClientID">
+        <asp:ListItem Value="0">Select..</asp:ListItem>
+        </asp:DropDownList>  
 
-        </asp:TableCell>
-        <asp:TableCell>
+    <asp:SqlDataSource ID="SqlDataSourceClient" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+        SelectCommand="SELECT [ClientID], [ClientName] FROM [ClientDetail]">
+    </asp:SqlDataSource>
 
-        </asp:TableCell>
-        <asp:TableCell>
+    
 
-        </asp:TableCell>
-        <asp:TableCell>
+    </asp:TableCell>
 
-        </asp:TableCell>
-        <asp:TableCell>
+    <asp:TableCell ColumnSpan="2" HorizontalAlign="Right" Font-Size="Medium" Font-Italic="true" ForeColor="Black">
+        
+        <asp:Button ID="btnSearch" runat="server" Height="28px" Text="SEARCH" 
+        onclick="btnSearch_Click" />
 
-        </asp:TableCell>
-        <asp:TableCell>
+    </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+    
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="None" Height="470px">
 
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            ALFALAH AMC
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            HBL AMC
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            HBL Bank
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            Jubilee Insurance
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            PAK OMAN
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableFooterRow>
-    <asp:TableCell ColumnSpan="9">---</asp:TableCell>
-    </asp:TableFooterRow>
-
---%>
+    <br/>
+    <asp:Table ID="tblInfo" runat="server" Width="100%" GridLines="Both" Font-Size="Medium">
+    <asp:TableRow Height="35" Font-Size="12px" ForeColor="White" Font-Bold="true" BackColor="#004D40" HorizontalAlign="Center" Font-Names="Arial Black" style="padding:5px;">
+            <asp:TableCell>
+                Client Name
+            </asp:TableCell>
+            <asp:TableCell>
+                Client Type
+            </asp:TableCell>
+            <asp:TableCell>
+                Environment
+            </asp:TableCell>
+            <asp:TableCell>
+                POC
+            </asp:TableCell>
+            <asp:TableCell>
+                Total Patches
+            </asp:TableCell>
+            <asp:TableCell>
+                Latest Patch
+            </asp:TableCell>
+            <asp:TableCell>
+                QA Tested
+            </asp:TableCell>
+            <asp:TableCell>
+                Deployed Date
+            </asp:TableCell>
+            <asp:TableCell>
+                Duration
+            </asp:TableCell>
+            <asp:TableCell>
+                Status
+            </asp:TableCell>
+            <asp:TableCell>
+                Link
+            </asp:TableCell>
+            <asp:TableCell>
+                Dir
+            </asp:TableCell>
+        </asp:TableRow>
 
     </asp:Table>
 

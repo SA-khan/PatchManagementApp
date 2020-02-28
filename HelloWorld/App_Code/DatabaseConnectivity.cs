@@ -164,6 +164,113 @@ namespace HelloWorld.App_Code
 
         //Delete A Client End
 
+        // GET Client Type
+
+        public List<ClientType> getClientType()
+        {
+            List<ClientType> _clientTypeList = new List<ClientType>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spGetClientType]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        ClientType item = new ClientType();
+                        item.ClientType_ID = Convert.ToInt32(oReader["CTYPE_ID"]);
+                        item.ClientType_Title = oReader["CTYPE_TITLE"].ToString();
+                        item.ClientType_Desc = oReader["CTYPE_DESCRIPTION"].ToString();
+                        _clientTypeList.Add(item);
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            return _clientTypeList;
+        }
+
+        // GET Client Type End
+
+        // ADD Client Type
+
+        public int insertClientType(string clientTypeTitle, string clientTypeDesc)
+        {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spInsertClientType]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@ClientTypeTitle", clientTypeTitle);
+                oCmd.Parameters.AddWithValue("@ClientTypeDesc", clientTypeDesc);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // ADD Client Type End
+
+        // SET Client Type
+
+        public int setClientType(int clientTypeID, string clientTypeTitle, string clientTypeDesc)
+        {
+            int result = 0;
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[spUpdateClientType]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                oCmd.Parameters.AddWithValue("@ClientTypeID", clientTypeID);
+                oCmd.Parameters.AddWithValue("@ClientTypeTitle", clientTypeTitle);
+                oCmd.Parameters.AddWithValue("@ClientTypeDesc", clientTypeDesc);
+                oCmd.CommandType = CommandType.StoredProcedure;
+                myConnection.Open();
+                result = oCmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            return result;
+        }
+
+        // SET Client Type End
+
+        //Delete A Client Type
+
+        public int deleteClientType(int clientType) {
+            int result = 0;
+            SqlConnection myConnection;
+            try
+            {
+                using (myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spDeleteClientType]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@ClientTypeID", clientType);
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    myConnection.Open();
+                    result = oCmd.ExecuteNonQuery();
+                    myConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error occured in Method: \'deleteUserRole\'\t Class: \'DatabaseConnectivity\' while deleting a user role, Error Code: \'" + ex.Message + "\' ");
+                result = -1;
+            }
+            finally
+            {
+
+            }
+
+            return result;
+        }
+
+        //Delete A Client Type End
+
         // GET User Role
 
         public List<UserRole> getUserRole()
