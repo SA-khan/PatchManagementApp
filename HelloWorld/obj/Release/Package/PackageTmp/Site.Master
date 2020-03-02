@@ -35,10 +35,8 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="~/EnvironmentInfo.aspx" Text="Client Environment Overview"/>
-                        <asp:MenuItem NavigateUrl="~/Test.aspx" Text="Test Environment"/>
-                        <asp:MenuItem NavigateUrl="~/UAT.aspx" Text="UAT Environment"/>
-                        <asp:MenuItem NavigateUrl="~/Live.aspx" Text="Live Environment"/>
+                        <asp:MenuItem NavigateUrl="~/EnvironmentInfo.aspx" Text="Client Environment Overview"/> 
+                        <asp:MenuItem NavigateUrl="~/AppOverview.aspx" Text="Application Overview "/>
                         <asp:MenuItem NavigateUrl="~/References.aspx" Text="References & Help"/>
                     </Items>
                 </asp:Menu>

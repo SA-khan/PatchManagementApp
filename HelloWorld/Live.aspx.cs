@@ -18,7 +18,7 @@ namespace HelloWorld
             //Console.WriteLine("GGG");
 
             DatabaseConnectivity dbcon = new DatabaseConnectivity();
-            List<Patch> latestPatchOfClient = dbcon.getAllUpdatedClientPatches(4, 1);
+            List<Patch> latestPatchOfClient = dbcon.getPatchList(Convert.ToInt32(DropProduct.SelectedValue), 1, Convert.ToInt32(DropClientID.SelectedValue));
 
             //HEADER COLUMN START
 
@@ -42,6 +42,16 @@ namespace HelloWorld
             cellClientTypeHeader.Text = "Type";
             cellClientTypeHeader.HorizontalAlign = HorizontalAlign.Center;
             rowHeader.Cells.Add(cellClientTypeHeader);
+
+            TableCell cellClientProductHeader = new TableCell();
+            cellClientProductHeader.BackColor = ColorTranslator.FromHtml("#004D40");
+            cellClientProductHeader.ForeColor = ColorTranslator.FromHtml("#fff");
+            cellClientProductHeader.Font.Name = "Arial Black";
+            cellClientProductHeader.Font.Size = FontUnit.Parse("9");
+            cellClientProductHeader.Style.Add("padding", "5px");
+            cellClientProductHeader.Text = "Product";
+            cellClientProductHeader.HorizontalAlign = HorizontalAlign.Center;
+            rowHeader.Cells.Add(cellClientProductHeader);
 
             TableCell cellClientEnvTypeHeader = new TableCell();
             cellClientEnvTypeHeader.BackColor = ColorTranslator.FromHtml("#004D40");
@@ -261,6 +271,16 @@ namespace HelloWorld
                 cellClientType.Text = item.clientType;
                 cellClientType.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellClientType);
+
+                TableCell cellClientProduct = new TableCell();
+                cellClientProduct.ForeColor = ColorTranslator.FromHtml("#3E2723");
+                cellClientProduct.Font.Name = "Arial";
+                cellClientProduct.Font.Size = FontUnit.Parse("9");
+                cellClientProduct.Style.Add("padding", "3px");
+                cellClientProduct.Text = item.patchProductID.Replace('_',' ');
+                cellClientProduct.HorizontalAlign = HorizontalAlign.Right;
+                row.Cells.Add(cellClientProduct);
+
                 TableCell cellClientEnvType = new TableCell();
                 cellClientEnvType.ForeColor = ColorTranslator.FromHtml("#3E2723");
                 cellClientEnvType.Font.Name = "Arial";
@@ -299,7 +319,7 @@ namespace HelloWorld
                 cellPatchQATested.Font.Name = "Arial";
                 cellPatchQATested.Font.Size = FontUnit.Parse("9");
                 cellPatchQATested.Style.Add("padding", "3px");
-                cellPatchQATested.Text = item.patchQATested;
+                cellPatchQATested.Text = item.patchQATested == "True" ? "Tested" : "Not Tested";
                 cellPatchQATested.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchQATested);
                 TableCell cellPatchDeployedDate = new TableCell();
@@ -362,7 +382,7 @@ namespace HelloWorld
                 {
                     cellAppLink.Text = "<a target=\"_blank\" href=\"" + item.clientAppLink + "\" >" + "LINK" + "</a>";
                 }
-                cellAppLink.HorizontalAlign = HorizontalAlign.Right;
+                cellAppLink.HorizontalAlign = HorizontalAlign.Center;
                 row.Cells.Add(cellAppLink);
 
                 TableCell cellAppWorkingDirectory = new TableCell();
@@ -373,7 +393,7 @@ namespace HelloWorld
                 {
                     cellAppWorkingDirectory.Text = "<a target=\"_blank\" href=\"" + item.clientAppLink + "\" >" + "LINK" + "</a>";
                 }
-                cellAppWorkingDirectory.HorizontalAlign = HorizontalAlign.Right;
+                cellAppWorkingDirectory.HorizontalAlign = HorizontalAlign.Center;
                 row.Cells.Add(cellAppWorkingDirectory);
 
 
@@ -406,8 +426,9 @@ namespace HelloWorld
             //Console.WriteLine("GGG");
 
             DatabaseConnectivity dbcon = new DatabaseConnectivity();
-            List<Patch> latestPatchOfClient = dbcon.getAllUpdatedClientPatches(product, environment);
-            //Debug.WriteLine("Records Count: " + latestPatchOfClient.Count);
+
+            List<Patch> latestPatchOfClient = dbcon.getPatchList(Convert.ToInt32(DropProduct.SelectedValue), Convert.ToInt32(DropEnvType.SelectedValue) == 0 ? 1 : Convert.ToInt32(DropEnvType.SelectedValue), Convert.ToInt32(DropClientID.SelectedValue));
+
 
             //HEADER COLUMN START
 
@@ -431,6 +452,16 @@ namespace HelloWorld
             cellClientTypeHeader.Text = "Client Role";
             cellClientTypeHeader.HorizontalAlign = HorizontalAlign.Center;
             rowHeader.Cells.Add(cellClientTypeHeader);
+
+            TableCell cellClientProductHeader = new TableCell();
+            cellClientProductHeader.BackColor = ColorTranslator.FromHtml("#004D40");
+            cellClientProductHeader.ForeColor = ColorTranslator.FromHtml("#fff");
+            cellClientProductHeader.Font.Name = "Arial Black";
+            cellClientProductHeader.Font.Size = FontUnit.Parse("9");
+            cellClientProductHeader.Style.Add("padding", "5px");
+            cellClientProductHeader.Text = "Product";
+            cellClientProductHeader.HorizontalAlign = HorizontalAlign.Center;
+            rowHeader.Cells.Add(cellClientProductHeader);
 
             TableCell cellClientEnvTypeHeader = new TableCell();
             cellClientEnvTypeHeader.BackColor = ColorTranslator.FromHtml("#004D40");
@@ -649,6 +680,16 @@ namespace HelloWorld
                     cellClientType.Text = item.clientType;
                     cellClientType.HorizontalAlign = HorizontalAlign.Right;
                     row.Cells.Add(cellClientType);
+
+                    TableCell cellClientProduct = new TableCell();
+                    cellClientProduct.ForeColor = ColorTranslator.FromHtml("#3E2723");
+                    cellClientProduct.Font.Name = "Arial";
+                    cellClientProduct.Font.Size = FontUnit.Parse("9");
+                    cellClientProduct.Style.Add("padding", "3px");
+                    cellClientProduct.Text = item.patchProductID.Replace('_', ' ');
+                    cellClientProduct.HorizontalAlign = HorizontalAlign.Right;
+                    row.Cells.Add(cellClientProduct);
+
                     TableCell cellClientEnvType = new TableCell();
                     cellClientEnvType.ForeColor = ColorTranslator.FromHtml("#3E2723");
                     cellClientEnvType.Font.Name = "Arial";
@@ -687,7 +728,7 @@ namespace HelloWorld
                     cellPatchQATested.Font.Name = "Arial";
                     cellPatchQATested.Font.Size = FontUnit.Parse("9");
                     cellPatchQATested.Style.Add("padding", "3px");
-                    cellPatchQATested.Text = item.patchQATested;
+                    cellPatchQATested.Text = item.patchQATested == "True" ? "Tested" : "Not Tested";
                     cellPatchQATested.HorizontalAlign = HorizontalAlign.Right;
                     row.Cells.Add(cellPatchQATested);
                     TableCell cellPatchDeployedDate = new TableCell();
@@ -751,7 +792,7 @@ namespace HelloWorld
                     {
                         cellAppLink.Text = "<a target=\"_blank\" href=\"" + item.clientAppLink + "\" >" + "LINK" + "</a>";
                     }
-                    cellAppLink.HorizontalAlign = HorizontalAlign.Right;
+                    cellAppLink.HorizontalAlign = HorizontalAlign.Center;
                     row.Cells.Add(cellAppLink);
 
                     TableCell cellAppWorkingDirectory = new TableCell();
@@ -762,7 +803,7 @@ namespace HelloWorld
                     {
                         cellAppWorkingDirectory.Text = "<a target=\"_blank\" href=\"" + item.clientAppLink + "\" >" + "LINK" + "</a>";
                     }
-                    cellAppWorkingDirectory.HorizontalAlign = HorizontalAlign.Right;
+                    cellAppWorkingDirectory.HorizontalAlign = HorizontalAlign.Center;
                     row.Cells.Add(cellAppWorkingDirectory);
 
 

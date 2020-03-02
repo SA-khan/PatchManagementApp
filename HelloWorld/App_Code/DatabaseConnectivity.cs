@@ -654,6 +654,53 @@ namespace HelloWorld.App_Code
             return matchingPatch;
         }
 
+        // Updated Patch List
+
+        public List<Patch> getPatchList(int ProductID, int EnvType, int ClientID)
+        {
+            List<Patch> matchingPatch = new List<Patch>();
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "[dbo].[GetPatchListClientWiseWithProductEnvironmentClient]";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                oCmd.CommandType = CommandType.StoredProcedure;
+                oCmd.Parameters.AddWithValue("@ProductID", ProductID);
+                oCmd.Parameters.AddWithValue("@EnvType", EnvType);
+                oCmd.Parameters.AddWithValue("@Client", ClientID);
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        Patch item = new Patch();
+                        item.clientName = oReader["ClientName"].ToString();
+                        item.clientType = oReader["ClientType"].ToString();
+                        item.clientEnvType = oReader["EnvType"].ToString();
+                        item.clientPOCName = oReader["POC"].ToString();
+                        item.numberOfPatches = oReader["NumberOfPatches"].ToString();
+                        item.patchHotNumber = oReader["PatchHotNumber"].ToString();
+                        item.clientAppLink = oReader["Link"].ToString();
+                        item.patchQATested = oReader["PatchQATested"].ToString();
+                        item.patchDeployedBy = oReader["PatchDeployedBy"].ToString();
+                        item.patchCreatedDate = oReader["PatchCreatedDate"].ToString();
+                        item.patchDeployedDate = oReader["PatchDeployedDate"].ToString();
+                        item.patchProductID = oReader["ProductID"].ToString();
+                        item.patchNumberOfDaysPassed = oReader["NumberOfDaysPassed"].ToString();
+                        item.patchStatus = oReader["PatchStatus"].ToString();
+                        matchingPatch.Add(item);
+                        //matchingPatch.clientName = oReader["ClientName"].ToString();
+                        //matchingPatch.patchHotNumber = oReader["PatchHotNumber"].ToString();
+                    }
+
+                    myConnection.Close();
+                }
+            }
+            return matchingPatch;
+        }
+
+        // Updated Patch List End
+
         ///
         ///<param name="ClientName">String</param>
         ///<summary>Get Client ID Method</summary>

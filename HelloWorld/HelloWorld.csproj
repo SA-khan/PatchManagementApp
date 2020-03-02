@@ -114,7 +114,7 @@
     <Content Include="EnvironmentInfo.aspx" />
     <Content Include="Images\icon.ico" />
     <Content Include="Images\loginBG.jpg" />
-    <Content Include="Live.aspx" />
+    <Content Include="AppOverview.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="ProtectedPages\AddClientType.aspx" />
@@ -273,11 +273,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Live.aspx.cs">
-      <DependentUpon>Live.aspx</DependentUpon>
+      <DependentUpon>AppOverview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Live.aspx.designer.cs">
-      <DependentUpon>Live.aspx</DependentUpon>
+      <DependentUpon>AppOverview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
