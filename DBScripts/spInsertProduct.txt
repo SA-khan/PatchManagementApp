@@ -1,0 +1,44 @@
+/****** Object:  StoredProcedure [dbo].[spInsertProduct]    Script Date: 3/6/2020 7:15:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spInsertProduct]
+	    @ProductName varchar(40),
+        @ProductDesc varchar(MAX),
+        @ProductVersion varchar(10),
+        @ProductType varchar(40),
+        @ProductCategory varchar(50),
+        @ProductRating varchar(5),
+        @ProductUserID varchar(20),
+        @ProductPassword varchar(20),
+        @ProductPOC varchar(50),
+        @ProductSupportEmail varchar(60),
+        @ProductComments varchar(MAX)
+		AS
+BEGIN
+INSERT INTO [dbo].[Products]
+           ([ProductName]
+           ,[ProductDesc]
+           ,[ProductVersion]
+           ,[ProductType]
+           ,[ProductCategory]
+           ,[ProductRating]
+           ,[ProductDemoUserId]
+           ,[ProductDemoPasscode]
+           ,[ProductPOC]
+           ,[ProductSupportEmail]
+           ,[ProductComments])
+     VALUES
+           (@ProductName
+           ,@ProductDesc
+           ,@ProductVersion
+           ,@ProductType
+           ,@ProductCategory
+           ,@ProductRating
+           ,@ProductUserID
+           ,@ProductPassword
+           ,@ProductPOC
+           ,@ProductSupportEmail
+           ,@ProductComments)
+END

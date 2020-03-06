@@ -1,0 +1,26 @@
+/****** Object:  Table [dbo].[DocumentInformation]    Script Date: 3/6/2020 6:42:11 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DocumentInformation](
+	[DocID] [int] IDENTITY(1,1) NOT NULL,
+	[DocReferenceNumber] [bigint] NULL,
+	[DocTitle] [varchar](50) NULL,
+	[DocDescription] [varchar](max) NULL,
+	[ClientID] [int] NULL,
+	[ProductID] [int] NULL,
+	[DocName] [varchar](max) NULL,
+	[DocLocation] [varchar](max) NULL,
+	[DocLink] [varchar](max) NULL,
+	[DocType] [varchar](20) NULL,
+	[DocReference] [varchar](max) NULL,
+	[DocRemarks] [varchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[DocID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

@@ -1,0 +1,22 @@
+/****** Object:  StoredProcedure [dbo].[spNumberOfPatchesForGraph]    Script Date: 3/6/2020 7:17:54 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spNumberOfPatchesForGraph]
+AS 
+BEGIN
+WITH CTE AS (
+	SELECT
+	C.ClientID,
+	C.ClientName,
+	(SELECT COUNT(*) FROM PATCH INNER JOIN Environment Ed ON PATCH.PAT_EnvType = Ed.ENV_ID ) As NumberOfPatches
+FROM ((((Environment E INNER JOIN PATCH on E.ENV_ID = PATCH.PAT_EnvType)
+		 INNER JOIN Products P On E.ENV_Product_ID = P.ProductID)
+		 INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType)
+		 INNER JOIN ClientDetail C ON E.ENV_Client_ID = C.ClientID) 
+)		  -- CTE END
+select C.ClientName,
+	   Count(*) As [NumberOfPatches]
+	FROM CTE RIGHT OUTER JOIN ClientDetail C on CTE.ClientID = C.ClientID group by C.ClientName
+END

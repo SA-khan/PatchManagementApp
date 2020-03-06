@@ -658,16 +658,20 @@ namespace HelloWorld.App_Code
 
         public List<Patch> getPatchList(int ProductID, int EnvType, int ClientID)
         {
+            Debug.WriteLine("Product: "+ ProductID);
+            Debug.WriteLine("Environment: "+ EnvType);
+            Debug.WriteLine("Client: " + ClientID);
             List<Patch> matchingPatch = new List<Patch>();
             using (SqlConnection myConnection = new SqlConnection(con))
             {
-                string oString = "[dbo].[GetPatchListClientWiseWithProductEnvironmentClient]";
+                string oString = "[dbo].[spGetPatchListThroughCurser]";
                 SqlCommand oCmd = new SqlCommand(oString, myConnection);
 
                 oCmd.CommandType = CommandType.StoredProcedure;
+                oCmd.CommandTimeout = 100;
                 oCmd.Parameters.AddWithValue("@ProductID", ProductID);
-                oCmd.Parameters.AddWithValue("@EnvType", EnvType);
-                oCmd.Parameters.AddWithValue("@Client", ClientID);
+                oCmd.Parameters.AddWithValue("@EnvID", EnvType);
+                oCmd.Parameters.AddWithValue("@ClientID", ClientID);
                 myConnection.Open();
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
                 {
@@ -687,6 +691,7 @@ namespace HelloWorld.App_Code
                         item.patchDeployedDate = oReader["PatchDeployedDate"].ToString();
                         item.patchProductID = oReader["ProductID"].ToString();
                         item.patchNumberOfDaysPassed = oReader["NumberOfDaysPassed"].ToString();
+                        item.patchWorkingDirectory = oReader["WorkingDirectory"].ToString();
                         item.patchStatus = oReader["PatchStatus"].ToString();
                         matchingPatch.Add(item);
                         //matchingPatch.clientName = oReader["ClientName"].ToString();

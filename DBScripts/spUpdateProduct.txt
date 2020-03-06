@@ -1,0 +1,34 @@
+/****** Object:  StoredProcedure [dbo].[spUpdateProduct]    Script Date: 3/6/2020 7:21:42 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spUpdateProduct]
+	@ProductID int,
+    @ProductName varchar(40),
+    @ProductDesc varchar(MAX),
+    @ProductVersion varchar(10),
+    @ProductType varchar(40),
+    @ProductCategory varchar(50),
+    @ProductRating varchar(5),
+    @ProductUserID varchar(20),
+    @ProductPassword varchar(20),
+    @ProductPOC varchar(50),
+    @ProductEmail varchar(60),
+    @ProductComment varchar(MAX)
+AS
+BEGIN
+UPDATE [dbo].[Products]
+   SET [ProductName] = @ProductName
+      ,[ProductDesc] = @ProductDesc
+      ,[ProductVersion] = @ProductVersion
+      ,[ProductType] = @ProductType
+      ,[ProductCategory] = @ProductCategory
+      ,[ProductRating] = @ProductRating
+      ,[ProductDemoUserId] = @ProductUserID
+      ,[ProductDemoPasscode] = @ProductPassword
+      ,[ProductPOC] = @ProductPOC
+      ,[ProductSupportEmail] = @ProductEmail
+      ,[ProductComments] = @ProductComment
+ WHERE ProductID = @ProductID
+END

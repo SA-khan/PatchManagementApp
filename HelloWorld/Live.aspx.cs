@@ -7,121 +7,148 @@ using System.Web.UI.WebControls;
 using System.Drawing;
 using HelloWorld.App_Code;
 using System.Diagnostics;
+using System.Web.UI.HtmlControls;
 
 namespace HelloWorld
 {
     public partial class Live : System.Web.UI.Page
     {
+        // DatabaseConnectivity Class Object for database DML Operations
+        DatabaseConnectivity dbcon = new DatabaseConnectivity();
+        string _headerCellBackColor = "#004D40";
+        string _headerCellForeColor = "#fff";
+        string _headerCellFontName = "Arial Black";
+        string _headerCellFontSize = "9";
+        HorizontalAlign _headerCellHAlign = HorizontalAlign.Center;
+        string _headerCellPadding = "3";
+        string _headerCellClientNameText = "Name";
+        string _headerCellClientTypeText = "Type";
+        string _headerCellProductText = "Product";
+        string _headerCellClientEnvironmentText = "Environment";
+        string _headerCellPOCText = "POC";
+        string _headerCellTotalReleaseText = "Total Releases";
+        string _headerCellLatestReleaseText = "Latest Release";
+        string _headerCellReleaseQAText = "QA";
+        string _headerCellReleaseDeployedDateText = "Deployed On";
+        string _headerCellReleaseDeployedTillTodayDateText = "Days Passed";
+        string _cellBackColor = "";
+        string _cellForeColor = "";
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Debug.WriteLine("Product: " + DropDownList1.Text);
-            //Console.WriteLine("GGG");
-
-            DatabaseConnectivity dbcon = new DatabaseConnectivity();
+            // Data Stored In Variable
             List<Patch> latestPatchOfClient = dbcon.getPatchList(Convert.ToInt32(DropProduct.SelectedValue), 1, Convert.ToInt32(DropClientID.SelectedValue));
 
-            //HEADER COLUMN START
-
+            //HEADER ROW CREATED START
             TableRow rowHeader = new TableRow();
 
+            //Client Name Header Row Created
             TableCell cellClientNameHeader = new TableCell();
-            cellClientNameHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellClientNameHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellClientNameHeader.Font.Name = "Arial Black";
-            cellClientNameHeader.Font.Size = FontUnit.Parse("9");
-            cellClientNameHeader.Style.Add("padding", "5px");
-            cellClientNameHeader.Text = "Client Name";
-            cellClientNameHeader.HorizontalAlign = HorizontalAlign.Center;
+            cellClientNameHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellClientNameHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellClientNameHeader.Font.Name = _headerCellFontName;
+            cellClientNameHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellClientNameHeader.Style.Add("padding", _headerCellPadding);
+            cellClientNameHeader.Text = _headerCellClientNameText;
+            cellClientNameHeader.HorizontalAlign = _headerCellHAlign;
             rowHeader.Cells.Add(cellClientNameHeader);
+
+            //Client Type Header Row Created
             TableCell cellClientTypeHeader = new TableCell();
-            cellClientTypeHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellClientTypeHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellClientTypeHeader.Font.Name = "Arial Black";
-            cellClientTypeHeader.Font.Size = FontUnit.Parse("9");
-            cellClientTypeHeader.Style.Add("padding", "5px");
-            cellClientTypeHeader.Text = "Type";
-            cellClientTypeHeader.HorizontalAlign = HorizontalAlign.Center;
+            cellClientTypeHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellClientTypeHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellClientTypeHeader.Font.Name = _headerCellFontName;
+            cellClientTypeHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellClientTypeHeader.Style.Add("padding", _headerCellPadding);
+            cellClientTypeHeader.Text = _headerCellClientTypeText;
+            cellClientTypeHeader.HorizontalAlign = _headerCellHAlign;
             rowHeader.Cells.Add(cellClientTypeHeader);
 
+            //Client Product Header Row Created
             TableCell cellClientProductHeader = new TableCell();
-            cellClientProductHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellClientProductHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellClientProductHeader.Font.Name = "Arial Black";
-            cellClientProductHeader.Font.Size = FontUnit.Parse("9");
-            cellClientProductHeader.Style.Add("padding", "5px");
-            cellClientProductHeader.Text = "Product";
-            cellClientProductHeader.HorizontalAlign = HorizontalAlign.Center;
+            cellClientProductHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellClientProductHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellClientProductHeader.Font.Name = _headerCellFontName;
+            cellClientProductHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellClientProductHeader.Style.Add("padding", _headerCellPadding);
+            cellClientProductHeader.Text = _headerCellProductText;
+            cellClientProductHeader.HorizontalAlign = _headerCellHAlign;
             rowHeader.Cells.Add(cellClientProductHeader);
 
+            //Client Environment Type Header Row Created
             TableCell cellClientEnvTypeHeader = new TableCell();
-            cellClientEnvTypeHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellClientEnvTypeHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellClientEnvTypeHeader.Font.Name = "Arial Black";
-            cellClientEnvTypeHeader.Font.Size = FontUnit.Parse("9");
-            cellClientEnvTypeHeader.Style.Add("padding", "5px");
-            cellClientEnvTypeHeader.Text = "Environment";
-            cellClientEnvTypeHeader.HorizontalAlign = HorizontalAlign.Center;
+            cellClientEnvTypeHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellClientEnvTypeHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellClientEnvTypeHeader.Font.Name = _headerCellFontName;
+            cellClientEnvTypeHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellClientEnvTypeHeader.Style.Add("padding", _headerCellPadding);
+            cellClientEnvTypeHeader.Text = _headerCellClientEnvironmentText;
+            cellClientEnvTypeHeader.HorizontalAlign = _headerCellHAlign;
             rowHeader.Cells.Add(cellClientEnvTypeHeader);
 
+            //Client POC Name Header Row Created
             TableCell cellClientPOCHeader = new TableCell();
-            cellClientPOCHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellClientPOCHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellClientPOCHeader.Font.Name = "Arial Black";
-            cellClientPOCHeader.Font.Size = FontUnit.Parse("9");
-            cellClientPOCHeader.Style.Add("padding", "5px");
-            cellClientPOCHeader.Text = "POC";
-            cellClientPOCHeader.HorizontalAlign = HorizontalAlign.Center;
+            cellClientPOCHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellClientPOCHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellClientPOCHeader.Font.Name = _headerCellFontName;
+            cellClientPOCHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellClientPOCHeader.Style.Add("padding", _headerCellPadding);
+            cellClientPOCHeader.Text = _headerCellPOCText;
+            cellClientPOCHeader.HorizontalAlign = _headerCellHAlign;
             rowHeader.Cells.Add(cellClientPOCHeader);
 
-            TableCell cellClientPOCNameHeader = new TableCell();
-            cellClientPOCNameHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellClientPOCNameHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellClientPOCNameHeader.Font.Name = "Arial Black";
-            cellClientPOCNameHeader.Font.Size = FontUnit.Parse("9");
-            cellClientPOCNameHeader.Style.Add("padding", "5px");
-            cellClientPOCNameHeader.Text = "Total Releases";
-            cellClientPOCNameHeader.HorizontalAlign = HorizontalAlign.Center;
-            rowHeader.Cells.Add(cellClientPOCNameHeader);
+            //Client Total Release Number Header Row Created
+            TableCell cellClientTotalReleaseHeader = new TableCell();
+            cellClientTotalReleaseHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellClientTotalReleaseHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellClientTotalReleaseHeader.Font.Name = _headerCellFontName;
+            cellClientTotalReleaseHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellClientTotalReleaseHeader.Style.Add("padding", _headerCellPadding);
+            cellClientTotalReleaseHeader.Text = _headerCellTotalReleaseText;
+            cellClientTotalReleaseHeader.HorizontalAlign = _headerCellHAlign;
+            rowHeader.Cells.Add(cellClientTotalReleaseHeader);
 
+            //Client Latest Release Header Cell Created
             TableCell cellPatchHotNumberHeader = new TableCell();
-            cellPatchHotNumberHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellPatchHotNumberHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellPatchHotNumberHeader.Font.Name = "Arial Black";
-            cellPatchHotNumberHeader.Font.Size = FontUnit.Parse("9");
-            cellPatchHotNumberHeader.Style.Add("padding", "5px");
-            cellPatchHotNumberHeader.Text = "Updated Release";
-            cellPatchHotNumberHeader.HorizontalAlign = HorizontalAlign.Center;
+            cellPatchHotNumberHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellPatchHotNumberHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellPatchHotNumberHeader.Font.Name = _headerCellFontName;
+            cellPatchHotNumberHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellPatchHotNumberHeader.Style.Add("padding", _headerCellPadding);
+            cellPatchHotNumberHeader.Text = _headerCellLatestReleaseText;
+            cellPatchHotNumberHeader.HorizontalAlign = _headerCellHAlign;
             rowHeader.Cells.Add(cellPatchHotNumberHeader);
 
-            TableCell cellPatchQATestedHeader = new TableCell();
-            cellPatchQATestedHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellPatchQATestedHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellPatchQATestedHeader.Font.Name = "Arial Black";
-            cellPatchQATestedHeader.Font.Size = FontUnit.Parse("9");
-            cellPatchQATestedHeader.Style.Add("padding", "5px");
-            cellPatchQATestedHeader.Text = "QA";
-            cellPatchQATestedHeader.HorizontalAlign = HorizontalAlign.Center;
-            rowHeader.Cells.Add(cellPatchQATestedHeader);
+            //Client Quality Assurance(QA) Header Cell Created
+            TableCell cellClientReleaseQAHeader = new TableCell();
+            cellClientReleaseQAHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellClientReleaseQAHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellClientReleaseQAHeader.Font.Name = _headerCellFontName;
+            cellClientReleaseQAHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellClientReleaseQAHeader.Style.Add("padding", _headerCellPadding);
+            cellClientReleaseQAHeader.Text = _headerCellReleaseQAText;
+            cellClientReleaseQAHeader.HorizontalAlign = _headerCellHAlign;
+            rowHeader.Cells.Add(cellClientReleaseQAHeader);
 
-            TableCell cellPatchDeployedDateHeader = new TableCell();
-            cellPatchDeployedDateHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellPatchDeployedDateHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellPatchDeployedDateHeader.Font.Name = "Arial Black";
-            cellPatchDeployedDateHeader.Font.Size = FontUnit.Parse("9");
-            cellPatchDeployedDateHeader.Style.Add("padding", "5px");
-            cellPatchDeployedDateHeader.Text = "Deployed Date";
-            cellPatchDeployedDateHeader.HorizontalAlign = HorizontalAlign.Center;
-            rowHeader.Cells.Add(cellPatchDeployedDateHeader);
+            TableCell cellReleaseDeployedDateHeader = new TableCell();
+            cellReleaseDeployedDateHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellReleaseDeployedDateHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellReleaseDeployedDateHeader.Font.Name = _headerCellFontName;
+            cellReleaseDeployedDateHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellReleaseDeployedDateHeader.Style.Add("padding", _headerCellPadding);
+            cellReleaseDeployedDateHeader.Text = _headerCellReleaseDeployedDateText;
+            cellReleaseDeployedDateHeader.HorizontalAlign = _headerCellHAlign;
+            rowHeader.Cells.Add(cellReleaseDeployedDateHeader);
 
-            //
             TableCell cellPatchPassedByTimeHeader = new TableCell();
-            cellPatchPassedByTimeHeader.BackColor = ColorTranslator.FromHtml("#004D40");
-            cellPatchPassedByTimeHeader.ForeColor = ColorTranslator.FromHtml("#fff");
-            cellPatchPassedByTimeHeader.Font.Name = "Arial Black";
-            cellPatchPassedByTimeHeader.Font.Size = FontUnit.Parse("9");
-            cellPatchPassedByTimeHeader.Style.Add("padding", "5px");
-            cellPatchPassedByTimeHeader.Text = "Days Passed";
-            cellPatchPassedByTimeHeader.HorizontalAlign = HorizontalAlign.Center;
+            cellPatchPassedByTimeHeader.BackColor = ColorTranslator.FromHtml(_headerCellBackColor);
+            cellPatchPassedByTimeHeader.ForeColor = ColorTranslator.FromHtml(_headerCellForeColor);
+            cellPatchPassedByTimeHeader.Font.Name = _headerCellFontName;
+            cellPatchPassedByTimeHeader.Font.Size = FontUnit.Parse(_headerCellFontSize);
+            cellPatchPassedByTimeHeader.Style.Add("padding", _headerCellPadding);
+            cellPatchPassedByTimeHeader.Text = _headerCellReleaseDeployedTillTodayDateText;
+            cellPatchPassedByTimeHeader.HorizontalAlign = _headerCellHAlign;
             rowHeader.Cells.Add(cellPatchPassedByTimeHeader);
 
             TableCell cellPatchStatusHeader = new TableCell();
@@ -134,26 +161,7 @@ namespace HelloWorld
             cellPatchStatusHeader.Text = "STATUS";
             cellPatchStatusHeader.HorizontalAlign = HorizontalAlign.Center;
             rowHeader.Cells.Add(cellPatchStatusHeader);
-            //
-            //TableCell cellPatchFileServer = new TableCell();
-            //cellPatchFileServer.ForeColor = Color.Black;
-            //cellPatchFileServer.Text = "";
-            //cellPatchFileServer.HorizontalAlign = HorizontalAlign.Right;
-            //row.Cells.Add(cellPatchFileServer);
-            //
-            //TableCell cellPatchIP = new TableCell();
-            //cellPatchIP.ForeColor = Color.Black;
-            //cellPatchIP.Text = "";
-            //cellPatchIP.HorizontalAlign = HorizontalAlign.Right;
-            //row.Cells.Add(cellPatchIP);
-            //
-            //
-            //TableCell cellPatchDependency = new TableCell();
-            //cellPatchDependency.ForeColor = Color.Black;
-            //cellPatchDependency.Text = "";
-            //cellPatchDependency.HorizontalAlign = HorizontalAlign.Right;
-            //row.Cells.Add(cellPatchDependency);
-            //
+
             TableCell cellAppLinkHeader = new TableCell();
             cellAppLinkHeader.BackColor = ColorTranslator.FromHtml("#004D40");
             cellAppLinkHeader.ForeColor = ColorTranslator.FromHtml("#fff");
@@ -181,15 +189,33 @@ namespace HelloWorld
 
             //HEADER COLUMN END
 
-            //Debug.WriteLine("Records Count: " + latestPatchOfClient.Count);
+            // No Record Found Login
+            TableRow rowHeaderNoRecord = new TableRow();
+            rowHeaderNoRecord.Width = Unit.Percentage(100);
+            rowHeaderNoRecord.Height = Unit.Percentage(100);
+            Debug.WriteLine("Total Records: " + latestPatchOfClient.Count);
+            if (latestPatchOfClient.Count == 0) {
+                TableCell cellNoRecordFound = new TableCell();
+                cellNoRecordFound.ForeColor = Color.DarkGray;
+                cellNoRecordFound.Font.Name = "Arial";
+                cellNoRecordFound.Font.Size = FontUnit.Parse("9");
+                cellNoRecordFound.ColumnSpan = 13;
+                cellNoRecordFound.Text = "No Record Found.";
+                cellNoRecordFound.HorizontalAlign = HorizontalAlign.Left;
+                cellNoRecordFound.BackColor = ColorTranslator.FromHtml("#E0F2F1");
+                cellNoRecordFound.ForeColor = ColorTranslator.FromHtml("#3E2723");
+                cellNoRecordFound.Style.Add("font-names", "Arial");
+                cellNoRecordFound.Style.Add("padding", "8px");
+                cellNoRecordFound.Style.Add("min-width", "100%");
+                cellNoRecordFound.Style.Add("height", "50%");
+                rowHeaderNoRecord.Cells.Add(cellNoRecordFound);
+                tblInfo.Rows.Add(rowHeaderNoRecord);
+            }
+
+            // No Record Found Login End
+
             foreach (var item in latestPatchOfClient)
             {
-
-
-
-
-                //Debug.WriteLine("Name:" + item.clientName + " | PatchHotNumber: " + item.patchHotNumber + " | PatchDeployedDate: " + item.patchDeployedDate + "\n");
-                
                 TableRow row = new TableRow();
 
                 //Passed By Time Duration Calculation Logic
@@ -248,8 +274,6 @@ namespace HelloWorld
 
                     }
 
-                
-
                 TableCell cellClientName = new TableCell();
                 cellClientName.ForeColor = Color.DarkGray;
                 cellClientName.Font.Name = "Arial";
@@ -260,9 +284,9 @@ namespace HelloWorld
                 cellClientName.ForeColor = ColorTranslator.FromHtml("#3E2723");
                 cellClientName.Style.Add("font-names", "Arial");
                 cellClientName.Style.Add("padding", "3px");
-                //cellClientName.BorderColor = ColorTranslator.FromHtml("#000");
                 cellClientName.Font.Bold = false;
                 row.Cells.Add(cellClientName);
+
                 TableCell cellClientType = new TableCell();
                 cellClientType.ForeColor = ColorTranslator.FromHtml("#3E2723");
                 cellClientType.Font.Name = "Arial";
@@ -289,6 +313,7 @@ namespace HelloWorld
                 cellClientEnvType.Text = item.clientEnvType;
                 cellClientEnvType.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellClientEnvType);
+
                 TableCell cellClientPOC = new TableCell();
                 cellClientPOC.ForeColor = ColorTranslator.FromHtml("#3E2723");
                 cellClientPOC.Font.Name = "Arial";
@@ -305,6 +330,7 @@ namespace HelloWorld
                 cellClientPOCName.Text = item.numberOfPatches;
                 cellClientPOCName.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellClientPOCName);
+
                 TableCell cellPatchHotNumber = new TableCell();
                 cellPatchHotNumber.ForeColor = ColorTranslator.FromHtml("#3E2723");
                 cellPatchHotNumber.Font.Name = "Arial";
@@ -322,14 +348,12 @@ namespace HelloWorld
                 cellPatchQATested.Text = item.patchQATested == "True" ? "Tested" : "Not Tested";
                 cellPatchQATested.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchQATested);
+
                 TableCell cellPatchDeployedDate = new TableCell();
                 cellPatchDeployedDate.ForeColor = ColorTranslator.FromHtml("#3E2723");
                 cellPatchDeployedDate.Font.Name = "Arial";
                 cellPatchDeployedDate.Font.Size = FontUnit.Parse("9");
                 cellPatchDeployedDate.Style.Add("padding", "3px");
-                //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                //cellPatchDeployedDate.Text = item.patchDeployedDate.Substring(0, spaceInDate);
-                //Debug.WriteLine("Deployed Date: " + item.patchDeployedDate);
                 if (item.patchDeployedDate.ToString() != String.Empty) {
                 int a = item.patchDeployedDate.IndexOf(' ');
                 cellPatchDeployedDate.Text = item.patchDeployedDate.Substring(0,a).ToString();
@@ -337,7 +361,6 @@ namespace HelloWorld
                 cellPatchDeployedDate.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchDeployedDate);
 
-                //
                 TableCell cellPatchPassedByTime = new TableCell();
                 cellPatchPassedByTime.ForeColor = ColorTranslator.FromHtml("#3E2723");
                 cellPatchPassedByTime.Font.Name = "Arial";
@@ -354,26 +377,7 @@ namespace HelloWorld
                 cellPatchStatus.Text = item.patchStatus;
                 cellPatchStatus.HorizontalAlign = HorizontalAlign.Right;
                 row.Cells.Add(cellPatchStatus);
-                //
-                //TableCell cellPatchFileServer = new TableCell();
-                //cellPatchFileServer.ForeColor = Color.Black;
-                //cellPatchFileServer.Text = "";
-                //cellPatchFileServer.HorizontalAlign = HorizontalAlign.Right;
-                //row.Cells.Add(cellPatchFileServer);
-                //
-                //TableCell cellPatchIP = new TableCell();
-                //cellPatchIP.ForeColor = Color.Black;
-                //cellPatchIP.Text = "";
-                //cellPatchIP.HorizontalAlign = HorizontalAlign.Right;
-                //row.Cells.Add(cellPatchIP);
-                //
-                //
-                //TableCell cellPatchDependency = new TableCell();
-                //cellPatchDependency.ForeColor = Color.Black;
-                //cellPatchDependency.Text = "";
-                //cellPatchDependency.HorizontalAlign = HorizontalAlign.Right;
-                //row.Cells.Add(cellPatchDependency);
-                //
+
                 TableCell cellAppLink = new TableCell();
                 cellAppLink.ForeColor = ColorTranslator.FromHtml("#3E2723");
                 cellAppLink.Font.Name = "Arial";
@@ -388,16 +392,15 @@ namespace HelloWorld
                 TableCell cellAppWorkingDirectory = new TableCell();
                 cellAppWorkingDirectory.ForeColor = ColorTranslator.FromHtml("#3E2723");
                 cellAppWorkingDirectory.Font.Name = "Arial";
+                cellAppWorkingDirectory.Attributes.Add("padding", "2px");
                 cellAppWorkingDirectory.Font.Size = FontUnit.Parse("9");
                 if (item.clientAppLink.ToString() != String.Empty)
                 {
-                    cellAppWorkingDirectory.Text = "<a target=\"_blank\" href=\"" + item.clientAppLink + "\" >" + "LINK" + "</a>";
+                    string wd = "file:////" + item.patchWorkingDirectory + "\\Web.config";
+                    cellAppWorkingDirectory.Text = "<a target=\"_blank\" href=\"" + wd + "\" download>" + "LINK" + "</a>";
                 }
                 cellAppWorkingDirectory.HorizontalAlign = HorizontalAlign.Center;
                 row.Cells.Add(cellAppWorkingDirectory);
-
-
-                //
                 tblInfo.Rows.Add(row);
                 }
                 catch (Exception ex)
@@ -407,18 +410,20 @@ namespace HelloWorld
 
             }
         }
+       
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             tblInfo.Rows.Clear();
 
             //DatabaseConnectivity dbcon = new DatabaseConnectivity();
-            Debug.WriteLine("Product: " + DropProduct.Text);
-            Debug.WriteLine("Env Type: " + DropEnvType.Text);
-            Debug.WriteLine("Client: " + DropClientID.Text);
             int product = Convert.ToInt32(DropProduct.Text);
             int environment = Convert.ToInt32(DropEnvType.Text);
             int client = Convert.ToInt32(DropClientID.Text);
+            Debug.WriteLine("-_Search Button Click_-");
+            Debug.WriteLine(" Product:: " + product);
+            Debug.WriteLine(" Environment:: " + environment);
+            Debug.WriteLine(" Client:: " + client);
 
             //Start
 
@@ -427,7 +432,7 @@ namespace HelloWorld
 
             DatabaseConnectivity dbcon = new DatabaseConnectivity();
 
-            List<Patch> latestPatchOfClient = dbcon.getPatchList(Convert.ToInt32(DropProduct.SelectedValue), Convert.ToInt32(DropEnvType.SelectedValue) == 0 ? 1 : Convert.ToInt32(DropEnvType.SelectedValue), Convert.ToInt32(DropClientID.SelectedValue));
+            List<Patch> latestPatchOfClient = dbcon.getPatchList(Convert.ToInt32(DropProduct.SelectedValue), Convert.ToInt32(DropEnvType.SelectedValue), Convert.ToInt32(DropClientID.SelectedValue));
 
 
             //HEADER COLUMN START
@@ -590,6 +595,25 @@ namespace HelloWorld
             tblInfo.Rows.Add(rowHeader);
 
             //HEADER COLUMN END
+            TableRow rowHeaderNoRecord = new TableRow();
+            Debug.WriteLine("Total Records: " + latestPatchOfClient.Count);
+            if (latestPatchOfClient.Count == 0)
+            {
+
+                TableCell cellNoRecordFound = new TableCell();
+                cellNoRecordFound.ForeColor = Color.DarkGray;
+                cellNoRecordFound.Font.Name = "Arial";
+                cellNoRecordFound.Font.Size = FontUnit.Parse("9");
+                cellNoRecordFound.ColumnSpan = 13;
+                cellNoRecordFound.Text = "No Record Found.";
+                cellNoRecordFound.HorizontalAlign = HorizontalAlign.Left;
+                cellNoRecordFound.BackColor = ColorTranslator.FromHtml("#E0F2F1");
+                cellNoRecordFound.ForeColor = ColorTranslator.FromHtml("#3E2723");
+                cellNoRecordFound.Style.Add("font-names", "Arial");
+                cellNoRecordFound.Style.Add("padding", "3px");
+                rowHeaderNoRecord.Cells.Add(cellNoRecordFound);
+                tblInfo.Rows.Add(rowHeaderNoRecord);
+            }
 
             foreach (var item in latestPatchOfClient)
             {
@@ -741,8 +765,9 @@ namespace HelloWorld
                     //Debug.WriteLine("Deployed Date: " + item.patchDeployedDate);
                     if (item.patchDeployedDate.ToString() != String.Empty)
                     {
-                        int a = item.patchDeployedDate.IndexOf(' ');
-                        cellPatchDeployedDate.Text = item.patchDeployedDate.Substring(0, a).ToString();
+                        //int a = item.patchDeployedDate.IndexOf(' ');
+                        //cellPatchDeployedDate.Text = item.patchDeployedDate.Substring(0, a).ToString();
+                        cellPatchDeployedDate.Text = item.patchDeployedDate.ToString();
                     }
                     cellPatchDeployedDate.HorizontalAlign = HorizontalAlign.Right;
                     row.Cells.Add(cellPatchDeployedDate);
@@ -801,7 +826,14 @@ namespace HelloWorld
                     cellAppWorkingDirectory.Font.Size = FontUnit.Parse("9");
                     if (item.clientAppLink.ToString() != String.Empty)
                     {
-                        cellAppWorkingDirectory.Text = "<a target=\"_blank\" href=\"" + item.clientAppLink + "\" >" + "LINK" + "</a>";
+                        try
+                        {
+                            string wd = "file:" + item.patchWorkingDirectory + "\\Web.config";
+                            //Debug.WriteLine("Working Directory: " + wd);
+                            //cellAppWorkingDirectory.Text = "<button  id=\"FancyBtn\" type=\"button\" runat=\"server\" onclick=\"myDir_Click()\" value=\"View\" >" + "LINK" + "</button";
+                            cellAppWorkingDirectory.Text = "<a target=\"_blank\" href=\"" + wd + "\" download>" + "LINK" + "</a>";
+                        }
+                        catch (Exception) { }
                     }
                     cellAppWorkingDirectory.HorizontalAlign = HorizontalAlign.Center;
                     row.Cells.Add(cellAppWorkingDirectory);

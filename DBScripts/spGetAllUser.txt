@@ -1,0 +1,18 @@
+/****** Object:  StoredProcedure [dbo].[spGetAllUser]    Script Date: 3/6/2020 7:03:48 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/****** Script for SelectTopNRows command from SSMS  ******/
+CREATE PROC [dbo].[spGetAllUser]
+AS
+BEGIN
+SELECT [USER_ID]
+      ,[USER_NAME]
+      ,(select [ROLE_TITLE] FROM ROLES WHERE [ROLE_ID] = [USER_ROLE]) As USER_ROLE
+      ,[USER_STATUS]
+      ,[USER_PASSCODE]
+      ,[USER_LOGINDATE]
+      ,[USER_WRONG_ATTEMPTS]
+  FROM [SHMAPortal].[dbo].[USER]
+END

@@ -1,0 +1,13 @@
+/****** Object:  Table [dbo].[CLIENT_TYPE]    Script Date: 3/6/2020 6:39:13 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CLIENT_TYPE](
+	[CTYPE_ID] [int] IDENTITY(1,1) NOT NULL,
+	[CTYPE_TITLE] [varchar](max) NULL,
+	[CTYPE_DESCRIPTION] [varchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

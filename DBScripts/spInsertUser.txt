@@ -1,0 +1,26 @@
+/****** Object:  StoredProcedure [dbo].[spInsertUser]    Script Date: 3/6/2020 7:16:31 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spInsertUser]
+	@Username varchar(30),
+	@Role int,
+	@Passcode varchar(30)
+	As
+BEGIN
+INSERT INTO [dbo].[USER]
+           ([USER_NAME]
+           ,[USER_ROLE]
+           ,[USER_STATUS]
+           ,[USER_PASSCODE]
+           ,[USER_LOGINDATE]
+           ,[USER_WRONG_ATTEMPTS])
+     VALUES
+           (@Username
+           ,@Role
+           ,1
+           ,@Passcode
+           ,'1900-01-01 00:00:00'
+           ,0)
+END

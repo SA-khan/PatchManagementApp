@@ -1,0 +1,22 @@
+/****** Object:  Table [dbo].[ClientDetail]    Script Date: 3/6/2020 6:41:04 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ClientDetail](
+	[ClientID] [int] IDENTITY(1,1) NOT NULL,
+	[ClientName] [varchar](40) NULL,
+	[ClientType] [varchar](40) NULL,
+	[ClientDesc] [varchar](50) NULL,
+	[ClientStill] [bit] NULL,
+	[ClientPOCName] [varchar](40) NULL,
+	[ClientPOCContact] [varchar](40) NULL,
+	[ClientPOCEmail] [varchar](60) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ClientID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO

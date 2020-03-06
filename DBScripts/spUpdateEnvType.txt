@@ -1,0 +1,16 @@
+/****** Object:  StoredProcedure [dbo].[spUpdateEnvType]    Script Date: 3/6/2020 7:20:53 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spUpdateEnvType]
+	@EnvTypeID int,
+	@EnvTypeTitle varchar(10),
+	@EnvTypeDesc varchar(20)
+	As
+BEGIN
+UPDATE [dbo].[EnvironmentType]
+   SET [EnvTitle] = @EnvTypeTitle
+      ,[EnvDesc] = @EnvTypeDesc
+ WHERE EnvID = @EnvTypeID
+END

@@ -1,0 +1,373 @@
+/****** Object:  StoredProcedure [dbo].[GetPatchListClientWiseWithProductEnvironmentClient]    Script Date: 3/6/2020 6:52:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROC [dbo].[GetPatchListClientWiseWithProductEnvironmentClient]
+	@ProductID int,
+	@EnvType int,
+	@Client int
+	As
+	BEGIN
+	if(@Client != 0 AND @ProductID = 0 AND @EnvType = 0)
+		begin
+			--select DISTINCT (SELECT ClientDetail.ClientName FROM ClientDetail WHERE ClientDetail.ClientID = Environment.ENV_Client_ID) As [ClientName],(SELECT TOP 1 CLIENT_TYPE.CTYPE_TITLE FROM CLIENT_TYPE WHERE CLIENT_TYPE.CTYPE_ID = (SELECT TOP 1 ClientDetail.ClientType FROM ClientDetail WHERE ClientDetail.ClientID = Environment.ENV_Client_ID)) As [ClientType],(SELECT TOP 1 EnvironmentType.EnvTitle FROM EnvironmentType WHERE EnvironmentType.EnvID = ENV_AppServerEnvironmentType) As [EnvType],(select top 1 ClientDetail.ClientPOCName from ClientDetail where ClientDetail.ClientID = @Client) AS [POC],(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID  AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND Environment.ENV_ID = PATCH.PAT_EnvType order by PAT_DeployedDate ) ) order by PATCH.PAT_DeployedDate desc) AS [PatchHotNumber], Environment.ENV_AppHyperLink As [Link],(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchQATested], (SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedBy], (SELECT TOP 1 FORMAT(PATCH.PAT_CreatedDate,'dd-MMM-yyyy') FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchCreatedDate], (SELECT TOP 1 FORMAT(PATCH.PAT_DeployedDate,'dd-MMM-yyyy') FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedDate],(SELECT TOP 1 DATEDIFF(DAY,PATCH.PAT_DeployedDate,GETDATE()) FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [NumberOfDaysPassed] ,(SELECT count(*) FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID )) AS [NumberOfPatches],(SELECT TOP 1 Products.ProductName FROM Products WHERE ProductID = Environment.ENV_Product_ID) AS [ProductID],( SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedBy desc) AS [PatchStatus],
+			--	Environment.ENV_AppServerWorkingDirectoryLocation AS [WorkingDirectory] from Environment INNER JOIN PATCH ON Environment.ENV_Client_ID = PATCH.PAT_ClientID where Environment.ENV_Client_ID = @Client 
+			select DISTINCT (SELECT ClientDetail.ClientName FROM ClientDetail WHERE ClientDetail.ClientID = Environment.ENV_Client_ID) As [ClientName],(SELECT TOP 1 CLIENT_TYPE.CTYPE_TITLE FROM CLIENT_TYPE WHERE CLIENT_TYPE.CTYPE_ID = (SELECT TOP 1 ClientDetail.ClientType FROM ClientDetail WHERE ClientDetail.ClientID = Environment.ENV_Client_ID)) As [ClientType],(SELECT TOP 1 EnvironmentType.EnvTitle FROM EnvironmentType WHERE EnvironmentType.EnvID = ENV_AppServerEnvironmentType) As [EnvType],(select top 1 ClientDetail.ClientPOCName from ClientDetail where ClientDetail.ClientID = @Client) AS [POC],(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID  AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND Environment.ENV_ID = PATCH.PAT_EnvType order by PAT_DeployedDate ) ) order by PATCH.PAT_DeployedDate desc) AS [PatchHotNumber], Environment.ENV_AppHyperLink As [Link],(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchQATested], (SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedBy], (SELECT TOP 1 FORMAT(PATCH.PAT_CreatedDate,'dd-MMM-yyyy') FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchCreatedDate], (SELECT TOP 1 FORMAT(PATCH.PAT_DeployedDate,'dd-MMM-yyyy') FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedDate],(SELECT TOP 1 DATEDIFF(DAY,PATCH.PAT_DeployedDate,GETDATE()) FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [NumberOfDaysPassed] ,(SELECT count(*) FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID )) AS [NumberOfPatches],(SELECT TOP 1 Products.ProductName FROM Products WHERE ProductID = Environment.ENV_Product_ID) AS [ProductID],( SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedBy desc) AS [PatchStatus],
+				Environment.ENV_AppServerWorkingDirectoryLocation AS [WorkingDirectory] from Environment INNER JOIN PATCH ON Environment.ENV_Client_ID = PATCH.PAT_ClientID where Environment.ENV_Client_ID = @Client 
+		end
+	else
+		begin
+		if(@EnvType != 0 AND @Client = 0 AND @ProductID = 0)
+			begin
+				select DISTINCT (SELECT TOP 1 ClientDetail.ClientName 
+                 FROM ClientDetail 
+				 WHERE ClientDetail.ClientID = Environment.ENV_Client_ID) As [ClientName],
+				(SELECT TOP 1 CLIENT_TYPE.CTYPE_TITLE 
+				 FROM CLIENT_TYPE 
+				 WHERE CLIENT_TYPE.CTYPE_ID = (SELECT TOP 1 ClientDetail.ClientType 
+											   FROM ClientDetail 
+											   WHERE ClientDetail.ClientID = Environment.ENV_Client_ID)) As [ClientType],
+				(SELECT TOP 1 EnvironmentType.EnvTitle 
+				 FROM EnvironmentType 
+				 WHERE EnvironmentType.EnvID = ENV_AppServerEnvironmentType) As [EnvType],
+				(SELECT TOP 1 ClientDetail.ClientPOCName 
+				 from ClientDetail 
+				 where ClientDetail.ClientID = Environment.ENV_Client_ID) AS [POC],
+				(SELECT TOP 1 PATCH.PAT_HotNumber 
+				 FROM PATCH 
+				 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+				       PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					   PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											FROM Environment 
+											WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+												  PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+										    order by PATCH.PAT_DeployedDate desc) AS [PatchHotNumber], 
+				 Environment.ENV_AppHyperLink As [Link],
+				 (SELECT TOP 1 PATCH.PAT_IsQAPassed 
+				  FROM PATCH 
+				  WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					    PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+						PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											 FROM Environment 
+											 WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+												   PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+										     order by PATCH.PAT_DeployedDate desc) AS [PatchQATested], 
+				(SELECT TOP 1 PATCH.PAT_DeployedBy 
+				 FROM PATCH 
+				 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					   PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					   PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											FROM Environment 
+											WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+												  PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+											order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedBy], 
+				(SELECT TOP 1 FORMAT(PATCH.PAT_CreatedDate,'ddddd MMMMM dd, yyyy') 
+				 FROM PATCH 
+				 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					   PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					   PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											FROM Environment 
+											WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+												  PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+											order by PATCH.PAT_DeployedDate desc) AS [PatchCreatedDate], 
+				(SELECT TOP 1 FORMAT(PATCH.PAT_DeployedDate,'ddddd MMMMM dd, yyyy') 
+				 FROM PATCH 
+				 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					   PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					   PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											FROM Environment 
+											WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+												  PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+											order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedDate],
+				(SELECT TOP 1 DATEDIFF(DAY,PATCH.PAT_DeployedDate,GETDATE()) 
+				 FROM PATCH 
+				 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					   PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					   PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											FROM Environment 
+											WHERE Environment.ENV_Client_ID = PAT_ClientID AND 
+												  PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+											order by PATCH.PAT_DeployedDate desc) AS [NumberOfDaysPassed] ,
+				(SELECT count(*) 
+				 FROM PATCH
+				 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					   PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					   PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											FROM Environment 
+											WHERE Environment.ENV_Client_ID = PAT_ClientID AND 
+												  PATCH.PAT_ProductID = Environment.ENV_Product_ID )) AS [NumberOfPatches],
+				(SELECT TOP 1 Products.ProductName 
+				 FROM Products 
+				 WHERE ProductID = Environment.ENV_Product_ID) AS [ProductID],
+				(SELECT TOP 1 PATCH.PAT_Dependency 
+				 FROM PATCH 
+				 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					   PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											FROM Environment 
+											WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+												  PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+											order by PATCH.PAT_DeployedBy desc) AS [PatchStatus],
+				Environment.ENV_AppServerWorkingDirectoryLocation AS [WorkingDirectory]
+				FROM Environment INNER JOIN PATCH ON Environment.ENV_Client_ID = PATCH.PAT_ClientID 
+				WHERE Environment.ENV_AppServerEnvironmentType = @EnvType
+			end
+		else
+			begin
+			if( @ProductID != 0 AND @EnvType = 0 AND @Client = 0 )
+				begin
+					select DISTINCT (SELECT TOP 1 ClientDetail.ClientName 
+				 FROM ClientDetail 
+				 WHERE ClientDetail.ClientID = Environment.ENV_Client_ID) As [ClientName],
+				(SELECT TOP 1 CLIENT_TYPE.CTYPE_TITLE 
+				 FROM CLIENT_TYPE 
+				 WHERE CLIENT_TYPE.CTYPE_ID = (SELECT TOP 1 ClientDetail.ClientType 
+											   FROM ClientDetail 
+											   WHERE ClientDetail.ClientID = Environment.ENV_Client_ID)) As [ClientType],
+			    (SELECT TOP 1 EnvironmentType.EnvTitle 
+				 FROM EnvironmentType 
+				 WHERE EnvironmentType.EnvID = ENV_AppServerEnvironmentType) As [EnvType],
+				(SELECT TOP 1 ClientDetail.ClientPOCName 
+				 FROM ClientDetail 
+				 WHERE ClientDetail.ClientID = Environment.ENV_Client_ID) AS [POC],
+				(SELECT TOP 1 PATCH.PAT_HotNumber 
+				 FROM PATCH 
+				 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+				       PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					   PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											FROM Environment 
+											WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+												  PATCH.PAT_ProductID = Environment.ENV_Product_ID  AND 
+												  PATCH.PAT_EnvType = Environment.ENV_ID) 
+																	   order by PATCH.PAT_DeployedDate desc) AS [PatchHotNumber], 
+				Environment.ENV_AppHyperLink As [Link],
+			   (SELECT TOP 1 PATCH.PAT_IsQAPassed 
+			    FROM PATCH 
+				WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					  PATCH.PAT_EnvType = Environment.ENV_ID 
+			    order by PATCH.PAT_DeployedDate desc) AS [PatchQATested], 
+				(SELECT TOP 1 PATCH.PAT_DeployedBy 
+				 FROM PATCH 
+				 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					   PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					   PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+											FROM Environment 
+											WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+												  PATCH.PAT_ProductID = Environment.ENV_Product_ID  AND 
+												  PATCH.PAT_EnvType = Environment.ENV_ID) 
+																	   order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedBy], 
+			   (SELECT TOP 1 FORMAT(PATCH.PAT_CreatedDate,'dd-MMM-yyyy') 
+			    FROM PATCH 
+				WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					  PATCH.PAT_EnvType = Environment.ENV_ID 
+					  order by PATCH.PAT_DeployedDate desc) AS [PatchCreatedDate], 
+			   (SELECT TOP 1 FORMAT(PATCH.PAT_DeployedDate,'dd-MMM-yyyy') 
+			    FROM PATCH 
+				WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					  PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+										   FROM Environment 
+										   WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+											     PATCH.PAT_ProductID = Environment.ENV_Product_ID  AND 
+												 PATCH.PAT_EnvType = Environment.ENV_ID) 
+										   order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedDate],
+			  (SELECT TOP 1 DATEDIFF(DAY,PATCH.PAT_DeployedDate,GETDATE()) 
+			   FROM PATCH 
+			   WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					 PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					 PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+										  FROM Environment 
+										  WHERE Environment.ENV_Client_ID = PAT_ClientID AND 
+												PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+												PATCH.PAT_EnvType = Environment.ENV_ID ) 
+										  order by PATCH.PAT_DeployedDate desc) AS [NumberOfDaysPassed], 
+			  (SELECT count(*) 
+			   FROM PATCH 
+			   WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					 PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+					 PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+									      FROM Environment 
+										  WHERE Environment.ENV_Client_ID = PAT_ClientID AND 
+												PATCH.PAT_ProductID = Environment.ENV_Product_ID  AND 
+												PATCH.PAT_EnvType = Environment.ENV_ID)) AS [NumberOfPatches],
+			  (SELECT TOP 1 Products.ProductName 
+			   FROM Products 
+			   WHERE ProductID = Environment.ENV_Product_ID) AS [ProductID],
+			  (SELECT TOP 1 PATCH.PAT_Dependency 
+			   FROM PATCH 
+			   WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+					 PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+										  FROM Environment 
+										  WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+												PATCH.PAT_ProductID = Environment.ENV_Product_ID  AND 
+												PATCH.PAT_EnvType = Environment.ENV_ID) 
+										  order by PATCH.PAT_DeployedBy desc) AS [PatchStatus],
+						  Environment.ENV_AppServerWorkingDirectoryLocation AS [WorkingDirectory] 
+					from Environment INNER JOIN PATCH ON Environment.ENV_Client_ID = PATCH.PAT_ClientID 
+					where Environment.ENV_Product_ID = @ProductID
+				end
+			else
+				begin
+					if( @ProductID != 0 AND @EnvType != 0 AND @Client = 0 )
+					begin
+						WITH CTE AS (
+							SELECT
+								C.ClientID,
+								C.ClientName,
+								C.ClientType As ClientType,
+								(SELECT EnvTitle FROM EnvironmentType WHERE EnvID = E.ENV_AppServerEnvironmentType) As EnvType,
+								C.ClientPOCName As [POC],
+								(SELECT COUNT(*) FROM PATCH INNER JOIN Environment Ed ON PATCH.PAT_EnvType = Ed.ENV_ID WHERE PATCH.PAT_ProductID = @ProductID AND C.ClientID = @Client AND PATCH.PAT_EnvType = (SELECT ENV_ID FROM Environment WHERE Environment.ENV_AppServerEnvironmentType = @EnvType AND Environment.ENV_Product_ID = @ProductID AND Environment.ENV_Client_ID = @Client )) As NumberOfPatches,
+								PATCH.PAT_ProductID As ProductID,
+								DATEDIFF(DAY,PATCH.PAT_DeployedDate,GETDATE()) AS [NumberOfDaysPassed],
+								PATCH.PAT_HotNumber As PatchHotNumber,
+								E.ENV_AppHyperLink As [Link],
+								CASE WHEN PATCH.PAT_IsQAPassed = 'false' then 'Not Tested' WHEN PATCH.PAT_IsQAPassed = 'true' then 'Tested' END As PatchQATested,
+								PATCH.PAT_DeployedBy As PatchDeployedBy,
+								PATCH.PAT_CreatedDate As PatchCreatedDate,
+								PATCH.PAT_DeployedDate As PatchDeployedDate,
+								PATCH.PAT_IsQAPassed As PatchIsQAPassed,
+								(select TOP 1 PATCH.PAT_Dependency from PATCH order by PAT_DeployedDate desc) As PatchStatus,
+								E.ENV_AppServerWorkingDirectoryLocation AS [WorkingDirectory]
+							FROM ((((Environment E INNER JOIN PATCH on E.ENV_ID = PATCH.PAT_EnvType)
+									INNER JOIN Products P On E.ENV_Product_ID = P.ProductID)
+									INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType)
+									RIGHT OUTER JOIN ClientDetail C ON E.ENV_Client_ID = C.ClientID) WHERE PATCH.PAT_ProductID=@ProductID AND PATCH.PAT_EnvType = (SELECT ENV_ID FROM Environment WHERE Environment.ENV_AppServerEnvironmentType = @EnvType AND Environment.ENV_Product_ID = @ProductID AND Environment.ENV_Client_ID = C.ClientID  )
+						    
+						)		  -- CTE END
+						select C.ClientName,
+							(SELECT CTYPE_TITLE FROM CLIENT_TYPE WHERE CTYPE_ID = C.ClientType) As [ClientType],
+							MAX(CTE.EnvType) AS [EnvType],
+							MAX(CTE.POC) AS [POC],
+							MAX(CTE.PatchHotNumber) As [PatchHotNumber],
+							MAX(CTE.Link) As [Link],
+							MAX(CTE.PatchQATested) As [PatchQATested],
+							MIN(CTE.PatchDeployedBy) As [PatchDeployedBy],
+							MAX(CTE.PatchCreatedDate) As [PatchCreatedDate],
+							MAX(CTE.PatchDeployedDate) As [PatchDeployedDate],
+							MIN(CTE.NumberOfDaysPassed) As [NumberOfDaysPassed],
+							Count(CTE.NumberOfPatches) As [NumberOfPatches],
+							MAX(CTE.ProductID) As [ProductID],
+							MAX(CTE.PatchStatus) As [PatchStatus],
+							MAX(CTE.WorkingDirectory) As [WorkingDirectory]
+						FROM CTE LEFT JOIN ClientDetail C on CTE.ClientID = C.ClientID 
+						group by C.ClientName, C.ClientType
+						--select Cla from ClientDetail C LEFT OUTER JOIN CTE on CTE.ClientID = C.ClientID group by C.ClientName
+						--select * from CTE
+					end
+					else
+						begin
+							if( @ProductID != 0 AND @EnvType != 0 AND @Client != 0 )
+							begin
+								select DISTINCT (SELECT ClientDetail.ClientName FROM ClientDetail WHERE ClientDetail.ClientID = Environment.ENV_Client_ID) As [ClientName],(SELECT CLIENT_TYPE.CTYPE_TITLE FROM CLIENT_TYPE WHERE CLIENT_TYPE.CTYPE_ID = (SELECT ClientDetail.ClientType FROM ClientDetail WHERE ClientDetail.ClientID = Environment.ENV_Client_ID)) As [ClientType],(SELECT EnvironmentType.EnvTitle FROM EnvironmentType WHERE EnvironmentType.EnvID = ENV_AppServerEnvironmentType) As [EnvType],(select top 1 ClientDetail.ClientPOCName from ClientDetail where ClientDetail.ClientID = Environment.ENV_Client_ID) AS [POC],(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchHotNumber], Environment.ENV_AppHyperLink As [Link],(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchQATested], (SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedBy], (SELECT TOP 1 FORMAT(PATCH.PAT_CreatedDate,'ddddd MMMMM dd, yyyy') FROM PATCH WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchCreatedDate], (SELECT TOP 1 FORMAT(PATCH.PAT_DeployedDate,'ddddd MMMMM dd, yyyy') FROM PATCH WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedDate],(SELECT TOP 1 DATEDIFF(DAY,PATCH.PAT_DeployedDate,GETDATE()) FROM PATCH WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = PAT_ClientID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [NumberOfDaysPassed] ,(SELECT count(*) FROM PATCH WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = PAT_ClientID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID )) AS [NumberOfPatches],(SELECT Products.ProductName FROM Products WHERE ProductID = Environment.ENV_Product_ID) AS [ProductID],( SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedBy desc) AS [PatchStatus], Environment.ENV_AppServerWorkingDirectoryLocation AS [WorkingDirectory] from Environment INNER JOIN PATCH ON Environment.ENV_Client_ID = PATCH.PAT_ClientID where Environment.ENV_Product_ID = @ProductID AND Environment.ENV_Client_ID = @Client AND Environment.ENV_ID = (SELECT ENV_ID FROM Environment WHERE Environment.ENV_AppServerEnvironmentType = @EnvType AND Environment.ENV_Client_ID = @Client AND Environment.ENV_Product_ID = @ProductID)
+							end 
+							else
+							begin
+							if(@ProductID = 0 AND @EnvType = 0 AND @Client = 0)
+								BEGIN
+										SELECT DISTINCT (SELECT TOP 1 ClientDetail.ClientName 
+										FROM ClientDetail 
+										WHERE ClientDetail.ClientID = Environment.ENV_Client_ID) As [ClientName],
+									   (SELECT TOP 1 CLIENT_TYPE.CTYPE_TITLE 
+										FROM CLIENT_TYPE 
+										WHERE CLIENT_TYPE.CTYPE_ID = (SELECT TOP 1 ClientDetail.ClientType 
+																	  FROM ClientDetail 
+																	  WHERE ClientDetail.ClientID = Environment.ENV_Client_ID)) As [ClientType],
+									   (SELECT TOP 1 EnvironmentType.EnvTitle 
+										FROM EnvironmentType 
+										WHERE EnvironmentType.EnvID = ENV_AppServerEnvironmentType) As [EnvType],
+									   (SELECT TOP 1 ClientDetail.ClientPOCName 
+										FROM ClientDetail 
+										WHERE ClientDetail.ClientID = Environment.ENV_Client_ID) AS [POC],
+									   (SELECT TOP 1 PATCH.PAT_HotNumber 
+										FROM PATCH 
+										WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+											  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+											  PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+																   FROM Environment 
+																   WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+																		 PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+																   order by PATCH.PAT_DeployedDate desc) AS [PatchHotNumber], 
+										Environment.ENV_AppHyperLink As [Link],
+									   (SELECT TOP 1 PATCH.PAT_IsQAPassed 
+										FROM PATCH 
+										WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+											  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+											  PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+																   FROM Environment 
+																   WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+																		 PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+																   order by PATCH.PAT_DeployedDate desc) AS [PatchQATested], 
+									   (SELECT TOP 1 PATCH.PAT_DeployedBy 
+										FROM PATCH 
+										WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+											  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+											  PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+																   FROM Environment 
+																   WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+																		 PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+																   order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedBy], 
+									   (SELECT TOP 1 FORMAT(PATCH.PAT_CreatedDate,'dd-MMM-yyyy') 
+										FROM PATCH 
+										WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+											  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+											  PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+																   FROM Environment 
+																   WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+													  PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+												order by PATCH.PAT_DeployedDate desc) AS [PatchCreatedDate], 
+									   (SELECT TOP 1 FORMAT(PATCH.PAT_DeployedDate,'ddddd MMMMM dd, yyyy') 
+										FROM PATCH 
+										WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+											  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+											  PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+																   FROM Environment 
+																   WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+																		 PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+																   order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedDate],
+									   (SELECT TOP 1 DATEDIFF(DAY,PATCH.PAT_DeployedDate,GETDATE()) 
+										FROM PATCH 
+										WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+											  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+											  PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+																   FROM Environment 
+																   WHERE Environment.ENV_Client_ID = PAT_ClientID AND 
+																		 PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+																   order by PATCH.PAT_DeployedDate desc) AS [NumberOfDaysPassed] ,
+									   (SELECT TOP 1 count(*) 
+										FROM PATCH
+										WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+											  PATCH.PAT_ProductID = Environment.ENV_Product_ID AND 
+											  PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+																   FROM Environment 
+																   WHERE Environment.ENV_Client_ID = PAT_ClientID AND 
+																		 PATCH.PAT_ProductID = Environment.ENV_Product_ID )) AS [NumberOfPatches],
+										(SELECT TOP 1 Products.ProductName 
+										 FROM Products 
+										 WHERE ProductID = Environment.ENV_Product_ID) AS [ProductID],
+										(SELECT TOP 1 PATCH.PAT_Dependency 
+										 FROM PATCH 
+										 WHERE PATCH.PAT_ClientID = Environment.ENV_Client_ID AND 
+												PATCH.PAT_EnvType = (SELECT TOP 1 Environment.ENV_ID 
+												FROM Environment 
+												WHERE Environment.ENV_Client_ID = Environment.ENV_Client_ID AND 
+													  PATCH.PAT_ProductID = Environment.ENV_Product_ID ) 
+												order by PATCH.PAT_DeployedBy desc) AS [PatchStatus],
+										Environment.ENV_AppServerWorkingDirectoryLocation AS [WorkingDirectory]
+									FROM Environment INNER JOIN PATCH ON Environment.ENV_Client_ID = PATCH.PAT_ClientID 
+								end
+							else
+								begin
+									select DISTINCT (SELECT ClientDetail.ClientName FROM ClientDetail WHERE ClientDetail.ClientID = Environment.ENV_Client_ID) As [ClientName],(SELECT CLIENT_TYPE.CTYPE_TITLE FROM CLIENT_TYPE WHERE CLIENT_TYPE.CTYPE_ID = (SELECT ClientDetail.ClientType FROM ClientDetail WHERE ClientDetail.ClientID = Environment.ENV_Client_ID)) As [ClientType],(SELECT EnvironmentType.EnvTitle FROM EnvironmentType WHERE EnvironmentType.EnvID = ENV_AppServerEnvironmentType) As [EnvType],(select top 1 ClientDetail.ClientPOCName from ClientDetail where ClientDetail.ClientID = @Client) AS [POC],(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchHotNumber], Environment.ENV_AppHyperLink As [Link],(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchQATested], (SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedBy], (SELECT TOP 1 FORMAT(PATCH.PAT_CreatedDate,'ddddd MMMMM dd, yyyy') FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchCreatedDate], (SELECT TOP 1 FORMAT(PATCH.PAT_DeployedDate,'ddddd MMMMM dd, yyyy') FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [PatchDeployedDate],(SELECT TOP 1 DATEDIFF(DAY,PATCH.PAT_DeployedDate,GETDATE()) FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedDate desc) AS [NumberOfDaysPassed] ,(SELECT count(*) FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID )) AS [NumberOfPatches],(SELECT Products.ProductName FROM Products WHERE ProductID = Environment.ENV_Product_ID) AS [ProductID],( SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = @Client AND PATCH.PAT_EnvType = (SELECT Environment.ENV_ID FROM Environment WHERE Environment.ENV_Client_ID = @Client AND PATCH.PAT_ProductID = Environment.ENV_Product_ID ) order by PATCH.PAT_DeployedBy desc) AS [PatchStatus], Environment.ENV_AppServerWorkingDirectoryLocation AS [WorkingDirectory] from Environment INNER JOIN PATCH ON Environment.ENV_Client_ID = PATCH.PAT_ClientID where Environment.ENV_Client_ID = @Client AND Environment.ENV_AppServerEnvironmentType = @EnvType
+								end
+							end
+						end
+				end
+			end
+		end
+
+	END
+

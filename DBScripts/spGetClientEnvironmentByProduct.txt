@@ -1,0 +1,87 @@
+/****** Object:  StoredProcedure [dbo].[spGetClientEnvironmentByProduct]    Script Date: 3/6/2020 7:04:34 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/****** Script for SelectTopNRows command from SSMS  ******/
+
+CREATE PROC [dbo].[spGetClientEnvironmentByProduct]
+	@ProductID int,
+	@EnvType int,
+	@ClientID int
+	As
+	BEGIN
+	IF @ProductID = 0 AND @EnvType = 0 AND @ClientID = 0
+		SELECT C.ClientName, E.ENV_AppServerName, (select Products.ProductName from Products where Products.ProductID = E.ENV_Product_ID) AS ENV_Product_ID, (select EnvTitle from EnvironmentType where EnvID = E.ENV_AppServerEnvironmentType) AS ENV_AppServerEnvironmentType,
+	   E.ENV_AppServerIsX86Version, E.ENV_AppServerIsVirtual, E.ENV_AppServerMemory,
+	   E.ENV_AppServerProcessor, E.ENV_AppServerOSBuild, E.ENV_AppServerOS, E.ENV_AppServerWebBrowser,
+	   E.ENV_AppServerWebBrowserVersion, E.ENV_AppHyperLink,E.ENV_AppServerWorkingDirectoryLocation, E.ENV_AppServerIP,
+	   E.ENV_AppServerPort, E.ENV_AppServerDependency,
+	   E.ENV_DBServerName, E.ENV_DBServerEnvironmentType, E.ENV_DBServerIsX86Version,
+	   E.ENV_DBServerIsVirtual, E.ENV_DBServerMemory, E.ENV_DBServerProcessor, E.ENV_DBServerOSBuild,
+	   E.ENV_DBServerOS, E.ENV_DBServerDirectoryLocation, E.ENV_DBMDFFileLocation,
+	   E.ENV_DBMDFFileSize, E.ENV_DBLDFFileLocation, E.ENV_DBLDFFileSize, E.ENV_DBServerIP,
+	   E.ENV_DBServerPort, E.ENV_DBServerDependency		
+  FROM [Environment] E 
+  INNER JOIN ClientDetail C ON E.ENV_Client_ID = C.ClientID
+	ELSE
+		IF @ProductID != 0 AND @EnvType = 0 AND @ClientID = 0
+SELECT C.ClientName, E.ENV_AppServerName, (select Products.ProductName from Products where Products.ProductID = E.ENV_Product_ID) AS ENV_Product_ID, (select EnvTitle from EnvironmentType where EnvID = E.ENV_AppServerEnvironmentType) AS ENV_AppServerEnvironmentType,
+	   E.ENV_AppServerIsX86Version, E.ENV_AppServerIsVirtual, E.ENV_AppServerMemory,
+	   E.ENV_AppServerProcessor, E.ENV_AppServerOSBuild, E.ENV_AppServerOS, E.ENV_AppServerWebBrowser,
+	   E.ENV_AppServerWebBrowserVersion, E.ENV_AppHyperLink,E.ENV_AppServerWorkingDirectoryLocation, E.ENV_AppServerIP,
+	   E.ENV_AppServerPort, E.ENV_AppServerDependency,
+	   E.ENV_DBServerName, E.ENV_DBServerEnvironmentType, E.ENV_DBServerIsX86Version,
+	   E.ENV_DBServerIsVirtual, E.ENV_DBServerMemory, E.ENV_DBServerProcessor, E.ENV_DBServerOSBuild,
+	   E.ENV_DBServerOS, E.ENV_DBServerDirectoryLocation, E.ENV_DBMDFFileLocation,
+	   E.ENV_DBMDFFileSize, E.ENV_DBLDFFileLocation, E.ENV_DBLDFFileSize, E.ENV_DBServerIP,
+	   E.ENV_DBServerPort, E.ENV_DBServerDependency		
+  FROM [Environment] E 
+  INNER JOIN ClientDetail C ON E.ENV_Client_ID = C.ClientID WHERE E.ENV_Product_ID = @ProductID
+
+  ELSE IF @EnvType != 0 AND @ProductID = 0 AND @ClientID = 0
+
+SELECT C.ClientName, E.ENV_AppServerName, (select Products.ProductName from Products where Products.ProductID = E.ENV_Product_ID) AS ENV_Product_ID, (select EnvTitle from EnvironmentType where EnvID = E.ENV_AppServerEnvironmentType) AS ENV_AppServerEnvironmentType,
+	   E.ENV_AppServerIsX86Version, E.ENV_AppServerIsVirtual, E.ENV_AppServerMemory,
+	   E.ENV_AppServerProcessor, E.ENV_AppServerOSBuild, E.ENV_AppServerOS, E.ENV_AppServerWebBrowser,
+	   E.ENV_AppServerWebBrowserVersion, E.ENV_AppHyperLink,E.ENV_AppServerWorkingDirectoryLocation, E.ENV_AppServerIP,
+	   E.ENV_AppServerPort, E.ENV_AppServerDependency,
+	   E.ENV_DBServerName, E.ENV_DBServerEnvironmentType, E.ENV_DBServerIsX86Version,
+	   E.ENV_DBServerIsVirtual, E.ENV_DBServerMemory, E.ENV_DBServerProcessor, E.ENV_DBServerOSBuild,
+	   E.ENV_DBServerOS, E.ENV_DBServerDirectoryLocation, E.ENV_DBMDFFileLocation,
+	   E.ENV_DBMDFFileSize, E.ENV_DBLDFFileLocation, E.ENV_DBLDFFileSize, E.ENV_DBServerIP,
+	   E.ENV_DBServerPort, E.ENV_DBServerDependency		
+  FROM [Environment] E 
+  INNER JOIN ClientDetail C ON E.ENV_Client_ID = C.ClientID WHERE ENV_AppServerEnvironmentType = @EnvType
+
+  ELSE IF @ClientID != 0 AND @EnvType = 0 AND @ProductID = 0
+
+SELECT C.ClientName, E.ENV_AppServerName, (select Products.ProductName from Products where Products.ProductID = E.ENV_Product_ID) AS ENV_Product_ID, (select EnvTitle from EnvironmentType where EnvID = E.ENV_AppServerEnvironmentType) AS ENV_AppServerEnvironmentType,
+	   E.ENV_AppServerIsX86Version, E.ENV_AppServerIsVirtual, E.ENV_AppServerMemory,
+	   E.ENV_AppServerProcessor, E.ENV_AppServerOSBuild, E.ENV_AppServerOS, E.ENV_AppServerWebBrowser,
+	   E.ENV_AppServerWebBrowserVersion, E.ENV_AppHyperLink,E.ENV_AppServerWorkingDirectoryLocation, E.ENV_AppServerIP,
+	   E.ENV_AppServerPort, E.ENV_AppServerDependency,
+	   E.ENV_DBServerName, E.ENV_DBServerEnvironmentType, E.ENV_DBServerIsX86Version,
+	   E.ENV_DBServerIsVirtual, E.ENV_DBServerMemory, E.ENV_DBServerProcessor, E.ENV_DBServerOSBuild,
+	   E.ENV_DBServerOS, E.ENV_DBServerDirectoryLocation, E.ENV_DBMDFFileLocation,
+	   E.ENV_DBMDFFileSize, E.ENV_DBLDFFileLocation, E.ENV_DBLDFFileSize, E.ENV_DBServerIP,
+	   E.ENV_DBServerPort, E.ENV_DBServerDependency		
+  FROM [Environment] E 
+  INNER JOIN ClientDetail C ON E.ENV_Client_ID = C.ClientID WHERE E.ENV_Client_ID = @ClientID
+
+  ELSE 
+
+  SELECT C.ClientName, E.ENV_AppServerName, (select Products.ProductName from Products where Products.ProductID = E.ENV_Product_ID) AS ENV_Product_ID, (select EnvTitle from EnvironmentType where EnvID = E.ENV_AppServerEnvironmentType) AS ENV_AppServerEnvironmentType,
+	   E.ENV_AppServerIsX86Version, E.ENV_AppServerIsVirtual, E.ENV_AppServerMemory,
+	   E.ENV_AppServerProcessor, E.ENV_AppServerOSBuild, E.ENV_AppServerOS, E.ENV_AppServerWebBrowser,
+	   E.ENV_AppServerWebBrowserVersion, E.ENV_AppHyperLink,E.ENV_AppServerWorkingDirectoryLocation, E.ENV_AppServerIP,
+	   E.ENV_AppServerPort, E.ENV_AppServerDependency,
+	   E.ENV_DBServerName, E.ENV_DBServerEnvironmentType, E.ENV_DBServerIsX86Version,
+	   E.ENV_DBServerIsVirtual, E.ENV_DBServerMemory, E.ENV_DBServerProcessor, E.ENV_DBServerOSBuild,
+	   E.ENV_DBServerOS, E.ENV_DBServerDirectoryLocation, E.ENV_DBMDFFileLocation,
+	   E.ENV_DBMDFFileSize, E.ENV_DBLDFFileLocation, E.ENV_DBLDFFileSize, E.ENV_DBServerIP,
+	   E.ENV_DBServerPort, E.ENV_DBServerDependency		
+  FROM [Environment] E 
+  INNER JOIN ClientDetail C ON E.ENV_Client_ID = C.ClientID WHERE ENV_AppServerEnvironmentType = @EnvType AND E.ENV_Product_ID = @ProductID AND E.ENV_Client_ID = @ClientID
+
+  END

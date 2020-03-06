@@ -15,6 +15,12 @@ namespace HelloWorld.ProtectedPages
         {
 
             //if(dropPatchClientName.SelectedIndex != 0)
+            if (IsPostBack)
+            {
+                //txtPatchDeployedDate.SelectedDate =
+                //    DateTime.ParseExact(txtPatchDeployedDate.Text, MyCalendarExtender.Format, null);
+                //txtPatchDeployedDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            }
             
         }
 
@@ -56,9 +62,22 @@ namespace HelloWorld.ProtectedPages
             Debug.WriteLine("Patch Environment ID: " + _patchEnvironmentID);
 
             DatabaseConnectivity db = new DatabaseConnectivity();
-            int res = db.insertPatch(_patchTitle, _patchDesc, _patchNumber, _patchDeployedBy, DateTime.Now, DateTime.Now, _patchQATested, _patchDependency, _patchClientID, _patchProductID, _patchEnvironmentID);
+            int res = db.insertPatch(_patchTitle, _patchDesc, _patchNumber, _patchDeployedBy, Convert.ToDateTime(txtPatchCreatedDate.Text), Convert.ToDateTime(txtPatchDeployedDate.Text), _patchQATested, _patchDependency, _patchClientID, _patchProductID, _patchEnvironmentID);
             Debug.WriteLine("Query Result: " + res);
-
+            rowPatchTitle.Visible = false;
+            rowPatchDesc.Visible = false;
+            rowPatchNumber.Visible = false;
+            rowPatchDeployedBy.Visible = false;
+            rowPatchCreatedDate.Visible = false;
+            rowPatchDeployedDate.Visible = false;
+            rowPatchIsQAPassed.Visible = false;
+            rowPatchDependency.Visible = false;
+            rowPatchClientName.Visible = false;
+            rowProductName.Visible = false;
+            rowEnvironmentType.Visible = false;
+            rowSubmit.Visible = false;
+            lblSubmission.Visible = true;
+            lblSubmission.Text = "Release has been saved with the Response Code: " + (res == 1 ? "0200 OK." : "0500 Error.");
         }
 
         protected void DropDownList1_DataBound(object sender, EventArgs e)

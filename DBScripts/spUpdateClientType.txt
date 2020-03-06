@@ -1,0 +1,13 @@
+/****** Object:  StoredProcedure [dbo].[spUpdateClientType]    Script Date: 3/6/2020 7:19:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spUpdateClientType]
+	@ClientTypeID int,
+	@ClientTypeTitle varchar(MAX),
+	@ClientTypeDesc varchar(MAX)
+  AS
+  BEGIN
+	UPDATE [CLIENT_TYPE] SET [CTYPE_TITLE] = @ClientTypeTitle,[CTYPE_DESCRIPTION]=@ClientTypeDesc WHERE [CTYPE_ID] = @ClientTypeID
+  END

@@ -1,0 +1,46 @@
+/****** Object:  StoredProcedure [dbo].[AddPatchDetail]    Script Date: 3/6/2020 6:51:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/****** Script for SelectTopNRows command from SSMS  ******/
+  CREATE PROC [dbo].[AddPatchDetail]
+	@PatchTitle varchar(50),
+	@PatchDesc varchar(MAX),
+	@PatchHotNumber varchar(40),
+	@PatchDeployedBy varchar(MAX),
+	@PatchCreatedDate DateTime,
+	@PatchDeployedDate DateTime,
+	@IsQAPassed bit,
+	@Remarks_Dependencies varchar(MAX),
+	@ClientID int,
+	@ProductID int,
+	@EnvType int
+	As
+	BEGIN
+	SELECT @EnvType = ENV_ID from Environment WHERE ENV_Client_ID = @ClientID AND ENV_Product_ID = @ProductID AND ENV_AppServerEnvironmentType = @EnvType
+		INSERT INTO [dbo].[PATCH]
+           ([PAT_Title]
+           ,[PAT_Desc]
+           ,[PAT_HotNumber]
+           ,[PAT_DeployedBy]
+           ,[PAT_CreatedDate]
+           ,[PAT_DeployedDate]
+           ,[PAT_IsQAPassed]
+           ,[PAT_Dependency]
+           ,[PAT_ClientID]
+           ,[PAT_ProductID]
+           ,[PAT_EnvType])
+     VALUES
+           (@PatchTitle
+           ,@PatchDesc
+           ,Concat('',@PatchHotNumber)
+           ,@PatchDeployedBy
+           ,@PatchCreatedDate
+           ,@PatchDeployedDate
+           ,@IsQAPassed
+           ,@Remarks_Dependencies
+           ,@ClientID
+		   ,@ProductID
+		   ,@EnvType)
+	END;

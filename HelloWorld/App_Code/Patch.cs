@@ -20,6 +20,7 @@ namespace HelloWorld.App_Code
         public string patchDeployedDate { get; set; }
         public string patchProductID { get; set; }
         public string patchNumberOfDaysPassed { get; set; }
+        public string patchWorkingDirectory { get; set; }
         public string patchStatus { get; set; }
     }
 }

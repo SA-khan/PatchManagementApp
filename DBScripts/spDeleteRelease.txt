@@ -1,0 +1,17 @@
+/****** Object:  StoredProcedure [dbo].[spDeleteRelease]    Script Date: 3/6/2020 6:58:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spDeleteRelease]
+	@PatchTitle varchar(50),
+	@PatchHotNumber varchar(50),
+	@PatchCreatedDate datetime,
+	@PatchDeployedDate datetime,
+	@ClientID int,
+	@ProductID int,
+	@EnvType varchar(40)
+	As
+BEGIN
+	DELETE FROM PATCH WHERE (PAT_ClientID = @ClientID AND PAT_ProductID = @ProductID AND PAT_EnvType = @EnvType AND PAT_HotNumber = @PatchHotNumber)  OR (PAT_Title = @PatchTitle AND PAT_HotNumber = @PatchHotNumber AND PAT_CreatedDate = @PatchCreatedDate AND PAT_DeployedDate = @PatchDeployedDate AND PAT_ClientID = @ClientID AND PAT_ProductID = @ProductID AND PAT_EnvType = @EnvType)
+END

@@ -1,0 +1,78 @@
+/****** Object:  StoredProcedure [dbo].[spUpdateEnvironment]    Script Date: 3/6/2020 7:20:08 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spUpdateEnvironment]
+	@EnvID int,
+	@ClientName varchar(40),
+	@ProductName varchar(50),
+	@AppServerEnvType int,
+	@DBServerEnvType int,
+	@AppServerName varchar(50),
+	@AppServerOS varchar(50),
+	@AppServerOSBuild bigint,
+	@AppServerIsX86Version bit,
+	@AppServerIsVirtual bit,
+	@AppServerProcessor varchar(50),
+	@AppServerMemory int,
+	@AppServerWebBrowser varchar(50),
+	@AppServerWebBrowserVersion int,
+	@AppServerWorkingDirectoryLocation varchar(max),
+	@AppHyperLink varchar(100),
+	@AppServerIP varchar(50),
+	@AppServerPort int,
+	@AppServerDependency varchar(100),
+	@DBServerName varchar(50),
+	@DBServerOS varchar(50),
+	@DBerverOSBuild bigint,
+	@DBServerIsX86Version bit,
+	@DBServerIsVirtual bit,
+	@DBServerProcessor varchar(50),
+	@DBServerMemory int,
+	@DBServerWorkingDirectoryLocation varchar(max),
+	@DBMDFFileLocation varchar(100),
+	@DBMDFFileSize bigint,
+	@DBLDFFileLocation varchar(100),
+	@DBLDFFileSize bigint,
+	@DBServerIP varchar(50),
+	@DBServerPort int,
+	@DBServerDependency varchar(100)
+AS
+BEGIN
+UPDATE [dbo].[Environment]
+   SET --[ENV_Client_ID] = @ClientID
+      --,[ENV_Product_ID] = @ProductID
+      --,[ENV_AppServerEnvironmentType] = @EnvironmentAppServerEnvType
+      --,[ENV_DBServerEnvironmentType] = @DBServerEnvType,
+      [ENV_AppServerName] = @AppServerName
+      ,[ENV_AppServerOS] = @AppServerOS
+      ,[ENV_AppServerOSBuild] = @AppServerOSBuild
+      ,[ENV_AppServerIsX86Version] = @AppServerIsX86Version
+      ,[ENV_AppServerIsVirtual] = @AppServerIsVirtual
+      ,[ENV_AppServerProcessor] = @AppServerProcessor
+      ,[ENV_AppServerMemory] = @AppServerMemory
+      ,[ENV_AppServerWebBrowser] = @AppServerWebBrowser
+      ,[ENV_AppServerWebBrowserVersion] = @AppServerWebBrowserVersion
+      ,[ENV_AppServerWorkingDirectoryLocation] = @AppServerWorkingDirectoryLocation
+      ,[ENV_AppHyperLink] = @AppHyperLink
+      ,[ENV_AppServerIP] = @AppServerIP
+      ,[ENV_AppServerPort] = @AppServerPort
+      ,[ENV_AppServerDependency] = @AppServerDependency
+      ,[ENV_DBServerName] = @DBServerName
+      ,[ENV_DBServerOS] = @DBServerOS
+      ,[ENV_DBServerOSBuild] = @DBerverOSBuild
+      ,[ENV_DBServerIsX86Version] = @DBServerIsX86Version
+      ,[ENV_DBServerIsVirtual] = @DBServerIsVirtual
+      ,[ENV_DBServerProcessor] = @DBServerProcessor
+      ,[ENV_DBServerMemory] = @DBServerMemory
+      ,[ENV_DBServerDirectoryLocation] = @DBServerWorkingDirectoryLocation
+      ,[ENV_DBMDFFileLocation] = @DBMDFFileLocation
+      ,[ENV_DBMDFFileSize] = @DBMDFFileSize
+      ,[ENV_DBLDFFileLocation] = @DBLDFFileLocation
+      ,[ENV_DBLDFFileSize] = @DBLDFFileSize
+      ,[ENV_DBServerIP] = @DBServerIP
+      ,[ENV_DBServerPort] = @DBServerPort
+      ,[ENV_DBServerDependency] = @DBServerDependency
+ WHERE ENV_ID = @EnvID
+END

@@ -1,0 +1,26 @@
+/****** Object:  Table [dbo].[PATCH]    Script Date: 3/6/2020 6:44:41 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PATCH](
+	[PAT_ID] [int] IDENTITY(1,1) NOT NULL,
+	[PAT_Title] [varchar](50) NULL,
+	[PAT_Desc] [varchar](max) NULL,
+	[PAT_HotNumber] [varchar](50) NULL,
+	[PAT_DeployedBy] [varchar](max) NULL,
+	[PAT_CreatedDate] [datetime] NULL,
+	[PAT_DeployedDate] [datetime] NULL,
+	[PAT_IsQAPassed] [bit] NULL,
+	[PAT_Dependency] [varchar](max) NULL,
+	[PAT_ClientID] [int] NOT NULL,
+	[PAT_ProductID] [int] NOT NULL,
+	[PAT_EnvType] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[PAT_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

@@ -1,0 +1,18 @@
+/****** Object:  StoredProcedure [dbo].[spDifferentAppServers]    Script Date: 3/6/2020 7:01:19 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/****** Script for SelectTopNRows command from SSMS  ******/
+CREATE PROC [dbo].[spDifferentAppServers]
+	@ProductID int,
+	@EnvID int,
+	@ClientID int
+AS
+BEGIN
+SELECT DISTINCT
+       PAT_ClientID
+      ,[PAT_ProductID]
+      ,E.ENV_AppServerEnvironmentType
+  FROM [PATCH] INNER JOIN Environment E ON PATCH.PAT_EnvType = E.ENV_ID
+  END

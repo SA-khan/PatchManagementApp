@@ -1,0 +1,54 @@
+/****** Object:  StoredProcedure [dbo].[GetUpdatedPatchListClientWise]    Script Date: 3/6/2020 6:53:20 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[GetUpdatedPatchListClientWise]
+	@ProductID int,
+	@EnvType int
+	As
+	BEGIN
+WITH CTE AS (
+	SELECT
+	C.ClientID,
+	C.ClientName,
+	C.ClientType As ClientType,
+	(SELECT EnvTitle FROM EnvironmentType WHERE EnvID = E.ENV_AppServerEnvironmentType) As EnvType,
+	C.ClientPOCName As [POC],
+	(SELECT COUNT(*) FROM PATCH INNER JOIN Environment Ed ON PATCH.PAT_EnvType = Ed.ENV_ID WHERE PATCH.PAT_ProductID = @ProductID AND PATCH.PAT_EnvType = (SELECT ENV_ID FROM Environment WHERE Environment.ENV_AppServerEnvironmentType = @EnvType AND Environment.ENV_Product_ID = @ProductID AND Environment.ENV_Client_ID = C.ClientID )) As NumberOfPatches,
+	PATCH.PAT_ProductID As ProductID,
+	DATEDIFF(DAY,PATCH.PAT_DeployedDate,GETDATE()) AS [NumberOfDaysPassed],
+	PATCH.PAT_HotNumber As PatchHotNumber,
+	E.ENV_AppHyperLink As [Link],
+	CASE WHEN PATCH.PAT_IsQAPassed = 'false' then 'Not Tested' WHEN PATCH.PAT_IsQAPassed = 'true' then 'Tested' END As PatchQATested,
+	PATCH.PAT_DeployedBy As PatchDeployedBy,
+	PATCH.PAT_CreatedDate As PatchCreatedDate,
+	PATCH.PAT_DeployedDate As PatchDeployedDate,
+	PATCH.PAT_IsQAPassed As PatchIsQAPassed,
+	(select TOP 1 PATCH.PAT_Dependency from PATCH order by PAT_DeployedDate desc) As PatchStatus
+FROM ((((Environment E INNER JOIN PATCH on E.ENV_ID = PATCH.PAT_EnvType)
+		 INNER JOIN Products P On E.ENV_Product_ID = P.ProductID)
+		 INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType)
+		 RIGHT OUTER JOIN ClientDetail C ON E.ENV_Client_ID = C.ClientID) WHERE PATCH.PAT_ProductID=@ProductID AND PATCH.PAT_EnvType = (SELECT ENV_ID FROM Environment WHERE Environment.ENV_AppServerEnvironmentType = @EnvType AND Environment.ENV_Product_ID = @ProductID AND Environment.ENV_Client_ID = C.ClientID )
+)		  -- CTE END
+select C.ClientName,
+	   (SELECT CTYPE_TITLE FROM CLIENT_TYPE WHERE CTYPE_ID = C.ClientType) As [ClientType],
+	   MAX(CTE.EnvType) AS [EnvType],
+	   MAX(CTE.POC) AS [POC],
+	   MAX(cast(CTE.PatchHotNumber as bigint)) As [PatchHotNumber],
+	   MAX(CTE.Link) As [Link],
+	   MAX(CTE.PatchQATested) As [PatchQATested],
+	   MIN(CTE.PatchDeployedBy) As [PatchDeployedBy],
+	   MAX(CTE.PatchCreatedDate) As [PatchCreatedDate],
+	   MAX(CTE.PatchDeployedDate) As [PatchDeployedDate],
+	   MIN(CTE.NumberOfDaysPassed) As [NumberOfDaysPassed],
+	   Count(CTE.NumberOfPatches) As [NumberOfPatches],
+	   MAX(CTE.ProductID) As [ProductID],
+	   MAX(CTE.PatchStatus) As [PatchStatus]
+	FROM CTE FULL JOIN ClientDetail C on CTE.ClientID = C.ClientID 
+	group by C.ClientName, C.ClientType
+--select Cla from ClientDetail C LEFT OUTER JOIN CTE on CTE.ClientID = C.ClientID group by C.ClientName
+--select * from CTE 
+	END
+
+

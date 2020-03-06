@@ -1,0 +1,87 @@
+/****** Object:  Table [dbo].[Environment]    Script Date: 3/6/2020 6:42:59 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Environment](
+	[ENV_ID] [int] IDENTITY(1,1) NOT NULL,
+	[ENV_Client_ID] [int] NOT NULL,
+	[ENV_Product_ID] [int] NOT NULL,
+	[ENV_AppServerEnvironmentType] [int] NOT NULL,
+	[ENV_DBServerEnvironmentType] [int] NOT NULL,
+	[ENV_AppServerName] [varchar](50) NULL,
+	[ENV_AppServerOS] [varchar](50) NULL,
+	[ENV_AppServerOSBuild] [bigint] NULL,
+	[ENV_AppServerIsX86Version] [bit] NULL,
+	[ENV_AppServerIsVirtual] [bit] NULL,
+	[ENV_AppServerProcessor] [varchar](50) NULL,
+	[ENV_AppServerMemory] [int] NULL,
+	[ENV_AppServerWebBrowser] [varchar](50) NULL,
+	[ENV_AppServerWebBrowserVersion] [int] NULL,
+	[ENV_AppServerWorkingDirectoryLocation] [varchar](max) NULL,
+	[ENV_AppHyperLink] [varchar](100) NULL,
+	[ENV_AppServerIP] [varchar](50) NULL,
+	[ENV_AppServerPort] [int] NULL,
+	[ENV_AppServerDependency] [varchar](100) NULL,
+	[ENV_DBServerName] [varchar](50) NULL,
+	[ENV_DBServerOS] [varchar](50) NULL,
+	[ENV_DBServerOSBuild] [bigint] NULL,
+	[ENV_DBServerIsX86Version] [bit] NULL,
+	[ENV_DBServerIsVirtual] [bit] NULL,
+	[ENV_DBServerProcessor] [varchar](50) NULL,
+	[ENV_DBServerMemory] [int] NULL,
+	[ENV_DBServerDirectoryLocation] [varchar](max) NULL,
+	[ENV_DBMDFFileLocation] [varchar](100) NULL,
+	[ENV_DBMDFFileSize] [bigint] NULL,
+	[ENV_DBLDFFileLocation] [varchar](100) NULL,
+	[ENV_DBLDFFileSize] [bigint] NULL,
+	[ENV_DBServerIP] [varchar](50) NULL,
+	[ENV_DBServerPort] [int] NULL,
+	[ENV_DBServerDependency] [varchar](50) NULL,
+ CONSTRAINT [PK_Environment] PRIMARY KEY CLUSTERED 
+(
+	[ENV_Client_ID] ASC,
+	[ENV_Product_ID] ASC,
+	[ENV_AppServerEnvironmentType] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[ENV_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Environment]  WITH CHECK ADD FOREIGN KEY([ENV_AppServerEnvironmentType])
+REFERENCES [dbo].[EnvironmentType] ([EnvID])
+GO
+
+ALTER TABLE [dbo].[Environment]  WITH CHECK ADD FOREIGN KEY([ENV_AppServerEnvironmentType])
+REFERENCES [dbo].[EnvironmentType] ([EnvID])
+GO
+
+ALTER TABLE [dbo].[Environment]  WITH CHECK ADD FOREIGN KEY([ENV_Client_ID])
+REFERENCES [dbo].[ClientDetail] ([ClientID])
+GO
+
+ALTER TABLE [dbo].[Environment]  WITH CHECK ADD FOREIGN KEY([ENV_Client_ID])
+REFERENCES [dbo].[ClientDetail] ([ClientID])
+GO
+
+ALTER TABLE [dbo].[Environment]  WITH CHECK ADD FOREIGN KEY([ENV_DBServerEnvironmentType])
+REFERENCES [dbo].[EnvironmentType] ([EnvID])
+GO
+
+ALTER TABLE [dbo].[Environment]  WITH CHECK ADD FOREIGN KEY([ENV_DBServerEnvironmentType])
+REFERENCES [dbo].[EnvironmentType] ([EnvID])
+GO
+
+ALTER TABLE [dbo].[Environment]  WITH CHECK ADD FOREIGN KEY([ENV_Product_ID])
+REFERENCES [dbo].[Products] ([ProductID])
+GO
+
+ALTER TABLE [dbo].[Environment]  WITH CHECK ADD FOREIGN KEY([ENV_Product_ID])
+REFERENCES [dbo].[Products] ([ProductID])
+GO
+

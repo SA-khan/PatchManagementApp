@@ -1,0 +1,45 @@
+/****** Object:  StoredProcedure [dbo].[spInsertPatch]    Script Date: 3/6/2020 7:15:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROC [dbo].[spInsertPatch]
+	@PatchTitle varchar(50),
+	@PatchDesc varchar(MAX),
+	@PatchHotNumber varchar(50),
+	@PatchDeployedBy varchar(40),
+	@PatchCreatedDate datetime,
+	@PatchDeployedDate datetime,
+	@IsQAPassed bit,
+	@Dependency varchar(MAX),
+	@ClientID int,
+	@ProductID int,
+	@EnvironmentType varchar(40)
+	As
+BEGIN
+INSERT INTO [dbo].[PATCH]
+           ([PAT_Title]
+           ,[PAT_Desc]
+           ,[PAT_HotNumber]
+           ,[PAT_DeployedBy]
+           ,[PAT_CreatedDate]
+           ,[PAT_DeployedDate]
+           ,[PAT_IsQAPassed]
+           ,[PAT_Dependency]
+           ,[PAT_ClientID]
+           ,[PAT_ProductID]
+           ,[PAT_EnvType])
+     VALUES
+           (@PatchTitle
+           ,@PatchDesc
+           ,@PatchHotNumber
+           ,@PatchDeployedBy
+           ,@PatchCreatedDate
+           ,@PatchDeployedDate
+           ,@IsQAPassed
+           ,@Dependency
+           ,@ClientID
+           ,@ProductID
+           ,@EnvironmentType)
+END

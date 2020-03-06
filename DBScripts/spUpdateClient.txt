@@ -1,0 +1,26 @@
+/****** Object:  StoredProcedure [dbo].[spUpdateClient]    Script Date: 3/6/2020 7:18:35 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spUpdateClient] 
+	@ClientID int,
+	@ClientName varchar(40),
+	@ClientType varchar(40),
+	@ClientDesc varchar(50),
+	@ClientStill bit,
+	@POCName varchar(40),
+	@POCEmail varchar(60),
+	@POCContact varchar(40)
+AS
+BEGIN 
+UPDATE ClientDetail
+ SET ClientName = @ClientName,
+	 ClientType = @ClientType,
+	 ClientDesc = @ClientDesc,
+	 ClientStill = @ClientStill,
+	 ClientPOCName = @POCName,
+	 ClientPOCEmail = @POCEmail,
+	 ClientPOCContact = @POCContact
+ WHERE ClientID = @ClientID 
+END

@@ -1,0 +1,12 @@
+/****** Object:  StoredProcedure [dbo].[spGetProductList]    Script Date: 3/6/2020 7:08:42 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/****** Script for SelectTopNRows command from SSMS  ******/
+CREATE PROC [dbo].[spGetProductList]
+AS
+BEGIN
+SELECT *
+  FROM Products
+END

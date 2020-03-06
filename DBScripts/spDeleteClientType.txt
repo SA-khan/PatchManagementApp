@@ -1,0 +1,11 @@
+/****** Object:  StoredProcedure [dbo].[spDeleteClientType]    Script Date: 3/6/2020 6:55:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spDeleteClientType]
+	@ClientTypeID int
+  AS
+  BEGIN
+	DELETE FROM [CLIENT_TYPE] WHERE [CTYPE_ID] = @ClientTypeID
+  END

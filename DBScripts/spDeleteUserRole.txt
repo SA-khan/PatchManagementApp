@@ -1,0 +1,12 @@
+/****** Object:  StoredProcedure [dbo].[spDeleteUserRole]    Script Date: 3/6/2020 7:00:31 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spDeleteUserRole]
+	@UserRoleID int
+AS
+BEGIN
+DELETE FROM [dbo].[ROLES]
+      WHERE ROLE_ID = @UserRoleID
+END

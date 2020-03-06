@@ -9,6 +9,7 @@
     <link href="Images/icon.ico" rel="Shortcut Icon" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     <form id="Form1" runat="server">
@@ -40,9 +41,7 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/EnvironmentInfo.aspx" Text="Client Environment Overview"/>
-                        <asp:MenuItem NavigateUrl="~/Test.aspx" Text="Test Environment"/>
-                        <asp:MenuItem NavigateUrl="~/UAT.aspx" Text="UAT Environment"/>
-                        <asp:MenuItem NavigateUrl="~/Live.aspx" Text="Live Environment"/>
+                        <asp:MenuItem NavigateUrl="~/AppOverview.aspx" Text="Application Overview Environment"/>
                         <asp:MenuItem NavigateUrl="~/References.aspx" Text="References & Help"/>
                     </Items>
                 </asp:Menu>

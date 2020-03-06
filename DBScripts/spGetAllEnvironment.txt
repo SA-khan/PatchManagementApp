@@ -1,0 +1,43 @@
+/****** Object:  StoredProcedure [dbo].[spGetAllEnvironment]    Script Date: 3/6/2020 7:02:52 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spGetAllEnvironment]
+AS
+BEGIN
+	SELECT [ENV_ID]
+      ,(SELECT ClientDetail.ClientName FROM ClientDetail WHERE ClientDetail.ClientID = ENV_Client_ID) As [ENV_Client_ID]
+	  ,(SELECT ProductName FROM Products WHERE Products.ProductID = ENV_Product_ID) As [ENV_Product_ID]
+	  ,(SELECT EnvTitle FROM EnvironmentType WHERE EnvID = ENV_AppServerEnvironmentType) As [ENV_AppServerEnvironmentType]
+	  ,(SELECT EnvTitle FROM EnvironmentType WHERE EnvID = ENV_DBServerEnvironmentType) As [ENV_DBServerEnvironmentType]
+      ,[ENV_AppServerName]
+      ,[ENV_AppServerOS]
+      ,[ENV_AppServerOSBuild]
+      ,[ENV_AppServerIsX86Version]
+      ,[ENV_AppServerIsVirtual]
+      ,[ENV_AppServerProcessor]
+      ,[ENV_AppServerMemory]
+      ,[ENV_AppServerWebBrowser]
+      ,[ENV_AppServerWebBrowserVersion]
+      ,[ENV_AppServerWorkingDirectoryLocation]
+      ,[ENV_AppHyperLink]
+      ,[ENV_AppServerIP]
+      ,[ENV_AppServerPort]
+      ,[ENV_AppServerDependency]
+      ,[ENV_DBServerName]
+      ,[ENV_DBServerOS]
+      ,[ENV_DBServerOSBuild]
+      ,[ENV_DBServerIsX86Version]
+      ,[ENV_DBServerIsVirtual]
+      ,[ENV_DBServerProcessor]
+      ,[ENV_DBServerMemory]
+      ,[ENV_DBServerDirectoryLocation]
+      ,[ENV_DBMDFFileLocation]
+      ,[ENV_DBMDFFileSize]
+      ,[ENV_DBLDFFileLocation]
+      ,[ENV_DBLDFFileSize]
+      ,[ENV_DBServerIP]
+      ,[ENV_DBServerPort]
+      ,[ENV_DBServerDependency] FROM Environment
+END

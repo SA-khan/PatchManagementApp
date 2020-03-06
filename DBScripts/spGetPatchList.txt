@@ -1,0 +1,79 @@
+/****** Object:  StoredProcedure [dbo].[spGetPatchList]    Script Date: 3/6/2020 7:06:46 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+/****** Script for SelectTopNRows command from SSMS  ******/
+CREATE PROC [dbo].[spGetPatchList]
+	@ProductID int,
+	@EnvID int,
+	@ClientID int
+	AS
+  BEGIN
+	--IF STATEMENT # 1 
+	if(@ProductID = 0 AND @EnvID = 0 AND @ClientID = 0)
+		BEGIN
+			PRINT('IF # 1 :=')
+		END
+	else
+		BEGIN
+			--IF STATEMENT # 2 
+			if(@ProductID != 0 AND @EnvID = 0 AND @ClientID = 0)
+				BEGIN
+					PRINT('IF # 2 :=')
+				END
+			else
+				BEGIN
+					--IF STATEMENT # 3
+					if(@ProductID = 0 AND @EnvID != 0 AND @ClientID = 0)
+						BEGIN
+							PRINT('IF # 3 :=')
+						END
+					else
+						BEGIN
+							--IF STATEMENT # 4 
+							if(@ProductID = 0 AND @EnvID = 0 AND @ClientID != 0)
+								BEGIN
+									PRINT('IF # 4 :=')
+								END
+							else
+								BEGIN
+									--IF STATEMENT # 5 
+									if(@ProductID != 0 AND @EnvID != 0 AND @ClientID = 0)
+										BEGIN
+											PRINT('IF # 5 :=')
+										END
+									else
+										BEGIN
+											--IF STATEMENT # 6
+											if(@ProductID != 0 AND @EnvID = 0 AND @ClientID != 0)
+												BEGIN
+													PRINT('IF # 6 :=')
+												END
+											else
+												BEGIN
+													--IF STATEMENT # 7
+													if(@ProductID = 0 AND @EnvID != 0 AND @ClientID != 0)
+														BEGIN
+															PRINT('IF # 7 := Product ID: ')
+														END
+													else
+														BEGIN
+															--IF STATEMENT # 8
+															if(@ProductID != 0 AND @EnvID != 0 AND @ClientID != 0)
+																BEGIN
+																	PRINT('IF # 8 :=')
+																END
+															else
+																BEGIN
+																	PRINT('Unknown Parameter Value!')
+																END
+														END
+												END
+										END
+								END
+						END
+				END
+		END
+  END

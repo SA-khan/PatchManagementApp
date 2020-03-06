@@ -1,0 +1,22 @@
+/****** Object:  StoredProcedure [dbo].[spUpdateUser]    Script Date: 3/6/2020 7:22:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spUpdateUser]
+	@UserID int,
+	@Username varchar(30),
+	@UserRole varchar(30),
+	@UserStatus bit,
+	@UserLoginDate datetime,
+	@UserWrongAttempts smallint
+AS
+BEGIN
+	UPDATE [dbo].[USER]
+   SET [USER_NAME] = @Username
+      ,[USER_ROLE] = (SELECT ROLE_ID FROM ROLES WHERE ROLE_TITLE = @UserRole)
+      ,[USER_STATUS] = @UserStatus
+      ,[USER_LOGINDATE] = @UserLoginDate
+      ,[USER_WRONG_ATTEMPTS] = @UserWrongAttempts
+	WHERE [USER_ID] = @UserID
+END

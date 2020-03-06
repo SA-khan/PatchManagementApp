@@ -1,0 +1,11 @@
+/****** Object:  StoredProcedure [dbo].[spGetEnvTypeList]    Script Date: 3/6/2020 7:06:06 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spGetEnvTypeList]
+AS
+BEGIN
+SELECT *
+  FROM [dbo].[EnvironmentType]
+END

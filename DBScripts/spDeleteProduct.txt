@@ -1,0 +1,11 @@
+/****** Object:  StoredProcedure [dbo].[spDeleteProduct]    Script Date: 3/6/2020 6:57:47 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spDeleteProduct]
+	@ProductID int
+AS
+BEGIN
+	DELETE FROM Products WHERE [ProductID] = @ProductID
+END

@@ -1,0 +1,32 @@
+/****** Object:  StoredProcedure [dbo].[spInsertClient]    Script Date: 3/6/2020 7:11:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROC [dbo].[spInsertClient]
+	@ClientName varchar(50),
+	@ClientType varchar(50),
+	@ClientDesc varchar(MAX),
+	@POCName varchar(50),
+	@POCEmail varchar(70),
+	@POCPhone varchar(50)
+	AS
+BEGIN
+INSERT INTO [dbo].[ClientDetail]
+           ([ClientName]
+           ,[ClientType]
+           ,[ClientDesc]
+           ,[ClientStill]
+           ,[ClientPOCName]
+           ,[ClientPOCContact]
+           ,[ClientPOCEmail])
+     VALUES
+           (@ClientName
+           ,@ClientType
+           ,@ClientDesc
+           ,1
+           ,@POCName
+           ,@POCPhone
+           ,@POCEmail)
+END

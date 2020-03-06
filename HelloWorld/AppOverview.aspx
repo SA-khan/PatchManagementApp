@@ -3,8 +3,8 @@
     <link href="Images/icon.ico" rel="Shortcut Icon" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <asp:Table ID="Table1" runat="server" Width="100%" style="border: 1px solid lightgray;padding:2px;background-color:lightgray;">
+    
+    <asp:Table ID="Table1" runat="server" Width="100%" Height="30%" style="border: 1px solid lightgray;padding:2px;background-color:lightgray;">
             <asp:TableRow BackColor="LightGray" >
                     <asp:TableCell ColumnSpan="2" Font-Size="Medium" Font-Italic="false" ForeColor="Black" style="padding-left:10px;padding-right:10px;border-color:Lightgray;">
     
@@ -62,6 +62,7 @@
 
     </asp:TableCell>
 
+
     <asp:TableCell ColumnSpan="2" HorizontalAlign="Right" Font-Size="Medium" Font-Italic="true" ForeColor="Black">
         
         <asp:Button ID="btnSearch" runat="server" Height="28px" Text="SEARCH" 
@@ -71,10 +72,9 @@
             </asp:TableRow>
         </asp:Table>
     
-    <asp:Panel ID="Panel1" runat="server" ScrollBars="None" Height="470px">
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Both" Height="430px">
 
-    <br/>
-    <asp:Table ID="tblInfo" runat="server" Width="100%" GridLines="Both" Font-Size="Medium">
+    <asp:Table ID="tblInfo" runat="server" Width="100%" Height="35%" GridLines="Both" Font-Size="Medium">
    
 
     </asp:Table>

@@ -1,0 +1,111 @@
+/****** Object:  StoredProcedure [dbo].[spInsertEnvironment]    Script Date: 3/6/2020 7:13:24 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROC [dbo].[spInsertEnvironment]
+	@ClientID int,
+	@ProductID int,
+	@AppServerEnvType int,
+	@DBServerEnvType int,
+	@AppServerName varchar(50),
+	@AppServerOS varchar(50),
+	@AppServerOSBuild bigint,
+	@AppServerIsX86Version bit,
+	@AppServerIsVirtual bit,
+	@AppServerProcessor varchar(50),
+	@AppServerMemory int,
+	@AppServerWebBrowser varchar(50),
+	@AppServerWebBrowserVersion int,
+	@AppServerWorkingDirectoryLocation varchar(max),
+	@AppHyperLink varchar(100),
+	@AppServerIP varchar(50),
+	@AppServerPort int,
+	@AppServerDependency varchar(100),
+	@DBServerName varchar(50),
+	@DBServerOS varchar(50),
+	@DBerverOSBuild bigint,
+	@DBServerIsX86Version bit,
+	@DBServerIsVirtual bit,
+	@DBServerProcessor varchar(50),
+	@DBServerMemory int,
+	@DBServerWorkingDirectoryLocation varchar(max),
+	@DBMDFFileLocation varchar(100),
+	@DBMDFFileSize bigint,
+	@DBLDFFileLocation varchar(100),
+	@DBLDFFileSize bigint,
+	@DBServerIP varchar(50),
+	@DBServerPort int,
+	@DBServerDependency varchar(100)
+AS
+BEGIN
+INSERT INTO [dbo].[Environment]
+           ([ENV_Client_ID]
+           ,[ENV_Product_ID]
+           ,[ENV_AppServerEnvironmentType]
+           ,[ENV_DBServerEnvironmentType]
+           ,[ENV_AppServerName]
+           ,[ENV_AppServerOS]
+           ,[ENV_AppServerOSBuild]
+           ,[ENV_AppServerIsX86Version]
+           ,[ENV_AppServerIsVirtual]
+           ,[ENV_AppServerProcessor]
+           ,[ENV_AppServerMemory]
+           ,[ENV_AppServerWebBrowser]
+           ,[ENV_AppServerWebBrowserVersion]
+           ,[ENV_AppServerWorkingDirectoryLocation]
+           ,[ENV_AppHyperLink]
+           ,[ENV_AppServerIP]
+           ,[ENV_AppServerPort]
+           ,[ENV_AppServerDependency]
+           ,[ENV_DBServerName]
+           ,[ENV_DBServerOS]
+           ,[ENV_DBServerOSBuild]
+           ,[ENV_DBServerIsX86Version]
+           ,[ENV_DBServerIsVirtual]
+           ,[ENV_DBServerProcessor]
+           ,[ENV_DBServerMemory]
+           ,[ENV_DBServerDirectoryLocation]
+           ,[ENV_DBMDFFileLocation]
+           ,[ENV_DBMDFFileSize]
+           ,[ENV_DBLDFFileLocation]
+           ,[ENV_DBLDFFileSize]
+           ,[ENV_DBServerIP]
+           ,[ENV_DBServerPort]
+           ,[ENV_DBServerDependency])
+     VALUES
+           (@ClientID
+           ,@ProductID
+           ,@AppServerEnvType
+           ,@DBServerEnvType
+           ,@AppServerName
+           ,@AppServerOS
+           ,@AppServerOSBuild
+           ,@AppServerIsX86Version
+           ,@AppServerIsVirtual
+           ,@AppServerProcessor
+           ,@AppServerMemory
+           ,@AppServerWebBrowser
+           ,@AppServerWebBrowserVersion
+           ,@AppServerWorkingDirectoryLocation
+           ,@AppHyperLink
+           ,@AppServerIP
+           ,@AppServerPort
+           ,@AppServerDependency
+           ,@DBServerName
+           ,@DBServerOS
+           ,@DBerverOSBuild
+           ,@DBServerIsX86Version
+           ,@DBServerIsVirtual
+           ,@DBServerProcessor
+           ,@DBServerMemory
+           ,@DBServerWorkingDirectoryLocation
+           ,@DBLDFFileLocation
+           ,@DBMDFFileSize
+           ,@DBLDFFileLocation
+           ,@DBLDFFileSize
+           ,@DBServerIP
+           ,@DBServerPort
+           ,@DBServerDependency)
+END

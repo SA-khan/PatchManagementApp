@@ -1,0 +1,26 @@
+/****** Object:  Table [dbo].[PatchDetail]    Script Date: 3/6/2020 6:49:28 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PatchDetail](
+	[PatchID] [int] IDENTITY(1,1) NOT NULL,
+	[PatchTitle] [varchar](50) NULL,
+	[PatchDesc] [varchar](max) NULL,
+	[PatchHotNumber] [varchar](40) NULL,
+	[PatchDeployedBy] [varchar](max) NULL,
+	[PatchCreatedDate] [datetime] NULL,
+	[PatchDeployedDate] [datetime] NULL,
+	[IsQAPassed] [bit] NULL,
+	[Remarks_Dependencies] [varchar](max) NULL,
+	[ClientID] [int] NULL,
+	[ProductID] [int] NULL,
+	[EnvironmentType] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[PatchID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

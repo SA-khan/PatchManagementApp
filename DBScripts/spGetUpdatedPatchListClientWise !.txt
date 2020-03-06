@@ -1,0 +1,43 @@
+/****** Object:  StoredProcedure [dbo].[spGetUpdatedPatchListClientWise]    Script Date: 3/6/2020 7:09:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spGetUpdatedPatchListClientWise]
+	@ProductID int
+	,@EnvType int
+	As
+	BEGIN
+	DECLARE @TOTAL_PATCH int
+	DECLARE @ENVIRONMENT_DESC varchar(20)
+	DECLARE @EnvTitle varchar(10)
+	SELECT @TOTAL_PATCH = COUNT(*) FROM PatchDetail WHERE ProductID = @ProductID AND EnvironmentType = @EnvType; 
+SELECT @ENVIRONMENT_DESC = [EnvTitle] FROM EnvironmentType WHERE EnvID = @EnvType;
+WITH CTE AS (
+	SELECT DISTINCT CPPlus.ClientID,CPPlus.ClientName, CPPlus.ClientType, E.EnvAppServerEnvironmentType, CPPlus.PatchHotNumber, CPPlus.IsQAPassed, CPPlus.ClientPOCName, E.EnvAppLink, CPPlus.PatchDeployedDate, CPPlus.NumberOfDaysPassed, CPPlus.ProductID,CPPlus.Remarks_Dependencies As [Status]  from ((
+		 SELECT C.ClientID, C.ClientName, C.ClientType, C.ClientPOCName, P.PatchHotNumber, P.IsQAPassed, P.PatchDeployedDate, P.ProductID, P.EnvironmentType, DATEDIFF(DAY,PatchDeployedDate,GETDATE()) As NumberOfDaysPassed, P.Remarks_Dependencies  
+         FROM ClientDetail C 
+		 LEFT Join PatchDetail P ON C.ClientID = P.ClientID
+		 )) 
+	As CPPlus
+	LEFT JOIN ClientEnvironment E on CPPlus.EnvironmentType = E.EnvID WHERE E.EnvAppServerEnvironmentType = @EnvType AND CPPlus.ProductID = @ProductID
+	)
+--SELECT DISTINCT ClientName, ClientType, EnvAppServerEnvironmentType, PatchHotNumber, ClientPOCName, EnvAppLink, PatchDeployedDate, NumberOfDaysPassed, ProductID, PatchHotNumber As NumberOfPatches , Status AS [PatchStatus] FROM CTE
+
+SELECT
+			CTE.ClientName,
+			MAX(CTE.ClientType) As ClientType,
+			MAX(CASE WHEN CTE.EnvAppServerEnvironmentType = 1 THEN 'LIVE' WHEN CTE.EnvAppServerEnvironmentType = 2 THEN 'HA' WHEN CTE.EnvAppServerEnvironmentType = 3 THEN 'UAT' WHEN CTE.EnvAppServerEnvironmentType = 4 THEN 'TEST' END) As EnvType ,
+			MAX(CTE.ClientPOCName) As POC, 
+			MAX(PatchHotNumber) As PatchHotNumber,
+			MAX(EnvAppLink) As Link,
+			MAX(CAST(CTE.IsQAPassed As int)) As PatchQATested, 
+			MAX(PatchDeployedDate) As PatchDeployedDate,
+            COUNT(ClientName) AS NumberOfPatches, 
+			MAX(CTE.ProductID) As ProductID, 
+			MIN(NumberOfDaysPassed) As NumberOfDaysPassed,
+			MIN(CTE.Status) As PatchStatus
+		from CTE WHERE CTE.ProductID = @ProductID group by ClientName
+
+	END
+

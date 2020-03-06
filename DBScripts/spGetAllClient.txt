@@ -1,0 +1,18 @@
+/****** Object:  StoredProcedure [dbo].[spGetAllClient]    Script Date: 3/6/2020 7:02:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spGetAllClient] 
+AS
+BEGIN
+SELECT [ClientID]
+      ,[ClientName]
+      ,(SELECT CTYPE_TITLE FROM CLIENT_TYPE WHERE CTYPE_ID = [ClientType]) As [ClientType]
+      ,[ClientDesc]
+      ,[ClientStill]
+      ,[ClientPOCName]
+      ,[ClientPOCContact]
+      ,[ClientPOCEmail]
+  FROM [ClientDetail]
+END

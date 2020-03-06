@@ -1,0 +1,17 @@
+/****** Object:  StoredProcedure [dbo].[spInsertUserRole]    Script Date: 3/6/2020 7:17:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spInsertUserRole]
+	@ROLE_TITLE varchar(20),
+	@ROLE_DESC varchar(MAX)
+AS
+BEGIN
+	INSERT INTO [ROLES]
+           ([ROLE_TITLE]
+           ,[ROLE_DESC])
+     VALUES
+           (@ROLE_TITLE
+           ,@ROLE_DESC)
+END

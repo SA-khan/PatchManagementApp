@@ -1,0 +1,17 @@
+/****** Object:  StoredProcedure [dbo].[spInsertEnvironmentType]    Script Date: 3/6/2020 7:14:19 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spInsertEnvironmentType]
+	@EnvTitle varchar(10),
+	@EnvDesc varchar(20)
+As
+BEGIN
+INSERT INTO [dbo].[EnvironmentType]
+           ([EnvTitle]
+           ,[EnvDesc])
+     VALUES
+           (@EnvTitle
+           ,@EnvDesc)
+END

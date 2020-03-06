@@ -310,6 +310,15 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.CheckBox checkIsQAPassedNo;
         
         /// <summary>
+        /// checkIsQAPassedNotTested control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox checkIsQAPassedNotTested;
+        
+        /// <summary>
         /// rowPatchDependency control.
         /// </summary>
         /// <remarks>

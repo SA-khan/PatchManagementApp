@@ -1,0 +1,479 @@
+/****** Object:  StoredProcedure [dbo].[spGetPatchListThroughCurser]    Script Date: 3/6/2020 7:07:47 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[spGetPatchListThroughCurser]
+	@ProductID int,
+	@EnvID int,
+	@ClientID int
+	AS
+DECLARE 
+    @ProductCursor varchar(MAX), 
+    @EnvironmentCursor varchar(MAX),
+	@ClientCursor varchar(MAX);
+  BEGIN
+	--IF STATEMENT # 1 
+	if(@ProductID = 0 AND @EnvID = 0 AND @ClientID = 0)
+		BEGIN
+			PRINT('IF # 1 := Product ID: ')
+			DECLARE CURSOR_DIFF_ENV CURSOR local fast_forward FOR
+				SELECT DISTINCT
+					[PAT_ProductID] AS ProductID,
+					E.ENV_AppServerEnvironmentType AS EnvType,
+					[PAT_ClientID] AS ClientID
+				FROM [PATCH] INNER JOIN Environment E ON PATCH.PAT_EnvType = E.ENV_ID
+				ORDER BY PAT_ProductID, ENV_AppServerEnvironmentType,PAT_ClientID;
+				TRUNCATE TABLE TEMP_PATCH_SELECTION;
+			OPEN CURSOR_DIFF_ENV
+			Fetch next FROM CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+			WHILE @@fetch_status = 0
+				BEGIN 
+					--SELECT @ProductCursor AS [ProductID]
+					INSERT INTO [TEMP_PATCH_SELECTION]
+					([TPS_ProductID]
+					,[TPS_EnvironmentID]
+					,[TPS_ClientID])
+					VALUES
+					 (@ProductCursor,
+					  @EnvironmentCursor,
+					  @ClientCursor);
+					PRINT ('ProductID: ' + @ProductCursor + ', EnvironmentID: ' + @EnvironmentCursor + ', ClientID: '+ @ClientCursor)
+					fetch next from CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+				END
+				CLOSE CURSOR_DIFF_ENV
+				SELECT  C.ClientName
+					,CT.CTYPE_TITLE As ClientType
+					,PD.ProductName As [ProductID]
+					,ET.EnvTitle As EnvType
+					,C.ClientPOCName As [POC]
+					,(SELECT COUNT(*) FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID) As [NumberOfPatches]
+					,(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchHotNumber]
+					,(SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) AS [PatchDeployedBy]
+					,(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchQATested]
+					,(SELECT TOP 1 PATCH.PAT_CreatedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchCreatedDate]
+					,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchDeployedDate]
+					,DATEDIFF(DAY,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PATCH.PAT_DeployedDate desc),GETDATE()) AS [NumberOfDaysPassed]
+					,(SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchStatus]
+					,E.ENV_AppHyperLink As [Link]
+					,E.ENV_AppServerWorkingDirectoryLocation As [WorkingDirectory]
+				FROM [TEMP_PATCH_SELECTION] TPS 
+				INNER JOIN Environment E 
+				ON TPS.[TPS_EnvironmentID] = E.ENV_AppServerEnvironmentType AND TPS.[TPS_ProductID] = E.ENV_Product_ID AND
+				   TPS.[TPS_ClientID] = E.ENV_Client_ID 
+				INNER JOIN ClientDetail C ON TPS.[TPS_ClientID] = C.ClientID
+				INNER JOIN CLIENT_TYPE CT ON C.ClientType = CT.CTYPE_ID
+				INNER JOIN Products PD ON  TPS.[TPS_ProductID] = PD.ProductID
+				INNER JOIN EnvironmentType ET ON TPS.[TPS_EnvironmentID] = ET.EnvID
+		END
+	else
+		BEGIN
+			--IF STATEMENT # 2 
+			if(@ProductID != 0 AND @EnvID = 0 AND @ClientID = 0)
+				BEGIN
+					PRINT('IF # 2 := Product ID: ')
+					DECLARE CURSOR_DIFF_ENV CURSOR local fast_forward FOR
+						SELECT DISTINCT
+							[PAT_ProductID] AS ProductID,
+							E.ENV_AppServerEnvironmentType AS EnvType,
+							[PAT_ClientID] AS ClientID
+						FROM [PATCH] INNER JOIN Environment E ON PATCH.PAT_EnvType = E.ENV_ID
+						WHERE [PAT_ProductID] = @ProductID
+						ORDER BY PAT_ProductID, ENV_AppServerEnvironmentType,PAT_ClientID;
+					TRUNCATE TABLE TEMP_PATCH_SELECTION;
+					OPEN CURSOR_DIFF_ENV
+					Fetch next FROM CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+					WHILE @@fetch_status = 0
+						BEGIN 
+							--SELECT @ProductCursor AS [ProductID]
+							INSERT INTO [TEMP_PATCH_SELECTION]
+							([TPS_ProductID]
+							,[TPS_EnvironmentID]
+							,[TPS_ClientID])
+							VALUES
+							(@ProductCursor,
+							 @EnvironmentCursor,
+							 @ClientCursor);
+							PRINT ('ProductID: ' + @ProductCursor + ', EnvironmentID: ' + @EnvironmentCursor + ', ClientID: '+ @ClientCursor)
+							fetch next from CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+						END
+					CLOSE CURSOR_DIFF_ENV
+					SELECT  C.ClientName
+							,CT.CTYPE_TITLE As ClientType
+							,PD.ProductName As [ProductID]
+							,ET.EnvTitle As EnvType
+							,C.ClientPOCName As [POC]
+							,(SELECT COUNT(*) FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID) As [NumberOfPatches]
+							,(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchHotNumber]
+							,(SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) AS [PatchDeployedBy]
+							,(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchQATested]
+							,(SELECT TOP 1 PATCH.PAT_CreatedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchCreatedDate]
+							,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchDeployedDate]
+							,DATEDIFF(DAY,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PATCH.PAT_DeployedDate desc),GETDATE()) AS [NumberOfDaysPassed]
+							,(SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchStatus]
+							,E.ENV_AppHyperLink As [Link]
+							,E.ENV_AppServerWorkingDirectoryLocation As [WorkingDirectory]
+					FROM [TEMP_PATCH_SELECTION] TPS 
+					INNER JOIN Environment E 
+					ON TPS.[TPS_EnvironmentID] = E.ENV_AppServerEnvironmentType AND TPS.[TPS_ProductID] = E.ENV_Product_ID AND
+					   TPS.[TPS_ClientID] = E.ENV_Client_ID 
+					INNER JOIN ClientDetail C ON TPS.[TPS_ClientID] = C.ClientID
+					INNER JOIN CLIENT_TYPE CT ON C.ClientType = CT.CTYPE_ID
+					INNER JOIN Products PD ON  TPS.[TPS_ProductID] = PD.ProductID
+					INNER JOIN EnvironmentType ET ON TPS.[TPS_EnvironmentID] = ET.EnvID
+				END
+			else
+				BEGIN
+					--IF STATEMENT # 3
+					if(@ProductID = 0 AND @EnvID != 0 AND @ClientID = 0)
+						BEGIN
+							PRINT('IF # 3 := Product ID: ')
+							BEGIN
+								DECLARE CURSOR_DIFF_ENV CURSOR local fast_forward FOR
+									SELECT DISTINCT
+										[PAT_ProductID] AS ProductID,
+										E.ENV_AppServerEnvironmentType AS EnvType,
+										[PAT_ClientID] AS ClientID
+									FROM [PATCH] INNER JOIN Environment E ON PATCH.PAT_EnvType = E.ENV_ID
+									WHERE E.ENV_AppServerEnvironmentType = @EnvID
+									ORDER BY PAT_ProductID, ENV_AppServerEnvironmentType,PAT_ClientID;
+								TRUNCATE TABLE TEMP_PATCH_SELECTION;
+								OPEN CURSOR_DIFF_ENV
+								Fetch next FROM CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+								WHILE @@fetch_status = 0
+									BEGIN 
+										--SELECT @ProductCursor AS [ProductID]
+										INSERT INTO [TEMP_PATCH_SELECTION]
+										([TPS_ProductID]
+										,[TPS_EnvironmentID]
+										,[TPS_ClientID])
+										VALUES
+										(@ProductCursor,
+										 @EnvironmentCursor,
+										 @ClientCursor);
+										PRINT ('ProductID: ' + @ProductCursor + ', EnvironmentID: ' + @EnvironmentCursor + ', ClientID: '+ @ClientCursor)
+										fetch next from CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+									END
+								CLOSE CURSOR_DIFF_ENV
+								SELECT  C.ClientName
+										,CT.CTYPE_TITLE As ClientType
+										,PD.ProductName As [ProductID]
+										,ET.EnvTitle As EnvType
+										,C.ClientPOCName As [POC]
+										,(SELECT COUNT(*) FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID) As [NumberOfPatches]
+										,(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchHotNumber]
+										,(SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) AS [PatchDeployedBy]
+										,(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchQATested]
+										,(SELECT TOP 1 PATCH.PAT_CreatedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchCreatedDate]
+										,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchDeployedDate]
+										,DATEDIFF(DAY,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PATCH.PAT_DeployedDate desc),GETDATE()) AS [NumberOfDaysPassed]
+										,(SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchStatus]
+										,E.ENV_AppHyperLink As [Link]
+										,E.ENV_AppServerWorkingDirectoryLocation As [WorkingDirectory]
+								FROM [TEMP_PATCH_SELECTION] TPS 
+								INNER JOIN Environment E 
+								ON TPS.[TPS_EnvironmentID] = E.ENV_AppServerEnvironmentType AND TPS.[TPS_ProductID] = E.ENV_Product_ID AND
+								   TPS.[TPS_ClientID] = E.ENV_Client_ID 
+								INNER JOIN ClientDetail C ON TPS.[TPS_ClientID] = C.ClientID
+								INNER JOIN CLIENT_TYPE CT ON C.ClientType = CT.CTYPE_ID
+								INNER JOIN Products PD ON  TPS.[TPS_ProductID] = PD.ProductID
+								INNER JOIN EnvironmentType ET ON TPS.[TPS_EnvironmentID] = ET.EnvID
+							END
+						END
+					else
+						BEGIN
+							--IF STATEMENT # 4 
+							if(@ProductID = 0 AND @EnvID = 0 AND @ClientID != 0)
+								BEGIN
+									PRINT('IF # 4 := Product ID: ')
+									DECLARE CURSOR_DIFF_ENV CURSOR local fast_forward FOR
+										SELECT DISTINCT
+											[PAT_ProductID] AS ProductID,
+											E.ENV_AppServerEnvironmentType AS EnvType,
+											[PAT_ClientID] AS ClientID
+										FROM [PATCH] INNER JOIN Environment E ON PATCH.PAT_EnvType = E.ENV_ID
+										WHERE [PAT_ClientID] = @ClientID
+										ORDER BY PAT_ProductID, ENV_AppServerEnvironmentType,PAT_ClientID;
+									TRUNCATE TABLE TEMP_PATCH_SELECTION;
+									OPEN CURSOR_DIFF_ENV
+									Fetch next FROM CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+									WHILE @@fetch_status = 0
+										BEGIN 
+											--SELECT @ProductCursor AS [ProductID]
+											INSERT INTO [TEMP_PATCH_SELECTION]
+											([TPS_ProductID]
+											,[TPS_EnvironmentID]
+											,[TPS_ClientID])
+											VALUES
+											(@ProductCursor,
+											@EnvironmentCursor,
+											@ClientCursor);
+											PRINT ('ProductID: ' + @ProductCursor + ', EnvironmentID: ' + @EnvironmentCursor + ', ClientID: '+ @ClientCursor)
+											fetch next from CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+										END
+									CLOSE CURSOR_DIFF_ENV
+									SELECT  C.ClientName
+											,CT.CTYPE_TITLE As ClientType
+											,PD.ProductName As [ProductID]
+											,ET.EnvTitle As EnvType
+											,C.ClientPOCName As [POC]
+											,(SELECT COUNT(*) FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID) As [NumberOfPatches]
+											,(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchHotNumber]
+											,(SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) AS [PatchDeployedBy]
+											,(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchQATested]
+											,(SELECT TOP 1 PATCH.PAT_CreatedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchCreatedDate]
+											,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchDeployedDate]
+											,DATEDIFF(DAY,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PATCH.PAT_DeployedDate desc),GETDATE()) AS [NumberOfDaysPassed]
+											,(SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchStatus]
+											,E.ENV_AppHyperLink As [Link]
+											,E.ENV_AppServerWorkingDirectoryLocation As [WorkingDirectory]
+									FROM [TEMP_PATCH_SELECTION] TPS 
+									INNER JOIN Environment E 
+									ON TPS.[TPS_EnvironmentID] = E.ENV_AppServerEnvironmentType AND TPS.[TPS_ProductID] = E.ENV_Product_ID AND
+									   TPS.[TPS_ClientID] = E.ENV_Client_ID 
+									INNER JOIN ClientDetail C ON TPS.[TPS_ClientID] = C.ClientID
+									INNER JOIN CLIENT_TYPE CT ON C.ClientType = CT.CTYPE_ID
+									INNER JOIN Products PD ON  TPS.[TPS_ProductID] = PD.ProductID
+									INNER JOIN EnvironmentType ET ON TPS.[TPS_EnvironmentID] = ET.EnvID
+								END
+							else
+								BEGIN
+									--IF STATEMENT # 5 
+									if(@ProductID != 0 AND @EnvID != 0 AND @ClientID = 0)
+										BEGIN
+											PRINT('IF # 5 := Product ID: ')
+											DECLARE CURSOR_DIFF_ENV CURSOR local fast_forward FOR
+												SELECT DISTINCT
+													[PAT_ProductID] AS ProductID,
+													E.ENV_AppServerEnvironmentType AS EnvType,
+													[PAT_ClientID] AS ClientID
+													FROM [PATCH] INNER JOIN Environment E ON PATCH.PAT_EnvType = E.ENV_ID
+													WHERE [PAT_ProductID] = @ProductID AND
+														  E.ENV_AppServerEnvironmentType = @EnvID
+												ORDER BY PAT_ProductID, ENV_AppServerEnvironmentType,PAT_ClientID;
+											TRUNCATE TABLE TEMP_PATCH_SELECTION;
+											OPEN CURSOR_DIFF_ENV
+											Fetch next FROM CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+											WHILE @@fetch_status = 0
+												BEGIN 
+													--SELECT @ProductCursor AS [ProductID]
+													INSERT INTO [TEMP_PATCH_SELECTION]
+													([TPS_ProductID]
+													,[TPS_EnvironmentID]
+													,[TPS_ClientID])
+													VALUES
+													(@ProductCursor,
+													 @EnvironmentCursor,
+													 @ClientCursor);
+													PRINT ('ProductID: ' + @ProductCursor + ', EnvironmentID: ' + @EnvironmentCursor + ', ClientID: '+ @ClientCursor)
+													fetch next from CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+												END
+											CLOSE CURSOR_DIFF_ENV
+											SELECT  C.ClientName
+												,CT.CTYPE_TITLE As ClientType
+												,PD.ProductName As [ProductID]
+												,ET.EnvTitle As EnvType
+												,C.ClientPOCName As [POC]
+												,(SELECT COUNT(*) FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID) As [NumberOfPatches]
+												,(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchHotNumber]
+												,(SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) AS [PatchDeployedBy]
+												,(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchQATested]
+												,(SELECT TOP 1 PATCH.PAT_CreatedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchCreatedDate]
+												,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchDeployedDate]
+												,DATEDIFF(DAY,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PATCH.PAT_DeployedDate desc),GETDATE()) AS [NumberOfDaysPassed]
+												,(SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchStatus]
+												,E.ENV_AppHyperLink As [Link]
+												,E.ENV_AppServerWorkingDirectoryLocation As [WorkingDirectory]
+											FROM [TEMP_PATCH_SELECTION] TPS 
+											INNER JOIN Environment E 
+											ON TPS.[TPS_EnvironmentID] = E.ENV_AppServerEnvironmentType AND TPS.[TPS_ProductID] = E.ENV_Product_ID AND
+											   TPS.[TPS_ClientID] = E.ENV_Client_ID 
+											INNER JOIN ClientDetail C ON TPS.[TPS_ClientID] = C.ClientID
+											INNER JOIN CLIENT_TYPE CT ON C.ClientType = CT.CTYPE_ID
+											INNER JOIN Products PD ON  TPS.[TPS_ProductID] = PD.ProductID
+											INNER JOIN EnvironmentType ET ON TPS.[TPS_EnvironmentID] = ET.EnvID
+										END
+									else
+										BEGIN
+											--IF STATEMENT # 6
+											if(@ProductID != 0 AND @EnvID = 0 AND @ClientID != 0)
+												BEGIN
+													PRINT('IF # 6 := Product ID: ')
+													DECLARE CURSOR_DIFF_ENV CURSOR local fast_forward FOR
+														SELECT DISTINCT
+															[PAT_ProductID] AS ProductID,
+															E.ENV_AppServerEnvironmentType AS EnvType,
+															[PAT_ClientID] AS ClientID
+														FROM [PATCH] INNER JOIN Environment E ON PATCH.PAT_EnvType = E.ENV_ID
+														WHERE [PAT_ProductID] = @ProductID AND
+															  [PAT_ClientID] = @ClientID
+														ORDER BY PAT_ProductID, ENV_AppServerEnvironmentType,PAT_ClientID;
+													TRUNCATE TABLE TEMP_PATCH_SELECTION;
+													OPEN CURSOR_DIFF_ENV
+													Fetch next FROM CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+													WHILE @@fetch_status = 0
+														BEGIN 
+															--SELECT @ProductCursor AS [ProductID]
+															INSERT INTO [TEMP_PATCH_SELECTION]
+															([TPS_ProductID]
+															,[TPS_EnvironmentID]
+															,[TPS_ClientID])
+															VALUES
+															(@ProductCursor,
+															 @EnvironmentCursor,
+															 @ClientCursor);
+															PRINT ('ProductID: ' + @ProductCursor + ', EnvironmentID: ' + @EnvironmentCursor + ', ClientID: '+ @ClientCursor)
+															fetch next from CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+														END
+													CLOSE CURSOR_DIFF_ENV
+													SELECT  C.ClientName
+														,CT.CTYPE_TITLE As ClientType
+														,PD.ProductName As [ProductID]
+														,ET.EnvTitle As EnvType
+														,C.ClientPOCName As [POC]
+														,(SELECT COUNT(*) FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID) As [NumberOfPatches]
+														,(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchHotNumber]
+														,(SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) AS [PatchDeployedBy]
+														,(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchQATested]
+														,(SELECT TOP 1 PATCH.PAT_CreatedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchCreatedDate]
+														,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchDeployedDate]
+														,DATEDIFF(DAY,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PATCH.PAT_DeployedDate desc),GETDATE()) AS [NumberOfDaysPassed]
+														,(SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchStatus]
+														,E.ENV_AppHyperLink As [Link]
+														,E.ENV_AppServerWorkingDirectoryLocation As [WorkingDirectory]
+													FROM [TEMP_PATCH_SELECTION] TPS 
+													INNER JOIN Environment E 
+													ON TPS.[TPS_EnvironmentID] = E.ENV_AppServerEnvironmentType AND TPS.[TPS_ProductID] = E.ENV_Product_ID AND
+													   TPS.[TPS_ClientID] = E.ENV_Client_ID 
+													INNER JOIN ClientDetail C ON TPS.[TPS_ClientID] = C.ClientID
+													INNER JOIN CLIENT_TYPE CT ON C.ClientType = CT.CTYPE_ID
+													INNER JOIN Products PD ON  TPS.[TPS_ProductID] = PD.ProductID
+													INNER JOIN EnvironmentType ET ON TPS.[TPS_EnvironmentID] = ET.EnvID
+												END
+											else
+												BEGIN
+													--IF STATEMENT # 7
+													if(@ProductID = 0 AND @EnvID != 0 AND @ClientID != 0)
+														BEGIN
+															PRINT('IF # 7 := Product ID: ')
+															DECLARE CURSOR_DIFF_ENV CURSOR local fast_forward FOR
+																SELECT DISTINCT
+																	[PAT_ProductID] AS ProductID,
+																	E.ENV_AppServerEnvironmentType AS EnvType,
+																	[PAT_ClientID] AS ClientID
+																FROM [PATCH] INNER JOIN Environment E ON PATCH.PAT_EnvType = E.ENV_ID
+																WHERE E.ENV_AppServerEnvironmentType = @EnvID AND
+																	  [PAT_ClientID] = @ClientID
+																ORDER BY PAT_ProductID, ENV_AppServerEnvironmentType,PAT_ClientID;
+															TRUNCATE TABLE TEMP_PATCH_SELECTION;
+															OPEN CURSOR_DIFF_ENV
+															Fetch next FROM CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+															WHILE @@fetch_status = 0
+																BEGIN 
+																	--SELECT @ProductCursor AS [ProductID]
+																	INSERT INTO [TEMP_PATCH_SELECTION]
+																	([TPS_ProductID]
+																	,[TPS_EnvironmentID]
+																	,[TPS_ClientID])
+																	VALUES
+																	(@ProductCursor,
+																	 @EnvironmentCursor,
+																	 @ClientCursor);
+																	PRINT ('ProductID: ' + @ProductCursor + ', EnvironmentID: ' + @EnvironmentCursor + ', ClientID: '+ @ClientCursor)
+																	fetch next from CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+																END
+															CLOSE CURSOR_DIFF_ENV
+															SELECT  C.ClientName
+																,CT.CTYPE_TITLE As ClientType
+																,PD.ProductName As [ProductID]
+																,ET.EnvTitle As EnvType
+																,C.ClientPOCName As [POC]
+																,(SELECT COUNT(*) FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID) As [NumberOfPatches]
+																,(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchHotNumber]
+																,(SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) AS [PatchDeployedBy]
+																,(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchQATested]
+																,(SELECT TOP 1 PATCH.PAT_CreatedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchCreatedDate]
+																,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchDeployedDate]
+																,DATEDIFF(DAY,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PATCH.PAT_DeployedDate desc),GETDATE()) AS [NumberOfDaysPassed]
+																,(SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchStatus]
+																,E.ENV_AppHyperLink As [Link]
+																,E.ENV_AppServerWorkingDirectoryLocation As [WorkingDirectory]
+															FROM [TEMP_PATCH_SELECTION] TPS 
+															INNER JOIN Environment E 
+															ON TPS.[TPS_EnvironmentID] = E.ENV_AppServerEnvironmentType AND TPS.[TPS_ProductID] = E.ENV_Product_ID AND
+															   TPS.[TPS_ClientID] = E.ENV_Client_ID 
+															INNER JOIN ClientDetail C ON TPS.[TPS_ClientID] = C.ClientID
+															INNER JOIN CLIENT_TYPE CT ON C.ClientType = CT.CTYPE_ID
+															INNER JOIN Products PD ON  TPS.[TPS_ProductID] = PD.ProductID
+															INNER JOIN EnvironmentType ET ON TPS.[TPS_EnvironmentID] = ET.EnvID
+														END
+													else
+														BEGIN
+															--IF STATEMENT # 8
+															if(@ProductID != 0 AND @EnvID != 0 AND @ClientID != 0)
+																BEGIN
+																	PRINT('IF # 8 := Product ID: ')
+																	DECLARE CURSOR_DIFF_ENV CURSOR local fast_forward FOR
+																		SELECT DISTINCT
+																			[PAT_ProductID] AS ProductID,
+																			E.ENV_AppServerEnvironmentType AS EnvType,
+																			[PAT_ClientID] AS ClientID
+																		FROM [PATCH] INNER JOIN Environment E ON PATCH.PAT_EnvType = E.ENV_ID
+																		WHERE [PAT_ProductID] = @ProductID AND
+																			  E.ENV_AppServerEnvironmentType = @EnvID AND
+																			  [PAT_ClientID] = @ClientID
+																		ORDER BY PAT_ProductID, ENV_AppServerEnvironmentType,PAT_ClientID;
+																	TRUNCATE TABLE TEMP_PATCH_SELECTION;
+																	OPEN CURSOR_DIFF_ENV
+																	Fetch next FROM CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+																	WHILE @@fetch_status = 0
+																		BEGIN 
+																			--SELECT @ProductCursor AS [ProductID]
+																			INSERT INTO [TEMP_PATCH_SELECTION]
+																			([TPS_ProductID]
+																			,[TPS_EnvironmentID]
+																			,[TPS_ClientID])
+																			VALUES
+																			(@ProductCursor,
+																			 @EnvironmentCursor,
+																			 @ClientCursor);
+																			PRINT ('ProductID: ' + @ProductCursor + ', EnvironmentID: ' + @EnvironmentCursor + ', ClientID: '+ @ClientCursor)
+																			fetch next from CURSOR_DIFF_ENV into @ProductCursor,@EnvironmentCursor,@ClientCursor
+																		END
+																	CLOSE CURSOR_DIFF_ENV
+																	SELECT  C.ClientName
+																		,CT.CTYPE_TITLE As ClientType
+																		,PD.ProductName As [ProductID]
+																		,ET.EnvTitle As EnvType
+																		,C.ClientPOCName As [POC]
+																		,(SELECT COUNT(*) FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID) As [NumberOfPatches]
+																		,(SELECT TOP 1 PATCH.PAT_HotNumber FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchHotNumber]
+																		,(SELECT TOP 1 PATCH.PAT_DeployedBy FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) AS [PatchDeployedBy]
+																		,(SELECT TOP 1 PATCH.PAT_IsQAPassed FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchQATested]
+																		,(SELECT TOP 1 PATCH.PAT_CreatedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchCreatedDate]
+																		,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchDeployedDate]
+																		,DATEDIFF(DAY,(SELECT TOP 1 PATCH.PAT_DeployedDate FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PATCH.PAT_DeployedDate desc),GETDATE()) AS [NumberOfDaysPassed]
+																		,(SELECT TOP 1 PATCH.PAT_Dependency FROM PATCH WHERE PATCH.PAT_ClientID = TPS.TPS_ClientID AND PATCH.PAT_ProductID = TPS_ProductID AND PATCH.PAT_EnvType = E.ENV_ID ORDER BY PAT_DeployedDate desc) As [PatchStatus]
+																		,E.ENV_AppHyperLink As [Link]
+																		,E.ENV_AppServerWorkingDirectoryLocation As [WorkingDirectory]
+																	FROM [TEMP_PATCH_SELECTION] TPS 
+																	INNER JOIN Environment E 
+																	ON TPS.[TPS_EnvironmentID] = E.ENV_AppServerEnvironmentType AND TPS.[TPS_ProductID] = E.ENV_Product_ID AND
+																	   TPS.[TPS_ClientID] = E.ENV_Client_ID 
+																	INNER JOIN ClientDetail C ON TPS.[TPS_ClientID] = C.ClientID
+																	INNER JOIN CLIENT_TYPE CT ON C.ClientType = CT.CTYPE_ID
+																	INNER JOIN Products PD ON  TPS.[TPS_ProductID] = PD.ProductID
+																	INNER JOIN EnvironmentType ET ON TPS.[TPS_EnvironmentID] = ET.EnvID
+																END
+															else
+																BEGIN
+																	PRINT('Unknown Parameter Value!')
+																END
+														END
+												END
+										END
+								END
+						END
+				END
+		END
+  END
