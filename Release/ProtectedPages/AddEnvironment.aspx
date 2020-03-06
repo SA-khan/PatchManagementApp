@@ -238,7 +238,7 @@
                         <asp:ListItem>	Hiawatha	</asp:ListItem>
                         <asp:ListItem>	HFS	</asp:ListItem>
                         <asp:ListItem>	IBM HTTP Server	</asp:ListItem>
-                        <asp:ListItem>	Internet Information Services	</asp:ListItem>
+                        <asp:ListItem>Internet Information Services</asp:ListItem>
                         <asp:ListItem>	Jetty	</asp:ListItem>
                         <asp:ListItem>	Jexus	</asp:ListItem>
                         <asp:ListItem>	lighttpd	</asp:ListItem>
@@ -281,7 +281,7 @@
             </asp:TableRow>
             <asp:TableRow ID="rowAppServerWorkingDirectoryLocation" runat="server">
                 <asp:TableCell Width="30%">
-                    <asp:Label ID="lblAppServerWorkingDirectoryLocation" runat="server" Text="App Server Web Browser Version" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    <asp:Label ID="lblAppServerWorkingDirectoryLocation" runat="server" Text="App Server Working Directory Location" Font-Italic="true" ForeColor="Black"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtAppServerWorkingDirectoryLocation" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" Font-Names="Arial" placeholder="Enter App Server Working Directory Location Here"></asp:TextBox>
