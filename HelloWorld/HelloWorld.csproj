@@ -115,6 +115,7 @@
     <Content Include="Images\icon.ico" />
     <Content Include="Images\loginBG.jpg" />
     <Content Include="AppOverview.aspx" />
+    <Content Include="Images\rms.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="ProtectedPages\AddClientType.aspx" />
@@ -192,6 +193,8 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="Search.aspx" />
+    <Content Include="SplashScreen.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -476,6 +479,13 @@
     <Compile Include="References.aspx.designer.cs">
       <DependentUpon>References.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -489,6 +499,13 @@
     </Compile>
     <Compile Include="SiteLogout.Master.designer.cs">
       <DependentUpon>SiteLogout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.aspx.cs">
+      <DependentUpon>SplashScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.aspx.designer.cs">
+      <DependentUpon>SplashScreen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>

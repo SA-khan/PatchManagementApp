@@ -102,7 +102,8 @@ namespace HelloWorld.ProtectedPages
                 {
                     rowProductName.Visible = true;
                     //dropProductName.Items.Clear();
-                    SqlDataSource1.SelectCommand = "SELECT P.ProductID,P.ProductName from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType) WHERE C.ClientID = " + dropPatchClientName.SelectedValue.ToString();
+                    //SELECT P.ProductID,CONCAT(P.ProductName,' ', (select ET.EnvTitle FROM EnvironmentType ET WHERE ET.EnvID = E.ENV_AppServerEnvironmentType)) AS ProductName from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType) WHERE C.ClientID =
+                    SqlDataSource1.SelectCommand = "SELECT DISTINCT P.ProductID,P.ProductName from (((Environment E Inner Join ClientDetail C on E.ENV_Client_ID = C.ClientID) INNER JOIN Products P On E.ENV_Product_ID = P.ProductID ) INNER JOIN EnvironmentType ET ON ET.EnvID = E.ENV_AppServerEnvironmentType) WHERE C.ClientID = " + dropPatchClientName.SelectedValue.ToString();
                     if (dropProductName.SelectedIndex != 0)
                     {
                         //dropEnvironmentType.Items.Clear();

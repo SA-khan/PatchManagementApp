@@ -1,5 +1,11 @@
 ﻿<%@ Page Title="Portal - Add Client" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddCompany" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Panel ID="Panel1" runat="server">
@@ -95,8 +101,8 @@
                     
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:Button ID="btnSave" runat="server" Text="SAVE" onclick="btnSave_Click" Width="70px" Height="30px" style="margin:5px;padding:5px;" />
-                    <asp:Button ID="btnClear" runat="server" Text="CLEAR" onclick="btnClear_Click" Width="70px" Height="30px" style="margin:5px;padding:5px;" />
+                    <asp:Button ID="btnSave" class="btn btn-dark" runat="server" Text="SAVE" onclick="btnSave_Click" Width="70px" Height="30px" style="margin:5px;padding:5px;" />
+                    <asp:Button ID="btnClear" class="btn btn-outline-dark" runat="server" Text="CLEAR" onclick="btnClear_Click" Width="70px" Height="30px" style="margin:5px;padding:5px;" />
                 </asp:TableCell>
                 <asp:TableCell>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" InitialValue="*" ControlToValidate="txtClientName" Display="Dynamic" EnableClientScript="true" Text="Please Enter Client Name"></asp:RequiredFieldValidator>--%>
