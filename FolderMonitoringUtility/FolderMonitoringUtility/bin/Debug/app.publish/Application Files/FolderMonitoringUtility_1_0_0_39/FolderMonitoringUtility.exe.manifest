@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="FolderMonitoringUtility.exe" version="1.0.0.39" publicKeyToken="51e8a4216c16ff6e" language="neutral" processorArchitecture="x86" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="FolderMonitoringUtility" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <commandLine file="FolderMonitoringUtility.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMonitoringUtility.exe" size="17408">
+      <assemblyIdentity name="FolderMonitoringUtility" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>NhF41swG2aoGqCDOsEjFrFuBH/w=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="CustomSettings.xml" size="2226" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>J/DXFfDT4jYWnAuAityJcKSkgUg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="EmailTemplate.txt" size="2507">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>/5yaldohVlM0AUZPDIc4B0UXAJ0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="FolderMonitoringUtility.exe.config" size="1223">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>p9R2Yk/hyUi0ljmdAGi8WLtAOm8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=SHMA\Saad.Ahmed" issuerKeyHash="2645303d5826025da9812e68d019fe466365e7a2" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>YWF0EgXPsVddOdLdtRhTVqj4Fdc=</DigestValue></Reference></SignedInfo><SignatureValue>qIhhY1288kCXPz25P1V6A96n3Fij/3lHWmpc49dz0A9p02pODZ/1FsleZAV+M50afqr2H3PNsj0ngMmAe4BtHVUk+Htiiq61GBx1eT99K3oBybIXHpgpvHSQcSPWLCYIXsZjxGkxAhaDmoVm+aXuEd6WbZk7SMLwSpEVRKr/FQs=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>4RGbVMdP8jb3uSDw7Js+LcMbcoTLbLjZ7xFx7vy31pX2tHiwyuRTkju3++FAl269OZw31hubDqLUhwxDHcuKVWpCusPWZDDUYZCGir0x82I1Asdur8MwPFP71lMAPWOpPMAvIZOp7XYyIvzPgRzIkUrnNZwqmm7yMvR6ilHcCd0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="d715f8a8565318b5ddd2395d57b1cf0512746161" Description="" Url=""><as:assemblyIdentity name="FolderMonitoringUtility.exe" version="1.0.0.39" publicKeyToken="51e8a4216c16ff6e" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=SHMA\Saad.Ahmed</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>qyUXQG2DtXKhrziWqX08/4bjp08=</DigestValue></Reference></SignedInfo><SignatureValue>DemVfdrR/Givts91pjoZww9HKxiAvZQPG/3/STM3AW/xmESj4g6oJ0JxvaxyGlrZAOePh34EaM4nnuCk5+u6lfwf50nBb/EyEQ2hRK1stytPf2ba7VSB/FgWWX1rdNeo205Y2tnbTtKVLbXgfJjtAtNaKC1Gt9wh17RhhVa8oCE=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>4RGbVMdP8jb3uSDw7Js+LcMbcoTLbLjZ7xFx7vy31pX2tHiwyuRTkju3++FAl269OZw31hubDqLUhwxDHcuKVWpCusPWZDDUYZCGir0x82I1Asdur8MwPFP71lMAPWOpPMAvIZOp7XYyIvzPgRzIkUrnNZwqmm7yMvR6ilHcCd0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB1TCCAT6gAwIBAgIQHR9hWjDkCKJJGJpBzxL5tjANBgkqhkiG9w0BAQUFADApMScwJQYDVQQDHh4AUwBIAE0AQQBcAFMAYQBhAGQALgBBAGgAbQBlAGQwHhcNMjAwMzExMDUzNzE2WhcNMjEwMzExMTEzNzE2WjApMScwJQYDVQQDHh4AUwBIAE0AQQBcAFMAYQBhAGQALgBBAGgAbQBlAGQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAOERm1THT/I297kg8OybPi3DG3KEy2y42e8Rce78t9aV9rR4sMrkU5I7t/vhQJduvTmcN9Ybmw6i1IcMQx3LilVqQrrD1mQw1GGQhoq9MfNiNQLHbq/DMDxT+9ZTAD1jqTzALyGTqe12MiL8z4EcyJFK5zWcKppu8jL0eopR3AndAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAijAsZEyowtwF3IzQkSj4ZVl3SZzdb2AzPVCfhXGnOPyjWa33LADHk+PKZeYTZGnX2yZ7nj9/Fg6xC/ZAj1QdA28rJQaeaG0W8a/r9qRQQTv18HAwnNDo8peeOuoSAUSbxVVJUyviAg/2MIULugOyCLx99j6mz78bedC958q66R8=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

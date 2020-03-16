@@ -1,0 +1,67 @@
+﻿<html>
+ <head>
+<title>Alert</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ </head>
+ <body style="background-color:lightblue;">
+<div style="margin:10;">
+ <div style="background-color:white;padding:10;">
+  <div style="background-color:#212121;color:white;">
+    <div style="padding:20;">
+      <h4><span style="font-family:Franklin Gothic Medium">WINDOWS SERVICE UTILITY ALERT</span></h4>
+    </div>
+  </div>
+  <br />
+  <div class="card bg-light text-dark" style="margin:auto;">
+    <div class="card-body" style="margin:auto;"><b>Folder Monitoring Utility Service</b></div>
+    <table class="table table-hover" style="border:1px solid gray;width:50%;margin:20;background-color:white;margin:auto;">
+    <thead>
+      <tr style="border-top:1px solid gray;">
+        <th colspan="2">File Uploaded Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>File Name</td>
+        <td>Doe</td>
+      </tr>
+      <tr>
+        <td>Folder Location</td>
+        <td>Moe</td>
+      </tr>
+      <tr>
+        <td>Log Location</td>
+        <td>Dooley</td>
+      </tr>
+      <tr>
+        <td>Uploaded Date and Time</td>
+        <td id="datetime"></td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  </div>
+  <br />
+   <div class="card bg-light text-dark">
+    <div class="card-body" style="text-align:center;">
+    <h6><span style="font-family:Franklin Gothic Medium">Thank you.</span></h6>
+    </div>
+  </div>
+ </div>
+</div>
+   <script>
+var d = new Date();
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var H = d.getHours();
+var h = H % 12 || 12;
+var ampm = (H < 12 || H === 24) ? "AM" : "PM";
+document.getElementById("datetime").innerHTML = days[d.getDay()] + ' ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() + ' ' + h + ':' + d.getMinutes() + ' ' + ampm ;
+</script>
+ </body>
+</html>

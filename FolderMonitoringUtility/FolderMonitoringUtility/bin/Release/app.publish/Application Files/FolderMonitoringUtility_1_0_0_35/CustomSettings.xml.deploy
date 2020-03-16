@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCustomFolderSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CustomFolderSettings FolderID="ExampleZIP_files">
+    <FolderEnabled>true</FolderEnabled>
+    <FolderDescription>
+      Files in format KML corresponding to the example project
+    </FolderDescription>
+    <FolderFilter>*.ZIP</FolderFilter>
+    <FolderPath>E:\\FolderToWatch\\</FolderPath>
+    <FolderIncludeSub>false</FolderIncludeSub>
+    <ExecutableFile>CMD.EXE</ExecutableFile>
+    <!-- The block {0} will be automatically replaced with the
+      corresponding file name -->
+    <ExecutableArguments>
+      /C echo It works properly for .ZIP extension-- File {0}
+      &gt; e:\it_works_KML.txt
+    </ExecutableArguments>
+  </CustomFolderSettings>
+  <CustomFolderSettings FolderID="ExampleRAR_files">
+    <FolderEnabled>true</FolderEnabled>
+    <FolderDescription>
+      Files in format ZIP corresponding to the example project
+    </FolderDescription>
+    <FolderFilter>*.RAR</FolderFilter>
+    <FolderPath>E:\\FolderToWatch\\</FolderPath>
+    <FolderIncludeSub>false</FolderIncludeSub>
+    <ExecutableFile>CMD.EXE</ExecutableFile>
+    <!-- The block {0} will be automatically replaced with the
+      corresponding file name -->
+    <ExecutableArguments>
+      /C echo It works properly for .RAR extension-- File {0}
+      &gt; e:\it_works_KML.txt
+    </ExecutableArguments>
+  </CustomFolderSettings>
+  <CustomFolderSettings FolderID="CapellaUHA_RAR">
+    <FolderEnabled>true</FolderEnabled>
+    <FolderDescription>
+      Files in format ZIP corresponding to the example project
+    </FolderDescription>
+    <FolderFilter>*.RAR</FolderFilter>
+    <FolderPath>\\128.1.20.58\\SHuhasRelease\\</FolderPath>
+    <FolderIncludeSub>false</FolderIncludeSub>
+    <ExecutableFile>CMD.EXE</ExecutableFile>
+    <!-- The block {0} will be automatically replaced with the
+      corresponding file name -->
+    <ExecutableArguments>
+      /C echo It works properly for .RAR extension-- File {0}
+      &gt; e:\it_works_KML.txt
+    </ExecutableArguments>
+  </CustomFolderSettings>
+  <CustomFolderSettings FolderID="CapellaUHA_ZIP">
+    <FolderEnabled>true</FolderEnabled>
+    <FolderDescription>
+      Files in format ZIP corresponding to the example project
+    </FolderDescription>
+    <FolderFilter>*.ZIP</FolderFilter>
+    <FolderPath>\\128.1.20.58\\SHuhasRelease\\</FolderPath>
+    <FolderIncludeSub>false</FolderIncludeSub>
+    <ExecutableFile>CMD.EXE</ExecutableFile>
+    <!-- The block {0} will be automatically replaced with the
+      corresponding file name -->
+    <ExecutableArguments>
+      /C echo It works properly for .RAR extension-- File {0}
+      &gt; e:\it_works_KML.txt
+    </ExecutableArguments>
+  </CustomFolderSettings>
+  <CustomFolderSettings FolderID="IPAMS_3g_RAR">
+    <FolderEnabled>true</FolderEnabled>
+    <FolderDescription>
+      Files in format RAR corresponding to the example project
+    </FolderDescription>
+    <FolderFilter>*.*</FolderFilter>
+    <FolderPath>\\\128.1.20.152\\iPaMs_Deployment_Release_2018\\Hot_Patch</FolderPath>
+    <FolderIncludeSub>false</FolderIncludeSub>
+    <ExecutableFile>CMD.EXE</ExecutableFile>
+    <!-- The block {0} will be automatically replaced with the
+      corresponding file name -->
+    <ExecutableArguments>
+      /C echo It works properly for .RAR extension-- File {0}
+      &gt; e:\it_works_KML.txt
+    </ExecutableArguments>
+  </CustomFolderSettings>
+  <CustomFolderSettings FolderID="IPAMS_4g_RAR">
+    <FolderEnabled>true</FolderEnabled>
+    <FolderDescription>
+      Files in format RAR corresponding to the example project
+    </FolderDescription>
+    <FolderFilter>*.*</FolderFilter>
+    <FolderPath>\\\aak139\\Share\\4G_iPaMs_Deployment_Release_2018\\Hot_Patch\\</FolderPath>
+    <FolderIncludeSub>false</FolderIncludeSub>
+    <ExecutableFile>CMD.EXE</ExecutableFile>
+    <!-- The block {0} will be automatically replaced with the
+      corresponding file name -->
+    <ExecutableArguments>
+      /C echo It works properly for .RAR extension-- File {0}
+      &gt; e:\it_works_KML.txt
+    </ExecutableArguments>
+  </CustomFolderSettings>
+</ArrayOfCustomFolderSettings>

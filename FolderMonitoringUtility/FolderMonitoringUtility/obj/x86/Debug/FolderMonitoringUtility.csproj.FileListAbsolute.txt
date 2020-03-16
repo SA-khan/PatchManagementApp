@@ -1,0 +1,12 @@
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\bin\Debug\FolderMonitoringUtility.exe.config
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\bin\Debug\FolderMonitoringUtility.exe.manifest
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\bin\Debug\FolderMonitoringUtility.application
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\bin\Debug\FolderMonitoringUtility.exe
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\bin\Debug\FolderMonitoringUtility.pdb
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\obj\x86\Debug\FolderMonitoringUtility.Monitor.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\obj\x86\Debug\FolderMonitoringUtility.ProjectInstaller.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\obj\x86\Debug\FolderMonitoringUtility.csproj.GenerateResource.Cache
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\obj\x86\Debug\FolderMonitoringUtility.exe.manifest
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\obj\x86\Debug\FolderMonitoringUtility.application
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\obj\x86\Debug\FolderMonitoringUtility.exe
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\FolderMonitoringUtility\FolderMonitoringUtility\obj\x86\Debug\FolderMonitoringUtility.pdb
