@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMonitoringUtility.exe" size="17408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMonitoringUtility.exe" size="17920">
       <assemblyIdentity name="FolderMonitoringUtility" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>onZpUceZlROq2gZcTEjdoE2+HTU=</dsig:DigestValue>
+        <dsig:DigestValue>sVg+B5IqYAkSRVW1Intx1jzmmUw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="CustomSettings.xml" size="4301" writeableType="applicationData">
+  <file name="CustomSettings.xml" size="876" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>kfnU7e8KD78dQyWuBDCY6ozo9HA=</dsig:DigestValue>
+      <dsig:DigestValue>2vG6+59lUEJIlOCUZK7i5nQmtco=</dsig:DigestValue>
     </hash>
   </file>
   <file name="EmailTemplate.txt" size="2507">
@@ -71,13 +71,13 @@
       <dsig:DigestValue>/5yaldohVlM0AUZPDIc4B0UXAJ0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="FolderMonitoringUtility.exe.config" size="1223">
+  <file name="FolderMonitoringUtility.exe.config" size="1467">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>p9R2Yk/hyUi0ljmdAGi8WLtAOm8=</dsig:DigestValue>
+      <dsig:DigestValue>yASP63HOZ2Mg6pBjZ49GZS6l/Yc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

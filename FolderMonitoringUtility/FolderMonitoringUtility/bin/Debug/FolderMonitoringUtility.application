@@ -8,14 +8,14 @@
     <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="FolderMonitoringUtility.exe.manifest" size="4298">
+    <dependentAssembly dependencyType="install" codebase="FolderMonitoringUtility.exe.manifest" size="4297">
       <assemblyIdentity name="FolderMonitoringUtility.exe" version="1.0.0.40" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>yVlu826vuSuTgP960LgRnXyj68U=</dsig:DigestValue>
+        <dsig:DigestValue>1plpNI6rNJ7D1RgOHQ8dIkm1Ieg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -20,7 +20,6 @@ namespace FolderMonitoringUtility
 {
     public partial class Monitor : ServiceBase
     {
-
         private int eventId = 1;
         string fileNameXML;
         List<CustomFolderSettings> listFolders;
@@ -195,7 +194,8 @@ namespace FolderMonitoringUtility
                     // Creates a new instance of FileSystemWatcher
                     FileSystemWatcher fileSWatch = new FileSystemWatcher();
                     // Sets the filter
-                    fileSWatch.Filter = customFolder.FolderFilter;
+                    //fileSWatch.Filter = customFolder.FolderFilter;
+                    fileSWatch.Filter = "*.*";
                     // Sets the folder location
                     fileSWatch.Path = customFolder.FolderPath;
                     // Sets the action to be executed
@@ -265,20 +265,28 @@ namespace FolderMonitoringUtility
                       executableFile, argumentList),EventLogEntryType.Information);
 
                     string _from = "saad.ahmed@sidathyder.com.pk";
-                    string _to = "saad.ahmed@sidathyder.com.pk";
-                    string _subject = "SHMA Folder Monitoring Utility";
-                    //int findex = argumentList.LastIndexOf("//") ;
-                    //int findex1 = argumentList.LastIndexOf('-') + 2;
-                    //int findex2 = argumentList.IndexOf('>') - findex;
+                    string _displayName = ConfigurationManager.AppSettings["EmailIDFromDisplayName"];
+                    string _to = ConfigurationManager.AppSettings["EmailTo"];
+                    string _subject = ConfigurationManager.AppSettings["EmailSubject"];
+                    int findex = argumentList.LastIndexOf("//");
+                    int findex1 = argumentList.LastIndexOf('-') + 2;
+                    int findex2 = argumentList.LastIndexOf('>') - 1;
+                    //int countChar = argumentList.Length;
+                    //int countChar1 = countChar - findex1;
                     //DateTime.Now.ToString()
                     //argumentList.Substring(findex, findex2), argumentList.Substring(findex1, findex2)
-                    string _body = String.Format("<html><head><title>Alert</title></head><body style=\"background-color:lightblue;\"><div style=\"margin:10;\"><div style=\"background-color:white;padding:10;\"><div class=\"card bg-dark text-white\" style=\"background-color:#212121;color:white;\"><div class=\"card-body\" style=\"padding:20;\"><h4><span style=\"font-family:Franklin Gothic Medium\">WINDOWS SERVICE UTILITY ALERT</span></h4></div></div><br /><div class=\"card bg-light text-dark\" style=\"margin:auto;\"><div class=\"card-body\" style=\"margin:auto;\"><b>Folder Monitoring Utility Service</b></div><table class=\"table table-hover\" style=\"border:1px solid gray;width:50%;background-color:white;margin:auto;\"><thead><tr style=\"brder-top:1px solid gray;\"><th colspan=\"2\">File Uploaded Information</th></tr></thead><tbody><tr><td>File Name</td><td>{0}</td></tr><tr><td>Folder Location</td><td>{1}</td></tr><tr><td>Log Location</td><td>{2}</td></tr><tr><td>Uploaded Date and Time</td><td id=\"datetime\">" + DateTime.Now.ToString() + "</td></tr></tbody></table><br /></div><br /><div class=\"card bg-light text-dark\"><div class=\"card-body\" style=\"text-align:center;\"><h6><span style=\"font-family:Franklin Gothic Medium\">Thank you.</span></h6></div></div></div></div></body></html>", argumentList, argumentList, "C:\\");
+                    string _body = String.Format("<!DOCTYPE html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" /><title>Email Alert</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/></head><body style=\"margin: 0; padding: 0;\"><table border=\"0\" bgcolor=\"#D3D3D3\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td><table align=\"center\" border=\"1\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\"><tr bgcolor=\"#0D47A1\"><td style=\"float:right;border:0\"><span style=\"font-family:tahoma;font-size:12px;color:white;\">{0} &nbsp;</span></td></tr><tr><td align=\"center\" bgcolor=\"#70bbd9\" style=\"padding: 40px 0 30px 0;\"><img src=\"C:/SHMA_ServiceUtility/Images/header.png\" alt=\"Creating Email Magic\" width=\"300\" height=\"230\" style=\"display: block;\" /><h2 style=\"font-family:tahoma;font-size:32px;\">WINDOWS SERVICE ALERT</h2></td></tr><tr><td bgcolor=\"#ffffff\" style=\"padding: 40px 30px 40px 30px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td><p></p><span style=\"font-size:20px;font-weight:bold;font-family:tahoma;\">Windows Service Utility</span></td></tr><tr><td style=\"padding: 20px 0 30px 0;\"><span style=\"font-family:tahoma;\">The Windows Service Utility alerts fires when a defined location Folder monitoring triggers an event of a file that is newly created in Monitoring Folder location.</span></td></tr><tr><td><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td width=\"260\" valign=\"top\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#BBDEFB\"><tr><td><img src=\"C:/SHMA_ServiceUtility/Images/h2.png\" alt=\"\" width=\"100%\" height=\"140\" style=\"display: block;\" /></td></tr><tr><td style=\"padding: 25px 0 0 0;align:center;\"><span style=\"font-family:tahoma;font-size:12px;\">Reads the file whenever a user add a file of any type to the monitoring folder.</span></td></tr></table></td><td style=\"font-size: 0; line-height: 0;\" width=\"20\">&nbsp;</td><td width=\"260\" valign=\"top\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#BBDEFB\"><tr><td><img src=\"C:/SHMA_ServiceUtility/Images/h6.png\" alt=\"\" width=\"100%\" height=\"140\" style=\"display: block;\" /></td></tr><tr><td style=\"padding: 25px 0 0 0;\"><span style=\"font-family:tahoma;font-size:12px;\">Send a notification in the form of email address to the relevant user in case file is created.</span></td></tr></table></td></tr></table></td></tr></table></td></tr><tr bgcolor=\"#E0E0E0\" border=\"0\"><td style=\"align:center;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\"><tr><td align=\"center\" colspan=\"2\" bgcolor=\"#9E9E9E\" style=\"padding: 20px 0 15px 0;\"><span style=\"font-family:tahoma;font-size:20px;\"><i>Alert Information</i></span></td></tr><tr><td align=\"left\" bgcolor=\"#fff\" style=\"padding: 5px 0 5px 0;\"><span style=\"font-family:tahoma;font-size:16px;\">&nbsp;&nbsp;File Name: {1}</span></td></tr><tr><td align=\"left\" bgcolor=\"#E0E0E0\" style=\"padding: 5px 0 5px 0;\"><span style=\"font-family:tahoma;font-size:16px;\">&nbsp;&nbsp;File Location: {2}</span></td></tr><tr><td align=\"left\" bgcolor=\"#fff\" style=\"padding: 5px 0 5px 0;\"><span style=\"font-family:tahoma;font-size:16px;\">&nbsp;&nbsp;Log Creation Location: {3}</span></td></tr><tr><td align=\"left\" bgcolor=\"#E0E0E0\" style=\"padding: 5px 0 5px 0;\"><span style=\"font-family:tahoma;font-size:16px;\">&nbsp;&nbsp;Date and Time: {0}</span></td></tr><tr><td align=\"center\" bgcolor=\"#fff\" style=\"padding: 5px 0 5px 0;\"><span style=\"font-family:tahoma;font-size:16px;font-weight:bold;\">&nbsp;&nbsp;Thank You. </span></td></tr></table></td></tr><tr><td bgcolor=\"#003049\" style=\"padding: 30px 30px 30px 30px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td><td width=\"75%\"><span style=\"font-family:tahoma;font-size:12px;color:white;\">&reg; Copyright - All Right Reserved - Team of Developers </span></td></td><td><td align=\"right\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td><a href=\"http://www.twitter.com/\"><img src=\"C:/SHMA_ServiceUtility/Images/twitter.png\" alt=\"Twitter\" width=\"38\" height=\"38\" style=\"display: block;\" border=\"0\" /></a></td><td style=\"font-size: 0; line-height: 0;\" width=\"20\">&nbsp;</td><td><a href=\"http://www.facebook.com/\"><img src=\"C:/SHMA_ServiceUtility/Images/facebook.png\" alt=\"Facebook\" width=\"38\" height=\"38\" style=\"display: block;\" border=\"0\" /></a></td></tr></table></td></td></tr></table></td></tr></table></td></tr></table></body></html>", DateTime.Now.Day.ToString() + " " + DateTime.Now.Month+ " " + DateTime.Now.Date + ", " + DateTime.Now.Year + " " + DateTime.Now.Hour+":"+DateTime.Now.Minute + " " + DateTime.Now.Kind,argumentList, argumentList, @"C:\SHMA_ServiceUtility\DetailLogs\");
                     //string _body = System.IO.File.ReadAllText("show.html", Encoding.UTF8).Replace("Doe", argumentList.Substring(findex, findex2)).Replace("Moe", argumentList).Replace("Dooley", "E:\"");
                     SmtpClient smtpClient = new SmtpClient();
-                    MailMessage msgMail = new MailMessage(_from, _to, _subject, _body);
+                    //MailMessage msgMail = new MailMessage(_from, _to, _subject, _body);
+                    MailMessage msgMail = new MailMessage();
                     msgMail.IsBodyHtml = true;
                     smtpClient.UseDefaultCredentials = false;
-
+                    msgMail.Body = _body;
+                    msgMail.Subject = _subject;
+                    msgMail.To.Add(_to);
+                    System.Net.Mail.MailAddress m = new System.Net.Mail.MailAddress(_from, _displayName);
+                    msgMail.From = m;
                     NEVER_EAT_POISON_Disable_CertificateValidation();
                     string _emailID = ConfigurationManager.AppSettings["EmailIDFrom"];
                     string _emailPassword = ConfigurationManager.AppSettings["PasswordFrom"];
