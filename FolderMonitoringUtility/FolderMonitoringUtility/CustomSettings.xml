@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCustomFolderSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:variable name="dateNow" select="current-date()"/>
   <CustomFolderSettings FolderID="Capella_files">
     <FolderEnabled>true</FolderEnabled>
     <FolderDescription>
@@ -12,8 +13,8 @@
     <!-- The block {0} will be automatically replaced with the
       corresponding file name -->
     <ExecutableArguments>
-      /C echo It works properly for .ZIP extension-- File {0}
-      &gt; C:\SHMA_ServiceUtility\DetailLogs\it_works_KML.txt
+      >/C echo It works properly for ALL extension-- File {0}
+      &gt; C:\SHMA_ServiceUtility\DetailLogs\$dateNow.txt
     </ExecutableArguments>
   </CustomFolderSettings>
   <CustomFolderSettings FolderID="IPAMS_3G_files">
@@ -28,8 +29,8 @@
     <!-- The block {0} will be automatically replaced with the
       corresponding file name -->
     <ExecutableArguments>
-      /C echo It works properly for ALL extension-- File {0}
-      &gt; C:\SHMA_ServiceUtility\DetailLogs\it_works_KML.txt
+      >/C echo It works properly for ALL extension-- File {0}
+      &gt; C:\SHMA_ServiceUtility\DetailLogs\$dateNow.txt
     </ExecutableArguments>
   </CustomFolderSettings>
   <CustomFolderSettings FolderID="IPAMS_4G_files">
@@ -44,8 +45,8 @@
     <!-- The block {0} will be automatically replaced with the
       corresponding file name -->
     <ExecutableArguments>
-      /C echo It works properly for ALL extension-- File {0}
-      &gt; C:\SHMA_ServiceUtility\DetailLogs\it_works_KML.txt
+      >/C echo It works properly for ALL extension-- File {0}
+      &gt; C:\SHMA_ServiceUtility\DetailLogs\$dateNow.txt
     </ExecutableArguments>
   </CustomFolderSettings>
   <CustomFolderSettings FolderID="Local_Files">
@@ -60,8 +61,8 @@
     <!-- The block {0} will be automatically replaced with the
       corresponding file name -->
     <ExecutableArguments>
-      /C echo It works properly for ALL extension-- File {0}
-      &gt; C:\SHMA_ServiceUtility\DetailLogs\it_works_KML.txt
+      >/C echo It works properly for ALL extension-- File {0}
+      &gt; C:\SHMA_ServiceUtility\DetailLogs\$dateNow.txt
     </ExecutableArguments>
   </CustomFolderSettings>
 </ArrayOfCustomFolderSettings>

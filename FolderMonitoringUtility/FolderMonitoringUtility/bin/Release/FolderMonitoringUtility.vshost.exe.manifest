@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMonitoringUtility.exe" size="17920">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMonitoringUtility.exe" size="36864">
       <assemblyIdentity name="FolderMonitoringUtility" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>8ie+32tRqF+clbOUv7iAbDg6gTU=</dsig:DigestValue>
+        <dsig:DigestValue>pHuubL1o8uywwbheXtqNG6s4bl4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="CustomSettings.xml" size="2973" writeableType="applicationData">
+  <file name="CustomSettings.xml" size="3130" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>x3xqVvrMGAp8jYg3ocDvzee3+eQ=</dsig:DigestValue>
+      <dsig:DigestValue>rbpOLYHESvYIBV0cPfGG5T1uhDE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="EmailTemplate.txt" size="2507">
@@ -71,13 +71,13 @@
       <dsig:DigestValue>/5yaldohVlM0AUZPDIc4B0UXAJ0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="FolderMonitoringUtility.exe.config" size="1537">
+  <file name="FolderMonitoringUtility.exe.config" size="1539">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>so9eQ/rveLlKZGAEuq4H+F7dmtQ=</dsig:DigestValue>
+      <dsig:DigestValue>aUBvdo0+EHbDEFCGYbfx0HpkoTo=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
