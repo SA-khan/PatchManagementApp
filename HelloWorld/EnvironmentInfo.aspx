@@ -1,6 +1,31 @@
 ﻿<%@ Page Title="Portal - Environmnet Overview" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EnvironmentInfo.aspx.cs" Inherits="HelloWorld.EnvironmentInfo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="Images/icon.ico" rel="Shortcut Icon" />
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+      $(function () {
+          $("#dialog").dialog({
+              autoOpen: false,
+              show: {
+                  effect: "blind",
+                  duration: 1000
+              },
+              hide: {
+                  effect: "explode",
+                  duration: 1000
+              }
+          });
+
+          $("#opener").on("click", function () {
+              $("#dialog").dialog("open");
+          });
+      });
+  </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <asp:Label ID="lblHeading1" runat="server" Text="Client Environment Overview" Font-Size="X-Large"></asp:Label>

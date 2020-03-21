@@ -18,14 +18,14 @@
     $(document).ready(function () {
         setTimeout(myFunction, 500);
         setTimeout(myFunction1, 1000);
-        setTimeout(myFunction2, 1300);
-        setTimeout(myFunction3, 1500);
-        setTimeout(myFunction4, 2200);
+        setTimeout(myFunction2, 1500);
+        setTimeout(myFunction3, 2000);
+        setTimeout(myFunction4, 2500);
         setTimeout(myFunction5, 3000);
-        setTimeout(myFunction6, 3700);
+        setTimeout(myFunction6, 3500);
         setTimeout(myFunction7, 4000);
-        setTimeout(myFunction8, 4400);
-        setTimeout(myFunction9, 4500);
+        setTimeout(myFunction8, 4500);
+        setTimeout(myFunction9, 4700);
         setTimeout(myFunction10, 5000);
         setTimeout(myFunction11, 5100);
     });
@@ -80,9 +80,12 @@
     <div>
 
     <div class="jumbotron text-center">
+             <div class="card bg-light text-dark">
+               <div class="card-body">
                 <img src="Images/rms.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="236"> 
                 <h1 style="color:Black;">Release Management Portal</h1>
                 <p><i><kbd>Reshaping the way we do things!</kbd></i></p>
+                <br />
                 <div style="max-width:40%;margin:auto;">
                     <div class="progress" style="height:4px;">
                         <div id="movingBar" class="progress-bar" style="width:0%;background-color:#455A64;">
@@ -91,6 +94,9 @@
                         </div>
                     </div>
                 </div>
+                <p style="color:Gray;"><i>Initializing Application</i></p>
+                </div>
+            </div>
     </div>
     </div>
     </form>

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HelloWorld
+namespace HelloWorld.ErrorPages
 {
 
 
-    public partial class Default
+    public partial class Error500
     {
 
         /// <summary>

@@ -111,7 +111,9 @@
     <Content Include="Content\dx.material.teal.light.css" />
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
+    <Content Include="Default.aspx" />
     <Content Include="EnvironmentInfo.aspx" />
+    <Content Include="ErrorPages\Error500.aspx" />
     <Content Include="Images\icon.ico" />
     <Content Include="Images\loginBG.jpg" />
     <Content Include="AppOverview.aspx" />
@@ -196,7 +198,6 @@
     <Content Include="Search.aspx" />
     <Content Include="SplashScreen.aspx" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -254,6 +255,8 @@
     <Compile Include="App_Code\DatabaseConnectivity.cs" />
     <Compile Include="App_Code\Environment.cs" />
     <Compile Include="App_Code\EnvironmentType.cs" />
+    <Compile Include="App_Code\Log.cs" />
+    <Compile Include="App_Code\MessageBox.cs" />
     <Compile Include="App_Code\Patch.cs" />
     <Compile Include="App_Code\Product.cs" />
     <Compile Include="App_Code\User.cs" />
@@ -271,6 +274,13 @@
     </Compile>
     <Compile Include="EnvironmentInfo.aspx.designer.cs">
       <DependentUpon>EnvironmentInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\Error500.aspx.cs">
+      <DependentUpon>Error500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\Error500.aspx.designer.cs">
+      <DependentUpon>Error500.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -524,6 +534,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Logs\DetailLogs\" />
+    <Folder Include="Logs\ErrorLogs\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
