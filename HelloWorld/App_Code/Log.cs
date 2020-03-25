@@ -7,6 +7,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace HelloWorld.App_Code
 {
@@ -24,8 +25,8 @@ namespace HelloWorld.App_Code
 
     public class Log
     {
-        public string DetailLogPath = @"E:\" + "Logs\\DetailLogs\\";
-        public string ErrorLogPath = @"E:\" + "Logs\\ErrorLogs\\";
+        public string DetailLogPath = "\\Logs\\DetailLogs\\";
+        public string ErrorLogPath = "\\Logs\\ErrorLogs\\";
         public void DetailLog(string className, string methodName, STATE state, string text)
         {
             System.IO.File.AppendAllText(DetailLogPath + DateTime.Now.Year.ToString() + "-" +

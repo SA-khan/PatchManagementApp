@@ -5,4 +5,12 @@ C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\System.Web.Silverlight.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\fr\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csproj.GenerateResource.Cache
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\fr\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.fr.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\ur\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.ur.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\ur\HelloWorld.resources.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache

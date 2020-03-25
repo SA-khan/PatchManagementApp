@@ -114,12 +114,19 @@
     <Content Include="Default.aspx" />
     <Content Include="EnvironmentInfo.aspx" />
     <Content Include="ErrorPages\Error500.aspx" />
+    <Content Include="Images\application.png" />
+    <Content Include="Images\environment.png" />
     <Content Include="Images\icon.ico" />
     <Content Include="Images\loginBG.jpg" />
     <Content Include="AppOverview.aspx" />
+    <Content Include="Images\member_login_1.png" />
+    <Content Include="Images\references.png" />
+    <Content Include="Images\release.png" />
     <Content Include="Images\rms.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="Logs\DetailLogs\TextFile1.txt" />
+    <Content Include="Logs\ErrorLogs\TextFile1.txt" />
     <Content Include="ProtectedPages\AddClientType.aspx" />
     <Content Include="ProtectedPages\AddEnvironment.aspx" />
     <Content Include="ProtectedPages\AddClient.aspx" />
@@ -197,6 +204,12 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
     <Content Include="Search.aspx" />
     <Content Include="SplashScreen.aspx" />
+    <Content Include="Styles\bootstrap-grid.css" />
+    <Content Include="Styles\bootstrap-grid.min.css" />
+    <Content Include="Styles\bootstrap-reboot.css" />
+    <Content Include="Styles\bootstrap-reboot.min.css" />
+    <Content Include="Styles\bootstrap.css" />
+    <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -307,6 +320,11 @@
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.resx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\AddClientType.aspx.cs">
       <DependentUpon>AddClientType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -517,6 +535,11 @@
     <Compile Include="SplashScreen.aspx.designer.cs">
       <DependentUpon>SplashScreen.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\strings.ur.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.ur.resx</DependentUpon>
+    </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -534,8 +557,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Logs\DetailLogs\" />
-    <Folder Include="Logs\ErrorLogs\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
@@ -577,6 +598,25 @@
     <None Include="Content\icons\dxiconsmaterial.woff2" />
     <None Include="Scripts\jquery-3.4.1.min.map" />
     <None Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <None Include="Styles\bootstrap-grid.css.map" />
+    <None Include="Styles\bootstrap-grid.min.css.map" />
+    <None Include="Styles\bootstrap-reboot.css.map" />
+    <None Include="Styles\bootstrap-reboot.min.css.map" />
+    <None Include="Styles\bootstrap.css.map" />
+    <None Include="Styles\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\strings.fr.resx" />
+    <EmbeddedResource Include="Properties\strings.ur.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>strings.ur.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -586,7 +626,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53972</DevelopmentServerPort>
+          <DevelopmentServerPort>9688</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

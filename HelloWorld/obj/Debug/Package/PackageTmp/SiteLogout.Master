@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteLogout.master.cs" Inherits="HelloWorld.SiteLogout" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="Images/icon.ico" rel="Shortcut Icon" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body style="background:Grey">
+    <form id="Form1" runat="server">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    RELEASE MANAGEMENT PORTAL
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                <AnonymousTemplate>
+                        [ <asp:LinkButton ID="linkLogout" runat="server" BackColor="#4B6C9E" Font-Size="Medium" ForeColor="White" onclick="linkLogout_Click">Log Out</asp:LinkButton> ]
+                    </AnonymousTemplate>
+<%--                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>--%>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" RenderingMode="List" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/EnvironmentInfo.aspx" Text="Client Environment Overview"/>
+                        <asp:MenuItem NavigateUrl="~/AppOverview.aspx" Text="Application Overview Environment"/>
+                        <asp:MenuItem NavigateUrl="~/References.aspx" Text="References & Help"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+                <asp:Panel ID="Panel1" runat="server" style="float:left;width:20%;">
+                    <asp:Panel ID="Panel3" runat="server" style="width:90%;min-height:120px;background-color:WindowFrame;color:Black;border:1px solid darkgray;">
+                        <asp:Image ID="Image1" runat="server" Height="80px" Width="100%" style="margin:auto;" ImageUrl="~/Resources/user.jpg" ImageAlign="Middle" AlternateText="User Image Alt" />
+                        <asp:Table ID="Table1" GridLines="Horizontal" runat="server" style="min-width:100%;margin:auto;">
+                            <asp:TableRow>
+                                <asp:TableCell Width="38%">
+                                    <asp:Label ID="Label1" runat="server" Text="User ID:" Font-Italic="true" Font-Names="Arial" Font-Size="Small"></asp:Label>
+                                </asp:TableCell>
+                                <asp:TableCell Width="62%">
+                                    <asp:Label ID="lblUser" runat="server" Font-Italic="true" Font-Names="Arial" Font-Size="Small"></asp:Label>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell Width="38%">
+                                    <asp:Label ID="Label2" runat="server" Text="Role:" Font-Italic="true" Font-Names="Arial" Font-Size="Small"></asp:Label>
+                                </asp:TableCell>
+                                <asp:TableCell Width="62%">
+                                    <asp:Label ID="Label3" runat="server" Font-Italic="true" Font-Names="Arial" Font-Size="Small"></asp:Label>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell Width="38%">
+                                    <asp:Label ID="Label4" runat="server" Text="Last Login:" Font-Italic="true" Font-Names="Arial" Font-Size="Small"></asp:Label>
+                                </asp:TableCell>
+                                <asp:TableCell Width="62%">
+                                    <asp:Label ID="Label5" runat="server" Font-Italic="true" Font-Names="Arial" Font-Size="Small"></asp:Label>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
+                    </asp:Panel>
+                    
+                    <br />
+                    <asp:Menu ID="Menu1" Width="80%" runat="server" DynamicHoverStyle-BackColor="#4A148C" DynamicHoverStyle-ForeColor="#FFFFFF" DynamicMenuItemStyle-HorizontalPadding="3px" DynamicMenuItemStyle-VerticalPadding="4px" StaticHoverStyle-BackColor="#4A148C" StaticHoverStyle-ForeColor="#FFFFFF" StaticMenuItemStyle-HorizontalPadding="5px" StaticMenuItemStyle-VerticalPadding="5px" DynamicMenuItemStyle-BackColor="WindowFrame" DynamicMenuItemStyle-Width="200px" DynamicMenuItemStyle-ForeColor="#000000" DynamicHorizontalOffset="10" DynamicMenuItemStyle-BorderColor="#000000" StaticMenuItemStyle-ForeColor="#000000" StaticEnableDefaultPopOutImage="false" DynamicMenuStyle-BorderColor="#000000" DataSourceID="SiteMapDataSource1" Orientation="Vertical" style="min-height:120px;background-color:WindowFrame;color:Black;border:1px solid darkgray;padding:10px;color:#000000;">
+                    </asp:Menu>
+                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+                </asp:Panel>
+                <asp:Panel ID="Panel2" runat="server" style="float:left;width:80%;">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                </asp:Panel>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>

@@ -410,7 +410,7 @@ namespace HelloWorld
             }
             finally
             {
-                Response.Redirect("ErrorPages\\Error500.aspx?Param=AppOverview.aspx", true);
+                Response.Redirect("ErrorPages\\Error500.aspx?Param=AppOverview.aspx&MethodName=Page_Load", true);
             }
 
         }
@@ -776,7 +776,7 @@ namespace HelloWorld
             }
 
             finally {
-                Response.Redirect("ErrorPages\\Error500.aspx?Param=AppOverview.aspx", true);
+                Response.Redirect("ErrorPages\\Error500.aspx?Param=AppOverview.aspx&MethodName=btnSearch_Click", true);
             }
                 
 
