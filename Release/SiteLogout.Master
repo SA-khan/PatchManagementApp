@@ -11,7 +11,7 @@
     </asp:ContentPlaceHolder>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body>
+<body style="background:Grey">
     <form id="Form1" runat="server">
                 <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
@@ -19,7 +19,7 @@
         <div class="header">
             <div class="title">
                 <h1>
-                    CLIENT APPLICATION SERVER INFRASTRUCTURE PORTAL
+                    RELEASE MANAGEMENT PORTAL
                 </h1>
             </div>
             <div class="loginDisplay">

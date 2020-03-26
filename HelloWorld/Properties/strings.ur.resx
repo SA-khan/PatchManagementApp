@@ -156,7 +156,7 @@
   <data name="Reshaping" xml:space="preserve">
     <value>نئی شکل دینا</value>
   </data>
-  <data name="reshaping_the_way_we_do_things" xml:space="preserve">
+  <data name="Reshaping_the_way_we_do_things" xml:space="preserve">
     <value>جس طرح سے ہم چیزیں کرتے ہیں اس کو تبدیل کرنا</value>
   </data>
   <data name="System" xml:space="preserve">
@@ -172,7 +172,7 @@
     <value>دیکھیں</value>
   </data>
   <data name="View_Add_Edit_And_Delete_Release_Environment_Client" xml:space="preserve">
-    <value>رہائی ، ماحولیات ، کلائنٹ ... دیکھیں ، شامل کریں ، ترمیم رہائی ، ماحولیات ، کلائنٹ ... دیکھیں ، شامل کریں ، ترمیم کریں اور حذف کریں</value>
+    <value>ریلیز ماحول اور کلائنٹ دیکھیں ، شامل کریں ، ترمیم کریں اور حذف کریں ...</value>
   </data>
   <data name="View_and_Download_the_authentic_References" xml:space="preserve">
     <value>مستند حوالہ جات دیکھیں اور ڈاؤن لوڈ کریں...</value>
@@ -194,5 +194,23 @@
   </data>
   <data name="_do" xml:space="preserve">
     <value>کیا</value>
+  </data>
+  <data name="Classic" xml:space="preserve">
+    <value>کلاسک</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>سیاہ</value>
+  </data>
+  <data name="Pakistan" xml:space="preserve">
+    <value>پاکستان</value>
+  </data>
+  <data name="United_Arab_Emirates" xml:space="preserve">
+    <value>متحدہ عرب امارات</value>
+  </data>
+  <data name="United_Kingdom" xml:space="preserve">
+    <value>متحدہ سلطنت یونائیٹڈ کنگڈم</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value />
   </data>
 </root>

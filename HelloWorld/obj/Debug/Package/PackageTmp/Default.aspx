@@ -1,22 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HelloWorld.Default" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HelloWorld.Default" Theme="Classic" %>
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portal - Home</title>
+    <title><asp:Localize ID="Localize1" runat="server" Mode="Transform">Portal - Home</asp:Localize></title>
     <link href="Images/icon.ico" rel="Shortcut Icon" />
     <script src="Scripts/bootstrap.min.js" type="text/javascript"></script>
     <link href="Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery-ui.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="Scripts/jquery.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <style>  
+    <style type="text/css">  
         .carousel-inner img {
         width: 100%;
         height: 50%;
@@ -32,9 +27,9 @@
                 window.location = 'Search.aspx?param=' + document.getElementById('txtSearch').value;
                 return false;
             }
-    </script>
+        </script>
 
-     <script>
+     <script type="text/javascript">
          $(function () {
              var availableTags = ["Alfalah Investments", "Habib Bank Limited", "HBL AMC",
                                 "PMRC", "PAK IRAN", "State Life", "BAFL AMC", "Asset Management Company"];
@@ -45,34 +40,71 @@
     </script>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-      <div style="overflow:auto;width:100%;">
-        <form class="form-inline" style="float:left;" action="#">
-            <div class="ui-widget">
-                <input style="margin-right:3px;width:250px;float:left;" id="txtSearch" class="form-control mr-sm-2" placeholder=" Search.." />
+        <div class=".container-fluid" style="width:100%">
+        <div class="row">
+            <div class=".col-sm-2" style="margin-left:2%;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <input style="width:250px;float:left;" id="txtSearch" class="form-control mr-sm-2" placeholder="Search.." />
+                 <button style="width:100px;margin-left:3px;float:left;" id="btnSearch" type="button" class="btn btn-success" onclick="mySearchFunction()"><asp:Localize ID="LocalSearch" runat="server">Search</asp:Localize></button>
             </div>
-            <button id="btnSearch" class="btn btn-success" type="button" onclick="mySearchFunction()">Search</button>
-        </form>
-      </div>
-      <div style="float:right;padding-top:2px;margin-right:3px;">
-        <select name="speed" id="SelectTheme">
-           <option selected="selected">Classic</option>
-           <option>Dark</option>
-        </select>
-      </div>
-      <div style="float:right;padding-top:2px;margin-right:3px;">
-        <select name="speed" id="SelectCountry">
-           <option selected="selected">Pakistan</option>
-           <option>Dubai</option>
-           <option>UK</option>
-        </select>
-      </div>
-      <div style="float:right;padding-top:2px">
-        <select name="speed" id="selectLanguage">
-           <option>Arabic</option>
-           <option selected="selected">English</option>
-           <option>Urdu</option>
-        </select>
-      </div>
+            <div class=".col-sm-1">
+                <div style="float:left;width:100%;margin-right:100%">
+                
+                </div>
+            </div>
+            <div class=".col-sm-1">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class=".col-sm-1">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class=".col-sm-1">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class=".col-sm-1">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class=".col-sm-1">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class=".col-sm-1">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class=".col" style="float:right;">
+            &nbsp;&nbsp;
+                    <select name="speed" id="SelectTheme">
+                        <option selected="selected"><asp:Localize ID="LocalClassic" runat="server">Classic</asp:Localize></option>
+                        <option><asp:Localize ID="LocalDark" runat="server">Dark</asp:Localize></option>
+                    </select>
+            </div>
+            <div class=".col">
+            &nbsp;&nbsp;
+                    <select name="region" id="SelectCountry">
+                        <option selected="selected"><asp:Localize ID="LocalPakistan" runat="server">Pakistan</asp:Localize></option>
+                        <option><asp:Localize ID="LocalUAE" runat="server">United Arab Emirates</asp:Localize></option>
+                        <option><asp:Localize ID="LocalUK" runat="server">United Kingdom</asp:Localize></option>
+                    </select>
+            </div>
+            <div class=".col">
+            &nbsp;&nbsp;
+                    <%--<select runat="server"  name="language" id="selectLanguage">
+                        <option></option>
+                        <option selected="selected">English</option>
+                        <option>اردو</option>
+                    </select>--%>
+                    <asp:DropDownList ID="dropLanguage" runat="server" AutoPostBack="true">
+                        <asp:ListItem>اردو</asp:ListItem>
+                        <asp:ListItem Selected="True">English</asp:ListItem>
+                        <asp:ListItem>Germon</asp:ListItem>
+                        <asp:ListItem>French</asp:ListItem>
+                        <asp:ListItem>Spanish</asp:ListItem>
+                        <asp:ListItem>سنڌي</asp:ListItem>
+                        <asp:ListItem>عربى</asp:ListItem>
+                    </asp:DropDownList>
+            &nbsp;&nbsp;
+            </div>
+        </div>
+        </div>
      </nav>
 
      <%--Starting Index--%>
@@ -101,6 +133,9 @@
             <%--end--%>
           </div>   
         </div>
+
+       
+
         <div class="carousel-item">
           <img src="\\Images\\release.jpg" alt="Chicago" width="100%" height="500">
           <div class="carousel-caption">
@@ -124,11 +159,12 @@
       </a>
     </div>
 --%>
-    
+
     <div class="jumbotron text-center">
                 <img src="/Images/release.png" class="rounded-circle" alt="Cinque Terre" width="304" height="236"> 
-                <h1 style="color:Black;">Release Management Portal</h1>
-                <p><i><kbd>Reshaping the way we do things!</kbd></i></p>
+                <h1 style="color:Black;font-size:64px;padding:2%;">
+                    <asp:Localize ID="LocalHeading" runat="server">Release Management Portal</asp:Localize></h1>
+                <p style="font-size:32px;margin-bottom:3%;"><i><kbd style="padding:1%;"><asp:Localize ID="LocalSubheading" runat="server">Reshaping the way we do things!</asp:Localize></kbd></i></p>
                 <%--<p></p>--%> 
                 <div class="container pt-3">
                 <div class="row">
@@ -137,9 +173,10 @@
                 <div class="card" style="width:100%;min-height:100%;">
                     <img class="card-img-top" src="/Images/member_login_1.png" alt="Card image" style="width:100%" />
                     <div class="card-body">
-                        <h4 class="card-title">Login Panel</h4>
-                        <p class="card-text">View, Add, Edit & Delete Release, Environment, Client...</p>
-                        <a href="Login.aspx" class="btn btn-primary stretched-link" style="color:White;">Goto Login</a>
+                        <h4 class="card-title" style="font-size:32px;">
+                            <asp:Localize ID="LocalLoginPanel" runat="server">Login Panel</asp:Localize></h4>
+                        <p class="card-text"><asp:Localize ID="LocalLoginPanelSubHeading" runat="server">View, Add, Edit & Delete Release, Environment, Client...</asp:Localize></p>
+                        <a href="Login.aspx" class="btn btn-primary stretched-link" style="color:White;"><asp:Localize ID="LocalLoginPanelButton" runat="server">Goto Login</asp:Localize></a>
                     </div>
                 </div>
                     
@@ -150,10 +187,10 @@
                     <br />
                     <img class="card-img-top" src="\Images/application.png" alt="Card image" style="width:100%" />
                     <div class="card-body">
-                        <p></p>
-                        <h4 class="card-title">App Overview</h4>
-                        <p class="card-text">View the latest Application Overview</p>
-                        <a href="AppOverview.aspx" class="btn btn-primary stretched-link" style="color:White;">View</a>
+                        <br />
+                        <h4 class="card-title" style="font-size:32px;"><asp:Localize ID="LocalAppOverview" runat="server">App Overview</asp:Localize></h4>
+                        <p class="card-text"><asp:Localize ID="LocalAppOverviewSubHeading" runat="server">View the latest Application Overview</asp:Localize></p>
+                        <a href="AppOverview.aspx" class="btn btn-primary stretched-link" style="color:White;"><asp:Localize ID="LocalAppOverviewButton" runat="server">View</asp:Localize></a>
                     </div>
                 </div>
 
@@ -172,9 +209,9 @@
                     <br />
                     <img class="card-img-top" src="\Images/environment.png" alt="Card image" style="width:100%" />
                     <div class="card-body">
-                        <h4 class="card-title">Environment Overview</h4>
-                        <p class="card-text">View the latest Environments Overview</p>
-                        <a href="EnvironmentInfo.aspx" class="btn btn-primary stretched-link" style="color:White;">View</a>
+                        <h4 class="card-title" style="font-size:32px;"><asp:Localize ID="LocalEnvironmentOverview" runat="server">Environment Overview</asp:Localize></h4>
+                        <p class="card-text"><asp:Localize ID="LocalEnvironmentOverviewSubHeading" runat="server">View the latest Environments Overview</asp:Localize></p>
+                        <a href="EnvironmentInfo.aspx" class="btn btn-primary stretched-link" style="color:White;"><asp:Localize ID="LocalEnvironmentOverviewButton" runat="server">View</asp:Localize></a>
                     </div>
                     </div>
                 </div>
@@ -190,13 +227,14 @@
                     <div class="card-body">
                         <p></p>
                         <p></p>
-                        <h4 class="card-title">References & Docs</h4>
-                        <p class="card-text">View and Download the authentic References...</p>
-                        <a href="References.aspx" class="btn btn-primary stretched-link" style="color:White;">View</a>
+                        <h4 class="card-title" style="font-size:32px;"><asp:Localize ID="LocalReferencesAndDocuments" runat="server">References & Docs</asp:Localize></h4>
+                        <p class="card-text"><asp:Localize ID="LocalReferencesAndDocumentsSubHeading" runat="server">View and Download the authentic References...</asp:Localize></p>
+                        <a href="References.aspx" class="btn btn-primary stretched-link" style="color:White;"><asp:Localize ID="LocalReferencesAndDocumentsButton" runat="server">View</asp:Localize></a>
                     </div>
                 </div>
 
      <%--Ending Index--%>
+
 
     </div>
     </form>

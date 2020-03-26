@@ -1,6 +1,8 @@
-﻿<%@ Page Title="Portal - Application Overview" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Live.aspx.cs" Inherits="HelloWorld.Live" %>
+﻿<%@ Page Title="Portal - Application Overview" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Live.aspx.cs" Inherits="HelloWorld.Live" EnableTheming = "False" StylesheetTheme="" Theme="" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+
     <link href="Images/icon.ico" rel="Shortcut Icon" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     

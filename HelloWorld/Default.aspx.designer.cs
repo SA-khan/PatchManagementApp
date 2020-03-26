@@ -40,6 +40,51 @@ namespace HelloWorld {
         protected global::System.Web.UI.WebControls.Localize LocalSearch;
         
         /// <summary>
+        /// LocalClassic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize LocalClassic;
+        
+        /// <summary>
+        /// LocalDark control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize LocalDark;
+        
+        /// <summary>
+        /// LocalPakistan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize LocalPakistan;
+        
+        /// <summary>
+        /// LocalUAE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize LocalUAE;
+        
+        /// <summary>
+        /// LocalUK control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize LocalUK;
+        
+        /// <summary>
         /// dropLanguage control.
         /// </summary>
         /// <remarks>

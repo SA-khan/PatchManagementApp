@@ -70,6 +70,15 @@ namespace HelloWorld.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A.
+        /// </summary>
+        public static string A {
+            get {
+                return ResourceManager.GetString("A", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App Overview.
         /// </summary>
         public static string App_Overview {
@@ -84,6 +93,24 @@ namespace HelloWorld.Properties {
         public static string Bye {
             get {
                 return ResourceManager.GetString("Bye", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classic.
+        /// </summary>
+        public static string Classic {
+            get {
+                return ResourceManager.GetString("Classic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        public static string Dark {
+            get {
+                return ResourceManager.GetString("Dark", resourceCulture);
             }
         }
         
@@ -142,6 +169,15 @@ namespace HelloWorld.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pakistan.
+        /// </summary>
+        public static string Pakistan {
+            get {
+                return ResourceManager.GetString("Pakistan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to References &amp; Docs.
         /// </summary>
         public static string References_And_Documents {
@@ -196,6 +232,15 @@ namespace HelloWorld.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spanish.
+        /// </summary>
+        public static string Spanish {
+            get {
+                return ResourceManager.GetString("Spanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System.
         /// </summary>
         public static string System {
@@ -223,6 +268,24 @@ namespace HelloWorld.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to United Arab Emirates.
+        /// </summary>
+        public static string United_Arab_Emirates {
+            get {
+                return ResourceManager.GetString("United_Arab_Emirates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to United Kingdom.
+        /// </summary>
+        public static string United_Kingdom {
+            get {
+                return ResourceManager.GetString("United_Kingdom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View.
         /// </summary>
         public static string View {
@@ -232,7 +295,7 @@ namespace HelloWorld.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View_Add_Edit_And_Delete_Release_Environment_Client....
+        ///   Looks up a localized string similar to View, Add, Edit and Delete Releases Environments and Client....
         /// </summary>
         public static string View_Add_Edit_And_Delete_Release_Environment_Client {
             get {

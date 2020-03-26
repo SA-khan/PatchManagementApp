@@ -192,4 +192,22 @@
   <data name="Search" xml:space="preserve">
     <value>Chercher</value>
   </data>
+  <data name="Classic" xml:space="preserve">
+    <value>classique</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>foncé</value>
+  </data>
+  <data name="Pakistan" xml:space="preserve">
+    <value>Pakistan</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="United_Arab_Emirates" xml:space="preserve">
+    <value>Emirats Arabes Unis</value>
+  </data>
+  <data name="United_Kingdom" xml:space="preserve">
+    <value>Royaume-Uni</value>
+  </data>
 </root>

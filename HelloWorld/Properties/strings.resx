@@ -169,7 +169,7 @@
     <value>View</value>
   </data>
   <data name="View_Add_Edit_And_Delete_Release_Environment_Client" xml:space="preserve">
-    <value>View_Add_Edit_And_Delete_Release_Environment_Client...</value>
+    <value>View, Add, Edit and Delete Releases Environments and Client...</value>
   </data>
   <data name="View_and_Download_the_authentic_References" xml:space="preserve">
     <value>View and Download the authentic References...</value>
@@ -191,5 +191,26 @@
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="Classic" xml:space="preserve">
+    <value>Classic</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Pakistan" xml:space="preserve">
+    <value>Pakistan</value>
+  </data>
+  <data name="United_Arab_Emirates" xml:space="preserve">
+    <value>United Arab Emirates</value>
+  </data>
+  <data name="United_Kingdom" xml:space="preserve">
+    <value>United Kingdom</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="A" xml:space="preserve">
+    <value>A</value>
   </data>
 </root>

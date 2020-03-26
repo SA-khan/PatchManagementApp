@@ -1,0 +1,79 @@
+-- CREATE STARTUP ACCESS_RIGHT
+
+-- QUERY 1
+INSERT INTO [dbo].[ACCESS_RIGHT]
+           ([ACC_TITLE]
+           ,[ACC_DESC]
+           ,[ACC_VIEW]
+           ,[ACC_EDIT]
+           ,[ACC_DELETE])
+     VALUES
+           ('VIEW ONLY'
+           ,'User Can Only View Data on the Screen'
+           ,1
+           ,0
+           ,0);
+
+-- QUERY 2
+INSERT INTO [dbo].[ACCESS_RIGHT]
+           ([ACC_TITLE]
+           ,[ACC_DESC]
+           ,[ACC_VIEW]
+           ,[ACC_EDIT]
+           ,[ACC_DELETE])
+     VALUES
+           ('VIEW AND EDIT'
+           ,'User Can View As Well As Edit Data on the Screen'
+           ,1
+           ,1
+           ,0);
+
+
+-- CREATE STARTUP ROLE
+
+-- QUERY 1
+INSERT INTO [dbo].[ROLE]
+           ([ROLE_TITLE]
+           ,[ROLE_DESC]
+           ,[ROLE_ACCESS_ID])
+     VALUES
+           ('Consultant'
+           ,'On the Basis of View Screen Takes Technical Decisions'
+           ,1);
+
+-- QUERY 2
+INSERT INTO [dbo].[ROLE]
+           ([ROLE_TITLE]
+           ,[ROLE_DESC]
+           ,[ROLE_ACCESS_ID])
+     VALUES
+           ('Senior Consultant'
+           ,'On the Basis of Implementation View and Edit Partial Data in the Database.'
+           ,2);
+
+
+
+
+-- CREATE STARTUP USER GROUP
+
+--IF THIS QUERY GIVES AN ERROR CHECK IF ROLE TABLE HAS ANY VALUE OF ROLE_ID = 1 IF NOT INCREMENT 1 IN THE BELOW USERG_ROLE VALUE.
+INSERT INTO [dbo].[USER_GROUP]
+           ([USRG_NAME]
+           ,[USRG_DESC]
+           ,[USRG_ROLE]
+           ,[USRG_EMAIL])
+     VALUES
+           ('Implementation'
+           ,'Implementation Team of All Application'
+           ,1
+           ,'abc@123.com');
+
+-- CREATE STARTUP USER
+
+INSERT INTO [dbo].[USER]
+           ([USR_LOGIN_ID]
+           )
+     VALUES
+           ('Demo'
+           )
+GO
