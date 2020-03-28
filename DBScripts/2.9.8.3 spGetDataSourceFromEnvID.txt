@@ -1,0 +1,8 @@
+CREATE PROC spGetDataSourceFromEnvID
+	@ENV_ID [int]
+AS
+BEGIN
+select ( select count(*) from [DATABASE] WHERE DB_ENV_ID = @ENV_ID ) + 
+       ( select count(*) from [MIDDLEWARE] WHERE MDW_ENV_ID = @ENV_ID ) 
+	   AS TOTAL_DATA_SOURCE
+END

@@ -1,12 +1,10 @@
-﻿<%@ Page Title="Portal - Environmnet Overview" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EnvironmentInfo.aspx.cs" Inherits="HelloWorld.EnvironmentInfo" EnableTheming = "False" StylesheetTheme="" Theme=""  %>
+﻿<%@ Page Title="Portal - Environmnet Overview" Language="C#" MasterPageFile="~/MasterPages/Layer1.Master" AutoEventWireup="true" CodeBehind="EnvironmentInfo.aspx.cs" Inherits="HelloWorld.EnvironmentInfo" EnableTheming = "False" StylesheetTheme="" Theme=""  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server" runat="server">
-    <link href="Images/icon.ico" rel="Shortcut Icon" />
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script>
       $(function () {
           $("#dialog").dialog({
@@ -28,16 +26,10 @@
   </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<asp:Label ID="lblHeading1" runat="server" Text="Client Environment Overview" Font-Size="X-Large"></asp:Label>
     <br/>
     <br/>
-
-    <div class="card" style="width:100%">
-
-        
-        
-
-        <asp:Table ID="Table1" runat="server" Width="100%" style="border: 1px solid lightgray;padding:2px;background-color:lightgray;">
+    <div class="card" style="width:100%" style="margin-top:5px;">
+        <asp:Table ID="Table1" runat="server" Width="100%" style="border: 1px solid lightgray;padding:2px;background-color:lightgray;margin-top:5px;">
             <asp:TableRow BackColor="LightGray" >
                     <asp:TableCell ColumnSpan="2" Font-Size="Medium" Font-Italic="false" ForeColor="Black" style="padding-left:10px;padding-right:10px;border-color:Lightgray;">
     
@@ -103,7 +95,7 @@
             </asp:TableRow>
         </asp:Table>
 
-    <asp:Panel ID="Panel2" runat="server" Height="370px" ScrollBars="Vertical">
+    <asp:Panel ID="Panel2" runat="server">
 
     <asp:Table ID="tblInfo" runat="server" Width="100%" GridLines="Both">
 <%--    <asp:TableHeaderRow HorizontalAlign="Center" VerticalAlign="Middle">
@@ -118,228 +110,10 @@
 
 
     <asp:TableRow>
-        <asp:TableCell ID="totalRecords" ColumnSpan="8" BackColor="Aqua" ForeColor="Black" HorizontalAlign="Left" Font-Italic="true" Font-Bold="false" style="padding:5px;">
+        <asp:TableCell ID="totalRecords" ColumnSpan="8" BackColor="lightgray" ForeColor="Black" HorizontalAlign="Left" Font-Italic="true" Font-Bold="false" style="padding:5px;">
             
         </asp:TableCell>
-<%--        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Environment Type
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Operating System
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            App Server Memory
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            App Server Processor
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            App Server Memory
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            DB Server Processor
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            DB Server Memory
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Web Browser 
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell BackColor="Aqua" ForeColor="Black" HorizontalAlign="Center" Font-Bold="true" Font-Italic="true">
-            Status
-        </asp:TableCell>--%>
     </asp:TableRow>
-
-
-<%--
-    <asp:TableRow>
-        <asp:TableCell>
-            FAYSAL AMC
-        </asp:TableCell>
-        <asp:TableCell>
-
-        </asp:TableCell>
-        <asp:TableCell>
-
-        </asp:TableCell>
-        <asp:TableCell>
-
-        </asp:TableCell>
-        <asp:TableCell>
-
-        </asp:TableCell>
-        <asp:TableCell>
-
-        </asp:TableCell>
-        <asp:TableCell>
-
-        </asp:TableCell>
-        <asp:TableCell>
-
-        </asp:TableCell>
-        <asp:TableCell>
-
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            ALFALAH AMC
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            HBL AMC
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            HBL Bank
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            Jubilee Insurance
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableRow>
-        <asp:TableCell>
-            PAK OMAN
-        </asp:TableCell>
-        <asp:TableCell>
-            O.S
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser
-        </asp:TableCell>
-        <asp:TableCell>
-            Web Browser Version
-        </asp:TableCell>
-        <asp:TableCell>
-            Database Server
-        </asp:TableCell>
-        <asp:TableCell>
-            File Server Location
-        </asp:TableCell>
-        <asp:TableCell>
-            IP:Port
-        </asp:TableCell>
-        <asp:TableCell>
-            Hot Patch Number
-        </asp:TableCell>
-        <asp:TableCell>
-            Dependency / Comments
-        </asp:TableCell>
-    </asp:TableRow>
-
-    <asp:TableFooterRow>
-    <asp:TableCell ColumnSpan="9">---</asp:TableCell>
-    </asp:TableFooterRow>
-
---%>
 
     </asp:Table>
 

@@ -25,10 +25,11 @@ namespace HelloWorld.App_Code
 
     public class Log
     {
-        public string DetailLogPath = "\\Logs\\DetailLogs\\";
-        public string ErrorLogPath = "\\Logs\\ErrorLogs\\";
+        public string DetailLogPath = "E:\\Logs\\DetailLogs\\";
+        public string ErrorLogPath = "E:\\Logs\\ErrorLogs\\";
         public void DetailLog(string className, string methodName, STATE state, string text)
         {
+            //Debug.WriteLine("Log Location: " + System.Environment.CurrentDirectory);
             System.IO.File.AppendAllText(DetailLogPath + DateTime.Now.Year.ToString() + "-" +
                 DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + "_" + 
                 DateTime.Now.Hour.ToString() + "-" + DateTime.Now.Minute.ToString() + ".txt",

@@ -25,3 +25,4 @@ C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Release\sn\HelloWorld.resources.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Release\HelloWorld.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Release\HelloWorld.pdb
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Release\HelloWorld.csprojResolveAssemblyReference.cache

@@ -1542,7 +1542,7 @@ namespace HelloWorld.App_Code
                 List<User> matchingUser = new List<User>();
                 using (SqlConnection myConnection = new SqlConnection(con))
                 {
-                    string oString = "Select * from [UsersAuth]";
+                    string oString = "Select * from [USER]";
                     SqlCommand oCmd = new SqlCommand(oString, myConnection);
                     //oCmd.Parameters.AddWithValue("@Fname", fName);
                     myConnection.Open();
@@ -1551,8 +1551,8 @@ namespace HelloWorld.App_Code
                         while (oReader.Read())
                         {
                             User item = new User();
-                            item.UserID = oReader["UserID"].ToString();
-                            item.Password = oReader["Passcode"].ToString();
+                            item.UserID = oReader["USR_LOGIN_ID"].ToString();
+                            item.Password = oReader["USR_CURRENT_PASSCODE"].ToString();
                             matchingUser.Add(item);
                             //matchingPatch.clientName = oReader["ClientName"].ToString();
                             //matchingPatch.patchHotNumber = oReader["PatchHotNumber"].ToString();

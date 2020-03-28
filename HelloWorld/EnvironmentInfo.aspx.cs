@@ -26,30 +26,452 @@ namespace HelloWorld
                 int count = 0;
                 int total = latestPatchOfClient.Count;
                 totalRecords.Text = "Total Number of Records: " + total;
+
+                // START
+                TableRow row000 = new TableRow();
+                row000.Style.Add("width", "100%");
+                TableCell cell1 = new TableCell();
+                cell1.HorizontalAlign = HorizontalAlign.Center;
+                cell1.ColumnSpan = 10;
+
+                row000.Controls.Add(cell1);
+                tblInfo.Rows.Add(row000);
+
                 foreach (var item in latestPatchOfClient)
                 {
-                    TableRow row7 = new TableRow();
-                    TableRow row6 = new TableRow();
-                    TableRow row5 = new TableRow();
-                    TableRow row4 = new TableRow();
-                    TableRow row3 = new TableRow();
-                    TableRow row2 = new TableRow();
-                    TableRow row1 = new TableRow();
-                    TableRow row00 = new TableRow();
+
+                    // START
+                    //TableRow row000 = new TableRow();
+                    //row000.Style.Add("width", "100%");
+                    //TableCell cell1 = new TableCell();
+                    //cell1.HorizontalAlign = HorizontalAlign.Center;
+                    //cell1.ColumnSpan = 10;
+                    //row000.Controls.Add(cell1);
+                    //tblInfo.Rows.Add(row000);
+
+                    #region Layout
+
+                    // Layout
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Bg_Light_Main = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Bg_Light_Main.Attributes.Add("class", "card bg-light");
+                    Div_Card_Bg_Light_Main.ID = "Div_Card_Bg_Light_Main" + count;
+                    Div_Card_Bg_Light_Main.Style.Add("padding", "2%");
+                    cell1.Controls.Add(Div_Card_Bg_Light_Main);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Bg_Light_Second = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Bg_Light_Second.Attributes.Add("class", "card bg-light");
+                    Div_Card_Bg_Light_Second.ID = "Div_Card_Bg_Light_Second" + count;
+                    Div_Card_Bg_Light_Main.Controls.Add(Div_Card_Bg_Light_Second);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Bg_Dark = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Bg_Dark.Attributes.Add("class", "card bg-dark");
+                    Div_Card_Bg_Dark.ID = "Div_Card_Bg_Dark" + count;
+                    Div_Card_Bg_Light_Second.Controls.Add(Div_Card_Bg_Dark);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Collapse = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Collapse.Attributes.Add("class", "collapse");
+                    Div_Collapse.ID = "collapse" + count;
+                    Div_Card_Bg_Light_Second.Controls.Add(Div_Collapse);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Body = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Body.Attributes.Add("class", "card-body");
+                    Div_Collapse.Controls.Add(Div_Card_Body);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Header = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Header.Attributes.Add("class", "card-header");
+                    Div_Card_Bg_Dark.Controls.Add(Div_Card_Header);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Image_Labels_Button = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_Image_Labels_Button");
+
+                    Div_Row_Image_Labels_Button.Attributes.Add("class", "row");
+                    Div_Card_Header.Controls.Add(Div_Row_Image_Labels_Button);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_1_Image = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_1_Image");
+
+                    Div_Col_Sm_1_Image.Attributes.Add("class", "col-sm-1");
+                    Div_Col_Sm_1_Image.InnerHtml = "<img ID=\"Image" + count + "\" runat=\"server\" src=\"../Images/release.png\" Width=\"60\" Height=\"60\" style=\"margin:5px;\" />";
+                    Div_Row_Image_Labels_Button.Controls.Add(Div_Col_Sm_1_Image);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_10_Client_Env_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_10_Client_Env_Product");
+
+                    Div_Col_Sm_10_Client_Env_Product.Attributes.Add("class", "col-sm-10");
+                    Div_Row_Image_Labels_Button.Controls.Add(Div_Col_Sm_10_Client_Env_Product);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Client_Env_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_Client_Env_Product");
+
+                        Div_Row_Client_Env_Product.Attributes.Add("class", "row");
+                        Div_Col_Sm_10_Client_Env_Product.Controls.Add(Div_Row_Client_Env_Product);
+
+                                System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_ClientName");
+
+                                Div_Col_ClientName.Attributes.Add("class", "col-sm-12 text-left");
+                                Div_Col_ClientName.Style.Add("align", "left");
+                                Div_Col_ClientName.InnerHtml = "<span style=\"color:white;\">" + item.ClientName.ToUpper() + "</span>";
+                                Div_Row_Client_Env_Product.Controls.Add(Div_Col_ClientName);
+
+                                System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Env = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                                Div_Col_Env.Attributes.Add("class", "col-sm-12 text-left");
+                                Div_Col_Env.Style.Add("align", "left");
+                                Div_Col_Env.InnerHtml = "<span style=\"color:white;\">" + item.EnvironmentAppServerEnvType.ToUpper() + "</span>";
+                                Div_Row_Client_Env_Product.Controls.Add(Div_Col_Env);
+
+                                System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                                Div_Col_Product.Attributes.Add("class", "col-sm-12 text-left");
+                                Div_Col_Product.Style.Add("align", "left");
+                                Div_Col_Product.InnerHtml = "<span style=\"color:white;\">" + item.ProductName + "</span>";
+                                Div_Row_Client_Env_Product.Controls.Add(Div_Col_Product);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_1_Btn_Expand = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Col_Sm_1_Btn_Expand.Attributes.Add("class", "col-sm-1");
+                    Div_Col_Sm_1_Btn_Expand.Style.Add("margin", "auto");
+                    Div_Col_Sm_1_Btn_Expand.Style.Add("float", "right");
+                    Div_Col_Sm_1_Btn_Expand.InnerHtml = "<button id=\"btnExpand" + count + "\" type=\"button\" class=\"btn btn-primary\" data-toggle=\"collapse\" data-target=\"#MainContent_collapse" + count + "\" >Expand</button>";
+                    Div_Row_Image_Labels_Button.Controls.Add(Div_Col_Sm_1_Btn_Expand);
+
+                    #endregion Layout
+
+
+                    #region ClientName
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_Details");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ClientName_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
+
+                    Div_Row_ClientName.Attributes.Add("class", "row");
+                    Div_Row_ClientName.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_ClientName);
+
+                    Div_Col_Sm_6_ClientName_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_ClientName_Label.InnerHtml = "<i>CLIENT NAME</i>";
+                    Div_Row_ClientName.Controls.Add(Div_Col_Sm_6_ClientName_Label);
+
+                    Div_Col_Sm_6_ClientName.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_ClientName.InnerHtml = "<b>" + item.ClientName.ToUpper() + "</b>";
+                    Div_Row_ClientName.Controls.Add(Div_Col_Sm_6_ClientName);
+
+                    #endregion
+                    #region Environment_Type
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Environment = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_EnvType_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_EnvType = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType");
+
+                    Div_Row_Environment.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_Environment);
+
+                    Div_Col_Sm_6_EnvType_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_EnvType_Label.InnerHtml = "<i>ENVIRONMENT TYPE</i>";
+                    Div_Row_Environment.Controls.Add(Div_Col_Sm_6_EnvType_Label);
+
+                    Div_Col_Sm_6_EnvType.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_EnvType.InnerHtml = "<b>" + item.EnvironmentAppServerEnvType.ToUpper() + "</b>";
+                    Div_Row_Environment.Controls.Add(Div_Col_Sm_6_EnvType);
+
+                    #endregion
+                    #region Product_Name
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ProductName_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ProductName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType");
+
+                    Div_Row_Product.Attributes.Add("class", "row");
+                    Div_Row_Product.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_Product);
+
+                    Div_Col_Sm_6_ProductName_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_ProductName_Label.InnerHtml = "<i>PRODUCT NAME</i>";
+                    Div_Row_Product.Controls.Add(Div_Col_Sm_6_ProductName_Label);
+
+                    Div_Col_Sm_6_ProductName.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_ProductName.InnerHtml = "<b>" + item.ProductName.ToUpper() + "</b>";
+                    Div_Row_Product.Controls.Add(Div_Col_Sm_6_ProductName);
+
+                    #endregion
+                    #region Application_Server_Name
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Name = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Name_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Name = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType");
+
+                    Div_Row_App_Server_Name.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Name);
+
+                    Div_Col_Sm_6_App_Server_Name_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Name_Label.InnerHtml = "<i>APPLICATION SERVER NAME</i>";
+                    Div_Row_App_Server_Name.Controls.Add(Div_Col_Sm_6_App_Server_Name_Label);
+
+                    Div_Col_Sm_6_App_Server_Name.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Name.InnerHtml = "<b>" + item.EnvironmentAppServerName.ToUpper() + "</b>";
+                    Div_Row_App_Server_Name.Controls.Add(Div_Col_Sm_6_App_Server_Name);
+
+                    #endregion
+                    #region Application_Server_OS
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_OS = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS");
+
+                    Div_Row_App_OS.Attributes.Add("class", "row");
+                    Div_Row_App_OS.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_OS);
+
+                    Div_Col_Sm_6_App_OS_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_OS_Label.InnerHtml = "<i>APPLICATION SERVER OPERATING SYSTEM</i>";
+                    Div_Row_App_OS.Controls.Add(Div_Col_Sm_6_App_OS_Label);
+
+                    Div_Col_Sm_6_App_OS.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_OS.InnerHtml = "<b>" + item.EnvironmentAppServerOS.ToUpper() + "</b>";
+                    Div_Row_App_OS.Controls.Add(Div_Col_Sm_6_App_OS);
+
+                    #endregion
+                    #region Application_Server_OS_Build
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_OS_Build = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Build_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Build = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_OS_Build.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_OS_Build);
+
+                    Div_Col_Sm_6_App_OS_Build_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_OS_Build_Label.InnerHtml = "<i>Application SERVER OPERATING SYSTEM BUILD</i>";
+                    Div_Row_App_OS_Build.Controls.Add(Div_Col_Sm_6_App_OS_Build_Label);
+
+                    Div_Col_Sm_6_App_OS_Build.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_OS_Build.InnerHtml = "<b>" + item.EnvironmentAppServerOSBuild + "</b>";
+                    Div_Row_App_OS_Build.Controls.Add(Div_Col_Sm_6_App_OS_Build);
+
+                    #endregion
+                    #region Application_Server_WebBrowser
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_WebBrower = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrowerLabel = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_WebBrower.Attributes.Add("class", "row");
+                    Div_Row_App_WebBrower.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_WebBrower);
+
+                    Div_Col_Sm_6_App_WebBrowerLabel.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_WebBrowerLabel.InnerHtml = "<i>APPLICATION SERVER WEB BROWSER</i>";
+                    Div_Row_App_WebBrower.Controls.Add(Div_Col_Sm_6_App_WebBrowerLabel);
+
+                    Div_Col_Sm_6_App_WebBrower.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_WebBrower.InnerHtml = "<b>" + item.EnvironmentAppServerWebBrowser.ToUpper() + "</b>";
+                    Div_Row_App_WebBrower.Controls.Add(Div_Col_Sm_6_App_WebBrower);
+
+                    #endregion
+                    #region Application_Server_WebBrowser_Version
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_WebBrower_Version = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower_Version_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower_Version = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_WebBrower_Version.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_WebBrower_Version);
+
+                    Div_Col_Sm_6_App_WebBrower_Version_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_WebBrower_Version_Label.InnerHtml = "<i>APPLICATION SERVER WEB BROWSER VERSION</i>";
+                    Div_Row_App_WebBrower_Version.Controls.Add(Div_Col_Sm_6_App_WebBrower_Version_Label);
+
+                    Div_Col_Sm_6_App_WebBrower_Version.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_WebBrower_Version.InnerHtml = "<b>" + item.EnvironmentAppServerWebBrowserVersion.ToUpper() + "</b>";
+                    Div_Row_App_WebBrower_Version.Controls.Add(Div_Col_Sm_6_App_WebBrower_Version);
+
+                    #endregion
+                    #region Application_Server_Register
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Register = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Register_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Register = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Register.Attributes.Add("class", "row");
+                    Div_Row_App_Server_Register.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Register);
+
+                    Div_Col_Sm_6_App_Server_Register_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Register_Label.InnerHtml = "<i>APPLICATION SERVER IS 32-BIT</i>";
+                    Div_Row_App_Server_Register.Controls.Add(Div_Col_Sm_6_App_Server_Register_Label);
+
+                    Div_Col_Sm_6_App_Server_Register.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Register.InnerHtml = "<b>" + item.EnvironmentAppServerIsX86Version.ToUpper() + "</b>";
+                    Div_Row_App_Server_Register.Controls.Add(Div_Col_Sm_6_App_Server_Register);
+
+                    #endregion
+                    #region Application_Server_Virtualization
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Virtualization = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Virtualization_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Virtualization = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Virtualization.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Virtualization);
+
+                    Div_Col_Sm_6_App_Server_Virtualization_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Virtualization_Label.InnerHtml = "<i>APPLICATION SERVER IS VIRTUAL</i>";
+                    Div_Row_App_Server_Virtualization.Controls.Add(Div_Col_Sm_6_App_Server_Virtualization_Label);
+
+                    Div_Col_Sm_6_App_Server_Virtualization.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Virtualization.InnerHtml = "<b>" + item.EnvironmentAppServerIsVirtual.ToUpper() + "</b>";
+                    Div_Row_App_Server_Virtualization.Controls.Add(Div_Col_Sm_6_App_Server_Virtualization);
+
+                    #endregion
+                    #region Application_Server_IP
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_IP = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_IP_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_IP = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_IP.Attributes.Add("class", "row");
+                    Div_Row_App_Server_IP.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_IP);
+
+                    Div_Col_Sm_6_App_Server_IP_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_IP_Label.InnerHtml = "<i>APPLICATION SERVER IP</i>";
+                    Div_Row_App_Server_IP.Controls.Add(Div_Col_Sm_6_App_Server_IP_Label);
+
+                    Div_Col_Sm_6_App_Server_IP.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_IP.InnerHtml = "<b>" + item.EnvironmentAppServerIP + "</b>";
+                    Div_Row_App_Server_IP.Controls.Add(Div_Col_Sm_6_App_Server_IP);
+
+                    #endregion
+                    #region Application_Server_Port
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Port = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Port_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Port = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Port.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Port);
+
+                    Div_Col_Sm_6_App_Server_Port_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Port_Label.InnerHtml = "<i>APPLICATION RUNING ON PORT</i>";
+                    Div_Row_App_Server_Port.Controls.Add(Div_Col_Sm_6_App_Server_Port_Label);
+
+                    Div_Col_Sm_6_App_Server_Port.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Port.InnerHtml = "<b>" + item.EnvironmentAppServerPort + "</b>";
+                    Div_Row_App_Server_Port.Controls.Add(Div_Col_Sm_6_App_Server_Port);
+
+                    #endregion
+                    #region Application_Server_Memory
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Memory = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Memory_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Memory = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Memory.Attributes.Add("class", "row");
+                    Div_Row_App_Server_Memory.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Memory);
+
+                    Div_Col_Sm_6_App_Server_Memory_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Memory_Label.InnerHtml = "<i>APPLICATION SERVER MEMORY</i>";
+                    Div_Row_App_Server_Memory.Controls.Add(Div_Col_Sm_6_App_Server_Memory_Label);
+
+                    Div_Col_Sm_6_App_Server_Memory.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Memory.InnerHtml = "<b>" + item.EnvironmentAppServerMemory + "</b>";
+                    Div_Row_App_Server_Memory.Controls.Add(Div_Col_Sm_6_App_Server_Memory);
+
+                    #endregion
+                    #region Application_Server_Processor
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Processor = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Processor_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Processor = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Processor.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Processor);
+
+                    Div_Col_Sm_6_App_Server_Processor_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Processor_Label.InnerHtml = "<i>APPLICATION SERVER PROCESSOR</i>";
+                    Div_Row_App_Server_Processor.Controls.Add(Div_Col_Sm_6_App_Server_Processor_Label);
+
+                    Div_Col_Sm_6_App_Server_Processor.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Processor.InnerHtml = "<b>" + item.EnvironmentAppServerProcessor.ToUpper() + "</b>";
+                    Div_Row_App_Server_Processor.Controls.Add(Div_Col_Sm_6_App_Server_Processor);
+
+                    #endregion
+                    #region Application_Server_Link
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Link = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Link_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Link = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Link.Attributes.Add("class", "row");
+                    Div_Row_App_Link.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Link);
+
+                    Div_Col_Sm_6_App_Link_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Link_Label.InnerHtml = "<i>APPLICATION LINK</i>";
+                    Div_Row_App_Link.Controls.Add(Div_Col_Sm_6_App_Link_Label);
+
+                    Div_Col_Sm_6_App_Link.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Link.InnerHtml = "<b>" + item.EnvironmentAppHyperLink + "</b>";
+                    Div_Row_App_Link.Controls.Add(Div_Col_Sm_6_App_Link);
+
+                    #endregion
+                    #region Application_Working_Directory
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Working_Directory = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Working_Directory_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Working_Directory = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Working_Directory.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Working_Directory);
+
+                    Div_Col_Sm_6_App_Working_Directory_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Working_Directory_Label.InnerHtml = "<i>APPLICATION WORKING DIRECTORY</i>";
+                    Div_Row_App_Working_Directory.Controls.Add(Div_Col_Sm_6_App_Working_Directory_Label);
+
+                    Div_Col_Sm_6_App_Working_Directory.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Working_Directory.InnerHtml = "<b>" + item.EnvironmentAppServerWorkingDirectoryLocation + "</b>";
+                    Div_Row_App_Working_Directory.Controls.Add(Div_Col_Sm_6_App_Working_Directory);
+
+                    #endregion
+                    #region Application_Server_Dependency
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Dependency = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Dependency_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Dependency = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Dependency.Attributes.Add("class", "row");
+                    Div_Row_App_Server_Dependency.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Dependency);
+
+                    Div_Col_Sm_6_App_Server_Dependency_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Dependency_Label.InnerHtml = "<i>APPLICATION SERVER DEPENDENCY</i>";
+                    Div_Row_App_Server_Dependency.Controls.Add(Div_Col_Sm_6_App_Server_Dependency_Label);
+
+                    Div_Col_Sm_6_App_Server_Dependency.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Dependency.InnerHtml = "<b>" + item.EnvironmentAppServerDependency.ToUpper() + "</b>";
+                    Div_Row_App_Server_Dependency.Controls.Add(Div_Col_Sm_6_App_Server_Dependency);
+
+                    #endregion
+
+                    // END
+
                     TableRow row0 = new TableRow();
-                    TableRow row = new TableRow();
-
-                    TableRow row16 = new TableRow();
-                    TableRow row15 = new TableRow();
-                    TableRow row14 = new TableRow();
-                    TableRow row13 = new TableRow();
-                    TableRow row12 = new TableRow();
-                    TableRow row11 = new TableRow();
-                    TableRow row10 = new TableRow();
-                    TableRow row9 = new TableRow();
-                    TableRow row8 = new TableRow();
-
-                    row.Style.Add("width", "100%");
 
                     TableCell cellClient1 = new TableCell();
                     cellClient1.Height = 40;
@@ -61,488 +483,8 @@ namespace HelloWorld
                     cellClient1.ColumnSpan = 10;
                     row0.Cells.Add(cellClient1);
 
-                    TableCell cellProductLbl = new TableCell();
-                    cellProductLbl.ForeColor = Color.Black;
-                    cellProductLbl.BackColor = Color.LightGray;
-                    cellProductLbl.Height = 35;
-                    cellProductLbl.Style.Add("Font-Weight", "bold");
-                    cellProductLbl.Text = "Product Name";
-                    cellProductLbl.HorizontalAlign = HorizontalAlign.Center;
-                    cellProductLbl.ColumnSpan = 5;
-                    row00.Cells.Add(cellProductLbl);
-
-                    TableCell cellProduct = new TableCell();
-                    cellProduct.ForeColor = Color.Black;
-                    cellProduct.BackColor = Color.LightGray;
-                    cellProduct.Height = 35;
-                    cellProduct.Style.Add("Font-Weight", "bold");
-                    cellProduct.Text = item.ProductName;
-                    cellProduct.HorizontalAlign = HorizontalAlign.Center;
-                    cellProduct.ColumnSpan = 5;
-                    row00.Cells.Add(cellProduct);
-
-                    TableCell cellClient = new TableCell();
-                    cellClient.ForeColor = Color.White;
-                    cellClient.Style.Add("Font-Weight", "bold");
-                    cellClient.Style.Add("padding", "10px");
-                    cellClient.BackColor = Color.Gray;
-                    cellClient.Text = "APPLICATION SERVER DETAILS";
-                    cellClient.HorizontalAlign = HorizontalAlign.Left;
-                    cellClient.ColumnSpan = 10;
-                    row1.Cells.Add(cellClient);
-
-                    TableCell cellClientNameLbl = new TableCell();
-                    cellClientNameLbl.ForeColor = Color.Black;
-                    cellClientNameLbl.Text = "Client Name";
-                    cellClientNameLbl.HorizontalAlign = HorizontalAlign.Right;
-                    cellClientNameLbl.ColumnSpan = 2;
-                    row2.Cells.Add(cellClientNameLbl);
-
-                    TableCell cellClientName = new TableCell();
-                    cellClientName.ForeColor = Color.Black;
-                    cellClientName.Text = item.ClientName;
-                    cellClientName.ColumnSpan = 3;
-                    cellClientName.HorizontalAlign = HorizontalAlign.Right;
-                    row2.Cells.Add(cellClientName);
-
-                    TableCell cellClientTypeLbl = new TableCell();
-                    cellClientTypeLbl.ForeColor = Color.Black;
-                    cellClientTypeLbl.Text = "Environment Type";
-                    cellClientTypeLbl.ColumnSpan = 2;
-                    cellClientTypeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row2.Cells.Add(cellClientTypeLbl);
-
-                    TableCell cellClientType = new TableCell();
-                    cellClientType.ForeColor = Color.Black;
-                    cellClientType.Text = item.EnvironmentAppServerEnvType;
-                    cellClientType.ColumnSpan = 3;
-                    cellClientType.HorizontalAlign = HorizontalAlign.Right;
-                    row2.Cells.Add(cellClientType);
-
-                    TableCell cellClientEnvTypeLbl = new TableCell();
-                    cellClientEnvTypeLbl.ForeColor = Color.Black;
-                    cellClientEnvTypeLbl.Text = "Operating System";
-                    cellClientEnvTypeLbl.ColumnSpan = 2;
-                    cellClientEnvTypeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row3.Cells.Add(cellClientEnvTypeLbl);
-
-                    TableCell cellClientEnvType = new TableCell();
-                    cellClientEnvType.ForeColor = Color.Black;
-                    cellClientEnvType.Text = item.EnvironmentAppServerOS;
-                    cellClientEnvType.ColumnSpan = 3;
-                    cellClientEnvType.HorizontalAlign = HorizontalAlign.Right;
-                    row3.Cells.Add(cellClientEnvType);
-
-                    TableCell cellClientPOCLbl = new TableCell();
-                    cellClientPOCLbl.ForeColor = Color.Black;
-                    cellClientPOCLbl.Text = "Operating System Build Number";
-                    cellClientPOCLbl.ColumnSpan = 2;
-                    cellClientPOCLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row3.Cells.Add(cellClientPOCLbl);
-
-                    TableCell cellAppServerOSx86Lbl = new TableCell();
-                    cellAppServerOSx86Lbl.ForeColor = Color.Black;
-                    cellAppServerOSx86Lbl.Text = "Operating System 32 Bit";
-                    cellAppServerOSx86Lbl.ColumnSpan = 2;
-                    cellAppServerOSx86Lbl.HorizontalAlign = HorizontalAlign.Right;
-                    row7.Cells.Add(cellAppServerOSx86Lbl);
-
-                    TableCell cellAppServerOSx86 = new TableCell();
-                    cellAppServerOSx86.ForeColor = Color.Black;
-                    cellAppServerOSx86.Text = item.EnvironmentAppServerIsX86Version == "False" ? "No" : "Yes";
-                    cellAppServerOSx86.ColumnSpan = 3;
-                    cellAppServerOSx86.HorizontalAlign = HorizontalAlign.Right;
-                    row7.Cells.Add(cellAppServerOSx86);
-
-                    TableCell cellAppServerOSVirtualLbl = new TableCell();
-                    cellAppServerOSVirtualLbl.ForeColor = Color.Black;
-                    cellAppServerOSVirtualLbl.Text = "Operating System Is Virtual";
-                    cellAppServerOSVirtualLbl.ColumnSpan = 2;
-                    cellAppServerOSVirtualLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row7.Cells.Add(cellAppServerOSVirtualLbl);
-
-                    TableCell cellAppServerOSVirtual = new TableCell();
-                    cellAppServerOSVirtual.ForeColor = Color.Black;
-                    cellAppServerOSVirtual.Text = item.EnvironmentAppServerIsVirtual == "False" ? "No" : "Yes";
-                    cellAppServerOSVirtual.ColumnSpan = 3;
-                    cellAppServerOSVirtual.HorizontalAlign = HorizontalAlign.Right;
-                    row7.Cells.Add(cellAppServerOSVirtual);
-
-                    TableCell cellClientPOC = new TableCell();
-                    cellClientPOC.ForeColor = Color.Black;
-                    cellClientPOC.Text = item.EnvironmentAppServerOSBuild;
-                    cellClientPOC.ColumnSpan = 3;
-                    cellClientPOC.HorizontalAlign = HorizontalAlign.Right;
-                    row3.Cells.Add(cellClientPOC);
-
-                    TableCell cellClientPOCNameLbl = new TableCell();
-                    cellClientPOCNameLbl.ForeColor = Color.Black;
-                    cellClientPOCNameLbl.Text = "App Server Processor";
-                    cellClientPOCNameLbl.ColumnSpan = 2;
-                    cellClientPOCNameLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row4.Cells.Add(cellClientPOCNameLbl);
-
-                    TableCell cellClientPOCName = new TableCell();
-                    cellClientPOCName.ForeColor = Color.Black;
-                    cellClientPOCName.Text = item.EnvironmentAppServerProcessor;
-                    cellClientPOCName.ColumnSpan = 3;
-                    cellClientPOCName.HorizontalAlign = HorizontalAlign.Right;
-                    row4.Cells.Add(cellClientPOCName);
-
-                    TableCell cellPatchHotNumberLbl = new TableCell();
-                    cellPatchHotNumberLbl.ForeColor = Color.Black;
-                    cellPatchHotNumberLbl.Text = "App Server Memory";
-                    cellPatchHotNumberLbl.ColumnSpan = 2;
-                    cellPatchHotNumberLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row4.Cells.Add(cellPatchHotNumberLbl);
-
-                    TableCell cellPatchHotNumber = new TableCell();
-                    cellPatchHotNumber.ForeColor = Color.Black;
-                    cellPatchHotNumber.Text = item.EnvironmentAppServerMemory;
-                    cellPatchHotNumber.ColumnSpan = 3;
-                    cellPatchHotNumber.HorizontalAlign = HorizontalAlign.Right;
-                    row4.Cells.Add(cellPatchHotNumber);
-
-                    TableCell cellAppServerIPLbl = new TableCell();
-                    cellAppServerIPLbl.ForeColor = Color.Black;
-                    cellAppServerIPLbl.Text = "IP";
-                    cellAppServerIPLbl.ColumnSpan = 2;
-                    cellAppServerIPLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row5.Cells.Add(cellAppServerIPLbl);
-
-                    TableCell cellAppLink = new TableCell();
-                    cellAppLink.ForeColor = Color.Black;
-                    cellAppLink.Text = item.EnvironmentAppServerIP;
-                    cellAppLink.ColumnSpan = 3;
-                    cellAppLink.HorizontalAlign = HorizontalAlign.Right;
-                    row5.Cells.Add(cellAppLink);
-
-                    TableCell cellPatchQATestedLbl = new TableCell();
-                    cellPatchQATestedLbl.ForeColor = Color.Black;
-                    cellPatchQATestedLbl.Text = "Port";
-                    cellPatchQATestedLbl.ColumnSpan = 2;
-                    cellPatchQATestedLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row5.Cells.Add(cellPatchQATestedLbl);
-
-                    TableCell cellPatchQATested = new TableCell();
-                    cellPatchQATested.ForeColor = Color.Black;
-                    cellPatchQATested.Text = item.EnvironmentAppServerPort;
-                    cellPatchQATested.ColumnSpan = 3;
-                    cellPatchQATested.HorizontalAlign = HorizontalAlign.Right;
-                    row5.Cells.Add(cellPatchQATested);
-
-                    TableCell cellAppServerWebbrowserLbl = new TableCell();
-                    cellAppServerWebbrowserLbl.ForeColor = Color.Black;
-                    cellAppServerWebbrowserLbl.Text = "Web Server";
-                    cellAppServerWebbrowserLbl.ColumnSpan = 2;
-                    cellAppServerWebbrowserLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row6.Cells.Add(cellAppServerWebbrowserLbl);
-
-                    TableCell cellPatchDeployedDate = new TableCell();
-                    cellPatchDeployedDate.ForeColor = Color.Black;
-                    cellPatchDeployedDate.Text = item.EnvironmentAppServerWebBrowser;
-                    cellPatchDeployedDate.ColumnSpan = 3;
-                    cellPatchDeployedDate.HorizontalAlign = HorizontalAlign.Right;
-                    row6.Cells.Add(cellPatchDeployedDate);
-
-                    TableCell cellAppServerWebbrowserVersionLbl = new TableCell();
-                    cellAppServerWebbrowserVersionLbl.ForeColor = Color.Black;
-                    cellAppServerWebbrowserVersionLbl.Text = "Web Server Version";
-                    cellAppServerWebbrowserVersionLbl.ColumnSpan = 2;
-                    cellAppServerWebbrowserVersionLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row6.Cells.Add(cellAppServerWebbrowserVersionLbl);
-
-                    TableCell cellPatchPassedByTime = new TableCell();
-                    cellPatchPassedByTime.ForeColor = Color.Black;
-                    cellPatchPassedByTime.Text = item.EnvironmentAppServerWebBrowserVersion;
-                    cellPatchPassedByTime.ColumnSpan = 3;
-                    cellPatchPassedByTime.HorizontalAlign = HorizontalAlign.Right;
-                    row6.Cells.Add(cellPatchPassedByTime);
-
-                    TableCell cellAppServerNameLbl = new TableCell();
-                    cellAppServerNameLbl.ForeColor = Color.Black;
-                    cellAppServerNameLbl.Text = "Server Name";
-                    cellAppServerNameLbl.ColumnSpan = 2;
-                    cellAppServerNameLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row.Cells.Add(cellAppServerNameLbl);
-
-                    TableCell cellAppServerName = new TableCell();
-                    cellAppServerName.ForeColor = Color.Black;
-                    cellAppServerName.Text = item.EnvironmentAppServerName;
-                    cellAppServerName.ColumnSpan = 3;
-                    cellAppServerName.HorizontalAlign = HorizontalAlign.Right;
-                    row.Cells.Add(cellAppServerName);
-
-                    TableCell cellPatchStatusLbl = new TableCell();
-                    cellPatchStatusLbl.ForeColor = Color.Black;
-                    cellPatchStatusLbl.Text = "Server Dependency";
-                    cellPatchStatusLbl.ColumnSpan = 2;
-                    cellPatchStatusLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row.Cells.Add(cellPatchStatusLbl);
-
-                    TableCell cellPatchStatus = new TableCell();
-                    cellPatchStatus.ForeColor = Color.Black;
-                    cellPatchStatus.Text = item.EnvironmentAppServerDependency;
-                    cellPatchStatus.ColumnSpan = 3;
-                    cellPatchStatus.HorizontalAlign = HorizontalAlign.Right;
-                    row.Cells.Add(cellPatchStatus);
-
-                    TableCell cellDBTitle = new TableCell();
-                    cellDBTitle.ForeColor = Color.White;
-                    cellDBTitle.BackColor = Color.Gray;
-                    cellDBTitle.Style.Add("Font-Weight", "bold");
-                    cellDBTitle.Style.Add("padding", "10px");
-                    cellDBTitle.Text = "DATABASE SERVER DETAILS";
-                    cellDBTitle.HorizontalAlign = HorizontalAlign.Left;
-                    cellDBTitle.ColumnSpan = 10;
-                    row8.Cells.Add(cellDBTitle);
-
-                    TableCell cellDBNameLbl = new TableCell();
-                    cellDBNameLbl.ForeColor = Color.Black;
-                    cellDBNameLbl.Text = "Server Name";
-                    cellDBNameLbl.HorizontalAlign = HorizontalAlign.Right;
-                    cellDBNameLbl.ColumnSpan = 2;
-                    row9.Cells.Add(cellDBNameLbl);
-
-                    TableCell cellDBName = new TableCell();
-                    cellDBName.ForeColor = Color.Black;
-                    cellDBName.Text = item.EnvironmentDBServerName;
-                    cellDBName.ColumnSpan = 3;
-                    cellDBName.HorizontalAlign = HorizontalAlign.Right;
-                    row9.Cells.Add(cellDBName);
-
-                    TableCell cellDBServerTypeLbl = new TableCell();
-                    cellDBServerTypeLbl.ForeColor = Color.Black;
-                    cellDBServerTypeLbl.Text = "Environment Type";
-                    cellDBServerTypeLbl.ColumnSpan = 2;
-                    cellDBServerTypeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row9.Cells.Add(cellDBServerTypeLbl);
-
-                    TableCell cellDBServerType = new TableCell();
-                    cellDBServerType.ForeColor = Color.Black;
-                    cellDBServerType.Text = item.EnvironmentDBServerEnvType;
-                    cellDBServerType.ColumnSpan = 3;
-                    cellDBServerType.HorizontalAlign = HorizontalAlign.Right;
-                    row9.Cells.Add(cellDBServerType);
-
-                    TableCell cellDBServerOSLbl = new TableCell();
-                    cellDBServerOSLbl.ForeColor = Color.Black;
-                    cellDBServerOSLbl.Text = "Operating System";
-                    cellDBServerOSLbl.ColumnSpan = 2;
-                    cellDBServerOSLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row10.Cells.Add(cellDBServerOSLbl);
-
-                    TableCell cellDBServerOS = new TableCell();
-                    cellDBServerOS.ForeColor = Color.Black;
-                    cellDBServerOS.Text = item.EnvironmentDBServerOS;
-                    cellDBServerOS.ColumnSpan = 3;
-                    cellDBServerOS.HorizontalAlign = HorizontalAlign.Right;
-                    row10.Cells.Add(cellDBServerOS);
-
-                    TableCell cellDBServerOSBuildLbl = new TableCell();
-                    cellDBServerOSBuildLbl.ForeColor = Color.Black;
-                    cellDBServerOSBuildLbl.Text = "Operating System Build Number";
-                    cellDBServerOSBuildLbl.ColumnSpan = 2;
-                    cellDBServerOSBuildLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row10.Cells.Add(cellDBServerOSBuildLbl);
-
-                    TableCell cellDBServerOSBuild = new TableCell();
-                    cellDBServerOSBuild.ForeColor = Color.Black;
-                    cellDBServerOSBuild.Text = item.EnvironmentDBServerOSBuild;
-                    cellDBServerOSBuild.ColumnSpan = 3;
-                    cellDBServerOSBuild.HorizontalAlign = HorizontalAlign.Right;
-                    row10.Cells.Add(cellDBServerOSBuild);
-
-                    TableCell cellDBServerOSx86Lbl = new TableCell();
-                    cellDBServerOSx86Lbl.ForeColor = Color.Black;
-                    cellDBServerOSx86Lbl.Text = "Operating System 32 Bit";
-                    cellDBServerOSx86Lbl.ColumnSpan = 2;
-                    cellDBServerOSx86Lbl.HorizontalAlign = HorizontalAlign.Right;
-                    row11.Cells.Add(cellDBServerOSx86Lbl);
-
-                    TableCell cellDBServerOSx86 = new TableCell();
-                    cellDBServerOSx86.ForeColor = Color.Black;
-                    cellDBServerOSx86.Text = item.EnvironmentDBServerIsX86Version == "False" ? "No" : "Yes";
-                    cellDBServerOSx86.ColumnSpan = 3;
-                    cellDBServerOSx86.HorizontalAlign = HorizontalAlign.Right;
-                    row11.Cells.Add(cellDBServerOSx86);
-
-                    TableCell cellDBServerOSVirtualLbl = new TableCell();
-                    cellDBServerOSVirtualLbl.ForeColor = Color.Black;
-                    cellDBServerOSVirtualLbl.Text = "Operating System Is Virtual";
-                    cellDBServerOSVirtualLbl.ColumnSpan = 2;
-                    cellDBServerOSVirtualLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row11.Cells.Add(cellDBServerOSVirtualLbl);
-
-                    TableCell cellDBServerOSVirtual = new TableCell();
-                    cellDBServerOSVirtual.ForeColor = Color.Black;
-                    cellDBServerOSVirtual.Text = item.EnvironmentDBServerIsVirtual == "False" ? "No" : "Yes";
-                    cellDBServerOSVirtual.ColumnSpan = 3;
-                    cellDBServerOSVirtual.HorizontalAlign = HorizontalAlign.Right;
-                    row11.Cells.Add(cellDBServerOSVirtual);
-
-                    TableCell cellDBServerProcessorLbl = new TableCell();
-                    cellDBServerProcessorLbl.ForeColor = Color.Black;
-                    cellDBServerProcessorLbl.Text = "Database Server Processor";
-                    cellDBServerProcessorLbl.ColumnSpan = 2;
-                    cellDBServerProcessorLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row12.Cells.Add(cellDBServerProcessorLbl);
-
-                    TableCell cellDBServerProcessor = new TableCell();
-                    cellDBServerProcessor.ForeColor = Color.Black;
-                    cellDBServerProcessor.Text = item.EnvironmentDBServerProcessor;
-                    cellDBServerProcessor.ColumnSpan = 3;
-                    cellDBServerProcessor.HorizontalAlign = HorizontalAlign.Right;
-                    row12.Cells.Add(cellDBServerProcessor);
-
-                    TableCell cellDBServerMemoryLbl = new TableCell();
-                    cellDBServerMemoryLbl.ForeColor = Color.Black;
-                    cellDBServerMemoryLbl.Text = "Database Server Memory";
-                    cellDBServerMemoryLbl.ColumnSpan = 2;
-                    cellDBServerMemoryLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row12.Cells.Add(cellDBServerMemoryLbl);
-
-                    TableCell cellDBServerMemory = new TableCell();
-                    cellDBServerMemory.ForeColor = Color.Black;
-                    cellDBServerMemory.Text = item.EnvironmentDBServerMemory;
-                    cellDBServerMemory.ColumnSpan = 3;
-                    cellDBServerMemory.HorizontalAlign = HorizontalAlign.Right;
-                    row12.Cells.Add(cellDBServerMemory);
-
-                    TableCell cellDBServerIPLbl = new TableCell();
-                    cellDBServerIPLbl.ForeColor = Color.Black;
-                    cellDBServerIPLbl.Text = "IP";
-                    cellDBServerIPLbl.ColumnSpan = 2;
-                    cellDBServerIPLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row13.Cells.Add(cellDBServerIPLbl);
-
-                    TableCell cellDBServerIP = new TableCell();
-                    cellDBServerIP.ForeColor = Color.Black;
-                    cellDBServerIP.Text = item.EnvironmentEnvDBServerIP;
-                    cellDBServerIP.ColumnSpan = 3;
-                    cellDBServerIP.HorizontalAlign = HorizontalAlign.Right;
-                    row13.Cells.Add(cellDBServerIP);
-
-                    TableCell cellDBServerPortLbl = new TableCell();
-                    cellDBServerPortLbl.ForeColor = Color.Black;
-                    cellDBServerPortLbl.Text = "Port";
-                    cellDBServerPortLbl.ColumnSpan = 2;
-                    cellDBServerPortLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row13.Cells.Add(cellDBServerPortLbl);
-
-                    TableCell cellDBServerPort = new TableCell();
-                    cellDBServerPort.ForeColor = Color.Black;
-                    cellDBServerPort.Text = item.EnvironmentDBServerPort;
-                    cellDBServerPort.ColumnSpan = 3;
-                    cellDBServerPort.HorizontalAlign = HorizontalAlign.Right;
-                    row13.Cells.Add(cellDBServerPort);
-
-                    TableCell cellDBServerMDFFileSizeLbl = new TableCell();
-                    cellDBServerMDFFileSizeLbl.ForeColor = Color.Black;
-                    cellDBServerMDFFileSizeLbl.Text = "MDF File Size";
-                    cellDBServerMDFFileSizeLbl.ColumnSpan = 2;
-                    cellDBServerMDFFileSizeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row14.Cells.Add(cellDBServerMDFFileSizeLbl);
-
-                    TableCell cellDBServerMDFFileSize = new TableCell();
-                    cellDBServerMDFFileSize.ForeColor = Color.Black;
-                    cellDBServerMDFFileSize.Text = item.EnvironmentDBMDFFileSize;
-                    cellDBServerMDFFileSize.ColumnSpan = 3;
-                    cellDBServerMDFFileSize.HorizontalAlign = HorizontalAlign.Right;
-                    row14.Cells.Add(cellDBServerMDFFileSize);
-
-                    TableCell cellDBServerMDFFileLocationLbl = new TableCell();
-                    cellDBServerMDFFileLocationLbl.ForeColor = Color.Black;
-                    cellDBServerMDFFileLocationLbl.Text = "MDF File Location";
-                    cellDBServerMDFFileLocationLbl.ColumnSpan = 2;
-                    cellDBServerMDFFileLocationLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row14.Cells.Add(cellDBServerMDFFileLocationLbl);
-
-                    TableCell cellDBServerMDFFileLocation = new TableCell();
-                    cellDBServerMDFFileLocation.ForeColor = Color.Black;
-                    cellDBServerMDFFileLocation.Text = item.EnvironmentDBMDFFileLocation;
-                    cellDBServerMDFFileLocation.ColumnSpan = 3;
-                    cellDBServerMDFFileLocation.HorizontalAlign = HorizontalAlign.Right;
-                    row14.Cells.Add(cellDBServerMDFFileLocation);
-
-                    TableCell cellDBServerLDFFileSizeLbl = new TableCell();
-                    cellDBServerLDFFileSizeLbl.ForeColor = Color.Black;
-                    cellDBServerLDFFileSizeLbl.Text = "LDF File Size";
-                    cellDBServerLDFFileSizeLbl.ColumnSpan = 2;
-                    cellDBServerLDFFileSizeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row15.Cells.Add(cellDBServerLDFFileSizeLbl);
-
-                    TableCell cellDBServerLDFFileSize = new TableCell();
-                    cellDBServerLDFFileSize.ForeColor = Color.Black;
-                    cellDBServerLDFFileSize.Text = item.EnvironmentDBLDFFileSize;
-                    cellDBServerLDFFileSize.ColumnSpan = 3;
-                    cellDBServerLDFFileSize.HorizontalAlign = HorizontalAlign.Right;
-                    row15.Cells.Add(cellDBServerLDFFileSize);
-
-                    TableCell cellDBServerLDFFileLocationLbl = new TableCell();
-                    cellDBServerLDFFileLocationLbl.ForeColor = Color.Black;
-                    cellDBServerLDFFileLocationLbl.Text = "LDF File Location";
-                    cellDBServerLDFFileLocationLbl.ColumnSpan = 2;
-                    cellDBServerLDFFileLocationLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row15.Cells.Add(cellDBServerLDFFileLocationLbl);
-
-                    TableCell cellDBServerLDFFileLocation = new TableCell();
-                    cellDBServerLDFFileLocation.ForeColor = Color.Black;
-                    cellDBServerLDFFileLocation.Text = item.EnvironmentDBLDFFileLocation;
-                    cellDBServerLDFFileLocation.ColumnSpan = 3;
-                    cellDBServerLDFFileLocation.HorizontalAlign = HorizontalAlign.Right;
-                    row15.Cells.Add(cellDBServerLDFFileLocation);
-
-                    TableCell cellDBServerLocationLbl = new TableCell();
-                    cellDBServerLocationLbl.ForeColor = Color.Black;
-                    cellDBServerLocationLbl.Text = "Database File Location";
-                    cellDBServerLocationLbl.ColumnSpan = 2;
-                    cellDBServerLocationLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row16.Cells.Add(cellDBServerLocationLbl);
-
-                    TableCell cellDBServerLocation = new TableCell();
-                    cellDBServerLocation.ForeColor = Color.Black;
-                    cellDBServerLocation.Text = item.EnvironmentDBServerDirectoryLocation;
-                    cellDBServerLocation.ColumnSpan = 3;
-                    cellDBServerLocation.HorizontalAlign = HorizontalAlign.Right;
-                    row16.Cells.Add(cellDBServerLocation);
-
-                    TableCell cellDBServerDependencyLbl = new TableCell();
-                    cellDBServerDependencyLbl.ForeColor = Color.Black;
-                    cellDBServerDependencyLbl.Text = "Database Server Dependency";
-                    cellDBServerDependencyLbl.ColumnSpan = 2;
-                    cellDBServerDependencyLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row16.Cells.Add(cellDBServerDependencyLbl);
-
-                    TableCell cellDBServerDependency = new TableCell();
-                    cellDBServerDependency.ForeColor = Color.Black;
-                    cellDBServerDependency.Text = item.EnvironmentDBServerDependency;
-                    cellDBServerDependency.ColumnSpan = 3;
-                    cellDBServerDependency.HorizontalAlign = HorizontalAlign.Right;
-                    row16.Cells.Add(cellDBServerDependency);
-
-                    tblInfo.Style.Add("width", "100%");
-                    tblInfo.Width = 100;
-                    tblInfo.Rows.Add(row0);
-                    tblInfo.Rows.Add(row00);
-                    tblInfo.Rows.Add(row1);
-                    tblInfo.Rows.Add(row2);
-                    tblInfo.Rows.Add(row3);
-                    tblInfo.Rows.Add(row7);
-                    tblInfo.Rows.Add(row4);
-                    tblInfo.Rows.Add(row5);
-                    tblInfo.Rows.Add(row6);
-                    tblInfo.Rows.Add(row);
-                    tblInfo.Rows.Add(row8);
-                    tblInfo.Rows.Add(row9);
-                    tblInfo.Rows.Add(row10);
-                    tblInfo.Rows.Add(row11);
-                    tblInfo.Rows.Add(row12);
-                    tblInfo.Rows.Add(row13);
-                    tblInfo.Rows.Add(row14);
-                    tblInfo.Rows.Add(row15);
-                    tblInfo.Rows.Add(row16);
                 }
+
                 log.DetailLog("EnvironmentInfo.aspx.cs", "Page_Load", STATE.COMPLETED, "Method: Page_Load Inn Class: EnvironmentInfo.aspx.cs Has Completed Its Execution Successfully.");
             }
             catch (Exception ex)
@@ -550,9 +492,10 @@ namespace HelloWorld
                 Debug.WriteLine("Exception: " + ex.Message);
                 log.ErrorLog("EnvironmentInfo.aspx.cs", "Page_Load", ExceptionType.SQLException, ex);
                 log.DetailLog("EnvironmentInfo.aspx.cs", "Page_Load", STATE.INTERRUPTED, ex.Message);
+                Response.Redirect("ErrorPages\\Error500.aspx?Param=EnvironmentInfo.aspx&Exception="+ex.Message, false);
             }
             finally {
-                Response.Redirect("ErrorPages\\Error500.aspx?Param=EnvironmentInfo.aspx", true);
+                
             }
         }
 
@@ -569,45 +512,442 @@ namespace HelloWorld
                 int count = 0;
                 int total = latestPatchOfClient.Count;
                 totalRecords.Text = "Total Number of Records: " + total;
+
+                // START
+                TableRow row000 = new TableRow();
+                row000.Style.Add("width", "100%");
+                TableCell cell1 = new TableCell();
+                cell1.HorizontalAlign = HorizontalAlign.Center;
+                cell1.ColumnSpan = 10;
+
+                row000.Controls.Add(cell1);
+                tblInfo.Rows.Add(row000);
+
                 foreach (var item in latestPatchOfClient)
                 {
-                    //Debug.WriteLine("Name:" + item.clientName + " | PatchHotNumber: " + item.patchHotNumber + " | PatchDeployedDate: " + item.patchDeployedDate + "\n");
 
-                    TableRow row7 = new TableRow();
-                    TableRow row6 = new TableRow();
-                    TableRow row5 = new TableRow();
-                    TableRow row4 = new TableRow();
-                    TableRow row3 = new TableRow();
-                    TableRow row2 = new TableRow();
-                    TableRow row1 = new TableRow();
-                    TableRow row000 = new TableRow();
-                    TableRow row00 = new TableRow();
+                    #region Layout
+
+                    // Layout
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Bg_Light_Main = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Bg_Light_Main.Attributes.Add("class", "card bg-light");
+                    Div_Card_Bg_Light_Main.ID = "Div_Card_Bg_Light_Main" + count;
+                    Div_Card_Bg_Light_Main.Style.Add("padding", "2%");
+                    cell1.Controls.Add(Div_Card_Bg_Light_Main);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Bg_Light_Second = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Bg_Light_Second.Attributes.Add("class", "card bg-light");
+                    Div_Card_Bg_Light_Second.ID = "Div_Card_Bg_Light_Second" + count;
+                    Div_Card_Bg_Light_Main.Controls.Add(Div_Card_Bg_Light_Second);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Bg_Dark = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Bg_Dark.Attributes.Add("class", "card bg-dark");
+                    Div_Card_Bg_Dark.ID = "Div_Card_Bg_Dark" + count;
+                    Div_Card_Bg_Light_Second.Controls.Add(Div_Card_Bg_Dark);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Collapse = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Collapse.Attributes.Add("class", "collapse");
+                    Div_Collapse.ID = "collapse" + count;
+                    Div_Card_Bg_Light_Second.Controls.Add(Div_Collapse);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Body = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Body.Attributes.Add("class", "card-body");
+                    Div_Collapse.Controls.Add(Div_Card_Body);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Card_Header = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Card_Header.Attributes.Add("class", "card-header");
+                    Div_Card_Bg_Dark.Controls.Add(Div_Card_Header);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Image_Labels_Button = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_Image_Labels_Button");
+
+                    Div_Row_Image_Labels_Button.Attributes.Add("class", "row");
+                    Div_Card_Header.Controls.Add(Div_Row_Image_Labels_Button);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_1_Image = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_1_Image");
+
+                    Div_Col_Sm_1_Image.Attributes.Add("class", "col-sm-1");
+                    Div_Col_Sm_1_Image.InnerHtml = "<img ID=\"Image" + count + "\" runat=\"server\" src=\"../Images/release.png\" Width=\"60\" Height=\"60\" style=\"margin:5px;\" />";
+                    Div_Row_Image_Labels_Button.Controls.Add(Div_Col_Sm_1_Image);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_10_Client_Env_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_10_Client_Env_Product");
+
+                    Div_Col_Sm_10_Client_Env_Product.Attributes.Add("class", "col-sm-10");
+                    Div_Row_Image_Labels_Button.Controls.Add(Div_Col_Sm_10_Client_Env_Product);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Client_Env_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_Client_Env_Product");
+
+                    Div_Row_Client_Env_Product.Attributes.Add("class", "row");
+                    Div_Col_Sm_10_Client_Env_Product.Controls.Add(Div_Row_Client_Env_Product);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_ClientName");
+
+                    Div_Col_ClientName.Attributes.Add("class", "col-sm-12 text-left");
+                    Div_Col_ClientName.Style.Add("align", "left");
+                    Div_Col_ClientName.InnerHtml = "<span style=\"color:white;\">" + item.ClientName.ToUpper() + "</span>";
+                    Div_Row_Client_Env_Product.Controls.Add(Div_Col_ClientName);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Env = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Col_Env.Attributes.Add("class", "col-sm-12 text-left");
+                    Div_Col_Env.Style.Add("align", "left");
+                    Div_Col_Env.InnerHtml = "<span style=\"color:white;\">" + item.EnvironmentAppServerEnvType.ToUpper() + "</span>";
+                    Div_Row_Client_Env_Product.Controls.Add(Div_Col_Env);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Col_Product.Attributes.Add("class", "col-sm-12 text-left");
+                    Div_Col_Product.Style.Add("align", "left");
+                    Div_Col_Product.InnerHtml = "<span style=\"color:white;\">" + item.ProductName + "</span>";
+                    Div_Row_Client_Env_Product.Controls.Add(Div_Col_Product);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_1_Btn_Expand = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+
+                    Div_Col_Sm_1_Btn_Expand.Attributes.Add("class", "col-sm-1");
+                    Div_Col_Sm_1_Btn_Expand.Style.Add("margin", "auto");
+                    Div_Col_Sm_1_Btn_Expand.Style.Add("float", "right");
+                    Div_Col_Sm_1_Btn_Expand.InnerHtml = "<button id=\"btnExpand" + count + "\" type=\"button\" class=\"btn btn-primary\" data-toggle=\"collapse\" data-target=\"#MainContent_collapse" + count + "\" >Expand</button>";
+                    Div_Row_Image_Labels_Button.Controls.Add(Div_Col_Sm_1_Btn_Expand);
+
+                    #endregion Layout
+
+                    #region ClientName
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_Details");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ClientName_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
+
+                    Div_Row_ClientName.Attributes.Add("class", "row");
+                    Div_Row_ClientName.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_ClientName);
+
+                    Div_Col_Sm_6_ClientName_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_ClientName_Label.InnerHtml = "<i>CLIENT NAME</i>";
+                    Div_Row_ClientName.Controls.Add(Div_Col_Sm_6_ClientName_Label);
+
+                    Div_Col_Sm_6_ClientName.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_ClientName.InnerHtml = "<b>" + item.ClientName.ToUpper() + "</b>";
+                    Div_Row_ClientName.Controls.Add(Div_Col_Sm_6_ClientName);
+
+                    #endregion
+                    #region Environment_Type
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Environment = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_EnvType_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_EnvType = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType");
+
+                    Div_Row_Environment.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_Environment);
+
+                    Div_Col_Sm_6_EnvType_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_EnvType_Label.InnerHtml = "<i>ENVIRONMENT TYPE</i>";
+                    Div_Row_Environment.Controls.Add(Div_Col_Sm_6_EnvType_Label);
+
+                    Div_Col_Sm_6_EnvType.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_EnvType.InnerHtml = "<b>" + item.EnvironmentAppServerEnvType.ToUpper() + "</b>";
+                    Div_Row_Environment.Controls.Add(Div_Col_Sm_6_EnvType);
+
+                    #endregion
+                    #region Product_Name
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ProductName_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ProductName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType");
+
+                    Div_Row_Product.Attributes.Add("class", "row");
+                    Div_Row_Product.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_Product);
+
+                    Div_Col_Sm_6_ProductName_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_ProductName_Label.InnerHtml = "<i>PRODUCT NAME</i>";
+                    Div_Row_Product.Controls.Add(Div_Col_Sm_6_ProductName_Label);
+
+                    Div_Col_Sm_6_ProductName.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_ProductName.InnerHtml = "<b>" + item.ProductName.ToUpper() + "</b>";
+                    Div_Row_Product.Controls.Add(Div_Col_Sm_6_ProductName);
+
+                    #endregion
+                    #region Application_Server_Name
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Name = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Name_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Name = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType");
+
+                    Div_Row_App_Server_Name.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Name);
+
+                    Div_Col_Sm_6_App_Server_Name_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Name_Label.InnerHtml = "<i>APPLICATION SERVER NAME</i>";
+                    Div_Row_App_Server_Name.Controls.Add(Div_Col_Sm_6_App_Server_Name_Label);
+
+                    Div_Col_Sm_6_App_Server_Name.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Name.InnerHtml = "<b>" + item.EnvironmentAppServerName.ToUpper() + "</b>";
+                    Div_Row_App_Server_Name.Controls.Add(Div_Col_Sm_6_App_Server_Name);
+
+                    #endregion
+                    #region Application_Server_OS
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_OS = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS");
+
+                    Div_Row_App_OS.Attributes.Add("class", "row");
+                    Div_Row_App_OS.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_OS);
+
+                    Div_Col_Sm_6_App_OS_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_OS_Label.InnerHtml = "<i>APPLICATION SERVER OPERATING SYSTEM</i>";
+                    Div_Row_App_OS.Controls.Add(Div_Col_Sm_6_App_OS_Label);
+
+                    Div_Col_Sm_6_App_OS.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_OS.InnerHtml = "<b>" + item.EnvironmentAppServerOS.ToUpper() + "</b>";
+                    Div_Row_App_OS.Controls.Add(Div_Col_Sm_6_App_OS);
+
+                    #endregion
+                    #region Application_Server_OS_Build
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_OS_Build = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Build_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Build = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_OS_Build.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_OS_Build);
+
+                    Div_Col_Sm_6_App_OS_Build_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_OS_Build_Label.InnerHtml = "<i>Application SERVER OPERATING SYSTEM BUILD</i>";
+                    Div_Row_App_OS_Build.Controls.Add(Div_Col_Sm_6_App_OS_Build_Label);
+
+                    Div_Col_Sm_6_App_OS_Build.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_OS_Build.InnerHtml = "<b>" + item.EnvironmentAppServerOSBuild + "</b>";
+                    Div_Row_App_OS_Build.Controls.Add(Div_Col_Sm_6_App_OS_Build);
+
+                    #endregion
+                    #region Application_Server_WebBrowser
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_WebBrower = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrowerLabel = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_WebBrower.Attributes.Add("class", "row");
+                    Div_Row_App_WebBrower.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_WebBrower);
+
+                    Div_Col_Sm_6_App_WebBrowerLabel.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_WebBrowerLabel.InnerHtml = "<i>APPLICATION SERVER WEB BROWSER</i>";
+                    Div_Row_App_WebBrower.Controls.Add(Div_Col_Sm_6_App_WebBrowerLabel);
+
+                    Div_Col_Sm_6_App_WebBrower.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_WebBrower.InnerHtml = "<b>" + item.EnvironmentAppServerWebBrowser.ToUpper() + "</b>";
+                    Div_Row_App_WebBrower.Controls.Add(Div_Col_Sm_6_App_WebBrower);
+
+                    #endregion
+                    #region Application_Server_WebBrowser_Version
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_WebBrower_Version = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower_Version_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower_Version = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_WebBrower_Version.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_WebBrower_Version);
+
+                    Div_Col_Sm_6_App_WebBrower_Version_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_WebBrower_Version_Label.InnerHtml = "<i>APPLICATION SERVER WEB BROWSER VERSION</i>";
+                    Div_Row_App_WebBrower_Version.Controls.Add(Div_Col_Sm_6_App_WebBrower_Version_Label);
+
+                    Div_Col_Sm_6_App_WebBrower_Version.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_WebBrower_Version.InnerHtml = "<b>" + item.EnvironmentAppServerWebBrowserVersion.ToUpper() + "</b>";
+                    Div_Row_App_WebBrower_Version.Controls.Add(Div_Col_Sm_6_App_WebBrower_Version);
+
+                    #endregion
+                    #region Application_Server_Register
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Register = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Register_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Register = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Register.Attributes.Add("class", "row");
+                    Div_Row_App_Server_Register.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Register);
+
+                    Div_Col_Sm_6_App_Server_Register_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Register_Label.InnerHtml = "<i>APPLICATION SERVER IS 32-BIT</i>";
+                    Div_Row_App_Server_Register.Controls.Add(Div_Col_Sm_6_App_Server_Register_Label);
+
+                    Div_Col_Sm_6_App_Server_Register.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Register.InnerHtml = "<b>" + item.EnvironmentAppServerIsX86Version.ToUpper() + "</b>";
+                    Div_Row_App_Server_Register.Controls.Add(Div_Col_Sm_6_App_Server_Register);
+
+                    #endregion
+                    #region Application_Server_Virtualization
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Virtualization = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Virtualization_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Virtualization = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Virtualization.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Virtualization);
+
+                    Div_Col_Sm_6_App_Server_Virtualization_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Virtualization_Label.InnerHtml = "<i>APPLICATION SERVER IS VIRTUAL</i>";
+                    Div_Row_App_Server_Virtualization.Controls.Add(Div_Col_Sm_6_App_Server_Virtualization_Label);
+
+                    Div_Col_Sm_6_App_Server_Virtualization.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Virtualization.InnerHtml = "<b>" + item.EnvironmentAppServerIsVirtual.ToUpper() + "</b>";
+                    Div_Row_App_Server_Virtualization.Controls.Add(Div_Col_Sm_6_App_Server_Virtualization);
+
+                    #endregion
+                    #region Application_Server_IP
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_IP = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_IP_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_IP = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_IP.Attributes.Add("class", "row");
+                    Div_Row_App_Server_IP.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_IP);
+
+                    Div_Col_Sm_6_App_Server_IP_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_IP_Label.InnerHtml = "<i>APPLICATION SERVER IP</i>";
+                    Div_Row_App_Server_IP.Controls.Add(Div_Col_Sm_6_App_Server_IP_Label);
+
+                    Div_Col_Sm_6_App_Server_IP.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_IP.InnerHtml = "<b>" + item.EnvironmentAppServerIP + "</b>";
+                    Div_Row_App_Server_IP.Controls.Add(Div_Col_Sm_6_App_Server_IP);
+
+                    #endregion
+                    #region Application_Server_Port
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Port = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Port_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Port = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Port.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Port);
+
+                    Div_Col_Sm_6_App_Server_Port_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Port_Label.InnerHtml = "<i>APPLICATION RUNING ON PORT</i>";
+                    Div_Row_App_Server_Port.Controls.Add(Div_Col_Sm_6_App_Server_Port_Label);
+
+                    Div_Col_Sm_6_App_Server_Port.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Port.InnerHtml = "<b>" + item.EnvironmentAppServerPort + "</b>";
+                    Div_Row_App_Server_Port.Controls.Add(Div_Col_Sm_6_App_Server_Port);
+
+                    #endregion
+                    #region Application_Server_Memory
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Memory = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Memory_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Memory = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Memory.Attributes.Add("class", "row");
+                    Div_Row_App_Server_Memory.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Memory);
+
+                    Div_Col_Sm_6_App_Server_Memory_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Memory_Label.InnerHtml = "<i>APPLICATION SERVER MEMORY</i>";
+                    Div_Row_App_Server_Memory.Controls.Add(Div_Col_Sm_6_App_Server_Memory_Label);
+
+                    Div_Col_Sm_6_App_Server_Memory.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Memory.InnerHtml = "<b>" + item.EnvironmentAppServerMemory + "</b>";
+                    Div_Row_App_Server_Memory.Controls.Add(Div_Col_Sm_6_App_Server_Memory);
+
+                    #endregion
+                    #region Application_Server_Processor
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Processor = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Processor_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Processor = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Processor.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Processor);
+
+                    Div_Col_Sm_6_App_Server_Processor_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Processor_Label.InnerHtml = "<i>APPLICATION SERVER PROCESSOR</i>";
+                    Div_Row_App_Server_Processor.Controls.Add(Div_Col_Sm_6_App_Server_Processor_Label);
+
+                    Div_Col_Sm_6_App_Server_Processor.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Processor.InnerHtml = "<b>" + item.EnvironmentAppServerProcessor.ToUpper() + "</b>";
+                    Div_Row_App_Server_Processor.Controls.Add(Div_Col_Sm_6_App_Server_Processor);
+
+                    #endregion
+                    #region Application_Server_Link
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Link = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Link_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Link = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Link.Attributes.Add("class", "row");
+                    Div_Row_App_Link.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Link);
+
+                    Div_Col_Sm_6_App_Link_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Link_Label.InnerHtml = "<i>APPLICATION LINK</i>";
+                    Div_Row_App_Link.Controls.Add(Div_Col_Sm_6_App_Link_Label);
+
+                    Div_Col_Sm_6_App_Link.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Link.InnerHtml = "<b>" + item.EnvironmentAppHyperLink + "</b>";
+                    Div_Row_App_Link.Controls.Add(Div_Col_Sm_6_App_Link);
+
+                    #endregion
+                    #region Application_Working_Directory
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Working_Directory = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Working_Directory_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Working_Directory = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Working_Directory.Attributes.Add("class", "row");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Working_Directory);
+
+                    Div_Col_Sm_6_App_Working_Directory_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Working_Directory_Label.InnerHtml = "<i>APPLICATION WORKING DIRECTORY</i>";
+                    Div_Row_App_Working_Directory.Controls.Add(Div_Col_Sm_6_App_Working_Directory_Label);
+
+                    Div_Col_Sm_6_App_Working_Directory.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Working_Directory.InnerHtml = "<b>" + item.EnvironmentAppServerWorkingDirectoryLocation + "</b>";
+                    Div_Row_App_Working_Directory.Controls.Add(Div_Col_Sm_6_App_Working_Directory);
+
+                    #endregion
+                    #region Application_Server_Dependency
+
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Dependency = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Dependency_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Dependency = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+
+                    Div_Row_App_Server_Dependency.Attributes.Add("class", "row");
+                    Div_Row_App_Server_Dependency.Style.Add("background-color", "lightgray");
+                    Div_Card_Body.Controls.Add(Div_Row_App_Server_Dependency);
+
+                    Div_Col_Sm_6_App_Server_Dependency_Label.Attributes.Add("class", "col-sm-6 text-right");
+                    Div_Col_Sm_6_App_Server_Dependency_Label.InnerHtml = "<i>APPLICATION SERVER DEPENDENCY</i>";
+                    Div_Row_App_Server_Dependency.Controls.Add(Div_Col_Sm_6_App_Server_Dependency_Label);
+
+                    Div_Col_Sm_6_App_Server_Dependency.Attributes.Add("class", "col-sm-6 text-left");
+                    Div_Col_Sm_6_App_Server_Dependency.InnerHtml = "<b>" + item.EnvironmentAppServerDependency.ToUpper() + "</b>";
+                    Div_Row_App_Server_Dependency.Controls.Add(Div_Col_Sm_6_App_Server_Dependency);
+
+                    #endregion
+
+                    // END
+
                     TableRow row0 = new TableRow();
-                    TableRow row = new TableRow();
-
-                    TableRow row16 = new TableRow();
-                    TableRow row15 = new TableRow();
-                    TableRow row14 = new TableRow();
-                    TableRow row13 = new TableRow();
-                    TableRow row12 = new TableRow();
-                    TableRow row11 = new TableRow();
-                    TableRow row10 = new TableRow();
-                    TableRow row9 = new TableRow();
-                    TableRow row8 = new TableRow();
-
-                    row.Style.Add("width", "100%");
-                    TableCell cellTotal = new TableCell();
-                    cellTotal.Height = 22;
-                    cellTotal.ForeColor = Color.Black;
-                    cellTotal.BackColor = ColorTranslator.FromHtml("#3A4F63");
-                    cellTotal.Style.Add("Font-Size", "16px");
-                    cellTotal.Style.Add("padding", "5px");
-                    cellTotal.Style.Add("Font-Italic", "true");
-                    cellTotal.Text = "Total Number of Records: " + total;
-                    cellTotal.BackColor = Color.LightBlue;
-                    cellTotal.HorizontalAlign = HorizontalAlign.Left;
-                    cellTotal.ColumnSpan = 8;
-                    row000.Cells.Add(cellTotal);
 
                     TableCell cellClient1 = new TableCell();
                     cellClient1.Height = 40;
@@ -619,517 +959,20 @@ namespace HelloWorld
                     cellClient1.ColumnSpan = 10;
                     row0.Cells.Add(cellClient1);
 
-                    TableCell cellProductLbl = new TableCell();
-                    cellProductLbl.ForeColor = Color.Black;
-                    cellProductLbl.BackColor = Color.LightGray;
-                    cellProductLbl.Height = 35;
-                    cellProductLbl.Style.Add("Font-Weight", "bold");
-                    cellProductLbl.Text = "Product Name";
-                    cellProductLbl.HorizontalAlign = HorizontalAlign.Center;
-                    cellProductLbl.ColumnSpan = 5;
-                    row00.Cells.Add(cellProductLbl);
-
-                    TableCell cellProduct = new TableCell();
-                    cellProduct.ForeColor = Color.Black;
-                    cellProduct.BackColor = Color.LightGray;
-                    cellProduct.Height = 35;
-                    cellProduct.Style.Add("Font-Weight", "bold");
-                    cellProduct.Text = item.ProductName;
-                    cellProduct.HorizontalAlign = HorizontalAlign.Center;
-                    cellProduct.ColumnSpan = 5;
-                    row00.Cells.Add(cellProduct);
-
-                    TableCell cellClient = new TableCell();
-                    cellClient.ForeColor = Color.White;
-                    cellClient.Style.Add("Font-Weight", "bold");
-                    cellClient.Style.Add("padding", "10px");
-                    cellClient.BackColor = Color.Gray;
-                    cellClient.Text = "APPLICATION SERVER DETAILS";
-                    cellClient.HorizontalAlign = HorizontalAlign.Left;
-                    cellClient.ColumnSpan = 10;
-                    row1.Cells.Add(cellClient);
-
-                    TableCell cellClientNameLbl = new TableCell();
-                    cellClientNameLbl.ForeColor = Color.Black;
-                    cellClientNameLbl.Text = "Client Name";
-                    cellClientNameLbl.HorizontalAlign = HorizontalAlign.Right;
-                    cellClientNameLbl.ColumnSpan = 2;
-                    row2.Cells.Add(cellClientNameLbl);
-
-                    TableCell cellClientName = new TableCell();
-                    cellClientName.ForeColor = Color.Black;
-                    cellClientName.Text = item.ClientName;
-                    cellClientName.ColumnSpan = 3;
-                    cellClientName.HorizontalAlign = HorizontalAlign.Right;
-                    row2.Cells.Add(cellClientName);
-
-                    TableCell cellClientTypeLbl = new TableCell();
-                    cellClientTypeLbl.ForeColor = Color.Black;
-                    cellClientTypeLbl.Text = "Environment Type";
-                    cellClientTypeLbl.ColumnSpan = 2;
-                    cellClientTypeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row2.Cells.Add(cellClientTypeLbl);
-
-                    TableCell cellClientType = new TableCell();
-                    cellClientType.ForeColor = Color.Black;
-                    cellClientType.Text = item.EnvironmentAppServerEnvType;
-                    cellClientType.ColumnSpan = 3;
-                    cellClientType.HorizontalAlign = HorizontalAlign.Right;
-                    row2.Cells.Add(cellClientType);
-
-                    TableCell cellClientEnvTypeLbl = new TableCell();
-                    cellClientEnvTypeLbl.ForeColor = Color.Black;
-                    cellClientEnvTypeLbl.Text = "Operating System";
-                    cellClientEnvTypeLbl.ColumnSpan = 2;
-                    cellClientEnvTypeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row3.Cells.Add(cellClientEnvTypeLbl);
-
-                    TableCell cellClientEnvType = new TableCell();
-                    cellClientEnvType.ForeColor = Color.Black;
-                    cellClientEnvType.Text = item.EnvironmentAppServerOS;
-                    cellClientEnvType.ColumnSpan = 3;
-                    cellClientEnvType.HorizontalAlign = HorizontalAlign.Right;
-                    row3.Cells.Add(cellClientEnvType);
-
-                    TableCell cellClientPOCLbl = new TableCell();
-                    cellClientPOCLbl.ForeColor = Color.Black;
-                    cellClientPOCLbl.Text = "Operating System Build Number";
-                    cellClientPOCLbl.ColumnSpan = 2;
-                    cellClientPOCLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row3.Cells.Add(cellClientPOCLbl);
-
-                    TableCell cellAppServerOSx86Lbl = new TableCell();
-                    cellAppServerOSx86Lbl.ForeColor = Color.Black;
-                    cellAppServerOSx86Lbl.Text = "Operating System 32 Bit";
-                    cellAppServerOSx86Lbl.ColumnSpan = 2;
-                    cellAppServerOSx86Lbl.HorizontalAlign = HorizontalAlign.Right;
-                    row7.Cells.Add(cellAppServerOSx86Lbl);
-
-                    TableCell cellAppServerOSx86 = new TableCell();
-                    cellAppServerOSx86.ForeColor = Color.Black;
-                    cellAppServerOSx86.Text = item.EnvironmentAppServerIsX86Version == "False" ? "No" : "Yes";
-                    cellAppServerOSx86.ColumnSpan = 3;
-                    cellAppServerOSx86.HorizontalAlign = HorizontalAlign.Right;
-                    row7.Cells.Add(cellAppServerOSx86);
-
-                    TableCell cellAppServerOSVirtualLbl = new TableCell();
-                    cellAppServerOSVirtualLbl.ForeColor = Color.Black;
-                    cellAppServerOSVirtualLbl.Text = "Operating System Is Virtual";
-                    cellAppServerOSVirtualLbl.ColumnSpan = 2;
-                    cellAppServerOSVirtualLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row7.Cells.Add(cellAppServerOSVirtualLbl);
-
-                    TableCell cellAppServerOSVirtual = new TableCell();
-                    cellAppServerOSVirtual.ForeColor = Color.Black;
-                    cellAppServerOSVirtual.Text = item.EnvironmentAppServerIsVirtual == "False" ? "No" : "Yes";
-                    cellAppServerOSVirtual.ColumnSpan = 3;
-                    cellAppServerOSVirtual.HorizontalAlign = HorizontalAlign.Right;
-                    row7.Cells.Add(cellAppServerOSVirtual);
-
-                    TableCell cellClientPOC = new TableCell();
-                    cellClientPOC.ForeColor = Color.Black;
-                    cellClientPOC.Text = item.EnvironmentAppServerOSBuild;
-                    cellClientPOC.ColumnSpan = 3;
-                    cellClientPOC.HorizontalAlign = HorizontalAlign.Right;
-                    row3.Cells.Add(cellClientPOC);
-
-                    TableCell cellClientPOCNameLbl = new TableCell();
-                    cellClientPOCNameLbl.ForeColor = Color.Black;
-                    cellClientPOCNameLbl.Text = "App Server Processor";
-                    cellClientPOCNameLbl.ColumnSpan = 2;
-                    cellClientPOCNameLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row4.Cells.Add(cellClientPOCNameLbl);
-
-                    TableCell cellClientPOCName = new TableCell();
-                    cellClientPOCName.ForeColor = Color.Black;
-                    cellClientPOCName.Text = item.EnvironmentAppServerProcessor;
-                    cellClientPOCName.ColumnSpan = 3;
-                    cellClientPOCName.HorizontalAlign = HorizontalAlign.Right;
-                    row4.Cells.Add(cellClientPOCName);
-
-                    TableCell cellPatchHotNumberLbl = new TableCell();
-                    cellPatchHotNumberLbl.ForeColor = Color.Black;
-                    cellPatchHotNumberLbl.Text = "App Server Memory";
-                    cellPatchHotNumberLbl.ColumnSpan = 2;
-                    cellPatchHotNumberLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row4.Cells.Add(cellPatchHotNumberLbl);
-
-                    TableCell cellPatchHotNumber = new TableCell();
-                    cellPatchHotNumber.ForeColor = Color.Black;
-                    cellPatchHotNumber.Text = item.EnvironmentAppServerMemory;
-                    cellPatchHotNumber.ColumnSpan = 3;
-                    cellPatchHotNumber.HorizontalAlign = HorizontalAlign.Right;
-                    row4.Cells.Add(cellPatchHotNumber);
-
-                    TableCell cellAppServerIPLbl = new TableCell();
-                    cellAppServerIPLbl.ForeColor = Color.Black;
-                    cellAppServerIPLbl.Text = "IP";
-                    cellAppServerIPLbl.ColumnSpan = 2;
-                    cellAppServerIPLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row5.Cells.Add(cellAppServerIPLbl);
-
-                    TableCell cellAppLink = new TableCell();
-                    cellAppLink.ForeColor = Color.Black;
-                    cellAppLink.Text = item.EnvironmentAppServerIP;
-                    cellAppLink.ColumnSpan = 3;
-                    cellAppLink.HorizontalAlign = HorizontalAlign.Right;
-                    row5.Cells.Add(cellAppLink);
-
-                    TableCell cellPatchQATestedLbl = new TableCell();
-                    cellPatchQATestedLbl.ForeColor = Color.Black;
-                    cellPatchQATestedLbl.Text = "Port";
-                    cellPatchQATestedLbl.ColumnSpan = 2;
-                    cellPatchQATestedLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row5.Cells.Add(cellPatchQATestedLbl);
-
-                    TableCell cellPatchQATested = new TableCell();
-                    cellPatchQATested.ForeColor = Color.Black;
-                    cellPatchQATested.Text = item.EnvironmentAppServerPort;
-                    cellPatchQATested.ColumnSpan = 3;
-                    cellPatchQATested.HorizontalAlign = HorizontalAlign.Right;
-                    row5.Cells.Add(cellPatchQATested);
-
-                    TableCell cellAppServerWebbrowserLbl = new TableCell();
-                    cellAppServerWebbrowserLbl.ForeColor = Color.Black;
-                    //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                    cellAppServerWebbrowserLbl.Text = "Web Server";
-                    cellAppServerWebbrowserLbl.ColumnSpan = 2;
-                    cellAppServerWebbrowserLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row6.Cells.Add(cellAppServerWebbrowserLbl);
-
-                    TableCell cellPatchDeployedDate = new TableCell();
-                    cellPatchDeployedDate.ForeColor = Color.Black;
-                    //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                    cellPatchDeployedDate.Text = item.EnvironmentAppServerWebBrowser;
-                    cellPatchDeployedDate.ColumnSpan = 3;
-                    cellPatchDeployedDate.HorizontalAlign = HorizontalAlign.Right;
-                    row6.Cells.Add(cellPatchDeployedDate);
-
-                    //
-
-                    TableCell cellAppServerWebbrowserVersionLbl = new TableCell();
-                    cellAppServerWebbrowserVersionLbl.ForeColor = Color.Black;
-                    cellAppServerWebbrowserVersionLbl.Text = "Web Server Version";
-                    cellAppServerWebbrowserVersionLbl.ColumnSpan = 2;
-                    cellAppServerWebbrowserVersionLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row6.Cells.Add(cellAppServerWebbrowserVersionLbl);
-
-                    TableCell cellPatchPassedByTime = new TableCell();
-                    cellPatchPassedByTime.ForeColor = Color.Black;
-                    cellPatchPassedByTime.Text = item.EnvironmentAppServerWebBrowserVersion;
-                    cellPatchPassedByTime.ColumnSpan = 3;
-                    cellPatchPassedByTime.HorizontalAlign = HorizontalAlign.Right;
-                    row6.Cells.Add(cellPatchPassedByTime);
-
-                    TableCell cellAppServerNameLbl = new TableCell();
-                    cellAppServerNameLbl.ForeColor = Color.Black;
-                    cellAppServerNameLbl.Text = "Server Name";
-                    cellAppServerNameLbl.ColumnSpan = 2;
-                    cellAppServerNameLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row.Cells.Add(cellAppServerNameLbl);
-
-                    TableCell cellAppServerName = new TableCell();
-                    cellAppServerName.ForeColor = Color.Black;
-                    cellAppServerName.Text = item.EnvironmentAppServerName;
-                    cellAppServerName.ColumnSpan = 3;
-                    cellAppServerName.HorizontalAlign = HorizontalAlign.Right;
-                    row.Cells.Add(cellAppServerName);
-
-                    TableCell cellPatchStatusLbl = new TableCell();
-                    cellPatchStatusLbl.ForeColor = Color.Black;
-                    cellPatchStatusLbl.Text = "Server Dependency";
-                    cellPatchStatusLbl.ColumnSpan = 2;
-                    cellPatchStatusLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row.Cells.Add(cellPatchStatusLbl);
-
-                    TableCell cellPatchStatus = new TableCell();
-                    cellPatchStatus.ForeColor = Color.Black;
-                    cellPatchStatus.Text = item.EnvironmentAppServerDependency;
-                    cellPatchStatus.ColumnSpan = 3;
-                    cellPatchStatus.HorizontalAlign = HorizontalAlign.Right;
-                    row.Cells.Add(cellPatchStatus);
-                    //
-
-                    TableCell cellDBTitle = new TableCell();
-                    cellDBTitle.ForeColor = Color.White;
-                    cellDBTitle.BackColor = Color.Gray;
-                    cellDBTitle.Style.Add("Font-Weight", "bold");
-                    cellDBTitle.Style.Add("padding", "10px");
-                    cellDBTitle.Text = "DATABASE SERVER DETAILS";
-                    //cellDBTitle.Attributes.Add("padding", "10px");
-                    cellDBTitle.HorizontalAlign = HorizontalAlign.Left;
-                    cellDBTitle.ColumnSpan = 10;
-                    row8.Cells.Add(cellDBTitle);
-
-                    TableCell cellDBNameLbl = new TableCell();
-                    cellDBNameLbl.ForeColor = Color.Black;
-                    cellDBNameLbl.Text = "Server Name";
-                    cellDBNameLbl.HorizontalAlign = HorizontalAlign.Right;
-                    cellDBNameLbl.ColumnSpan = 2;
-                    row9.Cells.Add(cellDBNameLbl);
-
-                    TableCell cellDBName = new TableCell();
-                    cellDBName.ForeColor = Color.Black;
-                    cellDBName.Text = item.EnvironmentDBServerName;
-                    cellDBName.ColumnSpan = 3;
-                    cellDBName.HorizontalAlign = HorizontalAlign.Right;
-                    row9.Cells.Add(cellDBName);
-
-                    TableCell cellDBServerTypeLbl = new TableCell();
-                    cellDBServerTypeLbl.ForeColor = Color.Black;
-                    cellDBServerTypeLbl.Text = "Environment Type";
-                    cellDBServerTypeLbl.ColumnSpan = 2;
-                    cellDBServerTypeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row9.Cells.Add(cellDBServerTypeLbl);
-
-                    TableCell cellDBServerType = new TableCell();
-                    cellDBServerType.ForeColor = Color.Black;
-                    cellDBServerType.Text = item.EnvironmentDBServerEnvType;
-                    cellDBServerType.ColumnSpan = 3;
-                    cellDBServerType.HorizontalAlign = HorizontalAlign.Right;
-                    row9.Cells.Add(cellDBServerType);
-
-                    TableCell cellDBServerOSLbl = new TableCell();
-                    cellDBServerOSLbl.ForeColor = Color.Black;
-                    cellDBServerOSLbl.Text = "Operating System";
-                    cellDBServerOSLbl.ColumnSpan = 2;
-                    cellDBServerOSLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row10.Cells.Add(cellDBServerOSLbl);
-
-                    TableCell cellDBServerOS = new TableCell();
-                    cellDBServerOS.ForeColor = Color.Black;
-                    cellDBServerOS.Text = item.EnvironmentDBServerOS;
-                    cellDBServerOS.ColumnSpan = 3;
-                    cellDBServerOS.HorizontalAlign = HorizontalAlign.Right;
-                    row10.Cells.Add(cellDBServerOS);
-
-                    TableCell cellDBServerOSBuildLbl = new TableCell();
-                    cellDBServerOSBuildLbl.ForeColor = Color.Black;
-                    cellDBServerOSBuildLbl.Text = "Operating System Build Number";
-                    cellDBServerOSBuildLbl.ColumnSpan = 2;
-                    cellDBServerOSBuildLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row10.Cells.Add(cellDBServerOSBuildLbl);
-
-                    TableCell cellDBServerOSBuild = new TableCell();
-                    cellDBServerOSBuild.ForeColor = Color.Black;
-                    cellDBServerOSBuild.Text = item.EnvironmentDBServerOSBuild;
-                    cellDBServerOSBuild.ColumnSpan = 3;
-                    cellDBServerOSBuild.HorizontalAlign = HorizontalAlign.Right;
-                    row10.Cells.Add(cellDBServerOSBuild);
-
-                    TableCell cellDBServerOSx86Lbl = new TableCell();
-                    cellDBServerOSx86Lbl.ForeColor = Color.Black;
-                    cellDBServerOSx86Lbl.Text = "Operating System 32 Bit";
-                    cellDBServerOSx86Lbl.ColumnSpan = 2;
-                    cellDBServerOSx86Lbl.HorizontalAlign = HorizontalAlign.Right;
-                    row11.Cells.Add(cellDBServerOSx86Lbl);
-
-                    TableCell cellDBServerOSx86 = new TableCell();
-                    cellDBServerOSx86.ForeColor = Color.Black;
-                    cellDBServerOSx86.Text = item.EnvironmentDBServerIsX86Version == "False" ? "No" : "Yes";
-                    cellDBServerOSx86.ColumnSpan = 3;
-                    cellDBServerOSx86.HorizontalAlign = HorizontalAlign.Right;
-                    row11.Cells.Add(cellDBServerOSx86);
-
-                    TableCell cellDBServerOSVirtualLbl = new TableCell();
-                    cellDBServerOSVirtualLbl.ForeColor = Color.Black;
-                    cellDBServerOSVirtualLbl.Text = "Operating System Is Virtual";
-                    cellDBServerOSVirtualLbl.ColumnSpan = 2;
-                    cellDBServerOSVirtualLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row11.Cells.Add(cellDBServerOSVirtualLbl);
-
-                    TableCell cellDBServerOSVirtual = new TableCell();
-                    cellDBServerOSVirtual.ForeColor = Color.Black;
-                    cellDBServerOSVirtual.Text = item.EnvironmentDBServerIsVirtual == "False" ? "No" : "Yes";
-                    cellDBServerOSVirtual.ColumnSpan = 3;
-                    cellDBServerOSVirtual.HorizontalAlign = HorizontalAlign.Right;
-                    row11.Cells.Add(cellDBServerOSVirtual);
-
-                    TableCell cellDBServerProcessorLbl = new TableCell();
-                    cellDBServerProcessorLbl.ForeColor = Color.Black;
-                    cellDBServerProcessorLbl.Text = "Database Server Processor";
-                    cellDBServerProcessorLbl.ColumnSpan = 2;
-                    cellDBServerProcessorLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row12.Cells.Add(cellDBServerProcessorLbl);
-
-                    TableCell cellDBServerProcessor = new TableCell();
-                    cellDBServerProcessor.ForeColor = Color.Black;
-                    cellDBServerProcessor.Text = item.EnvironmentDBServerProcessor;
-                    cellDBServerProcessor.ColumnSpan = 3;
-                    cellDBServerProcessor.HorizontalAlign = HorizontalAlign.Right;
-                    row12.Cells.Add(cellDBServerProcessor);
-
-                    TableCell cellDBServerMemoryLbl = new TableCell();
-                    cellDBServerMemoryLbl.ForeColor = Color.Black;
-                    cellDBServerMemoryLbl.Text = "Database Server Memory";
-                    cellDBServerMemoryLbl.ColumnSpan = 2;
-                    cellDBServerMemoryLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row12.Cells.Add(cellDBServerMemoryLbl);
-
-                    TableCell cellDBServerMemory = new TableCell();
-                    cellDBServerMemory.ForeColor = Color.Black;
-                    cellDBServerMemory.Text = item.EnvironmentDBServerMemory;
-                    cellDBServerMemory.ColumnSpan = 3;
-                    cellDBServerMemory.HorizontalAlign = HorizontalAlign.Right;
-                    row12.Cells.Add(cellDBServerMemory);
-
-                    TableCell cellDBServerIPLbl = new TableCell();
-                    cellDBServerIPLbl.ForeColor = Color.Black;
-                    cellDBServerIPLbl.Text = "IP";
-                    cellDBServerIPLbl.ColumnSpan = 2;
-                    cellDBServerIPLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row13.Cells.Add(cellDBServerIPLbl);
-
-                    TableCell cellDBServerIP = new TableCell();
-                    cellDBServerIP.ForeColor = Color.Black;
-                    cellDBServerIP.Text = item.EnvironmentEnvDBServerIP;
-                    cellDBServerIP.ColumnSpan = 3;
-                    cellDBServerIP.HorizontalAlign = HorizontalAlign.Right;
-                    row13.Cells.Add(cellDBServerIP);
-
-                    TableCell cellDBServerPortLbl = new TableCell();
-                    cellDBServerPortLbl.ForeColor = Color.Black;
-                    cellDBServerPortLbl.Text = "Port";
-                    cellDBServerPortLbl.ColumnSpan = 2;
-                    cellDBServerPortLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row13.Cells.Add(cellDBServerPortLbl);
-
-                    TableCell cellDBServerPort = new TableCell();
-                    cellDBServerPort.ForeColor = Color.Black;
-                    cellDBServerPort.Text = item.EnvironmentDBServerPort;
-                    cellDBServerPort.ColumnSpan = 3;
-                    cellDBServerPort.HorizontalAlign = HorizontalAlign.Right;
-                    row13.Cells.Add(cellDBServerPort);
-
-                    TableCell cellDBServerMDFFileSizeLbl = new TableCell();
-                    cellDBServerMDFFileSizeLbl.ForeColor = Color.Black;
-                    cellDBServerMDFFileSizeLbl.Text = "MDF File Size";
-                    cellDBServerMDFFileSizeLbl.ColumnSpan = 2;
-                    cellDBServerMDFFileSizeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row14.Cells.Add(cellDBServerMDFFileSizeLbl);
-
-                    TableCell cellDBServerMDFFileSize = new TableCell();
-                    cellDBServerMDFFileSize.ForeColor = Color.Black;
-                    cellDBServerMDFFileSize.Text = item.EnvironmentDBMDFFileSize;
-                    cellDBServerMDFFileSize.ColumnSpan = 3;
-                    cellDBServerMDFFileSize.HorizontalAlign = HorizontalAlign.Right;
-                    row14.Cells.Add(cellDBServerMDFFileSize);
-
-                    TableCell cellDBServerMDFFileLocationLbl = new TableCell();
-                    cellDBServerMDFFileLocationLbl.ForeColor = Color.Black;
-                    //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                    cellDBServerMDFFileLocationLbl.Text = "MDF File Location";
-                    cellDBServerMDFFileLocationLbl.ColumnSpan = 2;
-                    cellDBServerMDFFileLocationLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row14.Cells.Add(cellDBServerMDFFileLocationLbl);
-
-                    TableCell cellDBServerMDFFileLocation = new TableCell();
-                    cellDBServerMDFFileLocation.ForeColor = Color.Black;
-                    //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                    cellDBServerMDFFileLocation.Text = item.EnvironmentDBMDFFileLocation;
-                    cellDBServerMDFFileLocation.ColumnSpan = 3;
-                    cellDBServerMDFFileLocation.HorizontalAlign = HorizontalAlign.Right;
-                    row14.Cells.Add(cellDBServerMDFFileLocation);
-
-                    TableCell cellDBServerLDFFileSizeLbl = new TableCell();
-                    cellDBServerLDFFileSizeLbl.ForeColor = Color.Black;
-                    //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                    cellDBServerLDFFileSizeLbl.Text = "LDF File Size";
-                    cellDBServerLDFFileSizeLbl.ColumnSpan = 2;
-                    cellDBServerLDFFileSizeLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row15.Cells.Add(cellDBServerLDFFileSizeLbl);
-
-                    TableCell cellDBServerLDFFileSize = new TableCell();
-                    cellDBServerLDFFileSize.ForeColor = Color.Black;
-                    //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                    cellDBServerLDFFileSize.Text = item.EnvironmentDBLDFFileSize;
-                    cellDBServerLDFFileSize.ColumnSpan = 3;
-                    cellDBServerLDFFileSize.HorizontalAlign = HorizontalAlign.Right;
-                    row15.Cells.Add(cellDBServerLDFFileSize);
-
-                    TableCell cellDBServerLDFFileLocationLbl = new TableCell();
-                    cellDBServerLDFFileLocationLbl.ForeColor = Color.Black;
-                    //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                    cellDBServerLDFFileLocationLbl.Text = "LDF File Location";
-                    cellDBServerLDFFileLocationLbl.ColumnSpan = 2;
-                    cellDBServerLDFFileLocationLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row15.Cells.Add(cellDBServerLDFFileLocationLbl);
-
-                    TableCell cellDBServerLDFFileLocation = new TableCell();
-                    cellDBServerLDFFileLocation.ForeColor = Color.Black;
-                    //int spaceInDate = item.patchDeployedDate.IndexOf(' ');
-                    cellDBServerLDFFileLocation.Text = item.EnvironmentDBLDFFileLocation;
-                    cellDBServerLDFFileLocation.ColumnSpan = 3;
-                    cellDBServerLDFFileLocation.HorizontalAlign = HorizontalAlign.Right;
-                    row15.Cells.Add(cellDBServerLDFFileLocation);
-
-                    //
-
-                    TableCell cellDBServerLocationLbl = new TableCell();
-                    cellDBServerLocationLbl.ForeColor = Color.Black;
-                    cellDBServerLocationLbl.Text = "Database File Location";
-                    cellDBServerLocationLbl.ColumnSpan = 2;
-                    cellDBServerLocationLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row16.Cells.Add(cellDBServerLocationLbl);
-
-                    TableCell cellDBServerLocation = new TableCell();
-                    cellDBServerLocation.ForeColor = Color.Black;
-                    cellDBServerLocation.Text = item.EnvironmentDBServerDirectoryLocation;
-                    cellDBServerLocation.ColumnSpan = 3;
-                    cellDBServerLocation.HorizontalAlign = HorizontalAlign.Right;
-                    row16.Cells.Add(cellDBServerLocation);
-
-                    TableCell cellDBServerDependencyLbl = new TableCell();
-                    cellDBServerDependencyLbl.ForeColor = Color.Black;
-                    cellDBServerDependencyLbl.Text = "Database Server Dependency";
-                    cellDBServerDependencyLbl.ColumnSpan = 2;
-                    cellDBServerDependencyLbl.HorizontalAlign = HorizontalAlign.Right;
-                    row16.Cells.Add(cellDBServerDependencyLbl);
-
-                    TableCell cellDBServerDependency = new TableCell();
-                    cellDBServerDependency.ForeColor = Color.Black;
-                    cellDBServerDependency.Text = item.EnvironmentDBServerDependency;
-                    cellDBServerDependency.ColumnSpan = 3;
-                    cellDBServerDependency.HorizontalAlign = HorizontalAlign.Right;
-                    row16.Cells.Add(cellDBServerDependency);
-
-                    tblInfo.Style.Add("width", "100%");
-                    tblInfo.Width = 100;
-                    tblInfo.Rows.Add(row000);
-                    tblInfo.Rows.Add(row0);
-                    tblInfo.Rows.Add(row00);
-                    tblInfo.Rows.Add(row1);
-                    tblInfo.Rows.Add(row2);
-                    tblInfo.Rows.Add(row3);
-                    tblInfo.Rows.Add(row7);
-                    tblInfo.Rows.Add(row4);
-                    tblInfo.Rows.Add(row5);
-                    tblInfo.Rows.Add(row6);
-                    tblInfo.Rows.Add(row);
-                    tblInfo.Rows.Add(row8);
-                    tblInfo.Rows.Add(row9);
-                    tblInfo.Rows.Add(row10);
-                    tblInfo.Rows.Add(row11);
-                    tblInfo.Rows.Add(row12);
-                    tblInfo.Rows.Add(row13);
-                    tblInfo.Rows.Add(row14);
-                    tblInfo.Rows.Add(row15);
-                    tblInfo.Rows.Add(row16);
+                    log.DetailLog("EnvironmentInfo.aspx.cs", "Button1_Click", STATE.COMPLETED, "Method: Page_Load Inn Class: EnvironmentInfo.aspx.cs Has Completed Its Execution Successfully.");
 
                 }
-
-                log.DetailLog("EnvironmentInfo.aspx.cs", "Button1_Click", STATE.COMPLETED, "Method: Page_Load Inn Class: EnvironmentInfo.aspx.cs Has Completed Its Execution Successfully.");
-
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Exception: " + ex.Message);
                 log.ErrorLog("EnvironmentInfo.aspx.cs", "Button1_Click", ExceptionType.SQLException, ex);
                 log.DetailLog("EnvironmentInfo.aspx.cs", "Button1_Click", STATE.INTERRUPTED, ex.Message);
+                Response.Redirect("ErrorPages\\Error500.aspx?Param=EnvironmentInfo.aspx&Exception=" + ex.Message, false);
             }
             finally
             {
-                Response.Redirect("ErrorPages\\Error500.aspx?Param=EnvironmentInfo.aspx", true);
+                
             }
         }
     }

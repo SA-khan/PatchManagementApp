@@ -407,10 +407,11 @@ namespace HelloWorld
                 Debug.WriteLine("Exception: " + ex.Message);
                 log.ErrorLog("AppOverview.aspx", "Page_Load", ExceptionType.SQLException, ex);
                 log.DetailLog("AppOverview.aspx", "Page_Load", STATE.INTERRUPTED, ex.Message);
+                Response.Redirect("ErrorPages\\Error500.aspx?Param=AppOverview.aspx&MethodName=Page_Load", false);
             }
             finally
             {
-                Response.Redirect("ErrorPages\\Error500.aspx?Param=AppOverview.aspx&MethodName=Page_Load", true);
+                
             }
 
         }
@@ -773,10 +774,11 @@ namespace HelloWorld
                 Debug.WriteLine("Exception: " + ex.Message);
                 log.ErrorLog("AppOverview.aspx", "btnSearch_Click", ExceptionType.SQLException, ex);
                 log.DetailLog("AppOverview.aspx", "btnSearch_Click", STATE.INTERRUPTED, ex.Message);
+                Response.Redirect("ErrorPages\\Error500.aspx?Param=AppOverview.aspx&MethodName=btnSearch_Click&Exception="+ex.Message, false);
             }
 
             finally {
-                Response.Redirect("ErrorPages\\Error500.aspx?Param=AppOverview.aspx&MethodName=btnSearch_Click", true);
+                
             }
                 
 
