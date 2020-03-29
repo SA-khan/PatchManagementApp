@@ -25,7 +25,8 @@ namespace HelloWorld
                 List<HelloWorld.App_Code.Environment> latestPatchOfClient = dbcon.getClientEnvironmentInfo(product, environment, client);
                 int count = 0;
                 int total = latestPatchOfClient.Count;
-                totalRecords.Text = "Total Number of Records: " + total;
+                //totalRecords.Text = "Total Number of Records: " + total;
+                TallyRecords.InnerText = "Total Records Found # " + total;
 
                 // START
                 TableRow row000 = new TableRow();
@@ -139,6 +140,8 @@ namespace HelloWorld
                     Div_Row_Image_Labels_Button.Controls.Add(Div_Col_Sm_1_Btn_Expand);
 
                     #endregion Layout
+
+                    
 
 
                     #region ClientName
@@ -469,6 +472,12 @@ namespace HelloWorld
 
                     #endregion
 
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    Div_DataSource.Attributes.Add("class", "card bg-light");
+                    Div_DataSource.ID = "Div_DataSource" + count;
+                    Div_DataSource.InnerHtml = "<p>DataSources</p>";
+                    Div_Collapse.Controls.Add(Div_DataSource);
+
                     // END
 
                     TableRow row0 = new TableRow();
@@ -511,7 +520,8 @@ namespace HelloWorld
                 List<HelloWorld.App_Code.Environment> latestPatchOfClient = dbcon.getClientEnvironmentInfo(product, environment, client);
                 int count = 0;
                 int total = latestPatchOfClient.Count;
-                totalRecords.Text = "Total Number of Records: " + total;
+                TallyRecords.InnerText = "Total Records Found # " + total;
+                //totalRecords.Text = "Total Number of Records: " + total;
 
                 // START
                 TableRow row000 = new TableRow();

@@ -11,14 +11,96 @@ using System.Diagnostics;
 
 namespace HelloWorld
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Default : MyBasePage
     {
         Log log = new Log();
         protected void Page_Load(object sender, EventArgs e)
         {
 
             log.DetailLog("Default.aspx.cs", "Page_Load", STATE.INITIALIZED, "Method: Page_Load in Class: Default.aspx.cs has Initialized.");
-            Debug.WriteLine(dropLanguage.SelectedItem);
+            #region Cookies
+
+            #region Read_Cookie
+
+            if (!Page.IsPostBack) {
+                string selectedTheme = Page.Theme;
+                HttpCookie Get_Theme_Cookie = Request.Cookies.Get("Theme");
+                //string selectedRegion = Request.Cookies.Get("Region").Value;
+                //HttpCookie Get_Region_Cookie = Request.Cookies.Get("Region");
+                //string selectedLanguage = Request.Cookies.Get("Langauge").Value;
+                //HttpCookie Get_Language_Cookie = Request.Cookies.Get("Langauge");
+                if (Get_Theme_Cookie != null) {
+                    selectedTheme = Get_Theme_Cookie.Value;
+                }
+                if (!string.IsNullOrEmpty(selectedTheme)) {
+                    ListItem item = dropTheme.Items.FindByValue(selectedTheme);
+                    if (item != null) {
+                        item.Selected = true;
+                        Debug.WriteLine(Get_Theme_Cookie.Name + ": " + Get_Theme_Cookie.Value);
+                    }
+                }
+
+                //if (Get_Region_Cookie != null)
+                //{
+                //    selectedRegion = Get_Region_Cookie.Value;
+                //}
+                //if (!string.IsNullOrEmpty(selectedRegion))
+                //{
+                //    ListItem item = dropRegion.Items.FindByValue(selectedRegion);
+                //    if (item != null)
+                //    {
+                //        item.Selected = true;
+                //        Debug.WriteLine(Get_Region_Cookie.Name + ": " + Get_Region_Cookie.Value);
+                //    }
+                //}
+
+                //if (Get_Language_Cookie != null)
+                //{
+                //    selectedLanguage = Get_Language_Cookie.Value;
+                //}
+                //if (!string.IsNullOrEmpty(selectedLanguage))
+                //{
+                //    ListItem item = dropLanguage.Items.FindByValue(selectedLanguage);
+                //    if (item != null)
+                //    {
+                //        item.Selected = true;
+                //        Debug.WriteLine(Get_Language_Cookie.Name + ": " + Get_Language_Cookie.Value);
+                //    }
+                //}
+
+            }
+
+
+            #endregion
+
+            #region Theme_Cookie
+            //if (Response.Cookies.Get("Theme") != null)
+            //{
+                
+            //}
+            #endregion
+            #region Region_Cookie
+            //if (Response.Cookies.Get("Region") == null)
+            //{
+            //    HttpCookie _regionCookie = new HttpCookie("Region");
+            //    _regionCookie.Expires = DateTime.Now.AddMonths(3);
+            //    //_regionCookie.Value = dropRegion.SelectedItem.ToString().ToLower();
+            //    _regionCookie.Value = "pakistan";
+            //    Response.Cookies.Add(_regionCookie);
+            //}
+            #endregion
+            #region Language_Cookie
+            //if (Response.Cookies.Get("Language") == null)
+            //{
+            //    HttpCookie _languageCookie = new HttpCookie("Language");
+            //    _languageCookie.Expires = DateTime.Now.AddMonths(3);
+            //    _languageCookie.Value = dropLanguage.SelectedItem.ToString();
+            //    Response.Cookies.Add(_languageCookie);
+            //}
+            #endregion
+
+            #endregion
+            #region Languages
 
             #region English_Language
 
@@ -238,6 +320,53 @@ namespace HelloWorld
 
             #endregion Sindhi_Language
 
+            #endregion
+
         }
+
+        protected void dropLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region Language
+
+            #region Language_Cookie
+            HttpCookie _languageCookie = new HttpCookie("Language");
+            _languageCookie.Expires = DateTime.Now.AddMonths(3);
+            _languageCookie.Value = dropLanguage.SelectedItem.ToString().ToLower();
+            Response.Cookies.Add(_languageCookie);
+            #endregion
+
+            #endregion
+        }
+
+        protected void dropTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Debug.WriteLine("Selected Theme: " + dropTheme.SelectedItem.ToString());
+            //HttpCookie cookie = Request.Cookies.Get("Theme");
+            //if (cookie.Value.ToString() == "Dark")
+            //{
+            //    dropTheme.SelectedIndex = 1;
+            //}
+            //else
+            //{
+            //    dropTheme.SelectedIndex = 0;
+            //}
+            HttpCookie _themeCookie = new HttpCookie("Theme");
+            _themeCookie.Expires = DateTime.Now.AddMonths(3);
+            _themeCookie.Value = dropTheme.SelectedValue;
+            Response.Cookies.Add(_themeCookie);
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+            //Response.Redirect(Server.MapPath("~/Default.aspx"));
+        }
+
+        protected void dropRegion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Region: " + "");
+            HttpCookie _regionCookie = new HttpCookie("Region");
+            _regionCookie.Expires = DateTime.Now.AddMonths(3);
+            //_regionCookie.Value = dropRegion.SelectedItem.ToString().ToLower();
+            Response.Cookies.Add(_regionCookie);
+        }
+
+
     }
 }
