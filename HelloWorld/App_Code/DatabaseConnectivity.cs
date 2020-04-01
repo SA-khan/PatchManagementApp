@@ -1698,7 +1698,7 @@ namespace HelloWorld.App_Code
                         while (oReader.Read())
                         {
                             Environment item = new Environment();
-                            item.EnvironmentID = oReader["ENV_ID"].ToString();
+                            item.EnvironmentID = Convert.ToInt32(oReader["ENV_ID"]);
                             item.ClientName = oReader["ENV_Client_ID"].ToString();
                             item.ProductName = oReader["ENV_Product_ID"].ToString();
                             item.EnvironmentAppServerEnvType = oReader["ENV_AppServerEnvironmentType"].ToString();
@@ -1891,6 +1891,8 @@ namespace HelloWorld.App_Code
                             item.EnvironmentDBLDFFileLocation = oReader["ENV_DBLDFFileLocation"].ToString();
                             item.EnvironmentDBLDFFileSize = oReader["ENV_DBLDFFileSize"].ToString();
                             item.EnvironmentDBServerDependency = oReader["ENV_DBServerDependency"].ToString();
+                            item.EnvironmentID = Convert.ToInt32(oReader["ENV_ID"]);
+                            item.EnvironmentAppHyperLink = oReader["ENV_AppHyperLink"].ToString();
                             matchingPatch.Add(item);
                         }
 
@@ -2083,6 +2085,104 @@ namespace HelloWorld.App_Code
 
 
         // End Inserting Data into Environment Table
+
+        // Get Total Data Sources
+
+        public int getAllDataSources(int EnvironmentID) {
+            log.DetailLog("DatabaseConnectivity.cs", "getAllDataSources", STATE.INITIALIZED, "Method: getAllDataSources in Class: DatabaseConnectivity is Initialized.");
+            int totalDataSources = 0;
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spGetDataSourceFromEnvID]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    oCmd.Parameters.AddWithValue("@ENV_ID", EnvironmentID);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            totalDataSources = Convert.ToInt32(oReader["TOTAL_DATA_SOURCE"].ToString());
+                        }
+
+                        myConnection.Close();
+                    }
+                }
+                log.DetailLog("DatabaseConnectivity.cs", "getAllDataSources", STATE.COMPLETED, "Method: getAllDataSources in Class: DatabaseConnectivity has completed its execution Successfully.");
+                return totalDataSources;
+            }
+            catch (SqlException ex) {
+                Debug.WriteLine("DataConnectivity SQL. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getAllDataSources", ExceptionType.SQLException, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getAllDataSources", STATE.INTERRUPTED, ex.Message);
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DataConnectivity. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getAllDataSources", ExceptionType.Exception, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getAllDataSources", STATE.INTERRUPTED, ex.Message);
+                return 0;
+            }
+        }
+
+        // Get Tally Datasource End
+
+        // Get Database Datasource Desc Start
+
+        public List<DataSource_Database> getAllDatabaseDataSourceDesc(int EnvironmentID)
+        {
+            log.DetailLog("DatabaseConnectivity.cs", "getAllDatabaseDataSourceDesc", STATE.INITIALIZED, "Method: getAllDatabaseDataSourceDesc in Class: DatabaseConnectivity is Initialized.");
+            List<DataSource_Database> resdatasourceDatabase = new List<DataSource_Database>();
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spGetAllDataSourceDesc]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    oCmd.Parameters.AddWithValue("@ENV_ID", EnvironmentID);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            DataSource_Database item = new DataSource_Database();
+                            item.DB_SERVER_DEPENDENCY = oReader["TYPE"].ToString();
+                            item.DB_ID = Convert.ToInt32(oReader["DB_ID"].ToString());
+                            item.DB_ENV_ID = oReader["DB_ENV_ID"].ToString();
+                            item.DB_NAME = oReader["DB_NAME"].ToString();
+                            item.MDW_VENDER_IMAGE_SRC = oReader["VEN_IMAGE_SRC"].ToString();
+                            resdatasourceDatabase.Add(item);
+                        }
+
+                        myConnection.Close();
+                    }
+                }
+                log.DetailLog("DatabaseConnectivity.cs", "getAllDatabaseDataSourceDesc", STATE.COMPLETED, "Method: getAllDatabaseDataSourceDesc in Class: DatabaseConnectivity has completed its execution Successfully.");
+                return resdatasourceDatabase;
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine("DataConnectivity SQL. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getAllDatabaseDataSourceDesc", ExceptionType.SQLException, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getAllDatabaseDataSourceDesc", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DataConnectivity. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getAllDatabaseDataSourceDesc", ExceptionType.Exception, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getAllDatabaseDataSourceDesc", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+        }
+
+        // Get Database Datasource Desc End
 
     }
 }

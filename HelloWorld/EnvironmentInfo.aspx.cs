@@ -16,6 +16,7 @@ namespace HelloWorld
         Log log = new Log();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //EnableTheming = false; StyleSheetTheme = ""; Theme = ""; 
             try
             {
                 log.DetailLog("EnvironmentInfo.aspx.cs", "Page_Load", STATE.INITIALIZED, "Method: Page_Load in Class: EnvironmentInfo.aspx.cs has Initialized.");
@@ -89,28 +90,28 @@ namespace HelloWorld
                     Div_Card_Header.Attributes.Add("class", "card-header");
                     Div_Card_Bg_Dark.Controls.Add(Div_Card_Header);
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Image_Labels_Button = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_Image_Labels_Button");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Image_Labels_Button = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_Image_Labels_Button.Attributes.Add("class", "row");
                     Div_Card_Header.Controls.Add(Div_Row_Image_Labels_Button);
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_1_Image = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_1_Image");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_1_Image = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Col_Sm_1_Image.Attributes.Add("class", "col-sm-1");
                     Div_Col_Sm_1_Image.InnerHtml = "<img ID=\"Image" + count + "\" runat=\"server\" src=\"../Images/release.png\" Width=\"60\" Height=\"60\" style=\"margin:5px;\" />";
                     Div_Row_Image_Labels_Button.Controls.Add(Div_Col_Sm_1_Image);
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_10_Client_Env_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_10_Client_Env_Product");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_10_Client_Env_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Col_Sm_10_Client_Env_Product.Attributes.Add("class", "col-sm-10");
                     Div_Row_Image_Labels_Button.Controls.Add(Div_Col_Sm_10_Client_Env_Product);
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Client_Env_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_Client_Env_Product");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Client_Env_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                         Div_Row_Client_Env_Product.Attributes.Add("class", "row");
                         Div_Col_Sm_10_Client_Env_Product.Controls.Add(Div_Row_Client_Env_Product);
 
-                                System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_ClientName");
+                                System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                                 Div_Col_ClientName.Attributes.Add("class", "col-sm-12 text-left");
                                 Div_Col_ClientName.Style.Add("align", "left");
@@ -146,9 +147,9 @@ namespace HelloWorld
 
                     #region ClientName
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_Details");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ClientName_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ClientName_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ClientName = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_ClientName.Attributes.Add("class", "row");
                     Div_Row_ClientName.Style.Add("background-color", "lightgray");
@@ -165,9 +166,9 @@ namespace HelloWorld
                     #endregion
                     #region Environment_Type
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Environment = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_EnvType_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_EnvType = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Environment = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_EnvType_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_EnvType = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_Environment.Attributes.Add("class", "row");
                     Div_Card_Body.Controls.Add(Div_Row_Environment);
@@ -183,9 +184,9 @@ namespace HelloWorld
                     #endregion
                     #region Product_Name
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ProductName_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ProductName = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_Product = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ProductName_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_ProductName = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_Product.Attributes.Add("class", "row");
                     Div_Row_Product.Style.Add("background-color", "lightgray");
@@ -202,9 +203,9 @@ namespace HelloWorld
                     #endregion
                     #region Application_Server_Name
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Name = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientName");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Name_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Name = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_ClientType");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Name = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Name_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Name = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_App_Server_Name.Attributes.Add("class", "row");
                     Div_Card_Body.Controls.Add(Div_Row_App_Server_Name);
@@ -220,9 +221,9 @@ namespace HelloWorld
                     #endregion
                     #region Application_Server_OS
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_OS = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_OS = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_App_OS.Attributes.Add("class", "row");
                     Div_Row_App_OS.Style.Add("background-color", "lightgray");
@@ -240,9 +241,9 @@ namespace HelloWorld
                     #region Application_Server_OS_Build
 
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_OS_Build = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Build_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Build = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_OS_Build = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Build_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_OS_Build = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_App_OS_Build.Attributes.Add("class", "row");
                     Div_Card_Body.Controls.Add(Div_Row_App_OS_Build);
@@ -259,9 +260,9 @@ namespace HelloWorld
                     #region Application_Server_WebBrowser
 
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_WebBrower = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrowerLabel = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_WebBrower = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrowerLabel = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_App_WebBrower.Attributes.Add("class", "row");
                     Div_Row_App_WebBrower.Style.Add("background-color", "lightgray");
@@ -279,9 +280,9 @@ namespace HelloWorld
                     #region Application_Server_WebBrowser_Version
 
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_WebBrower_Version = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower_Version_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower_Version = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_WebBrower_Version = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower_Version_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_WebBrower_Version = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_App_WebBrower_Version.Attributes.Add("class", "row");
                     Div_Card_Body.Controls.Add(Div_Row_App_WebBrower_Version);
@@ -298,9 +299,9 @@ namespace HelloWorld
                     #region Application_Server_Register
 
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Register = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Register_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Register = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Register = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Register_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Register = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_App_Server_Register.Attributes.Add("class", "row");
                     Div_Row_App_Server_Register.Style.Add("background-color", "lightgray");
@@ -318,9 +319,9 @@ namespace HelloWorld
                     #region Application_Server_Virtualization
 
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Virtualization = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Virtualization_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Virtualization = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_Virtualization = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Virtualization_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_Virtualization = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_App_Server_Virtualization.Attributes.Add("class", "row");
                     Div_Card_Body.Controls.Add(Div_Row_App_Server_Virtualization);
@@ -337,9 +338,9 @@ namespace HelloWorld
                     #region Application_Server_IP
 
 
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_IP = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Row_App_OS_Build");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_IP_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build_Label");
-                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_IP = new System.Web.UI.HtmlControls.HtmlGenericControl("Div_Col_Sm_6_App_OS_Build");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Row_App_Server_IP = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_IP_Label = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_Col_Sm_6_App_Server_IP = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 
                     Div_Row_App_Server_IP.Attributes.Add("class", "row");
                     Div_Row_App_Server_IP.Style.Add("background-color", "lightgray");
@@ -472,11 +473,152 @@ namespace HelloWorld
 
                     #endregion
 
+                    // Adding Database and Middleware Logic
+                    List<DataSource_Database> DataSources = dbcon.getAllDatabaseDataSourceDesc(Convert.ToInt32(item.EnvironmentID));
+
                     System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                     Div_DataSource.Attributes.Add("class", "card bg-light");
                     Div_DataSource.ID = "Div_DataSource" + count;
-                    Div_DataSource.InnerHtml = "<p>DataSources</p>";
+                    Div_DataSource.Style.Add("margin", "5px");
+                    //Div_DataSource.InnerHtml = "<p>There is no data source for this application exist.</p>";
                     Div_Collapse.Controls.Add(Div_DataSource);
+
+                    System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Container = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    Div_DataSource_Element_Container.Attributes.Add("class", "card-columns");
+                    Div_DataSource_Element_Container.ID = "Div_DataSource_Element_Container" + count;
+                    Div_DataSource_Element_Container.Style.Add("margin-left", "4px");
+                    Div_DataSource_Element_Container.Style.Add("margin-right", "4px");
+                    Div_DataSource_Element_Container.Style.Add("margin-top", "6px");
+                    Div_DataSource_Element_Container.Style.Add("margin-bottom", "6px");
+                    Div_DataSource.Controls.Add(Div_DataSource_Element_Container);
+
+                    if (DataSources.Count == 0)
+                    {
+
+                        System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                        Div_DataSource_Element.Attributes.Add("class", "card-body text-center");
+                        Div_DataSource_Element.ID = "Div_DataSource_Element" + count;
+                        //Div_DataSource_Element.Style.Add("margin", "5px");
+                        Div_DataSource.Controls.Add(Div_DataSource_Element);
+
+                        System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Text = new System.Web.UI.HtmlControls.HtmlGenericControl("p");
+                        Div_DataSource_Element_Text.Attributes.Add("class", "card-text");
+                        Div_DataSource_Element_Text.ID = "div_DataSource_Element_Text" + count;
+                        Div_DataSource_Element_Text.InnerText = "There is no data source exist in this environment.";
+                        Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Text);
+                    }
+
+                    else
+                    {
+
+                        //for (int i = 0; i < DataSources.Count; i++)
+                        //{
+                        foreach(var dt in DataSources) {
+
+                            //Create Model
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Fade = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Fade.Attributes.Add("class", "modal fade");
+                            Div_Model_Fade.ID = "myModal" + count + dt.DB_NAME;
+                            Div_Collapse.Controls.Add(Div_Model_Fade);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Dialog = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Dialog.Attributes.Add("class", "modal-dialog");
+                            Div_Model_Dialog.ID = "myModalDialog" + count + dt.DB_NAME;
+                            Div_Model_Fade.Controls.Add(Div_Model_Dialog);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Content.Attributes.Add("class", "modal-content");
+                            Div_Model_Content.ID = "myModalContent" + count + dt.DB_NAME;
+                            Div_Model_Dialog.Controls.Add(Div_Model_Content);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Header = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Content_Header.Attributes.Add("class", "modal-header");
+                            Div_Model_Content_Header.ID = "myModalContentHeader" + count + dt.DB_NAME;
+                            Div_Model_Content_Header.InnerHtml = "<h4 class=\"modal-title\">" + dt.DB_NAME + "Details" + "</h4><button type=\"button\" class=\"close\" data-dismiss=\"modal\">×</button>";
+                            Div_Model_Content.Controls.Add(Div_Model_Content_Header);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Body = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Content_Body.Attributes.Add("class", "modal-body");
+                            Div_Model_Content_Body.ID = "myModalContentBody" + count + dt.DB_NAME;
+                            Div_Model_Content_Body.InnerHtml = "Details..";
+                            Div_Model_Content.Controls.Add(Div_Model_Content_Body);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Footer = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Content_Footer.Attributes.Add("class", "modal-footer");
+                            Div_Model_Content_Footer.ID = "myModalContentFooter" + count + dt.DB_NAME;
+                            Div_Model_Content_Footer.InnerHtml = "<button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Close</button>";
+                            Div_Model_Content.Controls.Add(Div_Model_Content_Footer);
+
+
+                            //Model End
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element.Attributes.Add("class", "card bg-light");
+                            Div_DataSource_Element.ID = "Div_DataSource_Element" + count + dt.DB_NAME;
+                            Div_DataSource_Element.Style.Add("padding-top", "10px");
+                            Div_DataSource_Element.Style.Add("padding-left", "5px");
+                            Div_DataSource_Element.Style.Add("padding-right", "5px");
+                            Div_DataSource_Element.Style.Add("padding-bottom", "10px");
+                            //Div_DataSource_Element.InnerHtml = "<p>DataSources</p>";
+                            Div_DataSource_Element_Container.Controls.Add(Div_DataSource_Element);
+
+                            //System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Container_Children = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            //Div_DataSource_Element_Container_Children.Attributes.Add("class", "container-fluid");
+                            //Div_DataSource_Element_Container_Children.ID = "Div_DataSource_Element_Container_Children" + count + i;
+                            ////Div_DataSource_Element.InnerHtml = "<p>DataSources</p>";
+                            //Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Container_Children);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_1 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Row_1.Attributes.Add("class", "row");
+                            Div_DataSource_Element_Child_Row_1.ID = "Div_DataSource_Element_Child_Row_1" + count + dt.DB_NAME;
+                            //Div_DataSource_Element.InnerHtml = "<p>DataSources</p>";
+                            Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Child_Row_1);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_1 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Col_1.Attributes.Add("class", "col");
+                            Div_DataSource_Element_Child_Col_1.ID = "Div_DataSource_Element_Child_Col_1" + count + dt.DB_NAME;
+                            Div_DataSource_Element_Child_Col_1.InnerHtml = "<img ID=\"Image" + count + "\" runat=\"server\" src=\""+dt.MDW_VENDER_IMAGE_SRC+"\" Width=\"60\" Height=\"60\" style=\"margin:5px;\" />";
+                            Div_DataSource_Element_Child_Row_1.Controls.Add(Div_DataSource_Element_Child_Col_1);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_2 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Row_2.Attributes.Add("class", "row");
+                            Div_DataSource_Element_Child_Row_2.ID = "Div_DataSource_Element_Child_Row_2" + count + dt.DB_NAME;
+                            //Div_DataSource_Element.InnerHtml = "<p class="card-text">DataSources</p>";
+                            Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Child_Row_2);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_2 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Col_2.Attributes.Add("class", "col");
+                            Div_DataSource_Element_Child_Col_2.ID = "Div_DataSource_Element_Child_Col_2" + count + dt.DB_NAME;
+                            Div_DataSource_Element_Child_Col_2.InnerHtml = "<p class=\"card-text\">"+dt.DB_NAME+"</p>";
+                            Div_DataSource_Element_Child_Row_2.Controls.Add(Div_DataSource_Element_Child_Col_2);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_3 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Row_3.Attributes.Add("class", "row");
+                            Div_DataSource_Element_Child_Row_3.ID = "Div_DataSource_Element_Child_Row_3" + count + dt.DB_NAME;
+                            //Div_DataSource_Element.InnerHtml = "<p class=\"card-text\">"++"</p>";
+                            Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Child_Row_3);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_3 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Col_3.Attributes.Add("class", "col");
+                            Div_DataSource_Element_Child_Col_3.ID = "Div_DataSource_Element_Child_Col_3" + count + dt.DB_NAME;
+                            Div_DataSource_Element_Child_Col_3.InnerHtml = "<p class=\"card-text\" style=\"color:silver;font-size:14px;\">"+dt.DB_SERVER_DEPENDENCY+"</p>";
+                            Div_DataSource_Element_Child_Row_3.Controls.Add(Div_DataSource_Element_Child_Col_3);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_4 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Row_4.Attributes.Add("class", "row");
+                            Div_DataSource_Element_Child_Row_4.ID = "Div_DataSource_Element_Child_Row_4" + count + dt.DB_NAME;
+                            //Div_DataSource_Element_Child_Row_3.InnerHtml = "<p class=\"card-text\">DataSources</p>";
+                            Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Child_Row_4);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_4 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Col_4.Attributes.Add("class", "col");
+                            Div_DataSource_Element_Child_Col_4.ID = "Div_DataSource_Element_Child_Col_4" + count + dt.DB_NAME;
+                            Div_DataSource_Element_Child_Col_4.InnerHtml = "<button id=\"btnExpandExpert" + count + dt.DB_NAME + "\" type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#MainContent_myModal" + count + dt.DB_NAME + "\" >View Details</button>";
+                            Div_DataSource_Element_Child_Row_4.Controls.Add(Div_DataSource_Element_Child_Col_4);
+                        }
+
+                    }
 
                     // END
 

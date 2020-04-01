@@ -114,6 +114,7 @@
     <Content Include="Content\dx.softblue.css" />
     <Content Include="Default.aspx" />
     <Content Include="EnvironmentInfo.aspx" />
+    <Content Include="EnvironmentOverview.aspx" />
     <Content Include="ErrorPages\Error500.aspx" />
     <Content Include="Images\application.png" />
     <Content Include="Images\environment.png" />
@@ -226,6 +227,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\Site.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -275,10 +277,12 @@
     <Compile Include="App_Code\Client.cs" />
     <Compile Include="App_Code\ClientType.cs" />
     <Compile Include="App_Code\DatabaseConnectivity.cs" />
+    <Compile Include="App_Code\DataSource_Database.cs" />
     <Compile Include="App_Code\Environment.cs" />
     <Compile Include="App_Code\EnvironmentType.cs" />
     <Compile Include="App_Code\Log.cs" />
     <Compile Include="App_Code\MessageBox.cs" />
+    <Compile Include="App_Code\DataSource_Middleware.cs" />
     <Compile Include="App_Code\MyBasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -299,6 +303,13 @@
     </Compile>
     <Compile Include="EnvironmentInfo.aspx.designer.cs">
       <DependentUpon>EnvironmentInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EnvironmentOverview.aspx.cs">
+      <DependentUpon>EnvironmentOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EnvironmentOverview.aspx.designer.cs">
+      <DependentUpon>EnvironmentOverview.aspx</DependentUpon>
     </Compile>
     <Compile Include="ErrorPages\Error500.aspx.cs">
       <DependentUpon>Error500.aspx</DependentUpon>
