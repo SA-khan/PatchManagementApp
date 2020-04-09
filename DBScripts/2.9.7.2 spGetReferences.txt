@@ -1,0 +1,21 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+CREATE PROC spGetReferences
+AS
+BEGIN
+SELECT [REF_ID]
+      ,[REF_NUMBER]
+      ,[REF_TITLE]
+      ,[REF_DESCRIPTION]
+      ,[REF_CLIENT_ID]
+      ,[REF_PRODUCT_ID]
+      ,[REF_NAME]
+      ,[REF_LOCATION]
+      ,[REF_LINK]
+      ,[REF_TYPE]
+      ,[REF_EXTENSION]
+      ,[REF_REFERENCE_ID]
+      ,[REF_REMARKS]
+      ,[REF_EXIST]
+	  ,[REF_DATE]
+  FROM [REFERENCES]
+  END

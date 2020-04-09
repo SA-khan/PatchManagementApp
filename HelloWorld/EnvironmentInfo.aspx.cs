@@ -474,7 +474,10 @@ namespace HelloWorld
                     #endregion
 
                     // Adding Database and Middleware Logic
-                    List<DataSource_Database> DataSources = dbcon.getAllDatabaseDataSourceDesc(Convert.ToInt32(item.EnvironmentID));
+                    List<DataSource_Database> Db_DataSources = dbcon.getAllDatabaseDataSourceDesc(Convert.ToInt32(item.EnvironmentID));
+                    List<DataSource_Middleware> Mdw_DataSources = dbcon.getAllMiddlewareDataSourceDesc(Convert.ToInt32(item.EnvironmentID));
+                    //int DataSources = dbcon.getAllDataSources(Convert.ToInt32(item.EnvironmentID));
+                    int DataSources = Db_DataSources.Count + Mdw_DataSources.Count;
 
                     System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                     Div_DataSource.Attributes.Add("class", "card bg-light");
@@ -492,7 +495,7 @@ namespace HelloWorld
                     Div_DataSource_Element_Container.Style.Add("margin-bottom", "6px");
                     Div_DataSource.Controls.Add(Div_DataSource_Element_Container);
 
-                    if (DataSources.Count == 0)
+                    if (DataSources == 0)
                     {
 
                         System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
@@ -510,16 +513,19 @@ namespace HelloWorld
 
                     else
                     {
+                        #region Database Logic
 
-                        //for (int i = 0; i < DataSources.Count; i++)
-                        //{
-                        foreach(var dt in DataSources) {
+                        // Adding Database Logic
+
+                        foreach(var dt in Db_DataSources) {
 
                             //Create Model
 
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Fade = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                             Div_Model_Fade.Attributes.Add("class", "modal fade");
-                            Div_Model_Fade.ID = "myModal" + count + dt.DB_NAME;
+                            Div_Model_Fade.Attributes.Add("data-backdrop", "static");
+                            Div_Model_Fade.Attributes.Add("data-keyboard", "false");
+                            Div_Model_Fade.ID = "myModal" + count + dt.DB_NAME.Replace(" ","");
                             Div_Collapse.Controls.Add(Div_Model_Fade);
 
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Dialog = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
@@ -535,14 +541,35 @@ namespace HelloWorld
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Header = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                             Div_Model_Content_Header.Attributes.Add("class", "modal-header");
                             Div_Model_Content_Header.ID = "myModalContentHeader" + count + dt.DB_NAME;
-                            Div_Model_Content_Header.InnerHtml = "<h4 class=\"modal-title\">" + dt.DB_NAME + "Details" + "</h4><button type=\"button\" class=\"close\" data-dismiss=\"modal\">×</button>";
+                            Div_Model_Content_Header.InnerHtml = "<h4 class=\"modal-title\">" + dt.DB_NAME + " Details" + "</h4><button type=\"button\" class=\"close\" data-dismiss=\"modal\">×</button>";
                             Div_Model_Content.Controls.Add(Div_Model_Content_Header);
 
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Body = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                             Div_Model_Content_Body.Attributes.Add("class", "modal-body");
                             Div_Model_Content_Body.ID = "myModalContentBody" + count + dt.DB_NAME;
-                            Div_Model_Content_Body.InnerHtml = "Details..";
+                            Div_Model_Content_Body.InnerHtml = "<table class=\"table\" style=\"width:100%\"><tr class=\"table-light\"><td>Database ID</td><td>" + dt.DB_ID + "</td></tr><tr><td>Database Name</td><td>" + dt.DB_NAME + "</td></tr><tr><td>Environment ID</td><td>" + dt.DB_ENV_ID + "</td></tr><tr><td>Server IP</td><td>" + dt.DB_SERVER_IP + "</td></tr><tr><td>Server Name</td><td>" + dt.DB_SERVER_NAME + "</td></tr><tr><td>Server Instance</td><td>" + dt.DB_SERVER_INSTANCE + "</td></tr><tr><td>Login</td><td>" + dt.DB_SERVER_LOGIN + "</td></tr><tr><td>Password</td><td>" + dt.DB_SERVER_PASSWORD + "</td></tr><tr><td>Database Running Port</td><td>" + dt.DB_SERVER_PORT + "</td></tr><tr><td>Server Operating System</td><td>" + dt.DB_SERVER_OS + "</td></tr><tr><td>Server Operating System Version</td><td>" + dt.DB_SERVER_OS_BUILD + "</td></tr><tr><td>Server OS 32 or 64 Bit</td><td>" + dt.DB_SERVER_REGISTER_TYPE + "</td></tr><tr><td>Server Physical or Virtual</td><td>" + dt.DB_SERVER_VIRTUALIZATION + "</td></tr><tr><td>Server Memory</td><td>" + dt.DB_SERVER_MEMORY + "</td></tr><tr><td>Server Processor</td><td>" + dt.DB_SERVER_PROCESSOR + "</td></tr><tr><td>Is Administrative Database</td><td>" + dt.DB_SERVER_ADMINISTRATOR + "</td></tr><tr><td>Database Directory Location</td><td>" + dt.DB_DIRECTORY_LOCATION + "</td></tr><tr><td>Database MDF File Location</td><td>" + dt.DB_MDF_FILE_LOCATION + "</td></tr><tr><td>Database LDF File Location</td><td>" + dt.DB_LDF_FILE_LOCATION + "</td></tr><tr><td>Database MDF File Size</td><td>" + dt.DB_MDF_FILE_SIZE + "</td></tr><tr><td>Database LDF File Size</td><td>" + dt.DB_LDF_FILE_SIZE + "</td></tr><tr><td>Database Last Backup Date</td><td>" + dt.DB_LAST_BACKUP_DATE + "</td></tr><tr><td>Database Last Restored Date</td><td>" + dt.DB_LAST_RESTORE_DATE + "</td></tr><tr><td>Database Server Dependency</td><td>" + dt.DB_SERVER_DEPENDENCY + "</td></tr><tr><td>Database Vendor ID</td><td>" + dt.DB_VENDER_ID + "</td></tr><tr><td>Database Vendor Name</td><td>" + dt.DB_VENDER_NAME + "</td></tr><tr><td>Database Vendor Description</td><td>" + dt.DB_VENDER_DESC + "</td></tr><tr><td>Database Vendor Image Source</td><td>" + dt.DB_VENDER_IMAGE_SRC + "</td></tr><tr><td>Database Hash</td><td>" + dt.DB_HASH + "</td></tr></table>";
+                            //Div_Model_Content_Body.InnerHtml = "<tr class=\"table-light\"><td>Database ID</td><td>" + dt.DB_ID + "</td></tr>" +
+                            //                                   "<tr class=\"table-light\"><td>Database Name</td><td>" + dt.DB_NAME + "</td></tr>";
                             Div_Model_Content.Controls.Add(Div_Model_Content_Body);
+
+                            //System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Body_Container = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            //Div_Model_Content_Body_Container.Attributes.Add("class", "container");
+                            //Div_Model_Content_Body_Container.ID = "myModalContentBodyContainer" + count + dt.DB_NAME;
+                            ////Div_Model_Content_Body.InnerHtml = "";
+                            //Div_Model_Content_Body.Controls.Add(Div_Model_Content_Body_Container);
+
+                            //System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Body_Container_Table = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            //Div_Model_Content_Body_Container_Table.Attributes.Add("class", "table");
+                            //Div_Model_Content_Body_Container_Table.ID = "myModalContentBodyContainerTable" + count + dt.DB_NAME;
+                            ////Div_Model_Content_Body.InnerHtml = "";
+                            //Div_Model_Content.Controls.Add(Div_Model_Content_Body_Container_Table);
+
+                            //System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Body_Container_Table_tbody = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            //Div_Model_Content_Body_Container_Table_tbody.Attributes.Add("class", "tbody");
+                            //Div_Model_Content_Body_Container_Table_tbody.ID = "myModalContentBodyContainerTabletbody" + count + dt.DB_NAME;
+                            //Div_Model_Content_Body_Container_Table_tbody.InnerHtml = "<tr class=\"table-light\"><td>Database ID</td><td>"+dt.DB_ID+"</td></tr>" +
+                            //                                                         "<tr class=\"table-light\"><td>Database Name</td><td>" + dt.DB_NAME + "</td></tr>";
+                            //Div_Model_Content.Controls.Add(Div_Model_Content_Body_Container_Table_tbody);
 
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Footer = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                             Div_Model_Content_Footer.Attributes.Add("class", "modal-footer");
@@ -554,7 +581,7 @@ namespace HelloWorld
                             //Model End
 
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
-                            Div_DataSource_Element.Attributes.Add("class", "card bg-light");
+                            Div_DataSource_Element.Attributes.Add("class", "card bg-primary text-white");
                             Div_DataSource_Element.ID = "Div_DataSource_Element" + count + dt.DB_NAME;
                             Div_DataSource_Element.Style.Add("padding-top", "10px");
                             Div_DataSource_Element.Style.Add("padding-left", "5px");
@@ -578,7 +605,7 @@ namespace HelloWorld
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_1 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                             Div_DataSource_Element_Child_Col_1.Attributes.Add("class", "col");
                             Div_DataSource_Element_Child_Col_1.ID = "Div_DataSource_Element_Child_Col_1" + count + dt.DB_NAME;
-                            Div_DataSource_Element_Child_Col_1.InnerHtml = "<img ID=\"Image" + count + "\" runat=\"server\" src=\""+dt.MDW_VENDER_IMAGE_SRC+"\" Width=\"60\" Height=\"60\" style=\"margin:5px;\" />";
+                            Div_DataSource_Element_Child_Col_1.InnerHtml = "<img ID=\"Image" + count + "\" runat=\"server\" src=\""+dt.DB_VENDER_IMAGE_SRC+"\" Width=\"100\" Height=\"70\" style=\"margin:5px;\" />";
                             Div_DataSource_Element_Child_Row_1.Controls.Add(Div_DataSource_Element_Child_Col_1);
 
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_2 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
@@ -590,7 +617,7 @@ namespace HelloWorld
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_2 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                             Div_DataSource_Element_Child_Col_2.Attributes.Add("class", "col");
                             Div_DataSource_Element_Child_Col_2.ID = "Div_DataSource_Element_Child_Col_2" + count + dt.DB_NAME;
-                            Div_DataSource_Element_Child_Col_2.InnerHtml = "<p class=\"card-text\">"+dt.DB_NAME+"</p>";
+                            Div_DataSource_Element_Child_Col_2.InnerHtml = "<p class=\"card-text\" style=\"font-weight:bold\">"+dt.DB_NAME+"</p>";
                             Div_DataSource_Element_Child_Row_2.Controls.Add(Div_DataSource_Element_Child_Col_2);
 
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_3 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
@@ -602,7 +629,7 @@ namespace HelloWorld
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_3 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                             Div_DataSource_Element_Child_Col_3.Attributes.Add("class", "col");
                             Div_DataSource_Element_Child_Col_3.ID = "Div_DataSource_Element_Child_Col_3" + count + dt.DB_NAME;
-                            Div_DataSource_Element_Child_Col_3.InnerHtml = "<p class=\"card-text\" style=\"color:silver;font-size:14px;\">"+dt.DB_SERVER_DEPENDENCY+"</p>";
+                            Div_DataSource_Element_Child_Col_3.InnerHtml = "<p class=\"card-text\" style=\"color:white;font-size:12px;font-weight:italic\">"+dt.TYPE+"</p>";
                             Div_DataSource_Element_Child_Row_3.Controls.Add(Div_DataSource_Element_Child_Col_3);
 
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_4 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
@@ -614,9 +641,145 @@ namespace HelloWorld
                             System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_4 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
                             Div_DataSource_Element_Child_Col_4.Attributes.Add("class", "col");
                             Div_DataSource_Element_Child_Col_4.ID = "Div_DataSource_Element_Child_Col_4" + count + dt.DB_NAME;
-                            Div_DataSource_Element_Child_Col_4.InnerHtml = "<button id=\"btnExpandExpert" + count + dt.DB_NAME + "\" type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#MainContent_myModal" + count + dt.DB_NAME + "\" >View Details</button>";
+                            Div_DataSource_Element_Child_Col_4.InnerHtml = "<button id=\"btnExpandExpert" + count + dt.DB_NAME.Replace(" ","") + "\" type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#MainContent_myModal" + count + dt.DB_NAME.Replace(" ","") + "\" >View Details</button>";
                             Div_DataSource_Element_Child_Row_4.Controls.Add(Div_DataSource_Element_Child_Col_4);
                         }
+
+                        #endregion
+
+                        #region Middleware Logic
+
+                        // Adding Middleware Logic
+
+                        foreach (var dt in Mdw_DataSources)
+                        {
+                            //Create Model
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Fade = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Fade.Attributes.Add("class", "modal fade");
+                            Div_Model_Fade.Attributes.Add("data-backdrop", "static");
+                            Div_Model_Fade.Attributes.Add("data-keyboard", "false");
+                            Div_Model_Fade.ID = "myModal" + count + dt.MDW_NAME.Replace(" ", "");
+                            Div_Collapse.Controls.Add(Div_Model_Fade);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Dialog = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Dialog.Attributes.Add("class", "modal-dialog");
+                            Div_Model_Dialog.ID = "myModalDialog" + count + dt.MDW_NAME;
+                            Div_Model_Fade.Controls.Add(Div_Model_Dialog);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Content.Attributes.Add("class", "modal-content");
+                            Div_Model_Content.ID = "myModalContent" + count + dt.MDW_NAME;
+                            Div_Model_Dialog.Controls.Add(Div_Model_Content);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Header = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Content_Header.Attributes.Add("class", "modal-header");
+                            Div_Model_Content_Header.ID = "myModalContentHeader" + count + dt.MDW_NAME;
+                            Div_Model_Content_Header.InnerHtml = "<h4 class=\"modal-title\">" + dt.MDW_NAME + " Details" + "</h4><button type=\"button\" class=\"close\" data-dismiss=\"modal\">×</button>";
+                            Div_Model_Content.Controls.Add(Div_Model_Content_Header);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Body = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Content_Body.Attributes.Add("class", "modal-body");
+                            Div_Model_Content_Body.ID = "myModalContentBody" + count + dt.MDW_NAME;
+                            Div_Model_Content_Body.InnerHtml = "<table class=\"table\" style=\"width:100%\"><tr class=\"table-light\"><td>Database ID</td><td>" + dt.MDW_ID + "</td></tr><tr><td>Middleware Name</td><td>" + dt.MDW_NAME + "</td></tr><tr><td>Environment ID</td><td>" + dt.MDW_ENV_ID + "</td></tr><tr><td>Server IP</td><td>" + dt.MDW_SERVER_IP + "</td></tr><tr><td>Server Name</td><td>" + dt.MDW_SERVER_NAME + "</td></tr><tr><td>Middleware Access key</td><td>" + dt.MDW_ACCESS_KEY + "</td></tr><tr><td>Login</td><td>" + dt.MDW_SERVER_LOGIN + "</td></tr><tr><td>Password</td><td>" + dt.MDW_SERVER_PASSWORD + "</td></tr><tr><td>Database Running Port</td><td>" + dt.MDW_SERVER_PORT + "</td></tr><tr><td>Server Operating System</td><td>" + dt.MDW_SERVER_OS + "</td></tr><tr><td>Server Operating System Version</td><td>" + dt.MDW_SERVER_OS_BUILD + "</td></tr><tr><td>Server OS 32 or 64 Bit</td><td>" + dt.MDW_SERVER_REGISTER_TYPE + "</td></tr><tr><td>Server Physical or Virtual</td><td>" + dt.MDW_SERVER_VIRTUALIZATION + "</td></tr><tr><td>Server Memory</td><td>" + dt.MDW_SERVER_MEMORY + "</td></tr><tr><td>Server Processor</td><td>" + dt.MDW_SERVER_PROCESSOR + "</td></tr><tr><td>Middleware Type</td><td>" + dt.MDW_TYPE + "</td></tr><tr><td>Directory Location</td><td>" + dt.MDW_DIRECTORY_LOCATION + "</td></tr><tr><td>Middleware Hyper Link</td><td>" + dt.MDW_LINK + "</td></tr><tr><td>Middleware Database MDF File Location</td><td>" + dt.MDW_MDF_FILE_LOCATION + "</td></tr><tr><td>Middleware Database LDF File Location</td><td>" + dt.MDW_LDF_FILE_LOCATION + "</td></tr><tr><td>Middleware Database MDF File Size</td><td>" + dt.MDW_MDF_FILE_SIZE + "</td></tr><tr><td>Middleware Database LDF File Size</td><td>" + dt.MDW_LDF_FILE_SIZE + "</td></tr><tr><td>Middleware Database Last Backup Date</td><td>" + dt.MDW_DATABASE_LAST_BACKUP_DATE + "</td></tr><tr><td>Middleware Database Last Restored Date</td><td>" + dt.MDW_DATABASE_LAST_RESTORE_DATE + "</td></tr><tr><td>Middleware Server Dependency</td><td>" + dt.MDW_SERVER_DEPENDENCY + "</td></tr><tr><td>Middleware Vendor ID</td><td>" + dt.MDW_VENDER_ID + "</td></tr><tr><td>Middleware Vendor Name</td><td>" + dt.MDW_VENDER_NAME + "</td></tr><tr><td>Middleware Vendor Description</td><td>" + dt.MDW_VENDER_DESC + "</td></tr><tr><td>Database Vendor Image Source</td><td>" + dt.MDW_VENDER_IMAGE_SRC + "</td></tr><tr><td>Middleware Web Server</td><td>" + dt.MDW_WEB_SERVER + "</td></tr><tr><td>Middleware Web Server Version</td><td>" + dt.MDW_WEB_SERVER_VERSION + "</td></tr><tr><td>Middleware Documentation Link</td><td>" + dt.MDW_DOCUMENTATION_LOCATION + "</td></tr><tr><td>Middleware Directory Hash Value</td><td>" + dt.MDW_HASH + "</td></tr></table>";
+                            //Div_Model_Content_Body.InnerHtml = "<tr class=\"table-light\"><td>Database ID</td><td>" + dt.DB_ID + "</td></tr>" +
+                            //                                   "<tr class=\"table-light\"><td>Database Name</td><td>" + dt.DB_NAME + "</td></tr>";
+                            Div_Model_Content.Controls.Add(Div_Model_Content_Body);
+
+                            //System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Body_Container = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            //Div_Model_Content_Body_Container.Attributes.Add("class", "container");
+                            //Div_Model_Content_Body_Container.ID = "myModalContentBodyContainer" + count + dt.DB_NAME;
+                            ////Div_Model_Content_Body.InnerHtml = "";
+                            //Div_Model_Content_Body.Controls.Add(Div_Model_Content_Body_Container);
+
+                            //System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Body_Container_Table = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            //Div_Model_Content_Body_Container_Table.Attributes.Add("class", "table");
+                            //Div_Model_Content_Body_Container_Table.ID = "myModalContentBodyContainerTable" + count + dt.DB_NAME;
+                            ////Div_Model_Content_Body.InnerHtml = "";
+                            //Div_Model_Content.Controls.Add(Div_Model_Content_Body_Container_Table);
+
+                            //System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Body_Container_Table_tbody = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            //Div_Model_Content_Body_Container_Table_tbody.Attributes.Add("class", "tbody");
+                            //Div_Model_Content_Body_Container_Table_tbody.ID = "myModalContentBodyContainerTabletbody" + count + dt.DB_NAME;
+                            //Div_Model_Content_Body_Container_Table_tbody.InnerHtml = "<tr class=\"table-light\"><td>Database ID</td><td>"+dt.DB_ID+"</td></tr>" +
+                            //                                                         "<tr class=\"table-light\"><td>Database Name</td><td>" + dt.DB_NAME + "</td></tr>";
+                            //Div_Model_Content.Controls.Add(Div_Model_Content_Body_Container_Table_tbody);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_Model_Content_Footer = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_Model_Content_Footer.Attributes.Add("class", "modal-footer");
+                            Div_Model_Content_Footer.ID = "myModalContentFooter" + count + dt.MDW_NAME;
+                            Div_Model_Content_Footer.InnerHtml = "<button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Close</button>";
+                            Div_Model_Content.Controls.Add(Div_Model_Content_Footer);
+
+
+                            //Model End
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element.Attributes.Add("class", "card bg-primary text-white");
+                            Div_DataSource_Element.ID = "Div_DataSource_Element" + count + dt.MDW_NAME;
+                            Div_DataSource_Element.Style.Add("padding-top", "10px");
+                            Div_DataSource_Element.Style.Add("padding-left", "5px");
+                            Div_DataSource_Element.Style.Add("padding-right", "5px");
+                            Div_DataSource_Element.Style.Add("padding-bottom", "10px");
+                            //Div_DataSource_Element.InnerHtml = "<p>DataSources</p>";
+                            Div_DataSource_Element_Container.Controls.Add(Div_DataSource_Element);
+
+                            //System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Container_Children = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            //Div_DataSource_Element_Container_Children.Attributes.Add("class", "container-fluid");
+                            //Div_DataSource_Element_Container_Children.ID = "Div_DataSource_Element_Container_Children" + count + i;
+                            ////Div_DataSource_Element.InnerHtml = "<p>DataSources</p>";
+                            //Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Container_Children);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_1 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Row_1.Attributes.Add("class", "row");
+                            Div_DataSource_Element_Child_Row_1.ID = "Div_DataSource_Element_Child_Row_1" + count + dt.MDW_NAME;
+                            //Div_DataSource_Element.InnerHtml = "<p>DataSources</p>";
+                            Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Child_Row_1);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_1 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Col_1.Attributes.Add("class", "col");
+                            Div_DataSource_Element_Child_Col_1.ID = "Div_DataSource_Element_Child_Col_1" + count + dt.MDW_NAME;
+                            Div_DataSource_Element_Child_Col_1.InnerHtml = "<img ID=\"Image" + count + "\" runat=\"server\" src=\"" + dt.MDW_VENDER_IMAGE_SRC + "\" Width=\"100\" Height=\"70\" style=\"margin:5px;\" />";
+                            Div_DataSource_Element_Child_Row_1.Controls.Add(Div_DataSource_Element_Child_Col_1);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_2 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Row_2.Attributes.Add("class", "row");
+                            Div_DataSource_Element_Child_Row_2.ID = "Div_DataSource_Element_Child_Row_2" + count + dt.MDW_NAME;
+                            //Div_DataSource_Element.InnerHtml = "<p class="card-text">DataSources</p>";
+                            Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Child_Row_2);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_2 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Col_2.Attributes.Add("class", "col");
+                            Div_DataSource_Element_Child_Col_2.ID = "Div_DataSource_Element_Child_Col_2" + count + dt.MDW_NAME;
+                            Div_DataSource_Element_Child_Col_2.InnerHtml = "<p class=\"card-text\" style=\"font-weight:bold\">" + dt.MDW_NAME + "</p>";
+                            Div_DataSource_Element_Child_Row_2.Controls.Add(Div_DataSource_Element_Child_Col_2);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_3 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Row_3.Attributes.Add("class", "row");
+                            Div_DataSource_Element_Child_Row_3.ID = "Div_DataSource_Element_Child_Row_3" + count + dt.MDW_NAME;
+                            //Div_DataSource_Element.InnerHtml = "<p class=\"card-text\">"++"</p>";
+                            Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Child_Row_3);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_3 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Col_3.Attributes.Add("class", "col");
+                            Div_DataSource_Element_Child_Col_3.ID = "Div_DataSource_Element_Child_Col_3" + count + dt.MDW_NAME;
+                            Div_DataSource_Element_Child_Col_3.InnerHtml = "<p class=\"card-text\" style=\"color:white;font-size:12px;font-weight:italic\">" + dt.TYPE + "</p>";
+                            Div_DataSource_Element_Child_Row_3.Controls.Add(Div_DataSource_Element_Child_Col_3);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Row_4 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Row_4.Attributes.Add("class", "row");
+                            Div_DataSource_Element_Child_Row_4.ID = "Div_DataSource_Element_Child_Row_4" + count + dt.MDW_NAME;
+                            //Div_DataSource_Element_Child_Row_3.InnerHtml = "<p class=\"card-text\">DataSources</p>";
+                            Div_DataSource_Element.Controls.Add(Div_DataSource_Element_Child_Row_4);
+
+                            System.Web.UI.HtmlControls.HtmlGenericControl Div_DataSource_Element_Child_Col_4 = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                            Div_DataSource_Element_Child_Col_4.Attributes.Add("class", "col");
+                            Div_DataSource_Element_Child_Col_4.ID = "Div_DataSource_Element_Child_Col_4" + count + dt.MDW_NAME;
+                            Div_DataSource_Element_Child_Col_4.InnerHtml = "<button id=\"btnExpandExpert" + count + dt.MDW_NAME.Replace(" ", "") + "\" type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#MainContent_myModal" + count + dt.MDW_NAME.Replace(" ", "") + "\" >View Details</button>";
+                            Div_DataSource_Element_Child_Row_4.Controls.Add(Div_DataSource_Element_Child_Col_4);
+                        }
+
+                        #endregion
 
                     }
 

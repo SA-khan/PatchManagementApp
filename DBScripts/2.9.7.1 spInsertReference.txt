@@ -1,0 +1,50 @@
+CREATE PROC spInsertReference
+	@Guid varchar(MAX),
+	@FileName varchar(MAX),
+	@FileTitle varchar(MAX),
+	@FileDesc varchar(MAX),
+	@ClientID int,
+	@ProductID int,
+	@extension varchar(10),
+	@Path varchar(MAX),
+	@Link varchar(MAX),
+	@Type varchar(MAX),
+	@ReferenceID int,
+	@Comments varchar(MAX),
+	@Exist bit,
+	@Date date
+AS
+BEGIN
+INSERT INTO [dbo].[REFERENCES]
+           ([REF_NUMBER]
+           ,[REF_TITLE]
+           ,[REF_DESCRIPTION]
+           ,[REF_CLIENT_ID]
+           ,[REF_PRODUCT_ID]
+           ,[REF_NAME]
+           ,[REF_LOCATION]
+           ,[REF_LINK]
+           ,[REF_TYPE]
+           ,[REF_EXTENSION]
+           ,[REF_REFERENCE_ID]
+           ,[REF_REMARKS]
+           ,[REF_EXIST]
+	   ,[REF_DATE])
+     VALUES
+           (@Guid
+           ,@FileTitle
+           ,@FileDesc
+           ,@ClientID
+           ,@ProductID
+           ,@FileName
+           ,@Path
+           ,@Link
+           ,@Type
+           ,@extension
+           ,@ReferenceID
+           ,@Comments
+           ,@Exist
+	   ,@Date)
+END
+
+

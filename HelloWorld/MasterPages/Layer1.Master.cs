@@ -16,6 +16,8 @@ namespace HelloWorld.MasterPages
         Log log = new Log();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             log.DetailLog("Layer1.Master.cs", "Page_Load", STATE.INITIALIZED, "Method: Page_Load in Class: Layer1.Master.cs has Initialized.");
             Debug.WriteLine(dropLanguage.SelectedItem);
 

@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -151,7 +152,7 @@
     <Content Include="ProtectedPages\DeleteUserRole.aspx" />
     <Content Include="ProtectedPages\EditClientType.aspx" />
     <Content Include="ProtectedPages\EditEnvironemt.aspx" />
-    <Content Include="ProtectedPages\EditClient.aspx" />
+    <Compile Include="ProtectedPages\EditClient.aspx" />
     <Content Include="ProtectedPages\EditRelease.aspx" />
     <Content Include="ProtectedPages\EditEnvironemtType.aspx" />
     <Content Include="ProtectedPages\EditProduct.aspx" />
@@ -288,6 +289,7 @@
     </Compile>
     <Compile Include="App_Code\Patch.cs" />
     <Compile Include="App_Code\Product.cs" />
+    <Compile Include="App_Code\ReferenceDoc.cs" />
     <Compile Include="App_Code\User.cs" />
     <Compile Include="App_Code\UserRole.cs" />
     <Compile Include="Default.aspx.cs">

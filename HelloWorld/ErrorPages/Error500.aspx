@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Error500.aspx.cs" Inherits="HelloWorld.ErrorPages.Error500" %>
 <!DOCTYPE html>
 <html lang="ur">
-<head>
+<head runat="server">
   <title>Error 500</title>
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -1,12 +1,10 @@
-﻿<%@ Page Title="Portal - Application Overview" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Live.aspx.cs" Inherits="HelloWorld.Live" EnableTheming = "False" StylesheetTheme="" Theme="" %>
+﻿<%@ Page Title="Portal - Application Overview" Language="C#" MasterPageFile="~/MasterPages/Layer1.Master" AutoEventWireup="true" CodeBehind="Live.aspx.cs" Inherits="HelloWorld.Live" EnableTheming = "False" StylesheetTheme="" Theme="" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-
-    <link href="Images/icon.ico" rel="Shortcut Icon" />
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    
-    <asp:Table ID="Table1" runat="server" Width="100%" Height="30%" style="border: 1px solid lightgray;padding:2px;background-color:lightgray;">
+    <br />
+    <br />
+    <asp:Table ID="Table1" runat="server" Width="100%" style="margin-top:5px;border: 1px solid lightgray;padding:2px;background-color:lightgray;">
             <asp:TableRow BackColor="LightGray" >
                     <asp:TableCell ColumnSpan="2" Font-Size="Medium" Font-Italic="false" ForeColor="Black" style="padding-left:10px;padding-right:10px;border-color:Lightgray;">
     
@@ -74,7 +72,7 @@
             </asp:TableRow>
         </asp:Table>
     
-    <asp:Panel ID="Panel1" runat="server" ScrollBars="Both" Height="430px">
+    <asp:Panel ID="Panel1" runat="server">
 
     <asp:Table ID="tblInfo" runat="server" Width="100%" Height="35%" GridLines="Both" Font-Size="Medium">
    

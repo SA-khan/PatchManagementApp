@@ -1,0 +1,17 @@
+CREATE TABLE [dbo].[REFERENCES](
+	[REF_ID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[REF_NUMBER] [varchar](MAX) NULL,
+	[REF_TITLE] [varchar](50) NULL,
+	[REF_DESCRIPTION] [varchar](max) NULL,
+	[REF_CLIENT_ID] [int] NULL FOREIGN KEY REFERENCES ClientDetail(ClientID),
+	[REF_PRODUCT_ID] [int] NULL FOREIGN KEY REFERENCES Products(ProductID),
+	[REF_NAME] [varchar](max) NULL,
+	[REF_LOCATION] [varchar](max) NULL,
+	[REF_LINK] [varchar](max) NULL,
+	[REF_TYPE] [varchar](20) NULL,
+	[REF_EXTENSION] [varchar](20),
+	[REF_REFERENCE_ID] [varchar](max) NULL,
+	[REF_REMARKS] [varchar](max) NULL,
+	[REF_EXIST] [bit] NULL,
+	[REF_DATE] [date] NULL DEFAULT getdate())
+GO

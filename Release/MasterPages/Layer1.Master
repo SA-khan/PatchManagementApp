@@ -26,11 +26,16 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        
         <script type="text/javascript">
             function mySearchFunction() {
-                window.location = 'Search.aspx?param=' + document.getElementById('txtSearch').value;
-                return false;
+                var param = document.getElementById('txtSearch').value;
+                if (param != "") {
+                    window.location = 'Search.aspx?param=' + param;
+                    return false;
+                }
+                else {
+                    alert("Search Textbox cannot be Empty..");
+                }
             }
         </script>
 

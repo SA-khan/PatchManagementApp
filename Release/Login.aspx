@@ -277,12 +277,12 @@ input[type=text]:placeholder {
   padding: 12px 16px;
   font-size: 16px;
   cursor: pointer;
-}--%>
+}
 
 /* Darker background on mouse-over */
 .btn:hover {
-  background-color: RoyalBlue;
-}
+  background-color: RoyalBlue; 
+}--%>
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -342,7 +342,8 @@ input[type=text]:placeholder {
     </asp:Table>
     </div>
     </div>
-     --%>          
+     --%>     
+     <br />     
              <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
@@ -350,22 +351,26 @@ input[type=text]:placeholder {
     <!-- Icon -->
     <div class="fadeIn first">
         <br />
-      <img src="\Images\user.png" class="rounded-circle" id="icon" alt="User Icon"  width="400" height="150" />
+      <img src="\Images\user.png" class="rounded-circle" id="icon" alt="User Icon"  width="380" height="130" />
     </div>
 
     <!-- Login Form -->
     <form>
       <asp:TextBox ID="txtLogin" runat="server" class="fadeIn second" name="login" placeholder="login"></asp:TextBox>
-      <asp:TextBox ID="txtPassword" runat="server" class="fadeIn third" name="login" placeholder="password"></asp:TextBox>
-      <asp:Button ID="btnLogin" runat="server" class="fadeIn fourth" Text="Log In" />
+      <asp:TextBox ID="txtPassword" runat="server" class="fadeIn third" name="login" placeholder="password"></asp:TextBox> <br />
+      <asp:CheckBox ID="CheckRememberMe" runat="server" Checked="true" style="text-align:left;font-family:Tahoma;font-size:16;" Text=" &nbsp;Remember Me" /> <br />
+      <asp:Button ID="btnLogin" runat="server" class="fadeIn fourth" Text="Log In" onclick="btnLogin_Click" />
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
+      <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
       <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
 
   </div>
 </div>         
+              
+              
                 
 </asp:Content>

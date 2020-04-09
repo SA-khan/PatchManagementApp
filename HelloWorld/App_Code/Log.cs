@@ -25,8 +25,8 @@ namespace HelloWorld.App_Code
 
     public class Log
     {
-        public string DetailLogPath = "E:\\Logs\\DetailLogs\\";
-        public string ErrorLogPath = "E:\\Logs\\ErrorLogs\\";
+        public string DetailLogPath = "Logs\\DetailLogs\\";
+        public string ErrorLogPath = System.Environment.CurrentDirectory+"\\Logs\\ErrorLogs\\";
         public void DetailLog(string className, string methodName, STATE state, string text)
         {
             //Debug.WriteLine("Log Location: " + System.Environment.CurrentDirectory);

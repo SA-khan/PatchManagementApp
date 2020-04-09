@@ -42,7 +42,7 @@
         <Fields>
             <asp:TemplateField HeaderText="Client ID" SortExpression="ClientID">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtClientID" runat="server" disabled Text='<%# Bind("ClientID") %>' EnableViewState=true ViewStateMode="Enabled"></asp:TextBox>
+                    <asp:TextBox ID="txtClientID" runat="server" disabled="disabled" Text='<%# Bind("ClientID") %>' EnableViewState="true" ViewStateMode="Enabled"></asp:TextBox>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtClientID" runat="server" Text='<%# Bind("ClientID") %>'></asp:TextBox>

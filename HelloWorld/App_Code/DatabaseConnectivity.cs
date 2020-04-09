@@ -2141,7 +2141,7 @@ namespace HelloWorld.App_Code
             {
                 using (SqlConnection myConnection = new SqlConnection(con))
                 {
-                    string oString = "[dbo].[spGetAllDataSourceDesc]";
+                    string oString = "[dbo].[spGetDatabaseDataSourceDesc]";
                     SqlCommand oCmd = new SqlCommand(oString, myConnection);
 
                     oCmd.CommandType = CommandType.StoredProcedure;
@@ -2152,12 +2152,40 @@ namespace HelloWorld.App_Code
                         while (oReader.Read())
                         {
                             DataSource_Database item = new DataSource_Database();
-                            item.DB_SERVER_DEPENDENCY = oReader["TYPE"].ToString();
+                            item.TYPE = oReader["TYPE"].ToString();
                             item.DB_ID = Convert.ToInt32(oReader["DB_ID"].ToString());
                             item.DB_ENV_ID = oReader["DB_ENV_ID"].ToString();
                             item.DB_NAME = oReader["DB_NAME"].ToString();
-                            item.MDW_VENDER_IMAGE_SRC = oReader["VEN_IMAGE_SRC"].ToString();
+                            item.DB_LAST_RESTORE_DATE = oReader["DB_LAST_RESTORE_DATE"].ToString();
+                            item.DB_LAST_BACKUP_DATE = oReader["DB_LAST_BACKUP_DATE"].ToString();
+                            item.DB_SERVER_NAME = oReader["DB_SERVER_NAME"].ToString();
+                            item.DB_SERVER_IP = oReader["DB_SERVER_IP"].ToString();
+                            item.DB_SERVER_INSTANCE = oReader["DB_SERVER_INSTANCE"].ToString();
+                            item.DB_SERVER_LOGIN = oReader["DB_SERVER_LOGIN"].ToString();
+                            item.DB_SERVER_PASSWORD = oReader["DB_SERVER_PASSWORD"].ToString();
+                            item.DB_TYPE = oReader["DB_TYPE"].ToString();
+                            item.DB_SERVER_ADMINISTRATOR = oReader["DB_IS_ADMINISTRATIVE"].ToString();
+                            item.DB_IS_DISTRIBUTED = oReader["DB_IS_DISTRIBUTE_DDBMS"].ToString();
+                            item.DB_SERVER_PORT = oReader["DB_SERVER_PORT"].ToString();
+                            item.DB_SERVER_OS = oReader["DB_SERVER_OS"].ToString();
+                            item.DB_SERVER_OS_BUILD = oReader["DB_SERVER_OS_BUILD"].ToString();
+                            item.DB_SERVER_REGISTER_TYPE = oReader["DB_SERVER_REGISTER_TYPE"].ToString();
+                            item.DB_SERVER_VIRTUALIZATION = oReader["DB_SERVER_VIRTUALIZATION"].ToString();
+                            item.DB_SERVER_MEMORY = oReader["DB_SERVER_MEMORY"].ToString();
+                            item.DB_SERVER_PROCESSOR = oReader["DB_SERVER_PROCESSOR"].ToString();
+                            item.DB_DIRECTORY_LOCATION = oReader["DB_DIRECTORY_LOCATION"].ToString();
+                            item.DB_MDF_FILE_LOCATION = oReader["DB_MDF_FILE_LOCATION"].ToString();
+                            item.DB_MDF_FILE_SIZE = oReader["DB_MDF_FILE_SIZE"].ToString();
+                            item.DB_LDF_FILE_LOCATION = oReader["DB_LDF_FILE_LOCATION"].ToString();
+                            item.DB_LDF_FILE_SIZE = oReader["DB_LDF_FILE_SIZE"].ToString();
+                            item.DB_HASH = oReader["DB_HASH"].ToString();
+                            item.DB_SERVER_DEPENDENCY = oReader["DB_SERVER_DEPENDENCY"].ToString();
+                            item.DB_VENDER_ID= oReader["DB_VENDER_ID"].ToString();
+                            item.DB_VENDER_NAME = oReader["VEN_NAME"].ToString();
+                            item.DB_VENDER_DESC = oReader["VEN_DESC"].ToString();
+                            item.DB_VENDER_IMAGE_SRC = oReader["VEN_IMAGE_SRC"].ToString();
                             resdatasourceDatabase.Add(item);
+
                         }
 
                         myConnection.Close();
@@ -2183,6 +2211,205 @@ namespace HelloWorld.App_Code
         }
 
         // Get Database Datasource Desc End
+
+        // Get Middleware Datasource Desc Start
+
+        public List<DataSource_Middleware> getAllMiddlewareDataSourceDesc(int EnvironmentID)
+        {
+            log.DetailLog("DatabaseConnectivity.cs", "getAllMiddlewareDataSourceDesc", STATE.INITIALIZED, "Method: getAllMiddlewareDataSourceDesc in Class: DatabaseConnectivity is Initialized.");
+            List<DataSource_Middleware> resdatasourceDatabase = new List<DataSource_Middleware>();
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spGetMiddlewareDataSourceDesc]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    oCmd.Parameters.AddWithValue("@ENV_ID", EnvironmentID);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            DataSource_Middleware item = new DataSource_Middleware();
+                            item.TYPE = oReader["TYPE"].ToString();
+                            item.MDW_ID = Convert.ToInt32(oReader["MDW_ID"].ToString());
+                            item.MDW_ENV_ID = oReader["MDW_ENV_ID"].ToString();
+                            item.MDW_NAME = oReader["MDW_NAME"].ToString();
+                            item.MDW_TYPE = oReader["MDW_TYPE"].ToString();
+                            item.MDW_LINK = oReader["MDW_LINK"].ToString();
+                            item.MDW_ACCESS_KEY = oReader["MDW_ACCESS_KEY"].ToString();
+                            item.MDW_WEB_SERVER = oReader["MDW_WEB_SERVER"].ToString();
+                            item.MDW_WEB_SERVER_VERSION = oReader["MDW_WEB_SERVER_VERSION"].ToString();
+                            item.MDW_DIRECTORY_LOCATION = oReader["MDW_DIRECTORY_LOCATION"].ToString();
+                            item.MDW_DOCUMENTATION_LOCATION= oReader["MDW_DOCUMENTATION_LOCATION"].ToString();
+                            item.MDW_SERVER_IP = oReader["MDW_SERVER_IP"].ToString();
+                            item.MDW_SERVER_PORT = oReader["MDW_SERVER_PORT"].ToString();
+                            item.MDW_SERVER_NAME= oReader["MDW_SERVER_NAME"].ToString();
+                            item.MDW_SERVER_LOGIN = oReader["MDW_SERVER_LOGIN"].ToString();
+                            item.MDW_SERVER_PASSWORD = oReader["MDW_SERVER_PASSWORD"].ToString();
+                            item.MDW_SERVER_OS = oReader["MDW_SERVER_OS"].ToString();
+                            item.MDW_SERVER_OS_BUILD = oReader["MDW_SERVER_OS_BUILD"].ToString();
+                            item.MDW_SERVER_REGISTER_TYPE = oReader["MDW_SERVER_REGISTER_TYPE"].ToString();
+                            item.MDW_SERVER_VIRTUALIZATION = oReader["MDW_SERVER_VIRTUALIZATION"].ToString();
+                            item.MDW_SERVER_MEMORY = oReader["MDW_SERVER_MEMORY"].ToString();
+                            item.MDW_SERVER_PROCESSOR = oReader["MDW_SERVER_PROCESSOR"].ToString();
+                            item.MDW_DATABASE_NAME = oReader["MDW_DATABASE_NAME"].ToString();
+                            item.MDW_DATABASE_DIRECTORY_LOCATION = oReader["MDW_DATABASE_DIRECTORY_LOCATION"].ToString();
+                            item.MDW_DATABASE_LAST_RESTORE_DATE = oReader["MDW_DATABASE_LAST_RESTORE_DATE"].ToString();
+                            item.MDW_DATABASE_LAST_BACKUP_DATE = oReader["MDW_DATABASE_LAST_BACKUP_DATE"].ToString();
+                            item.MDW_MDF_FILE_LOCATION = oReader["MDW_MDF_FILE_LOCATION"].ToString();
+                            item.MDW_MDF_FILE_SIZE = oReader["MDW_MDF_FILE_SIZE"].ToString();
+                            item.MDW_LDF_FILE_LOCATION = oReader["MDW_LDF_FILE_LOCATION"].ToString();
+                            item.MDW_LDF_FILE_SIZE = oReader["MDW_LDF_FILE_SIZE"].ToString();
+                            item.MDW_HASH = oReader["MDW_DIRECTORY_HASH"].ToString();
+                            item.MDW_SERVER_DEPENDENCY = oReader["MDW_SERVER_DEPENDENCY"].ToString();
+                            item.MDW_VENDER_ID = oReader["MDW_VENDER_ID"].ToString();
+                            item.MDW_VENDER_NAME= oReader["VEN_NAME"].ToString();
+                            item.MDW_VENDER_DESC = oReader["VEN_DESC"].ToString();
+                            item.MDW_VENDER_IMAGE_SRC = oReader["VEN_IMAGE_SRC"].ToString();
+                            resdatasourceDatabase.Add(item);
+                        }
+
+                        myConnection.Close();
+                    }
+                }
+                log.DetailLog("DatabaseConnectivity.cs", "getAllMiddlewareDataSourceDesc", STATE.COMPLETED, "Method: getAllMiddlewareDataSourceDesc in Class: DatabaseConnectivity has completed its execution Successfully.");
+                return resdatasourceDatabase;
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine("DataConnectivity SQL. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getAllMiddlewareDataSourceDesc", ExceptionType.SQLException, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getAllMiddlewareDataSourceDesc", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DataConnectivity. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getAllMiddlewareDataSourceDesc", ExceptionType.Exception, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getAllMiddlewareDataSourceDesc", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+        }
+
+        // Get Middleware Datasource Desc End
+
+        // Add A Reference Start
+
+        public int insertReference(string GUID, string FileName, string FileTitle, string FileDesc, int ClientID, int ProductID, string Extension, string Path, string Link, string Type, int ReferenceID, string Comments, bool Exist, DateTime Date)
+        {
+            try
+            {
+                log.DetailLog("DatabaseConnectivity.cs", "insertReference", STATE.INITIALIZED, "Method: insertReference in Class: DatabaseConnectivity has Initialized.");
+                int result = 0;
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spInsertReference]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                    oCmd.Parameters.AddWithValue("@Guid", GUID);
+                    oCmd.Parameters.AddWithValue("@FileName", FileName);
+                    oCmd.Parameters.AddWithValue("@FileTitle", FileTitle);
+                    oCmd.Parameters.AddWithValue("@FileDesc", FileDesc);
+                    oCmd.Parameters.AddWithValue("@ClientID", ClientID);
+                    oCmd.Parameters.AddWithValue("@ProductID", ProductID);
+                    oCmd.Parameters.AddWithValue("@extension", Extension);
+                    oCmd.Parameters.AddWithValue("@Path", Path);
+                    oCmd.Parameters.AddWithValue("@Link", Link);
+                    oCmd.Parameters.AddWithValue("@Type", Type);
+                    oCmd.Parameters.AddWithValue("@ReferenceID", ReferenceID);
+                    oCmd.Parameters.AddWithValue("@Comments", Comments);
+                    oCmd.Parameters.AddWithValue("@Exist", Exist);
+                    oCmd.Parameters.AddWithValue("@Date", Date);
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    myConnection.Open();
+                    result = oCmd.ExecuteNonQuery();
+                    myConnection.Close();
+                }
+                log.DetailLog("DatabaseConnectivity.cs", "insertReference", STATE.COMPLETED, "Method: insertReference in Class: DatabaseConnectivity has completed its execution Successfully.");
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine("DataConnectivity SQL. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "insertReference", ExceptionType.SQLException, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "insertReference", STATE.INTERRUPTED, ex.Message);
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DataConnectivity. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "insertReference", ExceptionType.Exception, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "insertReference", STATE.INTERRUPTED, ex.Message);
+                return 0;
+            }
+        }
+
+        // Add a reference end
+
+        // Get Reference Desc Start
+
+        public List<ReferenceDoc> getReferencesDesc()
+        {
+            log.DetailLog("DatabaseConnectivity.cs", "getReferencesDesc", STATE.INITIALIZED, "Method: getReferencesDesc in Class: DatabaseConnectivity is Initialized.");
+            List<ReferenceDoc> resdatasourceDatabase = new List<ReferenceDoc>();
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spGetReferences]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    //oCmd.Parameters.AddWithValue("@ENV_ID", EnvironmentID);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            ReferenceDoc item = new ReferenceDoc();
+                            item.REFERENCE_ID = Convert.ToInt32(oReader["REF_ID"].ToString());
+                            item.REFERENCE_NUMBER = oReader["REF_NUMBER"].ToString();
+                            item.REFERENCE_TITLE = oReader["REF_TITLE"].ToString();
+                            item.REFERENCE_DESCRIPTION = oReader["REF_DESCRIPTION"].ToString();
+                            item.REFERENCE_CLIENT_ID = oReader["REF_CLIENT_ID"].ToString();
+                            item.REFERENCE_PRODUCT_ID = oReader["REF_PRODUCT_ID"].ToString();
+                            item.REFERENCE_NAME = oReader["REF_NAME"].ToString();
+                            item.REFERENCE_LOCATION = oReader["REF_LOCATION"].ToString();
+                            item.REFERENCE_LINK = oReader["REF_LINK"].ToString();
+                            item.REFERENCE_TYPE = oReader["REF_TYPE"].ToString();
+                            item.REFERENCE_EXTENSION = oReader["REF_EXTENSION"].ToString();
+                            item.REFERENCE_REFERENCE_ID = oReader["REF_REFERENCE_ID"].ToString();
+                            item.REFERENCE_REMARKS = oReader["REF_REMARKS"].ToString();
+                            item.REFERENCE_EXIST = oReader["REF_EXIST"].ToString();
+                            item.REFERENCE_UPLOADED_DATE = oReader["REF_DATE"].ToString();
+                            resdatasourceDatabase.Add(item);
+                        }
+
+                        myConnection.Close();
+                    }
+                }
+                log.DetailLog("DatabaseConnectivity.cs", "getReferencesDesc", STATE.COMPLETED, "Method: getReferencesDesc in Class: DatabaseConnectivity has completed its execution Successfully.");
+                return resdatasourceDatabase;
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine("DataConnectivity SQL. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getReferencesDesc", ExceptionType.SQLException, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getReferencesDesc", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DataConnectivity. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getReferencesDesc", ExceptionType.Exception, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getReferencesDesc", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+        }
+
+        // Get Reference Desc End
 
     }
 }

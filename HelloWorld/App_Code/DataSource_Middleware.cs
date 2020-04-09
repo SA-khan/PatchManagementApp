@@ -7,6 +7,7 @@ namespace HelloWorld.App_Code
 {
     public class DataSource_Middleware
     {
+        public string TYPE { get; set; }
         public int MDW_ID { get; set; }
         public string MDW_ENV_ID { get; set; }
         public string MDW_NAME { get; set; }
@@ -36,6 +37,7 @@ namespace HelloWorld.App_Code
         public string MDW_MDF_FILE_SIZE { get; set; }
         public string MDW_LDF_FILE_LOCATION { get; set; }
         public string MDW_LDF_FILE_SIZE { get; set; }
+        public string MDW_HASH { get; set; }
         public string MDW_SERVER_DEPENDENCY { get; set; }
         public string MDW_VENDER_ID { get; set; }
         public string MDW_VENDER_NAME { get; set; }
