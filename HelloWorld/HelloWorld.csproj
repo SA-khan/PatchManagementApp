@@ -134,9 +134,11 @@
     <Content Include="Logs\DetailLogs\TextFile1.txt" />
     <Content Include="Logs\ErrorLogs\TextFile1.txt" />
     <Content Include="ProtectedPages\AddClientType.aspx" />
+    <Content Include="ProtectedPages\AddDatabase.aspx" />
     <Content Include="ProtectedPages\AddEnvironment.aspx" />
     <Content Include="ProtectedPages\AddClient.aspx" />
     <Content Include="ProtectedPages\AddEnvironmentType.aspx" />
+    <Content Include="ProtectedPages\AddMiddleware.aspx" />
     <Content Include="ProtectedPages\AddRelease.aspx" />
     <Content Include="ProtectedPages\AddProduct.aspx" />
     <Content Include="ProtectedPages\AddUser.aspx" />
@@ -150,9 +152,23 @@
     <Content Include="ProtectedPages\DeleteRelease.aspx" />
     <Content Include="ProtectedPages\DeleteUser.aspx" />
     <Content Include="ProtectedPages\DeleteUserRole.aspx" />
+    <Content Include="ProtectedPages\EditClient.aspx" />
     <Content Include="ProtectedPages\EditClientType.aspx" />
     <Content Include="ProtectedPages\EditEnvironemt.aspx" />
-    <Compile Include="ProtectedPages\EditClient.aspx" />
+    <Compile Include="ProtectedPages\AddDatabase.aspx.cs">
+      <DependentUpon>AddDatabase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\AddDatabase.aspx.designer.cs">
+      <DependentUpon>AddDatabase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\AddMiddleware.aspx.cs">
+      <DependentUpon>AddMiddleware.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\AddMiddleware.aspx.designer.cs">
+      <DependentUpon>AddMiddleware.aspx</DependentUpon>
+    </Compile>
     <Content Include="ProtectedPages\EditRelease.aspx" />
     <Content Include="ProtectedPages\EditEnvironemtType.aspx" />
     <Content Include="ProtectedPages\EditProduct.aspx" />
@@ -476,6 +492,13 @@
     <Compile Include="ProtectedPages\DeleteUserRole.aspx.designer.cs">
       <DependentUpon>DeleteUserRole.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProtectedPages\EditClient.aspx.cs">
+      <DependentUpon>EditClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\EditClient.aspx.designer.cs">
+      <DependentUpon>EditClient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\EditClientType.aspx.cs">
       <DependentUpon>EditClientType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -489,13 +512,6 @@
     </Compile>
     <Compile Include="ProtectedPages\EditEnvironemt.aspx.designer.cs">
       <DependentUpon>EditEnvironemt.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ProtectedPages\EditClient.aspx.cs">
-      <DependentUpon>EditClient.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProtectedPages\EditClient.aspx.designer.cs">
-      <DependentUpon>EditClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\EditRelease.aspx.cs">
       <DependentUpon>EditRelease.aspx</DependentUpon>

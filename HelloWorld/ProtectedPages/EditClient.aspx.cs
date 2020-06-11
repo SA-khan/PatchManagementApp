@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Diagnostics;
 using HelloWorld.App_Code;
+using System.Diagnostics;
 using System.Data;
 
 namespace HelloWorld.ProtectedPages
 {
-    public partial class EditCompanyInfo : System.Web.UI.Page
+    public partial class EditClient : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,18 +19,6 @@ namespace HelloWorld.ProtectedPages
                 if (Session["UserID"] != null)
                 {
                     _BindService();
-                    //lblUser.Text = "Hi " + Session["UserID"];
-                    //DatabaseConnectivity dbcon = new DatabaseConnectivity();
-                    //List<Patch> service = dbcon.getAllUpdatedClientPatches(1, 1);
-                    //if (service.Count > 0 && service != null)
-                    //{
-                    //    GridView1.DataSource = service;
-                    //    GridView1.DataBind();
-                    //}
-                    //else
-                    //{
-                    //    Response.Redirect("~/Default.aspx", true);
-                    //}
                 }
                 else
                 {
@@ -56,9 +44,11 @@ namespace HelloWorld.ProtectedPages
             string clientPOCName = (GridView1.SelectedRow.FindControl("lblPOCName") as Label).Text;
             string clientPOCEmail = (GridView1.SelectedRow.FindControl("lblPOCEmail") as Label).Text;
             string clientPOCPhone = (GridView1.SelectedRow.FindControl("lblPOCPhone") as Label).Text;
-            Debug.WriteLine(GridView1.SelectedRow.Cells[0].Text);
-            Debug.WriteLine(GridView1.SelectedRow.Cells[1].Text);
-            Debug.WriteLine(GridView1.SelectedRow.Cells[2].Text);
+            Debug.WriteLine("\nGetting Data..");
+            Debug.WriteLine("\nClient ID: " + clientID);
+            //Debug.WriteLine(GridView1.SelectedRow.Cells[0].Text);
+            //Debug.WriteLine(GridView1.SelectedRow.Cells[1].Text);
+            //Debug.WriteLine(GridView1.SelectedRow.Cells[2].Text);
             DataTable dt = new DataTable();
             dt.Columns.AddRange(new DataColumn[8] { 
                     new DataColumn("ClientID", typeof(string)),
@@ -77,81 +67,9 @@ namespace HelloWorld.ProtectedPages
             //DetailsView1.Attributes.Add("style", "display:block");
         }
 
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-            TextBox txtClientId = DetailsView1.FindControl("txtClientID") as TextBox;
-            TextBox txtClientName = DetailsView1.FindControl("txtClientName") as TextBox;
-            DropDownList txtClientType = DetailsView1.FindControl("dropClientType") as DropDownList;
-            TextBox txtClientDesc = DetailsView1.FindControl("txtClientDesc") as TextBox;
-            CheckBox chkClientStill = DetailsView1.FindControl("chkClientStill") as CheckBox;
-            TextBox txtPOCName = DetailsView1.FindControl("txtPOCName") as TextBox;
-            TextBox txtPOCEmail = DetailsView1.FindControl("txtPOCEmail") as TextBox;
-            TextBox txtPOCPhone = DetailsView1.FindControl("txtPOCPhone") as TextBox;
-            int ClientID = Convert.ToInt32(txtClientId.Text.ToString());
-            string ClientName = txtClientName.Text.ToString();
-            string ClientType = txtClientType.SelectedValue.ToString();
-            string ClientDesc = txtClientDesc.Text.ToString();
-            bool ClientStill = chkClientStill.Checked;
-            string ClientPOC = txtPOCName.Text.ToString();
-            string ClientPOCEmail = txtPOCEmail.Text.ToString();
-            string ClientPOCPhone = txtPOCPhone.Text.ToString();
-            Debug.WriteLine("");
-            Debug.WriteLine("Data From Grid:");
-            Debug.WriteLine("ClientID: " + ClientID);
-            Debug.WriteLine("ClientName: " + ClientName);
-            Debug.WriteLine("ClientType: " + ClientType);
-            Debug.WriteLine("ClientDesc: " + ClientDesc);
-            Debug.WriteLine("ClientStill: " + ClientStill);
-            Debug.WriteLine("ClientPOC: " + ClientPOC);
-            Debug.WriteLine("ClientPOCEmail: " + ClientPOCEmail);
-            Debug.WriteLine("ClientPOCPhone: " + ClientPOCPhone);
-            DatabaseConnectivity dbcon = new DatabaseConnectivity();
-            int ResultQuery = dbcon.setAClient(ClientID, ClientName, ClientType, ClientDesc, ClientStill, ClientPOC, ClientPOCEmail, ClientPOCPhone);
-            //Console.WriteLine("<script>alert(" + ResultQuery + "record has been updated." + ")</script>");
-            //ClientScript.RegisterStartupScript(this.GetType(), DateTime.Now.ToString(), "<script>alert(" + ResultQuery + "record has been updated." + ")</script>", true);
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), DateTime.Now.ToString(), "<script>alert(" + ResultQuery +")</script>", true);
-            DetailsView1.Visible = false;
-            //DetailsView1.Style.Add("display", "none");
-        }
-
-        protected void btnCancel_Click(object sender, EventArgs e)
-        {
-            //TextBox txtClientId = DetailsView1.FindControl("txtClientID") as TextBox;
-            Debug.WriteLine("Not Index!");
-            //DetailsView1.Visible = false;
-            //Page.PreRender += new EventHandler(Page_PreRender);
-            DetailsView1.Visible = false;
-        }
-
         void Page_PreRender(object sender, EventArgs e)
         {
             _BindService();
-        }
-
-        protected void DetailsView1_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
-        {
-
-        }
-
-        protected void DetailsView1_DataBound(object sender, EventArgs e)
-        {
-            HiddenField hidType = DetailsView1.FindControl("hidClientType") as HiddenField;
-            DropDownList dropType = DetailsView1.FindControl("dropClientType") as DropDownList;
-            dropType.SelectedValue = hidType.Value;
-        }
-
-        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            try
-            {
-                GridView1.EditIndex = e.NewEditIndex;
-                _BindService();
-                //Debug.WriteLine(e.NewEditIndex);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -183,15 +101,29 @@ namespace HelloWorld.ProtectedPages
             _BindService();
         }
 
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
-            _BindService();
+            try
+            {
+                GridView1.EditIndex = e.NewEditIndex;
+                _BindService();
+                //Debug.WriteLine(e.NewEditIndex);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
+            _BindService();
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
             _BindService();
         }
 
@@ -205,6 +137,72 @@ namespace HelloWorld.ProtectedPages
                 GridView1.DataBind();
             }
         }
+
+        protected void DetailsView1_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
+        {
+
+        }
+
+        protected void DetailsView1_DataBound(object sender, EventArgs e)
+        {
+            HiddenField hidType = DetailsView1.FindControl("hidClientType") as HiddenField;
+            DropDownList dropType = DetailsView1.FindControl("dropClientType") as DropDownList;
+            dropType.SelectedValue = hidType.Value;
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox txtClientId = DetailsView1.FindControl("txtClientID") as TextBox;
+                TextBox txtClientName = DetailsView1.FindControl("txtClientName") as TextBox;
+                DropDownList dropClientType = DetailsView1.FindControl("dropClientType") as DropDownList;
+                TextBox txtClientDesc = DetailsView1.FindControl("txtClientDesc") as TextBox;
+                CheckBox chkClientStill = DetailsView1.FindControl("chkClientStill") as CheckBox;
+                TextBox txtPOCName = DetailsView1.FindControl("txtPOCName") as TextBox;
+                TextBox txtPOCEmail = DetailsView1.FindControl("txtPOCEmail") as TextBox;
+                TextBox txtPOCPhone = DetailsView1.FindControl("txtPOCPhone") as TextBox;
+                string ClientID = txtClientId.Text.ToString();
+                string ClientName = txtClientName.Text.ToString();
+                string ClientType = dropClientType.SelectedValue.ToString();
+                string ClientDesc = txtClientDesc.Text.ToString();
+                bool ClientStill = chkClientStill.Checked;
+                string ClientPOC = txtPOCName.Text.ToString();
+                string ClientPOCEmail = txtPOCEmail.Text.ToString();
+                string ClientPOCPhone = txtPOCPhone.Text.ToString();
+                Debug.WriteLine("");
+                Debug.WriteLine("Data From Grid:");
+                Debug.WriteLine("ClientID: " + ClientID);
+                Debug.WriteLine("ClientName: " + ClientName);
+                Debug.WriteLine("ClientType: " + ClientType);
+                Debug.WriteLine("ClientDesc: " + ClientDesc);
+                Debug.WriteLine("ClientStill: " + ClientStill);
+                Debug.WriteLine("ClientPOC: " + ClientPOC);
+                Debug.WriteLine("ClientPOCEmail: " + ClientPOCEmail);
+                Debug.WriteLine("ClientPOCPhone: " + ClientPOCPhone);
+                DatabaseConnectivity dbcon = new DatabaseConnectivity();
+                int ResultQuery = dbcon.setAClient(Convert.ToInt32(ClientID), ClientName, ClientType, ClientDesc, ClientStill, ClientPOC, ClientPOCEmail, ClientPOCPhone);
+                //Console.WriteLine("<script>alert(" + ResultQuery + "record has been updated." + ")</script>");
+                //ClientScript.RegisterStartupScript(this.GetType(), DateTime.Now.ToString(), "<script>alert(" + ResultQuery + "record has been updated." + ")</script>", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), DateTime.Now.ToString(), "<script>alert(" + ResultQuery +")</script>", true);
+                DetailsView1.Visible = false;
+                //DetailsView1.Style.Add("display", "none");
+            }
+            catch (Exception ex) {
+                Debug.WriteLine("Exception: ", ex.Message.ToString());
+            }
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            //TextBox txtClientId = DetailsView1.FindControl("txtClientID") as TextBox;
+            Debug.WriteLine("Not Index!");
+            //DetailsView1.Visible = false;
+            //Page.PreRender += new EventHandler(Page_PreRender);
+            DetailsView1.Visible = false;
+        }
+
+        
 
     }
 }

@@ -351,7 +351,7 @@ input[type=text]:placeholder {
     <!-- Icon -->
     <div class="fadeIn first">
         <br />
-      <img src="\Images\user.png" class="rounded-circle" id="icon" alt="User Icon"  width="380" height="130" />
+      <img src="\Images\user.png" class="rounded-circle" id="icon" alt="User Icon"  width="280" height="130" />
     </div>
 
     <!-- Login Form -->

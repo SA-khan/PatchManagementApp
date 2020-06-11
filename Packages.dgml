@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" Layout="Sugiyama" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="AngularJs.Chart.Js 1.1.0" Category="Package" Label="AngularJs.Chart.Js 1.1.0" />
+    <Node Id="Chart.js 2.9.3" Category="Package" Label="Chart.js 2.9.3" />
+    <Node Id="DevExpress.AgControls 8.2.5.1" Category="Package" Label="DevExpress.AgControls 8.2.5.1" />
+    <Node Id="DevExtreme.Web 19.2.6" Category="Package" Label="DevExtreme.Web 19.2.6" />
+    <Node Id="HelloWorld" Category="Project" Label="HelloWorld" />
+    <Node Id="JSZip 3.1.2" Category="Package" Label="JSZip 3.1.2" />
+    <Node Id="Microsoft.Net.Compilers 2.0.1" Category="Package" Label="Microsoft.Net.Compilers 2.0.1" />
+    <Node Id="Selenium.WebDriver 3.141.0" Category="Package" Label="Selenium.WebDriver 3.141.0" />
+    <Node Id="cldrjs 0.4.4" Category="Package" Label="cldrjs 0.4.4" />
+    <Node Id="jQuery 3.4.1" Category="Package" Label="jQuery 3.4.1" />
+    <Node Id="jquery-globalize 1.1.1" Category="Package" Label="jquery-globalize 1.1.1" />
+  </Nodes>
+  <Links>
+    <Link Source="DevExtreme.Web 19.2.6" Target="JSZip 3.1.2" Category="Package Dependency" />
+    <Link Source="DevExtreme.Web 19.2.6" Target="jQuery 3.4.1" Category="Package Dependency" />
+    <Link Source="DevExtreme.Web 19.2.6" Target="jquery-globalize 1.1.1" Category="Package Dependency" />
+    <Link Source="HelloWorld" Target="AngularJs.Chart.Js 1.1.0" Category="Installed Package" />
+    <Link Source="HelloWorld" Target="Chart.js 2.9.3" Category="Installed Package" />
+    <Link Source="HelloWorld" Target="DevExpress.AgControls 8.2.5.1" Category="Installed Package" />
+    <Link Source="HelloWorld" Target="DevExtreme.Web 19.2.6" Category="Installed Package" />
+    <Link Source="HelloWorld" Target="Selenium.WebDriver 3.141.0" Category="Installed Package" />
+    <Link Source="jquery-globalize 1.1.1" Target="cldrjs 0.4.4" Category="Package Dependency" />
+  </Links>
+  <Categories>
+    <Category Id="Installed Package" />
+    <Category Id="Package" />
+    <Category Id="Package Dependency" />
+    <Category Id="Project" />
+  </Categories>
+  <Properties>
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Progression.Layout.GraphDirection" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Project" ValueLabel="True">
+      <Condition Expression="HasCategory('Project')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Package Dependency" ValueLabel="True">
+      <Condition Expression="HasCategory('Package Dependency')" />
+      <Setter Property="Background" Value="Yellow" />
+    </Style>
+  </Styles>
+</DirectedGraph>

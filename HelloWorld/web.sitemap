@@ -17,8 +17,14 @@
       </siteMapNode>
       <siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=environment_and_types" title="Environment and Types"  description="Goto Environment Page">
         <siteMapNode url="~/ProtectedPages/AddEnvironment.aspx" title="Add Environment Page"  description="Goto Add Environment Page" />
+        <siteMapNode url="~/ProtectedPages/AddDatabase.aspx" title="Add Database Page"  description="Goto Add Database Page" />
+        <siteMapNode url="~/ProtectedPages/AddMiddleware.aspx" title="Add Middleware Page"  description="Goto Add Middleware Page" />
         <siteMapNode url="~/ProtectedPages/EditEnvironemt.aspx" title="Edit Environment Page"  description="Goto Edit Environment Page" />
+        <siteMapNode url="~/ProtectedPages/EditDatabase.aspx" title="Edit Database Page"  description="Goto Edit Database Page" />
+        <siteMapNode url="~/ProtectedPages/EditMiddleware.aspx" title="Edit Middleware Page"  description="Goto Edit Middleware Page" />
         <siteMapNode url="~/ProtectedPages/DeleteEnvironemt.aspx" title="Delete Environment Page"  description="Goto Delete Environment Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteDatabase.aspx" title="Delete Database Page"  description="Goto Delete Database Page" />
+        <siteMapNode url="~/ProtectedPages/DeleteMiddleware.aspx" title="Delete Middleware Page"  description="Goto Delete Middleware Page" />
       <!--</siteMapNode>-->
       <!--<siteMapNode url="~/ProtectedPages/Dashboard.aspx?param=environment_type" title="Environment Type"  description="Goto Environment Type Page">-->
         <siteMapNode url="~/ProtectedPages/AddEnvironmentType.aspx" title="Add Environment Type Page"  description="Goto Add Environment Type Page" />
