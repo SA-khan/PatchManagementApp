@@ -131,7 +131,7 @@ namespace HelloWorld.ProtectedPages
 
             if (queryResult == 1)
             {
-                rowAppEnvType.Visible = false;
+                //rowAppEnvType.Visible = false;
                 rowAppHyperLink.Visible = false;
                 rowAppServerDependency.Visible = false;
                 rowAppServerIP.Visible = false;
@@ -146,7 +146,7 @@ namespace HelloWorld.ProtectedPages
                 rowAppServerWebBrowser.Visible = false;
                 rowAppServerWebBrowserVersion.Visible = false;
                 rowAppServerWorkingDirectoryLocation.Visible = false;
-                rowClientName.Visible = false;
+                //rowClientName.Visible = false;
                 rowDBEnvType.Visible = false;
                 rowDBLDFFileLocation.Visible = false;
                 rowDBLDFFileSize.Visible = false;
@@ -164,14 +164,14 @@ namespace HelloWorld.ProtectedPages
                 rowIsEnvSameAsDB.Visible = false;
                 rowlblDBServerOS.Visible = false;
                 rowlblDBServerOSBuild.Visible = false;
-                rowProductName.Visible = false;
+                //rowProductName.Visible = false;
                 rowSubmit.Visible = false;
                 lblDatabaseHeader.Visible = false;
                 lblSubmission.Visible = true;
             }
 
             else {
-                rowAppEnvType.Visible = false;
+                //rowAppEnvType.Visible = false;
                 rowAppHyperLink.Visible = false;
                 rowAppServerDependency.Visible = false;
                 rowAppServerIP.Visible = false;
@@ -186,7 +186,7 @@ namespace HelloWorld.ProtectedPages
                 rowAppServerWebBrowser.Visible = false;
                 rowAppServerWebBrowserVersion.Visible = false;
                 rowAppServerWorkingDirectoryLocation.Visible = false;
-                rowClientName.Visible = false;
+                //rowClientName.Visible = false;
                 rowDBEnvType.Visible = false;
                 rowDBLDFFileLocation.Visible = false;
                 rowDBLDFFileSize.Visible = false;
@@ -204,7 +204,7 @@ namespace HelloWorld.ProtectedPages
                 rowIsEnvSameAsDB.Visible = false;
                 rowlblDBServerOS.Visible = false;
                 rowlblDBServerOSBuild.Visible = false;
-                rowProductName.Visible = false;
+                //rowProductName.Visible = false;
                 rowSubmit.Visible = false;
                 lblDatabaseHeader.Visible = false;
                 lblSubmission.Visible = true;

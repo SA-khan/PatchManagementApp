@@ -1,7 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditClient" %>
+﻿<%@ Page Title="Edit Client - Portal" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditClient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto" Width="100%" Height="460px" style="padding:5px;">
 
     <asp:DetailsView ID="DetailsView1" CssClass="accordionView" runat="server" 
         Height="50px" Width="40%" 
@@ -139,26 +142,27 @@
         <RowStyle ForeColor="#000066" />
     </asp:DetailsView>
     <br/>
+    <div style="overflow-x:auto;width:1500px;padding:5px;margin:5px;">
     <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="_clientName"
-        style="min-height:300px;"
-        RowStyle-Height="60px"
+        style="min-height:300px;margin:5px;padding:5px;elevation:higher;"
+        AllowPaging="true"
         AutoGenerateColumns="false" AllowSorting="true"
         AlternatingRowStyle-BackColor="LightGray" BorderColor="ControlDark" 
-        BorderStyle="Solid" BorderWidth="1" EditRowStyle-Font-Names="Arial" 
+        BorderStyle="Solid" BorderWidth="1" EditRowStyle-Font-Names="Comic" 
         EditRowStyle-Font-Size="Small" EditRowStyle-ForeColor="Black" 
-        Font-Names="Arial" Font-Size="Small" Font-Bold="false" GridLines="Both" 
-        HeaderStyle-BackColor="Aqua" HeaderStyle-Font-Names="Arial" ForeColor="Black" 
-        HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="false" 
+        Font-Names="Comic" Font-Size="Small" Font-Bold="false" GridLines="Both" 
+        HeaderStyle-BackColor="Aqua" HeaderStyle-Font-Names="Comic" ForeColor="Black" 
+        HeaderStyle-Font-Size="Medium" HeaderStyle-Font-Bold="false" 
         HeaderStyle-Font-Italic="true" HeaderStyle-Font-Underline="false" 
         HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle" 
-        HorizontalAlign="Right" RowStyle-HorizontalAlign="Right" 
-        RowStyle-VerticalAlign="Middle" SelectedRowStyle-BackColor="DarkGray" 
+        HorizontalAlign="Right" RowStyle-HorizontalAlign="Right" PagerSettings-Mode="NumericFirstLast" PagerStyle-HorizontalAlign="Left"
+        RowStyle-VerticalAlign="Middle" SelectedRowStyle-BackColor="DarkGray" UseAccessibleHeader="true"
         SelectedRowStyle-Font-Bold="true" SelectedRowStyle-Font-Size="Small" 
         SelectedRowStyle-Height="24px" onrowediting="GridView1_RowEditing" 
         onrowupdating="GridView1_RowUpdating" 
-        onpageindexchanging="GridView1_PageIndexChanging" 
+        onpageindexchanging="GridView1_PageIndexChanging"  overflow="scroll"
         onrowcancelingedit="GridView1_RowCancelingEdit" 
-        onselectedindexchanged="GridView1_SelectedIndexChanged">
+        onselectedindexchanged="GridView1_SelectedIndexChanged" PageSize="6">
         <Columns>
             <asp:TemplateField Visible="false" HeaderText="Client ID">
                 <ItemTemplate>
@@ -166,49 +170,54 @@
                  Text='<%# Eval("_clientID") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client Name">
+            <asp:TemplateField HeaderText="Client Logo" ItemStyle-CssClass="mylogo" HeaderStyle-Width="150" HeaderStyle-Height="45" ControlStyle-Height="35" ItemStyle-VerticalAlign="Middle">
+                <ItemTemplate>
+                    <asp:Image ID="Image1" runat="server" ImageUrl="../Images/release.png" Width="100%" Height="100%" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Client Name" HeaderStyle-Width="200" HeaderStyle-Height="45" ControlStyle-Height="35" ItemStyle-VerticalAlign="Middle">
                 <ItemTemplate>
                     <asp:Label ID="lblClientName" runat="server" 
                  Text='<%# Eval("_clientName") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client Type">
+            <asp:TemplateField HeaderText="Client Type" HeaderStyle-Height="45" ControlStyle-Width="100" ControlStyle-Height="35" ItemStyle-VerticalAlign="Middle">
                 <ItemTemplate>
                     <asp:Label ID="lblClientType" runat="server" 
                  Text='<%# Eval("_clientType") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Total Patches">
+            <asp:TemplateField HeaderText="Client Description" HeaderStyle-Height="45" ControlStyle-Width="300" ControlStyle-Height="35" ItemStyle-VerticalAlign="Middle">
                 <ItemTemplate>
                     <asp:Label ID="lblClientDesc" runat="server" 
                  Text='<%# Eval("_clientDesc") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Current Client">
+            <asp:TemplateField HeaderText="Active Client" HeaderStyle-Height="45" ControlStyle-Width="100" ControlStyle-Height="35" ItemStyle-VerticalAlign="Middle">
                 <ItemTemplate>
-                    <asp:Label ID="lblClientStill" runat="server" 
+                    <asp:Label ID="lblClientStill" runat="server"
                  Text='<%# Eval("_clientStill") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client POC Name">
+            <asp:TemplateField HeaderText="Client Representive Name" HeaderStyle-Height="45" ControlStyle-Width="200" ControlStyle-Height="35" ItemStyle-VerticalAlign="Middle">
                 <ItemTemplate>
                     <asp:Label ID="lblPOCName" runat="server" 
                  Text='<%# Eval("_clientPOCName") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ClientPOCEmail">
+            <asp:TemplateField HeaderText="Email Address" HeaderStyle-Height="45" ControlStyle-Width="250" ControlStyle-Height="35" ItemStyle-VerticalAlign="Middle">
                 <ItemTemplate>
                     <asp:Label ID="lblPOCEmail" runat="server" 
                  Text='<%# Eval("_clientPOCEmail") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ClientPOCPhone">
+            <asp:TemplateField HeaderText="Contact Number" HeaderStyle-Height="45" ControlStyle-Width="200" ControlStyle-Height="35" ItemStyle-VerticalAlign="Middle">
                 <ItemTemplate>
                     <asp:Label ID="lblPOCPhone" runat="server" 
                  Text='<%# Eval("_clientPOCPhone") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField ShowHeader="true" HeaderText="Select">
+            <asp:TemplateField ShowHeader="true" HeaderText="Update Info" HeaderStyle-Height="45" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-Width="100" ControlStyle-Height="35">
                 <ItemTemplate>
                     <asp:LinkButton ID="LnkSelect" runat="server" Text="Update"                           
                      CommandName="Select" />
@@ -217,5 +226,8 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    </div>
+
+    </asp:Panel>
 
 </asp:Content>

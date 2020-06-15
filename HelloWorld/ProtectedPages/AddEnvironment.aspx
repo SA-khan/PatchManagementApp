@@ -1,5 +1,11 @@
 ﻿<%@ Page Title="Portal - Add Environment" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddEnvironment.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddClientEnvironment" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Panel ID="Panel1" runat="server">
@@ -7,58 +13,93 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
 
-    <asp:Panel ID="pnlEnvironment" runat="server" GroupingText="Add an Environment" ForeColor="navy" Font-Size="Larger" Font-Names="Arial">
+    <asp:Panel ID="pnlEnvironment" runat="server" GroupingText="Add Environment" BorderColor="Navy" Font-Size="Large" Font-Names="Arial" ForeColor="Navy">
+        <div class="container-fluid">
+          <div class="row" id="rowClientName" style="margin-bottom:5px;">
+            <div class="col-sm-3">
+                <asp:Label ID="lblClientName" runat="server" Text="Client Name" Font-Size="Medium" Font-Italic="true" ForeColor="navy"></asp:Label>
+            </div>
+            <div class="col-sm-6">
+                <asp:DropDownList ID="dropClientName" runat="server" BackColor="ButtonFace" Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black" DataSourceID="SqlDataSource4" DataTextField="ClientName" style="text-align=center" DataValueField="ClientID" AutoPostBack="true" ViewStateMode="Enabled" AppendDataBoundItems="True">
+                        <asp:ListItem>Select..</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [ClientID],[ClientName] FROM [ClientDetail]"></asp:SqlDataSource>
+            </div>
+            <div class="col-sm-3">
+                <asp:RequiredFieldValidator ID="ReqClientName" runat="server" InitialValue="Select.." ControlToValidate="dropClientName" ErrorMessage="Select Client Name." Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
+            </div>
+          </div>
+          <div class="row" id="rowProductName" style="margin-bottom:5px;">
+            <div class="col-sm-3">
+                <asp:Label ID="lblProductName" runat="server" Text="Product Name" Font-Size="Medium" Font-Italic="true" ForeColor="navy"></asp:Label>
+            </div>
+            <div class="col-sm-6">
+                <asp:DropDownList ID="dropProductName" runat="server" BackColor="ButtonFace" Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black" DataSourceID="SqlDataSource1" DataTextField="ProductName" style="text-align=center" DataValueField="ProductID" AutoPostBack="true" ViewStateMode="Enabled" AppendDataBoundItems="True">
+                        <asp:ListItem>Select..</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [ProductID],[ProductName] FROM [Products]"></asp:SqlDataSource>
+            </div>
+            <div class="col-sm-3">
+                <asp:RequiredFieldValidator ID="ReqProductName" runat="server" InitialValue="Select.." ControlToValidate="dropProductName" Display="Dynamic" EnableClientScript="true" Text="(Required)" ForeColor="Red" Font-Bold="true" ErrorMessage="Select Product Name."></asp:RequiredFieldValidator>
+            </div>
+          </div>
+          <div class="row" id="rowAppEnvType" style="margin-bottom:5px;">
+            <div class="col-sm-3">
+                <asp:Label ID="lblAppEnvType" runat="server" Text="Environment Type" Font-Size="Medium" Font-Italic="true" ForeColor="navy"></asp:Label>
+            </div>
+            <div class="col-sm-6">
+                <asp:DropDownList ID="dropAppEnvType" runat="server" BackColor="ButtonFace" Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black" DataSourceID="SqlDataSource2" DataTextField="EnvTitle" style="text-align=center" DataValueField="EnvID" AutoPostBack="true" ViewStateMode="Enabled" AppendDataBoundItems="True">
+                        <asp:ListItem>Select..</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [EnvID],[EnvTitle] FROM [EnvironmentType]"></asp:SqlDataSource>
+            </div>
+            <div class="col-sm-3">
+                <asp:RequiredFieldValidator ID="ReqAppEnvType" runat="server" InitialValue="Select.." ControlToValidate="dropAppEnvType" ErrorMessage="Select Application Environment Type." Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
+            </div>
+          </div>
+        </div>
         <asp:Table ID="Table1" runat="server" Width="100%" BackColor="Menu" BorderStyle="Solid" BorderColor="DarkGray" BorderWidth="2px" HorizontalAlign="Center" CellSpacing="5" CellPadding="5" style="margin:5px;padding:5px;">
             <asp:TableHeaderRow Height="40px">
                 <asp:TableHeaderCell ColumnSpan="3" HorizontalAlign="Left" style="padding:5px;">
-                    <asp:Label ID="Label1" runat="server" Text="Application Infrastructure Configuration" Font-Italic="true" ForeColor="White" BackColor="Navy" Font-Names="Arial" Font-Size="Small" style="padding:10px;"></asp:Label>
+                    <%--<asp:Label ID="Label1" runat="server" Text="Application Infrastructure Configuration" Font-Italic="true" ForeColor="White" BackColor="Navy" Font-Names="Arial" Font-Size="Small" style="padding:10px;"></asp:Label>--%>
                     <asp:ValidationSummary ID="ValidationSummary1" EnableClientScript="true" DisplayMode="BulletList" HeaderText="Please Enter Following Fields: " ShowMessageBox="true" runat="server" ForeColor="Red" ShowSummary="False" />
                     <br />
                     <br />
                     <asp:Label ID="lblSubmission" runat="server" Text="Environment is successfully added." Font-Italic="true" ForeColor="Navy" Font-Names="Arial" Font-Size="Medium" Visible="false"></asp:Label>
                 </asp:TableHeaderCell>
             </asp:TableHeaderRow>
-            <asp:TableRow ID="rowClientName" runat="server">
+            <asp:TableRow  runat="server">
                 <asp:TableCell Width="30%">
-                    <asp:Label ID="lblClientName" runat="server" Text="Client Name" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:DropDownList ID="dropClientName" runat="server" BackColor="ButtonFace" Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black" DataSourceID="SqlDataSource4" DataTextField="ClientName" style="text-align=center" DataValueField="ClientID" AutoPostBack="true" ViewStateMode="Enabled" AppendDataBoundItems="True">
-                        <asp:ListItem>Select..</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [ClientID],[ClientName] FROM [ClientDetail]"></asp:SqlDataSource>
+                    
                 </asp:TableCell>
                 <asp:TableCell HorizontalAlign="Left">
-                    <asp:RequiredFieldValidator ID="ReqClientName" runat="server" InitialValue="Select.." ControlToValidate="dropClientName" ErrorMessage="Select Client Name." Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
+                    
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow ID="rowProductName" runat="server">
+            <asp:TableRow runat="server">
                 <asp:TableCell>
-                    <asp:Label ID="lblProductName" runat="server" Text="Product Name" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    
                 </asp:TableCell>
                 <asp:TableCell>
                     <%--<asp:TextBox ID="txtProductName" runat="server" Width="250px" Height="27px" BorderStyle="None" style="border-bottom: 2px solid navy;background-color:white;" TextMode="Email" placeholder="Enter Product Name Here"></asp:TextBox>--%>
-                    <asp:DropDownList ID="dropProductName" runat="server" BackColor="ButtonFace" Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black" DataSourceID="SqlDataSource1" DataTextField="ProductName" style="text-align=center" DataValueField="ProductID" AutoPostBack="true" ViewStateMode="Enabled" AppendDataBoundItems="True">
-                        <asp:ListItem>Select..</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [ProductID],[ProductName] FROM [Products]"></asp:SqlDataSource>
+                    
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:RequiredFieldValidator ID="ReqProductName" runat="server" InitialValue="Select.." ControlToValidate="dropProductName" Display="Dynamic" EnableClientScript="true" Text="(Required)" ForeColor="Red" Font-Bold="true" ErrorMessage="Select Product Name."></asp:RequiredFieldValidator>
+                    
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow ID="rowAppEnvType" runat="server">
+            <asp:TableRow runat="server">
                 <asp:TableCell Width="30%">
-                    <asp:Label ID="lblAppEnvType" runat="server" Text="Application Environment Type" Font-Italic="true" ForeColor="Black"></asp:Label>
+                    
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:DropDownList ID="dropAppEnvType" runat="server" BackColor="ButtonFace" Width="250px" Height="27px" Font-Italic="true" Font-Size="Medium" Font-Names="Arial" ForeColor="black" DataSourceID="SqlDataSource2" DataTextField="EnvTitle" style="text-align=center" DataValueField="EnvID" AutoPostBack="true" ViewStateMode="Enabled" AppendDataBoundItems="True">
-                        <asp:ListItem>Select..</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [EnvID],[EnvTitle] FROM [EnvironmentType]"></asp:SqlDataSource>
+                    
                 </asp:TableCell>
                 <asp:TableCell HorizontalAlign="Left">
-                    <asp:RequiredFieldValidator ID="ReqAppEnvType" runat="server" InitialValue="Select.." ControlToValidate="dropAppEnvType" ErrorMessage="Select Application Environment Type." Text="(Required)" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
+                    
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow ID="rowDBEnvType" runat="server">

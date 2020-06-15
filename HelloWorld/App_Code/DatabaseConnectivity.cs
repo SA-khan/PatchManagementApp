@@ -182,7 +182,7 @@ namespace HelloWorld.App_Code
 
         //Setting A Client 
 
-        public int setAClient(int ClientID, string ClientName, string ClientType, string ClientDesc, bool ClientStill, string POCName, string POCEmail, string POCPhone)
+        public int setAClient(int ClientID, string ClientName, int ClientType, string ClientDesc, bool ClientStill, string POCName, string POCEmail, string POCPhone)
         {
             try
             {
@@ -312,6 +312,54 @@ namespace HelloWorld.App_Code
         }
 
         // GET Client Type End
+
+
+        // GET Client Type ID
+
+        public int getClientTypeID(string CTYPE_TITLE)
+        {
+            int result = 0;
+            try
+            {
+                log.DetailLog("DatabaseConnectivity.cs", "getClientTypeID", STATE.INITIALIZED, "Method: getClientTypeID in Class: DatabaseConnectivity has Initialized.");
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spGetClientTypeID]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    oCmd.Parameters.Add("@CTYPE_TITLE", CTYPE_TITLE);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            result = Convert.ToInt32(oReader["CTYPE_ID"]);
+                        }
+
+                        myConnection.Close();
+                    }
+                }
+                log.DetailLog("DatabaseConnectivity.cs", "getClientTypeID", STATE.COMPLETED, "Method: getClientTypeID in Class: DatabaseConnectivity has completed its execution Successfully.");
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine("DataConnectivity SQL. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getClientTypeID", ExceptionType.SQLException, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getClientTypeID", STATE.INTERRUPTED, ex.Message);
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DataConnectivity. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getClientTypeID", ExceptionType.Exception, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getClientTypeID", STATE.INTERRUPTED, ex.Message);
+                return 0;
+            }
+        }
+
+        // GET Client Type ID End
 
         // ADD Client Type
 

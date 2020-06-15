@@ -154,6 +154,7 @@ namespace HelloWorld.ProtectedPages
         {
             try
             {
+                DatabaseConnectivity dbcon = new DatabaseConnectivity();
                 TextBox txtClientId = DetailsView1.FindControl("txtClientID") as TextBox;
                 TextBox txtClientName = DetailsView1.FindControl("txtClientName") as TextBox;
                 DropDownList dropClientType = DetailsView1.FindControl("dropClientType") as DropDownList;
@@ -164,7 +165,7 @@ namespace HelloWorld.ProtectedPages
                 TextBox txtPOCPhone = DetailsView1.FindControl("txtPOCPhone") as TextBox;
                 string ClientID = txtClientId.Text.ToString();
                 string ClientName = txtClientName.Text.ToString();
-                string ClientType = dropClientType.SelectedValue.ToString();
+                int ClientType = dbcon.getClientTypeID(dropClientType.SelectedValue.ToString());
                 string ClientDesc = txtClientDesc.Text.ToString();
                 bool ClientStill = chkClientStill.Checked;
                 string ClientPOC = txtPOCName.Text.ToString();
@@ -180,7 +181,6 @@ namespace HelloWorld.ProtectedPages
                 Debug.WriteLine("ClientPOC: " + ClientPOC);
                 Debug.WriteLine("ClientPOCEmail: " + ClientPOCEmail);
                 Debug.WriteLine("ClientPOCPhone: " + ClientPOCPhone);
-                DatabaseConnectivity dbcon = new DatabaseConnectivity();
                 int ResultQuery = dbcon.setAClient(Convert.ToInt32(ClientID), ClientName, ClientType, ClientDesc, ClientStill, ClientPOC, ClientPOCEmail, ClientPOCPhone);
                 //Console.WriteLine("<script>alert(" + ResultQuery + "record has been updated." + ")</script>");
                 //ClientScript.RegisterStartupScript(this.GetType(), DateTime.Now.ToString(), "<script>alert(" + ResultQuery + "record has been updated." + ")</script>", true);
