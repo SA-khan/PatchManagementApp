@@ -21,7 +21,6 @@ namespace HelloWorld.ProtectedPages
         {
 
             txtAppServerName.BackColor = Color.White;
-            txtDBServerName.BackColor = Color.White;
 
             txtAppServerName.Text = String.Empty;
             txtAppServerOS.Text = String.Empty;
@@ -32,17 +31,6 @@ namespace HelloWorld.ProtectedPages
             txtAppServerProcessor.Text = String.Empty;
             txtAppServerWebBrowserVersion.Text = String.Empty;
             txtAppServerWorkingDirectoryLocation.Text = String.Empty;
-            txtDBLDFFileLocation.Text = String.Empty;
-            txtDBLDFFileSize.Text = String.Empty;
-            txtDBMDFFileLocation.Text = String.Empty;
-            txtDBMDFFileSize.Text = String.Empty;
-            txtDBServerDependency.Text = String.Empty;
-            txtDBServerDirectoryLocation.Text = String.Empty;
-            txtDBServerIP.Text = String.Empty;
-            txtDBServerName.Text = String.Empty;
-            txtDBServerPort.Text = String.Empty;
-            txtDBServerProcessor.Text = String.Empty;
-            txtDBServerOS.Text = String.Empty;
 
             dropAppEnvType.SelectedIndex = 0;
             dropAppServerMemory.SelectedIndex = 0;
@@ -50,9 +38,14 @@ namespace HelloWorld.ProtectedPages
             dropAppServerWebBrowser.SelectedIndex = 0;
             dropClientName.SelectedIndex = 0;
             dropDBEnvType.SelectedIndex = 0;
-            dropDBServerMemory.SelectedIndex = 0;
-            dropDBServerOSBuild.SelectedIndex = 0;
             dropProductName.SelectedIndex = 0;
+
+            lblResponse.Text = "Data Fields have been refreshed successfully.";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append(@"<script language='javascript'>");
+            sb.Append(@"$('#myModal').modal('show');");
+            sb.Append(@"</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "JSScript", sb.ToString());
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -62,34 +55,34 @@ namespace HelloWorld.ProtectedPages
             int AppEnvType = Convert.ToInt32(dropAppEnvType.SelectedValue);
             int DBEnvType = Convert.ToInt32(dropDBEnvType.SelectedValue);
             string AppServerName = txtAppServerName.Text.ToString();
-            string DBServerName = txtDBServerName.Text.ToString();
+            string DBServerName = "";
             string AppServerOS = txtAppServerOS.Text.ToString();
-            string DBServerOS = txtDBServerOS.Text.ToString();
-            double AppServerOSBuild = Convert.ToDouble(dropAppServerOSBuild.SelectedValue);
-            double DBServerOSBuild = Convert.ToDouble(dropDBServerOSBuild.SelectedValue);
+            string DBServerOS = "";
+            double AppServerOSBuild = Convert.ToDouble(dropAppServerOSBuild.SelectedValue == "Select.." ? "0" : dropAppServerOSBuild.SelectedValue.ToString());
+            double DBServerOSBuild = 0;
             string AppServerProcessor = txtAppServerProcessor.Text.ToString();
-            string DBServerProcessor = txtDBServerProcessor.Text.ToString();
-            double AppServerMemory = Convert.ToDouble(dropAppServerMemory.SelectedValue);
-            double DBServerMemory = Convert.ToDouble(dropDBServerMemory.SelectedValue);
-            int AppServerIsX86Version = Convert.ToInt32(radAppServerIsX86.SelectedValue);
-            int DBServerIsX86Version = Convert.ToInt32(radDBServerIsx86.SelectedValue);
-            int AppServerIsVirtual = Convert.ToInt32(radAppServerIsVirtual.SelectedValue);
-            int DBServerIsVirtual = Convert.ToInt32(radDBServerIsVirtual.SelectedValue);
+            string DBServerProcessor = "";
+            double AppServerMemory = Convert.ToDouble(dropAppServerMemory.SelectedValue == "Select.." ? "0" : dropAppServerMemory.SelectedValue.ToString());
+            double DBServerMemory = 0;
+            int AppServerIsX86Version = Convert.ToInt32(radAppServerIsX86.SelectedValue == "Select.." ? "0" : radAppServerIsX86.SelectedValue.ToString());
+            int DBServerIsX86Version = 0;
+            int AppServerIsVirtual = Convert.ToInt32(radAppServerIsVirtual.SelectedValue == "Select.." ? "0" : radAppServerIsVirtual.SelectedValue.ToString());
+            int DBServerIsVirtual = 0;
             string AppServerIP = txtAppServerIP.Text.ToString();
-            string DBServerIP = txtDBServerIP.Text.ToString();
-            double AppServerPort = Convert.ToInt32(txtAppServerPort.Text);
-            double DBServerPort = Convert.ToInt32(txtDBServerPort.Text);
+            string DBServerIP = "";
+            double AppServerPort = Convert.ToInt32(txtAppServerPort.Text == "" ? "0" : txtAppServerPort.Text.ToString());
+            double DBServerPort = 0;
             string AppServerDependency = txtAppServerDependency.Text.ToString();
-            string DBServerDependency = txtDBServerDependency.Text.ToString();
+            string DBServerDependency = "";
             string AppHyperLink = txtAppHyperLink.Text.ToString();
-            string AppServerWebServer = dropAppServerWebBrowser.SelectedValue.ToString();
+            string AppServerWebServer = dropAppServerWebBrowser.SelectedValue.ToString() == "Select.." ? "" : dropAppServerWebBrowser.SelectedValue.ToString();
             string AppServerWebServerVersion = txtAppServerWebBrowserVersion.Text.ToString();
             string AppServerWorkingDirectoryLocation = txtAppServerWorkingDirectoryLocation.Text.ToString();
-            string DBServerDirectoryLocation = txtDBServerDirectoryLocation.Text.ToString();
-            string DBMDFFileLocation = txtDBMDFFileLocation.Text.ToString();
-            double DBMDFFileSize = Convert.ToDouble(txtDBMDFFileSize.Text);
-            string DBLDFFileLocation = txtDBLDFFileLocation.Text.ToString();
-            double DBLDFFileSize = Convert.ToDouble(txtDBLDFFileSize.Text);
+            string DBServerDirectoryLocation = "";
+            string DBMDFFileLocation = "";
+            double DBMDFFileSize = 0;
+            string DBLDFFileLocation = "";
+            double DBLDFFileSize = 0;
 
             Debug.WriteLine("Environment Data Start: ");
             Debug.WriteLine("Client ID: " + ClientID);
@@ -126,126 +119,28 @@ namespace HelloWorld.ProtectedPages
                                   // insertEnvironment(ClientID,ProductID, AppEnvType, DBEnvType, AppServerName, AppServerOS, AppServerOSBuild, AppServerIsX86Version, AppServerIsVirtual, AppServerProcessor, int AppServerMemory, string AppServerWebBrowser, string AppServerWebBrowserVersion, striAppServerWorkingDirectoryLocation, string AppHyperLink, string AppServerIP, int AppServerPort, string AppServerDependency, string DBServerName, string DBServerOS, double DBerverOSBuild, int DBServerIsX86Version, int DBServerIsVirtual, string DBServerProcessor, int DBServerMemory, string DBServerWorkingDirectoryLocation, string DBMDFFileLocation, double DBMDFFileSize, string DBLDFFileLocation, double DBLDFFileSize, string DBServerIP, int DBServerPort, string DBServerDependency)
             int queryResult = dbcon.insertEnvironment(ClientID, ProductID, AppEnvType, DBEnvType, AppServerName, AppServerOS, AppServerOSBuild, AppServerIsX86Version, AppServerIsVirtual, AppServerProcessor, AppServerMemory, AppServerWebServer, AppServerWebServerVersion, AppServerWorkingDirectoryLocation, AppHyperLink, AppServerIP, AppServerPort, AppServerDependency, DBServerName, DBServerOS, DBServerOSBuild, DBServerIsX86Version, DBServerIsVirtual, DBServerProcessor, DBServerMemory, DBServerDirectoryLocation, DBMDFFileLocation, DBMDFFileSize, DBLDFFileLocation, DBLDFFileSize, DBServerIP, DBServerPort, DBServerDependency);
             Debug.WriteLine("Query Result: " + queryResult);
-
-
-
             if (queryResult == 1)
             {
-                //rowAppEnvType.Visible = false;
-                rowAppHyperLink.Visible = false;
-                rowAppServerDependency.Visible = false;
-                rowAppServerIP.Visible = false;
-                rowAppServerIsVirtual.Visible = false;
-                rowAppServerIsX86.Visible = false;
-                rowAppServerMemory.Visible = false;
-                rowAppServerName.Visible = false;
-                rowAppServerOS.Visible = false;
-                rowAppServerOSBuild.Visible = false;
-                rowAppServerPort.Visible = false;
-                rowAppServerProcessor.Visible = false;
-                rowAppServerWebBrowser.Visible = false;
-                rowAppServerWebBrowserVersion.Visible = false;
-                rowAppServerWorkingDirectoryLocation.Visible = false;
-                //rowClientName.Visible = false;
-                rowDBEnvType.Visible = false;
-                rowDBLDFFileLocation.Visible = false;
-                rowDBLDFFileSize.Visible = false;
-                rowDBMDFFileLocation.Visible = false;
-                rowDBMDFFileSize.Visible = false;
-                rowDBServerDependency.Visible = false;
-                rowDBServerDirectoryLocation.Visible = false;
-                rowDBServerIP.Visible = false;
-                rowDBServerIsVirtual.Visible = false;
-                rowDBServerIsx86.Visible = false;
-                rowDBServerMemory.Visible = false;
-                rowDBServerName.Visible = false;
-                rowDBServerPort.Visible = false;
-                rowDBServerProcessor.Visible = false;
-                rowIsEnvSameAsDB.Visible = false;
-                rowlblDBServerOS.Visible = false;
-                rowlblDBServerOSBuild.Visible = false;
-                //rowProductName.Visible = false;
-                rowSubmit.Visible = false;
-                lblDatabaseHeader.Visible = false;
-                lblSubmission.Visible = true;
+                //System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                //lblResponse.Text = "Environment is added successfully.";
+                //sb.Append(@"<script language='javascript'>");
+                //sb.Append(@"$('#myModal').modal('show');");
+                //sb.Append(@"</script>");
+                //ClientScript.RegisterStartupScript(this.GetType(), "JSScript", sb.ToString());
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$(function() { $('#myModal').modal('show'); });</script>", false);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$(function() { alert('Environment has been created successfully.'); });</script>", false);
             }
-
             else {
-                //rowAppEnvType.Visible = false;
-                rowAppHyperLink.Visible = false;
-                rowAppServerDependency.Visible = false;
-                rowAppServerIP.Visible = false;
-                rowAppServerIsVirtual.Visible = false;
-                rowAppServerIsX86.Visible = false;
-                rowAppServerMemory.Visible = false;
-                rowAppServerName.Visible = false;
-                rowAppServerOS.Visible = false;
-                rowAppServerOSBuild.Visible = false;
-                rowAppServerPort.Visible = false;
-                rowAppServerProcessor.Visible = false;
-                rowAppServerWebBrowser.Visible = false;
-                rowAppServerWebBrowserVersion.Visible = false;
-                rowAppServerWorkingDirectoryLocation.Visible = false;
-                //rowClientName.Visible = false;
-                rowDBEnvType.Visible = false;
-                rowDBLDFFileLocation.Visible = false;
-                rowDBLDFFileSize.Visible = false;
-                rowDBMDFFileLocation.Visible = false;
-                rowDBMDFFileSize.Visible = false;
-                rowDBServerDependency.Visible = false;
-                rowDBServerDirectoryLocation.Visible = false;
-                rowDBServerIP.Visible = false;
-                rowDBServerIsVirtual.Visible = false;
-                rowDBServerIsx86.Visible = false;
-                rowDBServerMemory.Visible = false;
-                rowDBServerName.Visible = false;
-                rowDBServerPort.Visible = false;
-                rowDBServerProcessor.Visible = false;
-                rowIsEnvSameAsDB.Visible = false;
-                rowlblDBServerOS.Visible = false;
-                rowlblDBServerOSBuild.Visible = false;
-                //rowProductName.Visible = false;
-                rowSubmit.Visible = false;
-                lblDatabaseHeader.Visible = false;
-                lblSubmission.Visible = true;
-                lblSubmission.Text = "Data Insertion Failed, Please Check Database Connection.";
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$(document).ready(function(){$('#myModal').modal('sho‌​w');});</script>", false);
+                //System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                //lblResponse.Text = "There is an issue occured, Please check your input field and try Again.";
+                //sb.Append(@"<script language='javascript'>");
+                //sb.Append(@"$('#myModal').modal('show');");
+                //sb.Append(@"</script>");
+                //ClientScript.RegisterStartupScript(this.GetType(), "JSScript", sb.ToString());
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$(function() { alert('There is an issue occured, Please check your connection with the database.'); });</script>", false);
             }
         }
-
-        protected void checkIsEnvSameAsDBYes_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkIsEnvSameAsDBYes.Checked) {
-                checkIsEnvSameAsDBNo.Checked = false;
-                txtAppServerName.BackColor = Color.LightYellow;
-                txtDBServerName.Text = txtAppServerName.Text.ToString();
-                txtDBServerName.BackColor = Color.LightYellow;
-                txtDBServerOS.Text = txtAppServerOS.Text.ToString();
-                txtDBServerIP.Text = txtAppServerIP.Text.ToString();
-                txtDBServerPort.Text = txtAppServerPort.Text.ToString();
-                txtDBServerProcessor.Text = txtAppServerProcessor.Text.ToString();
-                dropDBServerOSBuild.SelectedIndex = dropAppServerOSBuild.SelectedIndex;
-                dropDBServerMemory.SelectedIndex = dropAppServerMemory.SelectedIndex;
-                radDBServerIsx86.SelectedIndex = radAppServerIsX86.SelectedIndex;
-                radDBServerIsVirtual.SelectedIndex = radAppServerIsVirtual.SelectedIndex;
-                txtDBServerDependency.Text = txtAppServerDependency.Text.ToString();
-            }
-        }
-
-        protected void checkIsEnvSameAsDBNo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkIsEnvSameAsDBNo.Checked)
-            {
-                checkIsEnvSameAsDBYes.Checked = false;
-                if (txtDBServerName.Text == String.Empty || txtDBServerOS.Text == String.Empty)
-                {
-                    txtAppServerName.BackColor = Color.White;
-                    txtDBServerName.Text = String.Empty;
-                    txtDBServerName.BackColor = Color.White;
-                    txtDBServerOS.Text = String.Empty;
-                }
-            }
-        }
-
         
     }
 }

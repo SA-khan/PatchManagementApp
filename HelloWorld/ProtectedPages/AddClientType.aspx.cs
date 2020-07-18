@@ -30,10 +30,10 @@ namespace HelloWorld.ProtectedPages
                 Debug.WriteLine("Query Status: " + res);
                 if (res == 1)
                 {
-                    lblSubmission.Visible = true;
-                    rowCTypeTitle.Visible = false;
-                    rowCTypeDesc.Visible = false;
-                    rowSubmit.Visible = false;
+                    Response.Write("<script>alert('Client Type has been created.');</script>");
+                }
+                else {
+                    Response.Write("<script>alert('Database related error has been occured, Please check your network connectivity.');</script>");
                 }
             }
             else
@@ -46,6 +46,7 @@ namespace HelloWorld.ProtectedPages
         {
             txtCTypeTitle.Text = "";
             txtCTypeDesc.Text = "";
+            Response.Write("<script>alert('Input Fields have been cleared.');</script>");
         }
     }
 }

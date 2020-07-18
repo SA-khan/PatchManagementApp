@@ -94,13 +94,13 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.DropDownList dropProductName;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// ProductSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource ProductSource;
         
         /// <summary>
         /// ReqProductName control.
@@ -148,42 +148,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqAppEnvType;
         
         /// <summary>
-        /// Table1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-        
-        /// <summary>
-        /// lblSubmission control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSubmission;
-        
-        /// <summary>
-        /// rowDBEnvType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBEnvType;
-        
-        /// <summary>
         /// lblDBEnvType control.
         /// </summary>
         /// <remarks>
@@ -209,15 +173,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqDBEnvType;
-        
-        /// <summary>
-        /// rowAppServerName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerName;
         
         /// <summary>
         /// lblAppServerName control.
@@ -247,15 +202,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqAppServerName;
         
         /// <summary>
-        /// rowAppServerOS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerOS;
-        
-        /// <summary>
         /// lblAppServerOS control.
         /// </summary>
         /// <remarks>
@@ -272,15 +218,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAppServerOS;
-        
-        /// <summary>
-        /// rowAppServerOSBuild control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerOSBuild;
         
         /// <summary>
         /// lblAppServerOSBuild control.
@@ -301,15 +238,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.DropDownList dropAppServerOSBuild;
         
         /// <summary>
-        /// rowAppServerIsX86 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerIsX86;
-        
-        /// <summary>
         /// lblAppServerIsX86 control.
         /// </summary>
         /// <remarks>
@@ -326,15 +254,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList radAppServerIsX86;
-        
-        /// <summary>
-        /// rowAppServerIsVirtual control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerIsVirtual;
         
         /// <summary>
         /// lblAppServerIsVirtual control.
@@ -355,15 +274,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.RadioButtonList radAppServerIsVirtual;
         
         /// <summary>
-        /// rowAppServerProcessor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerProcessor;
-        
-        /// <summary>
         /// lblAppServerProcessor control.
         /// </summary>
         /// <remarks>
@@ -380,15 +290,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAppServerProcessor;
-        
-        /// <summary>
-        /// rowAppServerMemory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerMemory;
         
         /// <summary>
         /// lblAppServerMemory control.
@@ -409,15 +310,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.DropDownList dropAppServerMemory;
         
         /// <summary>
-        /// rowAppServerWebBrowser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerWebBrowser;
-        
-        /// <summary>
         /// lblAppServerWebBrowser control.
         /// </summary>
         /// <remarks>
@@ -434,15 +326,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dropAppServerWebBrowser;
-        
-        /// <summary>
-        /// rowAppServerWebBrowserVersion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerWebBrowserVersion;
         
         /// <summary>
         /// lblAppServerWebBrowserVersion control.
@@ -463,15 +346,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.TextBox txtAppServerWebBrowserVersion;
         
         /// <summary>
-        /// rowAppServerWorkingDirectoryLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerWorkingDirectoryLocation;
-        
-        /// <summary>
         /// lblAppServerWorkingDirectoryLocation control.
         /// </summary>
         /// <remarks>
@@ -488,15 +362,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAppServerWorkingDirectoryLocation;
-        
-        /// <summary>
-        /// rowAppHyperLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppHyperLink;
         
         /// <summary>
         /// lblAppHyperLink control.
@@ -517,15 +382,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.TextBox txtAppHyperLink;
         
         /// <summary>
-        /// rowAppServerIP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerIP;
-        
-        /// <summary>
         /// lblAppServerIP control.
         /// </summary>
         /// <remarks>
@@ -542,15 +398,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAppServerIP;
-        
-        /// <summary>
-        /// rowAppServerPort control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerPort;
         
         /// <summary>
         /// lblAppServerPort control.
@@ -571,15 +418,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.TextBox txtAppServerPort;
         
         /// <summary>
-        /// rowAppServerDependency control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowAppServerDependency;
-        
-        /// <summary>
         /// lblAppServerDependency control.
         /// </summary>
         /// <remarks>
@@ -598,465 +436,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.TextBox txtAppServerDependency;
         
         /// <summary>
-        /// lblDatabaseHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDatabaseHeader;
-        
-        /// <summary>
-        /// rowIsEnvSameAsDB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowIsEnvSameAsDB;
-        
-        /// <summary>
-        /// lblIsEnvSameAsDB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIsEnvSameAsDB;
-        
-        /// <summary>
-        /// checkIsEnvSameAsDBYes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkIsEnvSameAsDBYes;
-        
-        /// <summary>
-        /// checkIsEnvSameAsDBNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkIsEnvSameAsDBNo;
-        
-        /// <summary>
-        /// rowDBServerName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBServerName;
-        
-        /// <summary>
-        /// lblDBServerName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerName;
-        
-        /// <summary>
-        /// txtDBServerName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBServerName;
-        
-        /// <summary>
-        /// rowlblDBServerOS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowlblDBServerOS;
-        
-        /// <summary>
-        /// lblDBServerOS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerOS;
-        
-        /// <summary>
-        /// txtDBServerOS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBServerOS;
-        
-        /// <summary>
-        /// rowlblDBServerOSBuild control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowlblDBServerOSBuild;
-        
-        /// <summary>
-        /// lblDBServerOSBuild control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerOSBuild;
-        
-        /// <summary>
-        /// dropDBServerOSBuild control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropDBServerOSBuild;
-        
-        /// <summary>
-        /// rowDBServerIsx86 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBServerIsx86;
-        
-        /// <summary>
-        /// lblDBServerIsx86 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerIsx86;
-        
-        /// <summary>
-        /// radDBServerIsx86 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList radDBServerIsx86;
-        
-        /// <summary>
-        /// rowDBServerIsVirtual control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBServerIsVirtual;
-        
-        /// <summary>
-        /// lblDBServerIsVirtual control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerIsVirtual;
-        
-        /// <summary>
-        /// radDBServerIsVirtual control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList radDBServerIsVirtual;
-        
-        /// <summary>
-        /// rowDBServerProcessor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBServerProcessor;
-        
-        /// <summary>
-        /// lblDBServerProcessor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerProcessor;
-        
-        /// <summary>
-        /// txtDBServerProcessor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBServerProcessor;
-        
-        /// <summary>
-        /// rowDBServerMemory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBServerMemory;
-        
-        /// <summary>
-        /// lblDBServerMemory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerMemory;
-        
-        /// <summary>
-        /// dropDBServerMemory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropDBServerMemory;
-        
-        /// <summary>
-        /// rowDBServerDirectoryLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBServerDirectoryLocation;
-        
-        /// <summary>
-        /// lblDBServerDirectoryLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerDirectoryLocation;
-        
-        /// <summary>
-        /// txtDBServerDirectoryLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBServerDirectoryLocation;
-        
-        /// <summary>
-        /// rowDBMDFFileLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBMDFFileLocation;
-        
-        /// <summary>
-        /// lblDBMDFFileLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBMDFFileLocation;
-        
-        /// <summary>
-        /// txtDBMDFFileLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBMDFFileLocation;
-        
-        /// <summary>
-        /// rowDBMDFFileSize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBMDFFileSize;
-        
-        /// <summary>
-        /// lblDBMDFFileSize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBMDFFileSize;
-        
-        /// <summary>
-        /// txtDBMDFFileSize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBMDFFileSize;
-        
-        /// <summary>
-        /// rowDBLDFFileLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBLDFFileLocation;
-        
-        /// <summary>
-        /// lblDBLDFFileLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBLDFFileLocation;
-        
-        /// <summary>
-        /// txtDBLDFFileLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBLDFFileLocation;
-        
-        /// <summary>
-        /// rowDBLDFFileSize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBLDFFileSize;
-        
-        /// <summary>
-        /// lblDBLDFFileSize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBLDFFileSize;
-        
-        /// <summary>
-        /// txtDBLDFFileSize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBLDFFileSize;
-        
-        /// <summary>
-        /// rowDBServerIP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBServerIP;
-        
-        /// <summary>
-        /// lblDBServerIP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerIP;
-        
-        /// <summary>
-        /// txtDBServerIP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBServerIP;
-        
-        /// <summary>
-        /// rowDBServerPort control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBServerPort;
-        
-        /// <summary>
-        /// lblDBServerPort control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerPort;
-        
-        /// <summary>
-        /// txtDBServerPort control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBServerPort;
-        
-        /// <summary>
-        /// rowDBServerDependency control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowDBServerDependency;
-        
-        /// <summary>
-        /// lblDBServerDependency control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDBServerDependency;
-        
-        /// <summary>
-        /// txtDBServerDependency control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDBServerDependency;
-        
-        /// <summary>
-        /// rowSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowSubmit;
-        
-        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
@@ -1073,5 +452,14 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClear;
+        
+        /// <summary>
+        /// lblResponse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResponse;
     }
 }

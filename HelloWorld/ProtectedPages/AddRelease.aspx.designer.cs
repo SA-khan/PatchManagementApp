@@ -13,6 +13,15 @@ namespace HelloWorld.ProtectedPages {
     public partial class AddPatch {
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// Panel1 control.
         /// </summary>
         /// <remarks>
@@ -22,58 +31,13 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// Table1 control.
+        /// lblPatchTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-        
-        /// <summary>
-        /// lblSubmission control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSubmission;
-        
-        /// <summary>
-        /// rowPatchTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowPatchTitle;
-        
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblPatchTitle;
         
         /// <summary>
         /// txtPatchTitle control.
@@ -92,15 +56,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPatchTitle;
-        
-        /// <summary>
-        /// rowPatchDesc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowPatchDesc;
         
         /// <summary>
         /// lblPatchDesc control.
@@ -130,15 +85,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPatchDesc;
         
         /// <summary>
-        /// rowPatchNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowPatchNumber;
-        
-        /// <summary>
         /// lblPatchNumber control.
         /// </summary>
         /// <remarks>
@@ -164,15 +110,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPatchNumber;
-        
-        /// <summary>
-        /// rowPatchDeployedBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowPatchDeployedBy;
         
         /// <summary>
         /// lblPatchDeployedBy control.
@@ -202,15 +139,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPatchDeployedBy;
         
         /// <summary>
-        /// rowPatchCreatedDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowPatchCreatedDate;
-        
-        /// <summary>
         /// lblPatchCreatedDate control.
         /// </summary>
         /// <remarks>
@@ -236,15 +164,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPatchCreatedDate;
-        
-        /// <summary>
-        /// rowPatchDeployedDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowPatchDeployedDate;
         
         /// <summary>
         /// lblPatchDeployedDate control.
@@ -274,15 +193,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPatchDeployedDate;
         
         /// <summary>
-        /// rowPatchIsQAPassed control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowPatchIsQAPassed;
-        
-        /// <summary>
         /// lblPatchIsQAPassed control.
         /// </summary>
         /// <remarks>
@@ -292,40 +202,31 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.Label lblPatchIsQAPassed;
         
         /// <summary>
-        /// checkIsQAPassedYes control.
+        /// CheckBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkIsQAPassedYes;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
         
         /// <summary>
-        /// checkIsQAPassedNo control.
+        /// CheckBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkIsQAPassedNo;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
         
         /// <summary>
-        /// checkIsQAPassedNotTested control.
+        /// CheckBox3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkIsQAPassedNotTested;
-        
-        /// <summary>
-        /// rowPatchDependency control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowPatchDependency;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox3;
         
         /// <summary>
         /// lblPatchDependency control.
@@ -353,15 +254,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPatchDependency;
-        
-        /// <summary>
-        /// rowPatchClientName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowPatchClientName;
         
         /// <summary>
         /// lblPatchClientName control.
@@ -400,15 +292,6 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqPatchClientName;
         
         /// <summary>
-        /// rowProductName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowProductName;
-        
-        /// <summary>
         /// lblProductName control.
         /// </summary>
         /// <remarks>
@@ -443,15 +326,6 @@ namespace HelloWorld.ProtectedPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqProductName;
-        
-        /// <summary>
-        /// rowEnvironmentType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowEnvironmentType;
         
         /// <summary>
         /// lblEnvironmentType control.
@@ -490,30 +364,21 @@ namespace HelloWorld.ProtectedPages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqEnvironmentType;
         
         /// <summary>
-        /// rowSubmit control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowSubmit;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// btnSave control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
-        
-        /// <summary>
-        /// btnClear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClear;
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

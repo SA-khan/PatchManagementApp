@@ -24,6 +24,8 @@ namespace HelloWorld.ProtectedPages
             txtPOCName.Text = "";
             txtPOCEmail.Text = "";
             txtPOCPhone.Text = "";
+            System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Input Fields have been Cleared.');", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "View", "<script>$(function() { alert('Input Fields have been Cleared.'); });</script>", false);
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -32,6 +34,7 @@ namespace HelloWorld.ProtectedPages
             string ClientType = dropClientType.SelectedValue.ToString();
             string ClientDescription = txtClientDesc.Text.ToString();
             string POCName = txtPOCName.Text.ToString();
+            //string POCName = "";
             string POCEmail = txtPOCEmail.Text.ToString();
             string POCPhone = txtPOCPhone.Text.ToString();
             if (ClientName != null)
@@ -46,15 +49,12 @@ namespace HelloWorld.ProtectedPages
                 DatabaseConnectivity dbcon = new DatabaseConnectivity();
                 int res = dbcon.insertClient(ClientName, ClientType, ClientDescription, POCName, POCEmail, POCPhone);
                 Debug.WriteLine("Query Status: " + res);
-                if (res == 1) {
-                    lblSubmission.Visible = true;
-                    rowCLientName.Visible = false;
-                    rowCLientType.Visible = false;
-                    rowCLientDesc.Visible = false;
-                    rowPOCName.Visible = false;
-                    rowPOCEmail.Visible = false;
-                    rowPOCPhone.Visible = false;
-                    rowSubmit.Visible = false;
+                if (res == 1)
+                {
+                    System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('An Client Has Been Created Successfully.');", true);
+                }
+                else {
+                    System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('There Is An Issue Occured, Please Check Your Database Connectivity.');", true);
                 }
             }
             else {

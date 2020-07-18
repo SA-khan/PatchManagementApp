@@ -1,11 +1,3 @@
-C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.resources
-C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.fr.resources
-C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.ur.resources
-C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.ar.resources
-C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.de.resources
-C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.sk.resources
-C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.sn.resources
-C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csproj.GenerateResource.Cache
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\HelloWorld.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\HelloWorld.pdb
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\fr\HelloWorld.resources.dll
@@ -14,9 +6,26 @@ C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\de\HelloWorld.resources.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\sk\HelloWorld.resources.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\sn\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\DevExpress.AgDataGrid.v8.2.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\DevExpress.AgMenu.v8.2.dll
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\DotNetZip.dll
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\Elmah.dll
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\itextsharp.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\System.Web.Silverlight.dll
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\WebDriver.Support.dll
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\DotNetZip.pdb
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\DotNetZip.xml
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\itextsharp.xml
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\bin\WebDriver.Support.xml
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.fr.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.ur.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.ar.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.de.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.sk.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.sn.resources
+C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csproj.GenerateResource.Cache
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\fr\HelloWorld.resources.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\ur\HelloWorld.resources.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\ar\HelloWorld.resources.dll
@@ -25,4 +34,40 @@ C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\sn\HelloWorld.resources.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb
-C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\HelloWorld.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\HelloWorld.pdb
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\fr\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\ur\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\ar\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\de\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\sk\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\sn\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\AspNet.ScriptManager.bootstrap.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DevExpress.AgDataGrid.v8.2.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DevExpress.AgMenu.v8.2.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DotNetZip.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\Elmah.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\itextsharp.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\System.Web.Silverlight.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\WebDriver.Support.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DotNetZip.pdb
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DotNetZip.xml
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\itextsharp.xml
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\WebDriver.Support.xml
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.fr.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.ur.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.ar.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.de.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.sk.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.sn.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csproj.GenerateResource.Cache
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\fr\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\ur\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\ar\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\de\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\sk\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\sn\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Diagnostics;
+using HelloWorld.App_Code;
 
 namespace HelloWorld
 {
@@ -14,16 +15,34 @@ namespace HelloWorld
         {
             try
             {
-                if (Session["UserID"] != null)
+                if (Session["USR_LOGIN_ID"] != null)
                 {
-                    Char[] charUserId = Session["UserID"].ToString().ToCharArray();
+                    Char[] charUserId = Session["USR_LOGIN_ID"].ToString().ToCharArray();
                     int length = charUserId.Count();
                     Debug.Write("UserID Character Count: " + length);
 
                     if (length < 12)
-                        lblUser.Text = Session["UserID"].ToString();
+                        lblLoginIDResult.Text = Session["USR_LOGIN_ID"].ToString();
                     else
-                        lblUser.Text = Session["UserID"].ToString().Substring(0, 10) + "..";
+                        lblLoginIDResult.Text = Session["USR_LOGIN_ID"].ToString().Substring(0, 10) + "..";
+
+                    try
+                    {
+                        //Session["USR_CURRENT_PASSCODE"];
+                        DatabaseConnectivity dbcon = new DatabaseConnectivity();
+                        int deptid = Convert.ToInt32(Session["USR_DEPT_ID"]);
+                        int desgid = Convert.ToInt32(Session["USR_DESIGNATION"].ToString());
+                        lblDepartmentResult.Text = dbcon.getDepartmentNameByID(Session["USR_DEPT_ID"].ToString());
+                        lblDesignationResult.Text = dbcon.getDesignationNameByID(Session["USR_DESIGNATION"].ToString());
+                        string[] a = Session["USR_LAST_LOGIN_DATE"].ToString().Split(' ');
+                        lblLoginDateResult.Text = a[0];
+                        lblLanguageResult.Text = Session["USR_PREF_LANG"].ToString();
+                        lblThemeResult.Text = Session["USR_PREF_THEME"].ToString();
+                        lblRegionResult.Text = Session["USR_REGION"].ToString();
+                    }
+                    catch (Exception ex) {
+                        Debug.WriteLine("Exception 13/7/2: " + ex.Message);
+                    }
                 }
                 else
                 {

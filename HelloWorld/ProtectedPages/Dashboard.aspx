@@ -1,19 +1,11 @@
 ﻿<%@ Page Title="Portal - Dashboard" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="HelloWorld.ProtectedPages.Dashboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <asp:Panel ID="Panel1" runat="server" Height="455px" ScrollBars="Auto" GroupingText="Dashboard" BorderWidth="1" BorderColor="gray" ForeColor="Black" HorizontalAlign="Center" Font-Names="Arial" Font-Size="Medium" BackColor="LightGray" style="padding:2px;">
-
+    <asp:Panel ID="Panel1" runat="server" Height="455px" ScrollBars="Auto" BorderWidth="1" BorderColor="gray" ForeColor="Black" HorizontalAlign="Center" Font-Names="Arial" Font-Size="Medium" style="padding:5px;background-image:url('../../Images/admin-dashboard.png');">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
-
-            <asp:Panel ID="Panel2" Width="100%" runat="server" style="height:385px;;margin:auto;padding:auto;background-color:White;">
+            <ContentTemplate>
+                <%--<asp:Panel ID="Panel2" Width="100%" runat="server" style="height:385px;;margin:auto;padding:auto;background-color:White;">
                 <asp:Panel ID="Panel3" Width="45%" runat="server" style="float:left;margin:15px;border-color:gray;">
                     <canvas id="myChart" width="7" height="4"></canvas>
                 </asp:Panel>
@@ -23,7 +15,6 @@
 
 
                 <p></p>
-                <%--<br />--%>
 
                 <asp:Panel ID="Panel5" Width="45%" runat="server" style="float:left;margin:15px;">
                     <canvas id="myChart3" width="8" height="4"></canvas>
@@ -193,10 +184,9 @@
                     }
                 }
             });
-            </script>
-        </ContentTemplate>
+            </script>--%>
+            </ContentTemplate>
         </asp:UpdatePanel>
-            <%--<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/ProtectedPages/EditEnvironemtInfo.aspx">Update Patch Link</asp:HyperLink>--%>
     </asp:Panel>
 
     <br/>

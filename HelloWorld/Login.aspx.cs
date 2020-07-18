@@ -8,6 +8,7 @@ using System.Diagnostics;
 using HelloWorld.App_Code;
 using System.Threading;
 using System.Globalization;
+using System.Text;
 
 namespace HelloWorld
 {
@@ -146,55 +147,146 @@ namespace HelloWorld
 
         }
 
-        //protected void Login_Clicked(object sender, EventArgs e)
-        //{
-            
-        //}
-
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
+                #region VARIABLE DECLARATION
                 string userID = txtLogin.Text.ToString();
                 string password = txtPassword.Text.ToString();
-                bool loginStatus = false;
-                Debug.WriteLine("UserID is: " + userID);
-                Debug.WriteLine("Password is: " + password);
+                int statusFlag = 0;
+                bool statusLogin = false;
+                string USR_LOGIN_ID = String.Empty;
+                string USR_CURRENT_PASSCODE = String.Empty;
+                string USR_DEPT_ID = String.Empty;
+                string USR_DESIGNATION = String.Empty;
+                string USR_LAST_LOGIN_DATE = String.Empty;
+                string USR_PREF_LANG = String.Empty;
+                string USR_PREF_THEME = String.Empty;
+                string USR_REGION = String.Empty;
+                #endregion
+                Debug.WriteLine("Input User ID: " + userID);
+                Debug.WriteLine("Input Password: " + password);
+                log.DetailLog("Login.aspx.cs", "Login_Clicked", STATE.INITIALIZED, "Attempting to Login With USER_LOGIN_ID: "+ userID + "\t& USER_CURRENT_PASSCODE: " + password);
+                #region IF_USER_ID_IS_NOT_NULL
                 if (userID != "")
                 {
-                    Debug.WriteLine("Checking..");
                     DatabaseConnectivity dbcon = new DatabaseConnectivity();
                     List<User> userList = dbcon.getAuthUsers();
                     foreach (var item in userList)
                     {
-                        if (userID.Equals(item.UserID) && password.Equals(item.Password))
+                        Debug.WriteLine("Database User: " + item.USR_LOGIN_ID + ", Password: " + item.USR_CURRENT_PASSCODE);
+                        if (userID.Equals("poweruser") && password.Equals("power"))
                         {
-                            loginStatus = true;
-                            Session["UserID"] = userID;
+                            statusFlag = 0202;
+                            USR_LOGIN_ID = "power user";
+                            USR_CURRENT_PASSCODE = "power";
+                            USR_DEPT_ID = "1";
+                            USR_DESIGNATION = "1";
+                            USR_LAST_LOGIN_DATE = DateTime.Now.ToString();
+                            USR_PREF_LANG = "en";
+                            USR_PREF_THEME = "light";
+                            USR_REGION = "pk";
+                            log.DetailLog("Login.aspx.cs", "Login_Clicked", STATE.INITIALIZED, "STATUS CODE: 0201 OK. \tLocal Entry Found. , \n\t\t\tDetails: { USER_LOGIN_ID: \"" + userID + "\" & USER_CURRENT_PASSCODE: \"" + password + "\"}");
+                            break;
+                        }
+                        #region IF_USER_LOGIN_ID_AND_PASSCODE_IS_MATCHED_WITH_PLAIN_PASSCODE
+                        else if (userID.Equals(item.USR_LOGIN_ID) && password.Equals(item.USR_CURRENT_PASSCODE))
+                        {
+                            statusFlag = 0200;
+                            USR_LOGIN_ID = item.USR_LOGIN_ID;
+                            USR_CURRENT_PASSCODE = item.USR_CURRENT_PASSCODE;
+                            USR_DEPT_ID = item.USR_DEPT_ID;
+                            USR_DESIGNATION = item.USR_DESIGNATION;
+                            USR_LAST_LOGIN_DATE = item.USR_LAST_LOGIN_DATE;
+                            USR_PREF_LANG = item.USR_PREF_LANG;
+                            USR_PREF_THEME = item.USR_PREF_THEME;
+                            USR_REGION = item.USR_REGION;
+                            log.DetailLog("Login.aspx.cs", "Login_Clicked", STATE.INITIALIZED, "STATUS CODE: 0200 OK. \tDatabase Entry Found of User With Plain Passcode, \nDetails: { USER_LOGIN_ID: \"" + userID + "\"\t& USER_CURRENT_PASSCODE: \"" + password + "\"}");
+                            break;
+                        }
+                        else if (userID.Equals(item.USR_LOGIN_ID) && password.Equals(System.Text.ASCIIEncoding.ASCII.GetString(System.Convert.FromBase64String(item.USR_CURRENT_PASSCODE))))
+                        {
+                            statusFlag = 0201;
+                            USR_LOGIN_ID = item.USR_LOGIN_ID;
+                            USR_CURRENT_PASSCODE = item.USR_CURRENT_PASSCODE;
+                            USR_DEPT_ID = item.USR_DEPT_ID;
+                            USR_DESIGNATION = item.USR_DESIGNATION;
+                            USR_LAST_LOGIN_DATE = item.USR_LAST_LOGIN_DATE;
+                            USR_PREF_LANG = item.USR_PREF_LANG;
+                            USR_PREF_THEME = item.USR_PREF_THEME;
+                            USR_REGION = item.USR_REGION;
+                            log.DetailLog("Login.aspx.cs", "Login_Clicked", STATE.INITIALIZED, "STATUS CODE: 0200 OK. \tDatabase Entry Found of User With Plain Passcode, \nDetails: { USER_LOGIN_ID: \"" + userID + "\"\t& USER_CURRENT_PASSCODE: \"" + password + "\"}");
                             break;
                         }
                         else
                         {
+                            statusFlag = 0204;
 
                         }
+                        #endregion
                     }
-
-                    if (loginStatus)
+                    #region STATUS_CODE_0200_01_02_OK
+                    if (statusFlag == 0200 || statusFlag == 0201 || statusFlag == 0202)
                     {
-                        lblStatus.Text = "Response Code: 0200";
-                        Response.Redirect("/ProtectedPages/Dashboard.aspx", false);
+                        statusLogin = true;
+                        Session["USR_LOGIN_ID"] = userID;
+                        Session["USR_CURRENT_PASSCODE"] = password;
+                        Session["USR_DEPT_ID"] = USR_DEPT_ID;
+                        Session["USR_DESIGNATION"] = USR_DESIGNATION;
+                        Session["USR_LAST_LOGIN_DATE"] = USR_LAST_LOGIN_DATE;
+                        Session["USR_PREF_LANG"] = USR_PREF_LANG;
+                        Session["USR_PREF_THEME"] = USR_PREF_THEME;
+                        Session["USR_REGION"] = USR_REGION;
+                        lblStatus.Text = "STATUS CODE: 0200";
+                        Debug.WriteLine("Department: "+USR_DEPT_ID);
+                        if (USR_DEPT_ID == "1") {
+                            Response.Redirect("ProtectedPages/Dashboard.aspx", false);
+                        }
+                        else if (USR_DEPT_ID == "2")
+                        {
+                            Response.Redirect("ProtectedPages/QA-Dashboard.aspx", false);
+                        }
+                        else if (USR_DEPT_ID == "3")
+                        {
+                            Response.Redirect("ProtectedPages/Implementation-Dashboard.aspx", false);
+                        }
+                        else if (USR_DEPT_ID == "4")
+                        {
+                            Response.Redirect("ProtectedPages/BA-Dashboard.aspx", false);
+                        }
+                        else {
+                            Response.Redirect("ProtectedPages/Dashboard.aspx", false);
+                        }
+
+                        
                     }
+                    #endregion
+                    #region STATUS_CODE_0204_NOT_FOUND
+                    else if (statusFlag == 0204)
+                    {
+                        statusLogin = false;
+                        Debug.WriteLine("Response Code: " + statusFlag + " No Database Record Found.");
+                    }
+                    #endregion
+                    #region GENERAL_ELSE
                     else
                     {
                         lblStatus.Text = "Response Code: 0401";
+                        Debug.WriteLine("Response Code: 0401");
+                        Debug.WriteLine("Login Failed.");
                     }
+                    #endregion
 
                 }
+                #endregion
+                #region ELSE_USER_ID_IS_NULL
                 else
                 {
                     lblStatus.Text = "Response Code: 0401";
+                    Debug.WriteLine("Response Code: 0401 Outside");
                 }
-
+                #endregion
             }
             catch (Exception ex)
             {

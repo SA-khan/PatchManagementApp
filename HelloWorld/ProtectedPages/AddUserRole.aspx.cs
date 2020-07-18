@@ -30,10 +30,10 @@ namespace HelloWorld.ProtectedPages
                 Debug.WriteLine("Query Status: " + res);
                 if (res == 1)
                 {
-                    lblSubmission.Visible = true;
-                    rowRoleTitle.Visible = false;
-                    rowRoleDesc.Visible = false;
-                    rowSubmit.Visible = false;
+                    System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('New Role Has Been Created.');", true);
+                }
+                else {
+                    System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('An Error has occured during the operation of new role creation, Please check your Database Connectivity.');", true);
                 }
             }
             else
@@ -46,6 +46,7 @@ namespace HelloWorld.ProtectedPages
         {
             txtRoleTitle.Text = "";
             txtRoleDesc.Text = "";
+            System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('Input Fields Have Been Cleared.');", true);
         }
     }
 }

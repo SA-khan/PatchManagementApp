@@ -361,6 +361,100 @@ namespace HelloWorld.App_Code
 
         // GET Client Type ID End
 
+        // GET Department Name By ID
+
+        public string getDepartmentNameByID(string id)
+        {
+            string result = String.Empty;
+            try
+            {
+                log.DetailLog("DatabaseConnectivity.cs", "getDepartmentNameByID", STATE.INITIALIZED, "Method: getDepartmentNameByID in Class: DatabaseConnectivity has Initialized.");
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spGetDepartmentNameByID]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    oCmd.Parameters.AddWithValue("DEPT_ID", id);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            result = oReader["DEPT_NAME"].ToString();
+                        }
+
+                        myConnection.Close();
+                    }
+                }
+                log.DetailLog("DatabaseConnectivity.cs", "getDepartmentNameByID", STATE.COMPLETED, "Method: getDepartmentNameByID in Class: DatabaseConnectivity has completed its execution Successfully.");
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine("DataConnectivity SQL. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getDepartmentNameByID", ExceptionType.SQLException, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getDepartmentNameByID", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DataConnectivity. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getDepartmentNameByID", ExceptionType.Exception, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getDepartmentNameByID", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+        }
+
+        // GET Department Name By ID End
+
+        // GET Designation Name By ID
+
+        public string getDesignationNameByID(string id)
+        {
+            string result = String.Empty;
+            try
+            {
+                log.DetailLog("DatabaseConnectivity.cs", "getDesignationNameByID", STATE.INITIALIZED, "Method: getDesignationNameByID in Class: DatabaseConnectivity has Initialized.");
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    string oString = "[dbo].[spGetDesignationNameByID]";
+                    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+                    oCmd.CommandType = CommandType.StoredProcedure;
+                    oCmd.Parameters.AddWithValue("DESG_ID", id);
+                    myConnection.Open();
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            result = oReader["DESG_NAME"].ToString();
+                        }
+
+                        myConnection.Close();
+                    }
+                }
+                log.DetailLog("DatabaseConnectivity.cs", "getDesignationNameByID", STATE.COMPLETED, "Method: getDesignationNameByID in Class: DatabaseConnectivity has completed its execution Successfully.");
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine("DataConnectivity SQL. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getDesignationNameByID", ExceptionType.SQLException, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getDesignationNameByID", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DataConnectivity. cs Exception: " + ex.Message);
+                log.ErrorLog("DatabaseConnectivity.cs", "getDesignationNameByID", ExceptionType.Exception, ex);
+                log.DetailLog("DatabaseConnectivity.cs", "getDesignationNameByID", STATE.INTERRUPTED, ex.Message);
+                return null;
+            }
+        }
+
+        // GET Designation Name By ID End
+
         // ADD Client Type
 
         public int insertClientType(string clientTypeTitle, string clientTypeDesc)
@@ -1003,7 +1097,8 @@ namespace HelloWorld.App_Code
 
         // Add User
 
-        public int insertUser(string Username, string Userrole, string Passcode) {
+        public int insertUser(string Username, string Usergroup, string Passcode, string Designation, string Department)
+        {
             try
             {
                 log.DetailLog("DatabaseConnectivity.cs", "insertUser", STATE.INITIALIZED, "Method: insertUser in Class: DatabaseConnectivity has Initialized.");
@@ -1013,8 +1108,10 @@ namespace HelloWorld.App_Code
                     string oString = "[dbo].[spInsertUser]";
                     SqlCommand oCmd = new SqlCommand(oString, myConnection);
                     oCmd.Parameters.AddWithValue("@Username", Username);
-                    oCmd.Parameters.AddWithValue("@Role", Userrole);
+                    oCmd.Parameters.AddWithValue("@Usergroup", Usergroup);
                     oCmd.Parameters.AddWithValue("@Passcode", Passcode);
+                    oCmd.Parameters.AddWithValue("@Designation", Designation);
+                    oCmd.Parameters.AddWithValue("@Department", Department);
                     oCmd.CommandType = CommandType.StoredProcedure;
                     myConnection.Open();
                     result = oCmd.ExecuteNonQuery();
@@ -1599,9 +1696,16 @@ namespace HelloWorld.App_Code
                         while (oReader.Read())
                         {
                             User item = new User();
-                            item.UserID = oReader["USR_LOGIN_ID"].ToString();
-                            item.Password = oReader["USR_CURRENT_PASSCODE"].ToString();
+                            item.USR_LOGIN_ID = oReader["USR_LOGIN_ID"].ToString();
+                            item.USR_CURRENT_PASSCODE = oReader["USR_CURRENT_PASSCODE"].ToString();
+                            item.USR_DEPT_ID = oReader["USR_DEPT_ID"].ToString();
+                            item.USR_DESIGNATION = oReader["USR_DESIGNATION"].ToString();
+                            item.USR_LAST_LOGIN_DATE = oReader["USR_LAST_LOGIN_DATE"].ToString();
+                            item.USR_PREF_LANG = oReader["USR_PREF_LANG"].ToString();
+                            item.USR_PREF_THEME = oReader["USR_PREF_THEME"].ToString();
+                            item.USR_REGION = oReader["USR_REGION"].ToString();
                             matchingUser.Add(item);
+                            Debug.WriteLine("User: " + oReader["USR_LOGIN_ID"].ToString() + " - Password: " + oReader["USR_CURRENT_PASSCODE"].ToString());
                             //matchingPatch.clientName = oReader["ClientName"].ToString();
                             //matchingPatch.patchHotNumber = oReader["PatchHotNumber"].ToString();
                         }
@@ -1649,13 +1753,19 @@ namespace HelloWorld.App_Code
                         while (oReader.Read())
                         {
                             User item = new User();
-                            item.UserID = oReader["USER_ID"].ToString();
-                            item.UserName = oReader["USER_NAME"].ToString();
-                            item.UserRole = oReader["USER_ROLE"].ToString();
-                            item.UserStatus = oReader["USER_STATUS"].ToString();
-                            item.Password = oReader["USER_PASSCODE"].ToString();
-                            item.UserLoginDate = oReader["USER_LOGINDATE"].ToString();
-                            item.UserWrongAttempt = oReader["USER_WRONG_ATTEMPTS"].ToString();
+                            item.USR_LOGIN_ID = oReader["USR_LOGIN_ID"].ToString();
+                            item.USR_FIRST_NAME = oReader["USER_FIRST_NAME"].ToString();
+                            item.USR_MIDDLE_NAME = oReader["USER_MIDDLE_NAME"].ToString();
+                            item.USR_LAST_NAME = oReader["USER_LAST_NAME"].ToString();
+                            item.USR_GROUP = oReader["USR_GROUP"].ToString();
+                            item.USR_ROLE = oReader["USR_ROLE"].ToString();
+                            item.USR_ENABLED = oReader["USR_ENABLED"].ToString();
+                            item.USR_CURRENT_PASSCODE = oReader["USER_CURRENT_PASSCODE"].ToString();
+                            item.USR_LOGIN_DATE = oReader["USER_LOGIN_DATE"].ToString();
+                            item.USR_LAST_LOGIN_DATE = oReader["USER_LAST_LOGIN_DATE"].ToString();
+                            item.USR_WRONG_ATTEMPTS = oReader["USER_WRONG_ATTEMPTS"].ToString();
+                            item.USR_DEPT_ID = oReader["USR_DEPT_ID"].ToString();
+                            item.USR_DESIGNATION = oReader["USR_DESIGNATION"].ToString();
                             _userList.Add(item);
                         }
 
