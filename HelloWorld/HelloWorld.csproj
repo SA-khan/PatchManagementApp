@@ -89,6 +89,8 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Themes\Dark\Dark.css" />
+    <Content Include="bin\HelloWorld.dll" />
+    <Content Include="bin\HelloWorld.pdb" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
     <Content Include="Content\bootstrap-datepicker.standalone.css" />
@@ -231,8 +233,6 @@
     <Content Include="ProtectedPages\AddProduct.aspx" />
     <Content Include="ProtectedPages\AddUser.aspx" />
     <Content Include="ProtectedPages\AddUserRole.aspx" />
-    <Content Include="ProtectedPages\admin-dashboard.jpg" />
-    <Content Include="ProtectedPages\BA-Dashboard.aspx" />
     <Content Include="ProtectedPages\Dashboard.aspx" />
     <Content Include="ProtectedPages\DeleteClient.aspx" />
     <Content Include="ProtectedPages\DeleteClientType.aspx" />
@@ -245,6 +245,13 @@
     <Content Include="ProtectedPages\EditClient.aspx" />
     <Content Include="ProtectedPages\EditClientType.aspx" />
     <Content Include="ProtectedPages\EditEnvironemt.aspx" />
+    <Compile Include="MasterPages\Login.Master.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Login.Master.designer.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\AddDatabase.aspx.cs">
       <DependentUpon>AddDatabase.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -264,8 +271,6 @@
     <Content Include="ProtectedPages\EditProduct.aspx" />
     <Content Include="ProtectedPages\EditUser.aspx" />
     <Content Include="ProtectedPages\EditUserRole.aspx" />
-    <Content Include="ProtectedPages\Implementation-Dashboard.aspx" />
-    <Content Include="ProtectedPages\QA-Dashboard.aspx" />
     <Content Include="References.aspx" />
     <Content Include="Scripts\angular-chart.js" />
     <Content Include="Scripts\angular-chart.min.js" />
@@ -702,13 +707,6 @@
     <Compile Include="ProtectedPages\AddUserRole.aspx.designer.cs">
       <DependentUpon>AddUserRole.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProtectedPages\BA-Dashboard.aspx.cs">
-      <DependentUpon>BA-Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProtectedPages\BA-Dashboard.aspx.designer.cs">
-      <DependentUpon>BA-Dashboard.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ProtectedPages\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -828,20 +826,6 @@
     <Compile Include="ProtectedPages\EditUserRole.aspx.designer.cs">
       <DependentUpon>EditUserRole.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProtectedPages\Implementation-Dashboard.aspx.cs">
-      <DependentUpon>Implementation-Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProtectedPages\Implementation-Dashboard.aspx.designer.cs">
-      <DependentUpon>Implementation-Dashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ProtectedPages\QA-Dashboard.aspx.cs">
-      <DependentUpon>QA-Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProtectedPages\QA-Dashboard.aspx.designer.cs">
-      <DependentUpon>QA-Dashboard.aspx</DependentUpon>
-    </Compile>
     <Compile Include="References.aspx.cs">
       <DependentUpon>References.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -885,6 +869,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bin\bin\fr\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
@@ -940,6 +925,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="MasterPages\Login.Master" />
     <None Include="Scripts\bootstrap.bundle.js.map" />
     <None Include="Scripts\bootstrap.bundle.min.js.map" />
     <None Include="Scripts\bootstrap.js.map" />

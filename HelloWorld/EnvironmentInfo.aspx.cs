@@ -27,7 +27,7 @@ namespace HelloWorld
                 int count = 0;
                 int total = latestPatchOfClient.Count;
                 //totalRecords.Text = "Total Number of Records: " + total;
-                TallyRecords.InnerText = "Total Records Found # " + total;
+                TallyRecords.InnerText = "Total Environment Found # " + total;
 
                 // START
                 TableRow row000 = new TableRow();

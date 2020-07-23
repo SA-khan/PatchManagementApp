@@ -90,6 +90,28 @@ namespace HelloWorld
 
             #endregion Language
 
+            if (Session.Count != 0)
+            {
+                string usrIDSession = String.Empty;
+                if (Session["USR_LOGIN_ID"] != null)
+                {
+                    usrIDSession = Session["USR_LOGIN_ID"].ToString();
+                    txtLogin.Text = usrIDSession;
+                }
+                if (Session["USR_CURRENT_PASSCODE"] != null)
+                {
+                    if (usrIDSession.Equals("poweruser"))
+                    {
+                        txtPassword.Text = Session["USR_CURRENT_PASSCODE"].ToString();
+                    }
+                    else
+                    {
+                        //txtPassword.Text = System.Text.ASCIIEncoding.ASCII.GetString(System.Convert.FromBase64String(Session["USR_CURRENT_PASSCODE"].ToString()));
+                    }
+                }
+
+            }
+
             try
             {
                 bool rememberCheck = CheckRememberMe.Checked;
@@ -245,15 +267,15 @@ namespace HelloWorld
                         }
                         else if (USR_DEPT_ID == "2")
                         {
-                            Response.Redirect("ProtectedPages/QA-Dashboard.aspx", false);
+                            Response.Redirect("ProtectedPages/Dashboard.aspx", false);
                         }
                         else if (USR_DEPT_ID == "3")
                         {
-                            Response.Redirect("ProtectedPages/Implementation-Dashboard.aspx", false);
+                            Response.Redirect("ProtectedPages/Dashboard.aspx", false);
                         }
                         else if (USR_DEPT_ID == "4")
                         {
-                            Response.Redirect("ProtectedPages/BA-Dashboard.aspx", false);
+                            Response.Redirect("ProtectedPages/Dashboard.aspx", false);
                         }
                         else {
                             Response.Redirect("ProtectedPages/Dashboard.aspx", false);

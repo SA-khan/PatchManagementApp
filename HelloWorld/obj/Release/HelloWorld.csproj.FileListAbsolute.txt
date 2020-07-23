@@ -26,3 +26,39 @@ C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Release\HelloWorld.dll
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Release\HelloWorld.pdb
 C:\Users\Saad.Ahmed\documents\visual studio 2010\Projects\HelloWorld\HelloWorld\obj\Release\HelloWorld.csprojResolveAssemblyReference.cache
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\HelloWorld.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\HelloWorld.pdb
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\fr\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\ur\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\ar\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\de\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\sk\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\sn\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\AspNet.ScriptManager.bootstrap.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DevExpress.AgDataGrid.v8.2.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DevExpress.AgMenu.v8.2.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DotNetZip.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\Elmah.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\itextsharp.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\System.Web.Silverlight.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\WebDriver.Support.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DotNetZip.pdb
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DotNetZip.xml
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\itextsharp.xml
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\WebDriver.Support.xml
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.Properties.strings.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.Properties.strings.fr.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.Properties.strings.ur.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.Properties.strings.ar.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.Properties.strings.de.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.Properties.strings.sk.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.Properties.strings.sn.resources
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.csproj.GenerateResource.Cache
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\fr\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\ur\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\ar\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\de\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\sk\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\sn\HelloWorld.resources.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.dll
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.pdb

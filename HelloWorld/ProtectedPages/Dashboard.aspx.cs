@@ -4,55 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Diagnostics;
 using HelloWorld.App_Code;
 
 namespace HelloWorld.ProtectedPages
 {
     public partial class Dashboard : System.Web.UI.Page
     {
-        //protected string[] clientList;
-        static DatabaseConnectivity dbgraph = new DatabaseConnectivity();
-        //public string[] clientList = { "BAFL", "HBL", "HBL AMC", "PMRC", "ABL" };
-        public string[] clientList = dbgraph.getClientListString();
-        public int[] numberOfBuild = dbgraph.getClientListInt();
-
-        protected System.Web.Script.Serialization.JavaScriptSerializer serializer;
-
+        Log log = new Log();
         protected void Page_Load(object sender, EventArgs e)
         {
-            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            log.DetailLog("Dashboard", "Page_Load", STATE.INITIALIZED, "Page_Load Method of Class Dashoard has been initialized.");
 
-            if (Request.Cookies["UserID"] != null) // && Request.Cookies["Password"] != null
-            {
-                //String[] cookies = Request.Cookies.AllKeys;
-                String userid = Request.Cookies.Get("UserID").Value;
-                String password = Request.Cookies.Get("Password").Value;
-                Debug.WriteLine("User Loggedin with UserID: " + userid + " and Pwd: " + password);
 
-                DatabaseConnectivity dbcon = new DatabaseConnectivity();
-                //string[] clientList = dbcon.getClientList();
-                //clientList = new[] {"BAFL", "HBL", "HBL AMC", "PMRC", "ABL"};
-                
-
-            }
-            //if()
-            //try
-            //{
-            //    if (Session["UserID"] != null)
-            //    {
-            //        lblUser.Text = "Hi " + Session["UserID"];
-            //    }
-            //    else
-            //    {
-            //        Response.Redirect("~/Default.aspx", true);
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    Debug.WriteLine(ex.Message);
-            //}
         }
     }
 }

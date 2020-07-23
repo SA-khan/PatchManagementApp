@@ -54,7 +54,6 @@ E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DotNetZip.pdb
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\DotNetZip.xml
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\itextsharp.xml
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\bin\WebDriver.Support.xml
-E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.resources
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.fr.resources
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.Properties.strings.ur.resources
@@ -71,3 +70,4 @@ E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\sk\HelloWorld.resourc
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\sn\HelloWorld.resources.dll
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.dll
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb
+E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache
