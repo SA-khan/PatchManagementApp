@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script src="Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+      <script src="Scripts/bootstrap.min.js" type="text/javascript"></script>
       <style type="text/css">
         .row-centered {
             text-align:center;
