@@ -206,10 +206,12 @@
     <Content Include="Images\admin-dashboard.jpg" />
     <Content Include="Images\application.png" />
     <Content Include="Images\bi-dashboard.jpg" />
+    <Content Include="Images\bi-dashboard.jpg.jpg" />
     <Content Include="Images\environment.png" />
     <Content Include="Images\home.png" />
     <Content Include="Images\icon.ico" />
     <Content Include="Images\implementation-dashboard.png" />
+    <Content Include="Images\implementation-dashboard.png.png" />
     <Content Include="Images\loginBG.jpg" />
     <Content Include="AppOverview.aspx" />
     <Content Include="Images\member_login_1.png" />
@@ -252,6 +254,13 @@
     <Compile Include="MasterPages\Login.Master.designer.cs">
       <DependentUpon>Login.Master</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\SimpleLogin.Master.cs">
+      <DependentUpon>SimpleLogin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\SimpleLogin.Master.designer.cs">
+      <DependentUpon>SimpleLogin.Master</DependentUpon>
+    </Compile>
     <Compile Include="ProtectedPages\AddDatabase.aspx.cs">
       <DependentUpon>AddDatabase.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -271,6 +280,7 @@
     <Content Include="ProtectedPages\EditProduct.aspx" />
     <Content Include="ProtectedPages\EditUser.aspx" />
     <Content Include="ProtectedPages\EditUserRole.aspx" />
+    <Content Include="ProtectedPages\Profile.aspx" />
     <Content Include="References.aspx" />
     <Content Include="Scripts\angular-chart.js" />
     <Content Include="Scripts\angular-chart.min.js" />
@@ -826,6 +836,13 @@
     <Compile Include="ProtectedPages\EditUserRole.aspx.designer.cs">
       <DependentUpon>EditUserRole.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProtectedPages\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="References.aspx.cs">
       <DependentUpon>References.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -926,6 +943,7 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="MasterPages\Login.Master" />
+    <Content Include="MasterPages\SimpleLogin.Master" />
     <None Include="Scripts\bootstrap.bundle.js.map" />
     <None Include="Scripts\bootstrap.bundle.min.js.map" />
     <None Include="Scripts\bootstrap.js.map" />
