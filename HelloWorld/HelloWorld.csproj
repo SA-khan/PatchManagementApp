@@ -280,6 +280,7 @@
     <Content Include="ProtectedPages\EditProduct.aspx" />
     <Content Include="ProtectedPages\EditUser.aspx" />
     <Content Include="ProtectedPages\EditUserRole.aspx" />
+    <Content Include="ProtectedPages\ManageUser.aspx" />
     <Content Include="ProtectedPages\Profile.aspx" />
     <Content Include="References.aspx" />
     <Content Include="Scripts\angular-chart.js" />
@@ -835,6 +836,13 @@
     </Compile>
     <Compile Include="ProtectedPages\EditUserRole.aspx.designer.cs">
       <DependentUpon>EditUserRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedPages\ManageUser.aspx.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedPages\ManageUser.aspx.designer.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedPages\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
