@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Delete Client Type" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="DeleteClientType.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteClientType" %>
+﻿<%@ Page Title="Portal - Delete Client Type" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="DeleteClientType.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteClientType" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

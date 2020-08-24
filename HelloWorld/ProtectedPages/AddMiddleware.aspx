@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add API" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddMiddleware.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddMiddleware" %>
+﻿<%@ Page Title="Portal - Add API" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="AddMiddleware.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddMiddleware" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

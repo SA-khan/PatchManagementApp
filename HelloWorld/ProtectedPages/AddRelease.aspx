@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add Release" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddRelease.aspx.cs" ViewStateMode="Enabled" Inherits="HelloWorld.ProtectedPages.AddPatch" %>
+﻿<%@ Page Title="Portal - Add Release" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="AddRelease.aspx.cs" ViewStateMode="Enabled" Inherits="HelloWorld.ProtectedPages.AddPatch" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/modernizr-2.8.3.js" type="text/javascript"></script>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Delete Environment Type" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="DeleteEnvironemtType.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteEnvironemtType" %>
+﻿<%@ Page Title="Portal - Delete Environment Type" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="DeleteEnvironemtType.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteEnvironemtType" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

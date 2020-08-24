@@ -1754,16 +1754,15 @@ namespace HelloWorld.App_Code
                         {
                             User item = new User();
                             item.USR_LOGIN_ID = oReader["USR_LOGIN_ID"].ToString();
-                            item.USR_FIRST_NAME = oReader["USER_FIRST_NAME"].ToString();
-                            item.USR_MIDDLE_NAME = oReader["USER_MIDDLE_NAME"].ToString();
-                            item.USR_LAST_NAME = oReader["USER_LAST_NAME"].ToString();
+                            item.USR_FIRST_NAME = oReader["USR_FIRST_NAME"].ToString();
+                            item.USR_MIDDLE_NAME = oReader["USR_MIDDLE_NAME"].ToString();
+                            item.USR_LAST_NAME = oReader["USR_LAST_NAME"].ToString();
                             item.USR_GROUP = oReader["USR_GROUP"].ToString();
-                            item.USR_ROLE = oReader["USR_ROLE"].ToString();
                             item.USR_ENABLED = oReader["USR_ENABLED"].ToString();
-                            item.USR_CURRENT_PASSCODE = oReader["USER_CURRENT_PASSCODE"].ToString();
-                            item.USR_LOGIN_DATE = oReader["USER_LOGIN_DATE"].ToString();
-                            item.USR_LAST_LOGIN_DATE = oReader["USER_LAST_LOGIN_DATE"].ToString();
-                            item.USR_WRONG_ATTEMPTS = oReader["USER_WRONG_ATTEMPTS"].ToString();
+                            item.USR_CURRENT_PASSCODE = oReader["USR_CURRENT_PASSCODE"].ToString();
+                            item.USR_LOGIN_DATE = oReader["USR_LOGIN_DATE"].ToString();
+                            item.USR_LAST_LOGIN_DATE = oReader["USR_LAST_LOGIN_DATE"].ToString();
+                            item.USR_WRONG_ATTEMPTS = oReader["USR_WRONG_ATTEMPTS"].ToString();
                             item.USR_DEPT_ID = oReader["USR_DEPT_ID"].ToString();
                             item.USR_DESIGNATION = oReader["USR_DESIGNATION"].ToString();
                             _userList.Add(item);

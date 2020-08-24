@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add User" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddUser.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddUser" %>
+﻿<%@ Page Title="Portal - Add User" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="AddUser.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddUser" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/modernizr-2.8.3.js" type="text/javascript"></script>

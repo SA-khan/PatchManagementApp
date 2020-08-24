@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add Database" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddDatabase.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddDatabase" %>
+﻿<%@ Page Title="Portal - Add Database" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="AddDatabase.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddDatabase" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

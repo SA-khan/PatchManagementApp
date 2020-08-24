@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add Client" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddCompany" %>
+﻿<%@ Page Title="Portal - Add Client" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="AddClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddCompany" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>

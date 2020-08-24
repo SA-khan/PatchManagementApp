@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Delete Release" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="DeleteRelease.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteRelease" %>
+﻿<%@ Page Title="Portal - Delete Release" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="DeleteRelease.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteRelease" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

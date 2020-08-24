@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Edit Environment Type" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditEnvironemtType.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditEnvironemtType" %>
+﻿<%@ Page Title="Portal - Edit Environment Type" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="EditEnvironemtType.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditEnvironemtType" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

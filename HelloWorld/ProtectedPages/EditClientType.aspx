@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Edit Client Type" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditClientType.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditClientType" %>
+﻿<%@ Page Title="Portal - Edit Client Type" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="EditClientType.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditClientType" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add Product" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddProduct.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddProduct" %>
+﻿<%@ Page Title="Portal - Add Product" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="AddProduct.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddProduct" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

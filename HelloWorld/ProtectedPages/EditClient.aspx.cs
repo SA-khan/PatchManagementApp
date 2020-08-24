@@ -16,14 +16,14 @@ namespace HelloWorld.ProtectedPages
         {
             try
             {
-                if (Session["UserID"] != null)
-                {
+                //if (Session["UserID"] != null)
+                //{
                     _BindService();
-                }
-                else
-                {
-                    Response.Redirect("~/Default.aspx", true);
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("~/Default.aspx", true);
+                //}
 
             }
             catch (Exception ex)

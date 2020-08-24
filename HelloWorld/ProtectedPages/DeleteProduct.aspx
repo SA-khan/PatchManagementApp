@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Delete Product" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="DeleteProduct.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteProduct" %>
+﻿<%@ Page Title="Portal - Delete Product" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="DeleteProduct.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteProduct" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

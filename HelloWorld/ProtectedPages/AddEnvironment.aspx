@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add Environment" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddEnvironment.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddClientEnvironment" %>
+﻿<%@ Page Title="Portal - Add Environment" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="AddEnvironment.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddClientEnvironment" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script src="../Scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
     <script src="../Scripts/bootstrap.min.js" type="text/javascript"></script>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Edit User" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditUser.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditUser" %>
+﻿<%@ Page Title="Portal - Edit User" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="EditUser.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditUser" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

@@ -1,5 +1,6 @@
-﻿<%@ Page Title="Portal - Delete Client" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="DeleteClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteCompany" %>
+﻿<%@ Page Title="Portal - Delete Client" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="DeleteClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.DeleteCompany" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="../Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 

@@ -1,6 +1,6 @@
-﻿<%@ Page Title="Edit Client - Portal" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="EditClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditClient" %>
+﻿<%@ Page Title="Edit Client - Portal" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="EditClient.aspx.cs" Inherits="HelloWorld.ProtectedPages.EditClient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-
+    <link href="../Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 

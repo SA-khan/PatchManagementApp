@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Portal - Add User Role" Language="C#" MasterPageFile="~/SiteLogout.Master" AutoEventWireup="true" CodeBehind="AddUserRole.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddUserRole" %>
+﻿<%@ Page Title="Portal - Add User Role" Language="C#" MasterPageFile="~/MasterPages/SimpleLogin.Master" AutoEventWireup="true" CodeBehind="AddUserRole.aspx.cs" Inherits="HelloWorld.ProtectedPages.AddUserRole" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
