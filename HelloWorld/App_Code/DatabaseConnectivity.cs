@@ -2412,7 +2412,11 @@ namespace HelloWorld.App_Code
                             item.MDW_SERVER_VIRTUALIZATION = oReader["MDW_SERVER_VIRTUALIZATION"].ToString();
                             item.MDW_SERVER_MEMORY = oReader["MDW_SERVER_MEMORY"].ToString();
                             item.MDW_SERVER_PROCESSOR = oReader["MDW_SERVER_PROCESSOR"].ToString();
+                            item.MDW_DATABASE_SERVER = oReader["MDW_DATABASE_SERVER"].ToString();
+                            item.MDW_DATABASE_SERVER_INSTANCE = oReader["MDW_DATABASE_SERVER_INSTANCE"].ToString();
                             item.MDW_DATABASE_NAME = oReader["MDW_DATABASE_NAME"].ToString();
+                            item.MDW_DATABASE_USER_ID = oReader["MDW_DATABASE_USER_ID"].ToString();
+                            item.MDW_DATABASE_PASSWORD = oReader["MDW_DATABASE_PASSWORD"].ToString();
                             item.MDW_DATABASE_DIRECTORY_LOCATION = oReader["MDW_DATABASE_DIRECTORY_LOCATION"].ToString();
                             item.MDW_DATABASE_LAST_RESTORE_DATE = oReader["MDW_DATABASE_LAST_RESTORE_DATE"].ToString();
                             item.MDW_DATABASE_LAST_BACKUP_DATE = oReader["MDW_DATABASE_LAST_BACKUP_DATE"].ToString();

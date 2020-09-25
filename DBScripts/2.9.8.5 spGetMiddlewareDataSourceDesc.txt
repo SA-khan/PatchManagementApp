@@ -1,18 +1,20 @@
-/****** Object:  StoredProcedure [dbo].[spGetMiddlewareDataSourceDesc]    Script Date: 4/9/2020 7:40:15 PM ******/
+USE [SHMAPortal]
+GO
+/****** Object:  StoredProcedure [dbo].[spGetMiddlewareDataSourceDesc]    Script Date: 9/25/2020 12:15:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROC [dbo].[spGetMiddlewareDataSourceDesc]
+ALTER PROC [dbo].[spGetMiddlewareDataSourceDesc]
 	@ENV_ID int
 AS
 BEGIN
 SELECT 'MIDDLEWARE' AS TYPE, 
-	[MDW_ID],
-	[MDW_ENV_ID],
-	[MDW_NAME],
-	[MDW_TYPE],
-	[MDW_LINK],
+		[MDW_ID],
+		[MDW_ENV_ID],
+		[MDW_NAME],
+		[MDW_TYPE],
+		[MDW_LINK],
         [MDW_ACCESS_KEY],
         [MDW_WEB_SERVER],
         [MDW_WEB_SERVER_VERSION],
@@ -29,7 +31,11 @@ SELECT 'MIDDLEWARE' AS TYPE,
         [MDW_SERVER_VIRTUALIZATION],
         [MDW_SERVER_PROCESSOR],
         [MDW_SERVER_MEMORY],
+		[MDW_DATABASE_SERVER],
+		[MDW_DATABASE_SERVER_INSTANCE],
         [MDW_DATABASE_NAME],
+		[MDW_DATABASE_USER_ID],
+		[MDW_DATABASE_PASSWORD],
         [MDW_DATABASE_DIRECTORY_LOCATION],
         [MDW_DATABASE_LAST_RESTORE_DATE],
         [MDW_DATABASE_LAST_BACKUP_DATE],
@@ -40,10 +46,10 @@ SELECT 'MIDDLEWARE' AS TYPE,
         [MDW_DIRECTORY_HASH],
         [MDW_SERVER_DEPENDENCY],
         [MDW_VENDER_ID],
-	[VEN_ID],
-	[VEN_NAME],
-	[VEN_DESC], 
-	[VEN_IMAGE_SRC] 
+		[VEN_ID],
+		[VEN_NAME],
+		[VEN_DESC], 
+		[VEN_IMAGE_SRC] 
 FROM [MIDDLEWARE] INNER JOIN [VENDER] ON [MDW_VENDER_ID] = [VEN_ID]
 WHERE MDW_ENV_ID = @ENV_ID
 END

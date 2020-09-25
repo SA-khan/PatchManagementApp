@@ -62,3 +62,43 @@ E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\sk\HelloWorld.resou
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\sn\HelloWorld.resources.dll
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.dll
 E:\BAFL\Website Deployment\HelloWorld\HelloWorld\obj\Release\HelloWorld.pdb
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\HelloWorld.dll.config
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\HelloWorld.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\HelloWorld.pdb
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\fr\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\ur\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\ar\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\de\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\sk\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\sn\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\AspNet.ScriptManager.bootstrap.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\DevExpress.AgDataGrid.v8.2.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\DevExpress.AgMenu.v8.2.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\DotNetZip.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\Elmah.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\itextsharp.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\System.Web.Silverlight.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\WebDriver.Support.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\DotNetZip.pdb
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\DotNetZip.xml
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\itextsharp.xml
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\bin\WebDriver.Support.xml
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.csprojAssemblyReference.cache
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.Properties.strings.resources
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.Properties.strings.fr.resources
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.Properties.strings.ur.resources
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.Properties.strings.ar.resources
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.Properties.strings.de.resources
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.Properties.strings.sk.resources
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.Properties.strings.sn.resources
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.csproj.GenerateResource.cache
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.csproj.CoreCompileInputs.cache
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\fr\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\ur\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\ar\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\de\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\sk\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\sn\HelloWorld.resources.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.csproj.CopyComplete
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.dll
+C:\Users\Saad.Ahmed\Desktop\Projects\ReleaseManagementPortal\PatchManagementApp\HelloWorld\obj\Release\HelloWorld.pdb

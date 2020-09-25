@@ -29,7 +29,11 @@ namespace HelloWorld.App_Code
         public string MDW_SERVER_VIRTUALIZATION { get; set; }
         public string MDW_SERVER_MEMORY { get; set; }
         public string MDW_SERVER_PROCESSOR { get; set; }
+        public string MDW_DATABASE_SERVER { get; set; }
+        public string MDW_DATABASE_SERVER_INSTANCE { get; set; }
         public string MDW_DATABASE_NAME { get; set; }
+        public string MDW_DATABASE_USER_ID { get; set; }
+        public string MDW_DATABASE_PASSWORD { get; set; }
         public string MDW_DATABASE_DIRECTORY_LOCATION { get; set; }
         public string MDW_DATABASE_LAST_RESTORE_DATE { get; set; }
         public string MDW_DATABASE_LAST_BACKUP_DATE { get; set; }
